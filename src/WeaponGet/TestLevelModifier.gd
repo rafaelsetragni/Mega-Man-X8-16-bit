@@ -6,7 +6,7 @@ onready var servbot_3: KinematicBody2D = $"../Objects/Servbot3"
 
 onready var drone_2: KinematicBody2D = $"../Objects/Drone2"
 
-func _on_WeaponGetScreen_weapon_defined(weapon : WeaponResource) -> void:
+func _on_WeaponGetScreen_weapon_defined(weapon: WeaponResource) -> void :
 	if not weapon.collectible == "panda_weapon":
 		call_deferred("delete_spikes")
 	if weapon.collectible == "sunflower_weapon":
