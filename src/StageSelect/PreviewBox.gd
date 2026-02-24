@@ -23,7 +23,7 @@ func connect_with_buttons() -> void :
 		else:
 			child.connect("focus_entered", self, "hide")
 
-func on_stage_selected(info: StageInfo) -> void :
+func on_stage_selected(info) -> void :
 	if info.get_load_name() in exceptions:
 		hide()
 	else:

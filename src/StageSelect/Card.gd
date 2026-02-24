@@ -5,7 +5,7 @@ onready var menu: Control = $"../../StageSelectUI/Menu"
 onready var pointer: AnimatedSprite = $"../../map/pointer"
 
 var defeated: bool = false
-var stage: StageInfo
+var stage
 
 signal focused
 signal moved_cursor(pos)

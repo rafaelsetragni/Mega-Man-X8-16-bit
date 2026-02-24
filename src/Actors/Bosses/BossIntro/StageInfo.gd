@@ -1,5 +1,4 @@
 extends Resource
-class_name StageInfo
 
 export  var save_flag: String
 export  var beaten_condition: Array
