@@ -1,19 +1,19 @@
 tool 
 extends PanelContainer
 
-const wizard_config = preload("../config/wizard_config.gd")
-const result_code = preload("../config/result_codes.gd")
-var animation_creator = preload("animation_creator.gd").new()
+const wizard_config = preload("../../config/wizard_config.gd")
+const result_code = preload("../../config/result_codes.gd")
+var sprite_frames_creator = preload("../sprite_frames_creator.gd").new()
 
 var scene: Node
-var sprite: Sprite
+var sprite: Node
 
 var config
 var file_system: EditorFileSystem
 
 var _layer: String = ""
+var _slice: String = ""
 var _source: String = ""
-var _animation_player_path: String
 var _file_dialog_aseprite: FileDialog
 var _output_folder_dialog: FileDialog
 var _importing: = false
@@ -22,9 +22,9 @@ var _output_folder: = ""
 var _out_folder_default: = "[Same as scene]"
 var _layer_default: = "[all]"
 
-onready var _options_field = $margin / VBoxContainer / animation_player / options
 onready var _source_field = $margin / VBoxContainer / source / button
 onready var _layer_field = $margin / VBoxContainer / layer / options
+onready var _slice_field = $margin / VBoxContainer / slice / options
 onready var _options_title = $margin / VBoxContainer / options_title / options_title
 onready var _options_container = $margin / VBoxContainer / options
 onready var _out_folder_field = $margin / VBoxContainer / options / out_folder / button
@@ -33,37 +33,37 @@ onready var _visible_layers_field = $margin / VBoxContainer / options / visible_
 onready var _ex_pattern_field = $margin / VBoxContainer / options / ex_pattern / LineEdit
 
 func _ready():
-	var cfg = wizard_config.decode(sprite.editor_description)
+	var cfg = wizard_config.load_config(sprite)
 
 	if cfg == null:
 		_load_default_config()
 	else:
 		_load_config(cfg)
 
-	animation_creator.init(config, file_system)
+	sprite_frames_creator.init(config, file_system)
 
 
 func _load_config(cfg):
 	if cfg.has("source"):
 		_set_source(cfg.source)
 
-	if cfg.has("player"):
-		_set_animation_player(cfg.player)
-
 	if cfg.get("layer", "") != "":
 		_set_layer(cfg.layer)
 
-	_output_folder = cfg.get("o_folder", "")
-	_out_folder_field.text = _output_folder if _output_folder != "" else _out_folder_default
+	if cfg.get("slice", "") != "":
+		_set_layer(cfg.slice)
+
+	_set_out_folder(cfg.get("o_folder", ""))
 	_out_filename_field.text = cfg.get("o_name", "")
-	_visible_layers_field.pressed = cfg.get("only_visible", "") == "True"
+	_visible_layers_field.pressed = cfg.get("only_visible", false)
 	_ex_pattern_field.text = cfg.get("o_ex_p", "")
 
-	_set_options_visible(cfg.get("op_exp", "false") == "True")
+	_set_options_visible(cfg.get("op_exp", false))
 
 
 func _load_default_config():
 	_ex_pattern_field.text = config.get_default_exclusion_pattern()
+	_visible_layers_field.pressed = config.should_include_only_visible_layers_by_default()
 	_set_options_visible(false)
 
 
@@ -73,55 +73,22 @@ func _set_source(source):
 	_source_field.hint_tooltip = _source
 
 
-func _set_animation_player(player):
-	_animation_player_path = player
-	_options_field.add_item(_animation_player_path)
-
-
 func _set_layer(layer):
 	_layer = layer
 	_layer_field.add_item(_layer)
 
 
-func _on_options_pressed():
-	var animation_players = []
-	var root = get_tree().get_edited_scene_root()
-	_find_animation_players(root, root, animation_players)
-
-	var current = 0
-	_options_field.clear()
-	_options_field.add_item("[empty]")
-
-	for ap in animation_players:
-		_options_field.add_item(ap)
-		if ap == _animation_player_path:
-			current = _options_field.get_item_count() - 1
-
-	_options_field.select(current)
+func _set_slice(slice):
+	_slice = slice
+	_slice_field.add_item(_slice)
 
 
-func _find_animation_players(root: Node, node: Node, players: Array):
-	if node is AnimationPlayer:
-		players.push_back(root.get_path_to(node))
-
-	for c in node.get_children():
-		_find_animation_players(root, c, players)
-
-
-func _on_options_item_selected(index):
-	if index == 0:
-		_animation_player_path = ""
-		return
-	_animation_player_path = _options_field.get_item_text(index)
-	_save_config()
-
-
-func _on_layer_pressed():
+func _on_layer_button_down():
 	if _source == "":
-		_show_message("Please. Select source file first.")
+		_show_message("Please, select source file first.")
 		return
 
-	var layers = animation_creator.list_layers(ProjectSettings.globalize_path(_source))
+	var layers = sprite_frames_creator.list_layers(ProjectSettings.globalize_path(_source))
 	var current = 0
 	_layer_field.clear()
 	_layer_field.add_item("[all]")
@@ -144,6 +111,34 @@ func _on_layer_item_selected(index):
 	_save_config()
 
 
+func _on_slice_button_down():
+	if _source == "":
+		_show_message("Please, select source file first.")
+		return
+
+	var slices = sprite_frames_creator.list_slices(ProjectSettings.globalize_path(_source))
+	var current = 0
+	_slice_field.clear()
+	_slice_field.add_item("[all]")
+
+	for l in slices:
+		if l == "":
+			continue
+
+		_slice_field.add_item(l)
+		if l == _slice:
+			current = _slice_field.get_item_count() - 1
+	_slice_field.select(current)
+
+
+func _on_slice_item_selected(index):
+	if index == 0:
+		_slice = ""
+		return
+	_slice = _slice_field.get_item_text(index)
+	_save_config()
+
+
 func _on_source_pressed():
 	_open_source_dialog()
 
@@ -155,13 +150,8 @@ func _on_import_pressed():
 
 	var root = get_tree().get_edited_scene_root()
 
-	if _animation_player_path == "" or not root.has_node(_animation_player_path):
-		_show_message("AnimationPlayer not found")
-		_importing = false
-		return
-
 	if _source == "":
-		_show_message("Aseprite file not selected")
+		_show_message("Aseprite file not selected.")
 		_importing = false
 		return
 
@@ -171,20 +161,21 @@ func _on_import_pressed():
 		"exception_pattern": _ex_pattern_field.text, 
 		"only_visible_layers": _visible_layers_field.pressed, 
 		"output_filename": _out_filename_field.text, 
-		"layer": _layer
+		"layer": _layer, 
+		"slice": _slice, 
 	}
 
 	_save_config()
 
-	animation_creator.create_animations(sprite, root.get_node(_animation_player_path), options)
+	sprite_frames_creator.create_animations(sprite, options)
 	_importing = false
 
 
 func _save_config():
-	sprite.editor_description = wizard_config.encode({
-		"player": _animation_player_path, 
+	wizard_config.save_config(sprite, config.is_use_metadata_enabled(), {
 		"source": _source, 
 		"layer": _layer, 
+		"slice": _slice, 
 		"op_exp": _options_title.pressed, 
 		"o_folder": _output_folder, 
 		"o_name": _out_filename_field.text, 
@@ -197,7 +188,7 @@ func _open_source_dialog():
 	_file_dialog_aseprite = _create_aseprite_file_selection()
 	get_parent().add_child(_file_dialog_aseprite)
 	if _source != "":
-		_file_dialog_aseprite.current_dir = _source.get_base_dir()
+		_file_dialog_aseprite.current_dir = ProjectSettings.globalize_path(_source.get_base_dir())
 	_file_dialog_aseprite.popup_centered_ratio()
 
 
@@ -231,7 +222,7 @@ func _on_options_title_toggled(button_pressed):
 
 func _set_options_visible(is_visible):
 	_options_container.visible = is_visible
-	_options_title.icon = config.get_icon_arrow_down() if is_visible else config.get_icon_arrow_right()
+	_options_title.icon = config.get_icon("expanded") if is_visible else config.get_icon("collapsed")
 
 
 func _on_out_folder_pressed():
@@ -251,6 +242,20 @@ func _create_output_folder_selection():
 
 
 func _on_output_folder_selected(path):
+	_set_out_folder(path)
+	_output_folder_dialog.queue_free()
+
+
+func _on_source_aseprite_file_dropped(path):
+	_set_source(path)
+	_save_config()
+
+
+func _on_out_dir_dropped(path):
+	_set_out_folder(path)
+
+
+func _set_out_folder(path):
 	_output_folder = path
 	_out_folder_field.text = _output_folder if _output_folder != "" else _out_folder_default
-	_output_folder_dialog.queue_free()
+	_out_folder_field.hint_tooltip = _out_folder_field.text
