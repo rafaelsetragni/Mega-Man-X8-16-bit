@@ -234,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Axl_mod/Player/Projectiles/BossWeapons/BlastLauncher/BlastLauncherProjectile.gd"
 }, {
+"base": "Node",
+"class": "BossAchievementHandler",
+"language": "GDScript",
+"path": "res://src/AchievementSystem/BossAchievementHandler.gd"
+}, {
 "base": "Node2D",
 "class": "BossAI",
 "language": "GDScript",
@@ -1484,11 +1489,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Axl_mod/Player/Scripts/WeaponBossAxl.gd"
 }, {
-"base": "RigidBody2D",
-"class": "WeaponDeflectable",
-"language": "GDScript",
-"path": "res://src/Actors/Weapons/Projectiles/Deflectable.gd"
-}, {
 "base": "Node",
 "class": "WeaponChanger",
 "language": "GDScript",
@@ -1645,6 +1645,7 @@ _global_script_class_icons={
 "BikeShot": "",
 "BlackZeroArmor": "",
 "BlastLauncher": "",
+"BossAchievementHandler": "",
 "BossAI": "",
 "BossAbilityZero": "",
 "BossAbilityZeroX8": "",
@@ -1895,7 +1896,6 @@ _global_script_class_icons={
 "Weapon": "",
 "WeaponAxl": "",
 "WeaponBossAxl": "",
-"WeaponDeflectable": "",
 "WeaponChanger": "",
 "WeaponChangerAxl": "",
 "WeaponChangerZero": "",
