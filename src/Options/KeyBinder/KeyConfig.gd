@@ -168,16 +168,20 @@ func end() -> void :
 	CharacterManager._save()
 
 func play_choice_sound() -> void :
-	choice.play()
-	
+	if choice:
+		choice.play()
+
 func play_pick_sound() -> void :
-	pick.play()
-	
+	if pick:
+		pick.play()
+
 func play_equip_sound() -> void :
-	equip.play()
-	
+	if equip:
+		equip.play()
+
 func play_cancel_sound() -> void :
-	cancel.play()
+	if cancel:
+		cancel.play()
 
 func button_call(method, param = null) -> void :
 	if param:

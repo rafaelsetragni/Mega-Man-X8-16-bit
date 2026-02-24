@@ -1,5 +1,6 @@
 extends Label
 
+const StageInfo = preload("res://src/Actors/Bosses/BossIntro/StageInfo.gd")
 export  var text_palette: Texture
 
 onready var shadow: Label = $"../Shadow"

@@ -1,5 +1,6 @@
 extends AnimatedSprite
 
+const StageInfo = preload("res://src/Actors/Bosses/BossIntro/StageInfo.gd")
 onready var cursor: AnimatedSprite = $cursor
 onready var menu: Control = $"../../StageSelectUI/Menu"
 onready var pointer: AnimatedSprite = $"../../map/pointer"

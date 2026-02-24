@@ -1,5 +1,6 @@
 extends AnimatedSprite
 
+const StageInfo = preload("res://src/Actors/Bosses/BossIntro/StageInfo.gd")
 export  var buttons: NodePath
 export  var map: NodePath
 

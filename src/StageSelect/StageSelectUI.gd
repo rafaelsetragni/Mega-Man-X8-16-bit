@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+const StageInfo = preload("res://src/Actors/Bosses/BossIntro/StageInfo.gd")
 const music_0_intro: AudioStream = preload("res://src/Sounds/OST - Stage Select 1 - Intro.ogg")
 const music_0_loop: AudioStream = preload("res://src/Sounds/OST - Stage Select 1 - Loop.ogg")
 const music_1_intro: AudioStream = preload("res://src/Sounds/OST - StageSelect3 - Intro.ogg")
