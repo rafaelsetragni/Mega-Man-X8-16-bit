@@ -1,4 +1,4 @@
-extends WeaponDeflectable
+extends "res://src/Actors/Weapons/Projectiles/Deflectable.gd"
 
 
 func deflect(_body) -> void :
