@@ -1954,7 +1954,7 @@ ParticleCache="*res://src/System/ParticleCache.gd"
 Event="*res://Event.gd"
 GatewayManager="*res://src/Levels/Gateway/GatewayManager.gd"
 BossRNG="*res://BossRNG.gd"
-IGT="*res://IGT.gd"
+IGT="*res://System/IGT/Autoload/IGT.gd"
 CharacterManager="*res://System/CharacterManager.gd"
 ShaderManager="*res://System/ShaderManager.gd"
 
