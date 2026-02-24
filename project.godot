@@ -2272,7 +2272,7 @@ down_emulated={
 test="br"
 translation_remaps={
 }
-translations=PoolStringArray( "res://src/Localization/test1.br.translation", "res://src/Localization/test1.en.translation", "res://src/Localization/test1.es.translation", "res://src/Localization/test1.pr.translation" )
+translations=PoolStringArray( "res://src/Localization/real_translations.br.translation", "res://src/Localization/real_translations.en.translation", "res://src/Localization/real_translations.es.translation", "res://src/Localization/real_translations.ja_JP.translation", "res://src/Localization/real_translations.pr.translation" )
 
 [network]
 
