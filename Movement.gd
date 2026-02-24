@@ -32,8 +32,8 @@ func get_effective_speed(_speed) -> float:
 
 func process_gravity(delta: float, gravity: float = default_gravity) -> void :
 	var _gravity = get_effective_speed(gravity)
-	var max_velocity = get_effective_speed(character.maximum_fall_velocity)
-	var original_delta = delta / Engine.time_scale
+	var _max_velocity = get_effective_speed(character.maximum_fall_velocity)
+	var _original_delta = delta / Engine.time_scale
 	character.add_vertical_speed(gravity * delta)
 	
 	if character.get_vertical_speed() > character.maximum_fall_velocity:

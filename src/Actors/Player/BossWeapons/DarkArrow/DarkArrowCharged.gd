@@ -7,13 +7,13 @@ const bypass_shield: = true
 
 func get_target_from_facing_direction_first() -> Node2D:
 	var first_check
-	var second_check
+	var _second_check
 	if get_facing_direction() > 0:
 		first_check = right_tracker
-		second_check = left_tracker
+		_second_check = left_tracker
 	else:
 		first_check = left_tracker
-		second_check = right_tracker
+		_second_check = right_tracker
 
 	var target = first_check.get_closest_target()
 	
