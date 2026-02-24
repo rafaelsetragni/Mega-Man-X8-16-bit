@@ -1297,7 +1297,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "StageInfo",
 "language": "GDScript",
-"path": "res://src/BossIntro/StageInfo.gd"
+"path": "res://src/Actors/Bosses/BossIntro/StageInfo.gd"
 }, {
 "base": "CanvasModulate",
 "class": "StageLights",
