@@ -48,6 +48,13 @@ func hide_intro() -> void :
 func _ready() -> void :
 	capcom_logo.modulate = Color(0, 0, 0, 1)
 	inspired.modulate = Color( - 1, - 1, 0, 1)
+	if GameManager.skip_to_menu:
+		GameManager.skip_to_menu = false
+		finished = true
+		set_physics_process(false)
+		$bg2.visible = true
+		$theme_music.play()
+		call_deferred("hide_intro")
 
 func start() -> void :
 	set_physics_process(true)

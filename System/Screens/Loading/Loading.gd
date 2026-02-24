@@ -344,13 +344,16 @@ func load_all_slots() -> void :
 
 func loaded_end() -> void :
 	Savefile.load_save(Savefile.save_slot)
-	emit_signal("loaded_savefile", CharacterManager.game_mode)
+	CharacterManager.game_mode_set = true
 	lock_buttons()
-	fader.FadeOut()
-	yield(fader, "finished")
+	var tween = create_tween()
+	tween.tween_property(fader, "color", Color.black, fader.duration)
+	yield(tween, "finished")
 	GameManager.reset_stretch_mode()
-	emit_signal("end")
-	active = false
+	if "finished_intro" in GameManager.collectibles:
+		GameManager.call_deferred("go_to_stage_select")
+	else:
+		get_tree().change_scene("res://System/Screens/CharacterSelection/Character_Selection.tscn")
 
 func _ready() -> void :
 	load_all_slots()

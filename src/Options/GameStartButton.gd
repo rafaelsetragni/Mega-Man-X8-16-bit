@@ -64,13 +64,19 @@ func update_game_mode(mode: int) -> void :
 
 func on_press() -> void :
 	CharacterManager.game_mode_set = true
+	GameManager.collectibles = []
+	GameManager.equip_exceptions = []
+	GlobalVariables.variables = {}
+	GameManager.seen_dialogues.clear()
+	Savefile.newgame_plus = 0
+	IGT.reset()
 	get_node(pick_sound).play()
 	Event.emit_signal("fadeout_startmenu")
 	strong_flash()
 	menu.lock_buttons()
 	menu.fader.SoftFadeOut()
 	yield(menu.fader, "finished")
-	
+
 	go_to_next_scene()
 
 func go_to_next_scene() -> void :

@@ -35,8 +35,8 @@ func end() -> void :
 	lock_buttons()
 	fader.FadeOut()
 	yield(fader, "finished")
+	GameManager.skip_to_menu = true
 	GameManager.go_to_intro()
-	emit_signal("end")
 	active = false
 
 func play_music() -> void :
