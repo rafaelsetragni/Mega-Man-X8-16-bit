@@ -21,7 +21,7 @@ func clear() -> void :
 	percent_visible = 0
 	shadow.percent_visible = 0
 
-func on_stage_selected(info) -> void :
+func on_stage_selected(info: StageInfo) -> void :
 	var boss_name = tr(info.get_boss())
 	if info.beaten_condition.size() > 0:
 		boss_name = "?????"
@@ -35,7 +35,7 @@ func on_stage_selected(info) -> void :
 	tween.add_attribute("percent_visible", 1.0, 2.0)
 	tween.add_attribute("percent_visible", 1.0, 2.0, shadow)
 
-func get_stage_completion_percentage(info) -> String:
+func get_stage_completion_percentage(info: StageInfo) -> String:
 	var total_items: float = 0.0
 	var collected_items: float = 0.0
 	var total_collected_subtanks: float = 0.0
@@ -60,7 +60,7 @@ func get_stage_completion_percentage(info) -> String:
 		total_items = 1
 	return str(collected_items / total_items * 100).substr(0, 4)
 
-func has_weapon(info) -> bool:
+func has_weapon(info: StageInfo) -> bool:
 	for item in info.collectibles:
 		if "finished_intro" in item:
 			return item in GameManager.collectibles

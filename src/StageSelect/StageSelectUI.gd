@@ -99,7 +99,7 @@ func lock_buttons() -> void :
 func unlock_buttons() -> void :
 	emit_signal("unlock_buttons")
 
-func picked_stage(stage) -> void :
+func picked_stage(stage: StageInfo) -> void :
 	emit_signal("picked_stage")
 	lock_buttons()
 	flash()
@@ -108,7 +108,7 @@ func picked_stage(stage) -> void :
 	Tools.timer(0.48, "fade_out", self)
 	Tools.timer_p(2.5, "on_fadeout_finished", self, stage)
 
-func on_fadeout_finished(stage) -> void :
+func on_fadeout_finished(stage: StageInfo) -> void :
 	if stage.should_play_stage_intro():
 		GameManager.go_to_stage_intro(stage)
 	else:
