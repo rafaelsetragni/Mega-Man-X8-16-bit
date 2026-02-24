@@ -1294,11 +1294,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://SpriteEffect.gd"
 }, {
-"base": "Resource",
-"class": "StageInfo",
-"language": "GDScript",
-"path": "res://src/Actors/Bosses/BossIntro/StageInfo.gd"
-}, {
 "base": "CanvasModulate",
 "class": "StageLights",
 "language": "GDScript",
@@ -1857,7 +1852,6 @@ _global_script_class_icons={
 "SpawnerSwitcher": "",
 "SpecialAbilityAxl": "",
 "SpriteEffect": "",
-"StageInfo": "",
 "StageLights": "",
 "StateCamera": "",
 "StaticVariables": "",
@@ -1979,7 +1973,7 @@ version_control_plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg", "res://addons/gd-shader-cache/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gd-shader-cache/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [global]
 
