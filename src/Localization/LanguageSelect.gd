@@ -5,6 +5,8 @@ onready var lang_name_label: Label = $lang_name
 onready var hint_label: Label = $hint
 onready var fade: Sprite = $fade
 onready var flags_node: Node2D = $flags
+onready var navigate_sound: AudioStreamPlayer = $navigate_sound
+onready var confirm_sound: AudioStreamPlayer = $confirm_sound
 
 var current_index: int = 0
 var animating: bool = false
@@ -65,6 +67,7 @@ func _navigate(direction: int) -> void:
 
 	current_index = new_index
 	animating = true
+	navigate_sound.play()
 	_animate_flags()
 	_update_labels()
 
@@ -122,6 +125,7 @@ func _update_labels() -> void:
 
 func _confirm() -> void:
 	confirmed = true
+	confirm_sound.play()
 	TranslationServer.set_locale(LOCALES[current_index])
 	Configurations.set("Language", LOCALES[current_index])
 	Savefile.save_config_data()
