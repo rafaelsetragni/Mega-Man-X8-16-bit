@@ -1,7 +1,7 @@
 extends Node
 
 const codename: String = "X8DMOD"
-var version: String = "1.0.0.4"
+var version: String = "2.0.0+5"
 var current_demo: String = ""
 var skip_to_menu: bool = false
 

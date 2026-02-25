@@ -3,7 +3,7 @@ extends Node
 
 var save_slot: int = 0
 var max_slots: int = 10
-const save_version: String = "1.0.0.4"
+const save_version: String = "2.0.0+5"
 
 var game_data = {}
 var newgame_plus: int = 0
