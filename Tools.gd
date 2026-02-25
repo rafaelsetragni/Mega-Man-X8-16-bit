@@ -124,10 +124,14 @@ static func timer_r(wait_time: float, method: String, parent: Node, param = null
 	return timer
 
 static func tween(parent, property, final_value, duration, _ease_type: = Tween.EASE_IN_OUT, trans_type: = Tween.TRANS_LINEAR) -> void :
+	if not is_instance_valid(parent) or not parent.is_inside_tree():
+		return
 	var tween: SceneTreeTween = parent.create_tween()
 	tween.tween_property(parent, property, final_value, duration).set_ease(Tween.EASE_IN_OUT).set_trans(trans_type)
 
 static func tween_method(parent, method, start_value, final_value, duration) -> void :
+	if not is_instance_valid(parent) or not parent.is_inside_tree():
+		return
 	var tween: SceneTreeTween = parent.create_tween()
 	tween.tween_method(parent, method, start_value, final_value, duration)
 
