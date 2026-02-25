@@ -1923,13 +1923,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Mega Man X8 16-bit"
-run/main_scene="res://src/Title/DisclaimerScreen.tscn"
+run/main_scene="res://src/Localization/LanguageSelect.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 boot_splash/image="res://src/Screens/bootsplash.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://iconx3.png"
 
 [aseprite_animation_importer]
 
@@ -1957,6 +1957,8 @@ BossRNG="*res://BossRNG.gd"
 IGT="*res://System/IGT/Autoload/IGT.gd"
 CharacterManager="*res://System/CharacterManager.gd"
 ShaderManager="*res://System/ShaderManager.gd"
+TranslationValidator="*res://src/Localization/TranslationValidator.gd"
+JokeTranslationLoader="*res://src/Localization/JokeTranslationLoader.gd"
 
 [debug]
 
@@ -2272,7 +2274,7 @@ down_emulated={
 test="br"
 translation_remaps={
 }
-translations=PoolStringArray( "res://src/Localization/real_translations.br.translation", "res://src/Localization/real_translations.en.translation", "res://src/Localization/real_translations.es.translation", "res://src/Localization/real_translations.ja_JP.translation", "res://src/Localization/real_translations.pr.translation" )
+translations=PoolStringArray( "res://src/Localization/translations_en.en.translation", "res://src/Localization/translations_br.br.translation", "res://src/Localization/translations_es.es.translation", "res://src/Localization/translations_ja_JP.ja_JP.translation", "res://src/Localization/translations_ko.ko.translation", "res://src/Localization/translations_zh_CN.zh_CN.translation", "res://src/Localization/translations_hi.hi.translation", "res://src/Localization/translations_it.it.translation" )
 
 [network]
 
