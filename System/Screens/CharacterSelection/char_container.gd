@@ -127,7 +127,7 @@ func _process(delta: float) -> void:
 	if abs(stick_y) > 0.1:
 		scroll_descriptions(stick_y * SCROLL_SPEED * delta)
 
-func _input(event: InputEvent) -> void :
+func _input(_event: InputEvent) -> void :
 	if Input.is_action_just_pressed("move_right"):
 		emit_signal("switch_character", "right")
 	elif Input.is_action_just_pressed("move_left"):
@@ -293,7 +293,7 @@ func switch_characters(new_direction: String) -> void :
 		tween.start()
 		tween.connect("tween_completed", self, "_on_tween_completed")
 
-func _on_tween_completed(object, key) -> void :
+func _on_tween_completed(_object, _key) -> void :
 	if animating:
 		animating = false
 		if characters.size() > 3:

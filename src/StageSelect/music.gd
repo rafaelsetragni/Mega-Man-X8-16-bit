@@ -24,4 +24,4 @@ func _on_music_finished() -> void :
 
 func fade_out(duration: float = 1.0) -> void :
 	var tween = create_tween()
-	tween.tween_property(self, "volume_db", - 80, duration)
+	tween.tween_property(self, "volume_db", -80.0, duration)

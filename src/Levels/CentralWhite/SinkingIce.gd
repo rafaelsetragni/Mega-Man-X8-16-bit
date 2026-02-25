@@ -30,9 +30,8 @@ func blink() -> void:
 
 func spawn() -> void:
 	var instance = biker.instance()
-	var spawn_pos = Vector2(global_position.x-512,global_position.y-64)
 	get_tree().current_scene.add_child(instance,true)
-	instance.set_global_position(global_position) 
+	instance.set_global_position(global_position)
 	instance.set_direction(1)
 	emit_signal("spawned",instance)
 

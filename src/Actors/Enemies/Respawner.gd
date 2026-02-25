@@ -140,11 +140,14 @@ class Watched:
 	var scene : PackedScene
 	var outside_timer : Timer
 	var notifier_size : Rect2
-	
+
 	func _init(_object : Node2D) -> void:
 		object = _object
 		position = _object.global_position
 		parent = _object.get_parent()
-		scene = PackedScene.new()
 		notifier_size = _object.get_visibility_notifier().rect
-		scene.pack(_object) # warning-ignore:return_value_discarded
+		if _object.filename:
+			scene = load(_object.filename)
+		else:
+			scene = PackedScene.new()
+			scene.pack(_object) # warning-ignore:return_value_discarded

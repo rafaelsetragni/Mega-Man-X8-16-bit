@@ -5,7 +5,7 @@ onready var limit_to_deactivate: Area2D = $"../../Limits/18"
 onready var limit_to_deactivate2: Area2D = $"../../Limits/21"
 
 
-func _on_ElevatorStarter_body_entered(body: Node) -> void :
+func _on_ElevatorStarter_body_entered(_body: Node) -> void :
 	if not activated:
 		activated = true
 		emit_signal("started")
@@ -14,7 +14,7 @@ func _on_ElevatorStarter_body_entered(body: Node) -> void :
 
 func _on_rising_platform_at_max() -> void :
 	GameManager.camera.on_area_exit(limit_to_deactivate)
-	Event.emit_signal("screenshake")
+	Event.emit_signal("screenshake", 0.7)
 	limit_to_deactivate.disable()
 	limit_to_deactivate2.disable()
 	GameManager.camera.remove_disabled_areas()

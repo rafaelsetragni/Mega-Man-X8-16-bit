@@ -16,7 +16,7 @@ func prepare_for_intro() -> void:
 func set_starting_position() -> void:
 	var top = get_distance_from_ceiling()
 	var wall = get_wall_position(1)
-	var initial_position = Vector2(wall - 161, character.global_position.y - top + 224/2)
+	var initial_position = Vector2(wall - 161, character.global_position.y - top + 112)
 	initial_position.y += 2
 	character.global_position = initial_position
 

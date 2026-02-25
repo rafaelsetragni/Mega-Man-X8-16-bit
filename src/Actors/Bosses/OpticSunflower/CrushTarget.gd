@@ -8,7 +8,7 @@ onready var animated_sprite: AnimatedSprite = $animatedSprite
 signal fire(pos)
 
 func _ready() -> void:
-	Tools.tween(animated_sprite,"speed_scale",2,2.0)
+	Tools.tween(animated_sprite,"speed_scale",2.0,2.0)
 	Tools.timer(2.0,"fire",self)
 
 func fire() -> void:

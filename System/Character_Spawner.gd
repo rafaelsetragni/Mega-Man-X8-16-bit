@@ -5,7 +5,7 @@ export (PackedScene) var player
 
 const teleport_to_vile: bool = false
 var teleport_to_boss: bool = CharacterManager.teleport_to_boss
-var spawn_ride_armor: bool = false
+var should_spawn_ride_armor: bool = false
 
 
 var _musicmanager_script: Script = preload("res://Remix/Music_Manager.gd")
@@ -71,7 +71,7 @@ func _ready() -> void :
 
 
 		if self.name == "BoosterForest":
-			spawn_ride_armor = true
+			should_spawn_ride_armor = true
 			if teleport_to_vile:
 				player_instance.position = Vector2(7546, - 312)
 			if teleport_to_boss:
@@ -385,13 +385,13 @@ func _ready() -> void :
 	
 
 func spawn_ride_armor_at_start() -> void :
-	if spawn_ride_armor:
+	if should_spawn_ride_armor:
 		var ridearmor_instance = ridearmor.instance()
 		get_node("Objects").add_child(ridearmor_instance)
 		ridearmor_instance.position = Vector2($CharacterPosition.position.x + 100, $CharacterPosition.position.y)
 
 func spawn_ride_armor(_position: Vector2) -> void :
-	if spawn_ride_armor:
+	if should_spawn_ride_armor:
 		var ridearmor_instance = ridearmor.instance()
 		get_node("Objects").add_child(ridearmor_instance)
 		ridearmor_instance.position = _position

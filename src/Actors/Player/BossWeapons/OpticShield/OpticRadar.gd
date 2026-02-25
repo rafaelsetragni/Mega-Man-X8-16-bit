@@ -21,7 +21,7 @@ func _Setup() -> void :
 	tracker_collision.shape.radius = tracker_radius
 	set_horizontal_speed(initial_speed * get_facing_direction())
 	Tools.timer(duration, "fire_laser", self)
-	Tools.tween(animatedSprite, "speed_scale", 2, duration)
+	Tools.tween(animatedSprite, "speed_scale", 2.0, duration)
 
 func _Update(_delta: float) -> void :
 	if is_tracking():

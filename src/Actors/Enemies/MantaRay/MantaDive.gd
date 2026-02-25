@@ -11,7 +11,7 @@ func _Setup():
 func _Update(_delta) -> void:
 	if attack_stage == 0:
 		start_tween()
-		tween.tween_property(character,"position:y",-10,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)# warning-ignore:return_value_discarded
+		tween.tween_property(character,"position:y",-10.0,0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)# warning-ignore:return_value_discarded
 		tween.tween_property(character,"position",get_target(),1.35).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)# warning-ignore:return_value_discarded
 		next_attack_stage_on_tween_end()
 	

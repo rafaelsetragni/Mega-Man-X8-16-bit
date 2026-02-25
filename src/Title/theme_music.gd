@@ -11,4 +11,4 @@ func _ready() -> void :
 
 func fade_out() -> void :
 	var t = create_tween()
-	t.tween_property(self, "volume_db", - 80, 4)
+	t.tween_property(self, "volume_db", -80.0, 4.0)
