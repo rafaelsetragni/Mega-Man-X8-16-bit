@@ -6,7 +6,7 @@ extends Node
 
 const LOCALIZATION_DIR := "res://src/Localization/"
 const REFERENCE_LANG := "en"
-const LANGUAGES := ["en", "br", "es", "ja_JP", "pr"]
+const LANGUAGES := ["en", "br", "es", "ja_JP", "pr", "en_z", "es_z", "ja_JP_z"]
 
 func _ready() -> void:
 	if not OS.is_debug_build():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Title/title_bg.png" type="Texture" id=1]
 [ext_resource path="res://src/Localization/LanguageSelect.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://src/Localization/flags/flag_br.png" type="Texture" id=5]
 [ext_resource path="res://src/Localization/flags/flag_es.png" type="Texture" id=6]
 [ext_resource path="res://src/Localization/flags/flag_ja_JP.png" type="Texture" id=7]
-[ext_resource path="res://src/Localization/flags/flag_pr.png" type="Texture" id=8]
 [ext_resource path="res://System/SFX/move_cursor.ogg" type="AudioStream" id=9]
 [ext_resource path="res://System/SFX/open_option.ogg" type="AudioStream" id=10]
 
@@ -56,21 +55,26 @@ position = Vector2( 139, 108 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
-[node name="flag_4" type="Sprite" parent="flags"]
-modulate = Color( 0.4, 0.4, 0.4, 1 )
-position = Vector2( 79, 108 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 8 )
-
 [node name="lang_name" type="Label" parent="."]
 margin_left = 49.0
-margin_top = 138.0
+margin_top = 134.0
 margin_right = 349.0
-margin_bottom = 158.0
+margin_bottom = 150.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "English"
+align = 1
+
+[node name="joke_name" type="Label" parent="."]
+margin_left = 49.0
+margin_top = 150.0
+margin_right = 349.0
+margin_bottom = 166.0
+custom_colors/font_color = Color( 0.4, 0.4, 0.45, 1 )
+custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Meme Mode"
 align = 1
 
 [node name="hint" type="Label" parent="."]

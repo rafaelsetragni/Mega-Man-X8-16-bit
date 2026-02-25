@@ -2,6 +2,7 @@ extends Node2D
 
 onready var title_label: Label = $title
 onready var lang_name_label: Label = $lang_name
+onready var joke_name_label: Label = $joke_name
 onready var hint_label: Label = $hint
 onready var fade: Sprite = $fade
 onready var flags_node: Node2D = $flags
@@ -9,17 +10,27 @@ onready var navigate_sound: AudioStreamPlayer = $navigate_sound
 onready var confirm_sound: AudioStreamPlayer = $confirm_sound
 
 var current_index: int = 0
+var joke_mode: bool = false
 var animating: bool = false
 var confirmed: bool = false
 
-const LOCALES = ["en", "br", "es", "ja_JP", "pr"]
-const NAMES = ["English", "Português (BR)", "Español", "日本語", "Português (HUE)"]
+const LOCALES = ["en", "br", "es", "ja_JP"]
+const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z"]
+
+const NAMES = ["English", "Português (BR)", "Español", "日本語"]
+const JOKE_NAMES = ["Meme Mode", "Modo HUE", "Modo Jaja", "ネタモード"]
+
 const TITLES = [
 	"Select your Language",
 	"Selecione seu Idioma",
 	"Selecciona tu Idioma",
-	"言語を選択してください",
-	"Selecione seu Idioma"
+	"言語を選択してください"
+]
+const JOKE_TITLES = [
+	"Select your Language",
+	"Selecione seu Idioma",
+	"Selecciona tu Idioma",
+	"言語を選択してください"
 ]
 
 const FLAG_SPACING := 60.0
@@ -31,13 +42,21 @@ const DIM_COLOR := Color(0.4, 0.4, 0.4, 1.0)
 const DIM_SCALE := Vector2(0.7, 0.7)
 const BRIGHT_SCALE := Vector2(1.0, 1.0)
 
+const JOKE_COLOR := Color(1.0, 1.0, 0.0, 1.0)
+const INACTIVE_COLOR := Color(0.4, 0.4, 0.45, 1.0)
+
 
 func _ready() -> void:
 	fade.modulate = Color.black
 
 	var saved_lang = Configurations.get("Language")
-	if saved_lang and saved_lang in LOCALES:
-		current_index = LOCALES.find(saved_lang)
+	if saved_lang:
+		var joke_idx = JOKE_LOCALES.find(saved_lang)
+		if joke_idx != -1:
+			current_index = joke_idx
+			joke_mode = true
+		elif saved_lang in LOCALES:
+			current_index = LOCALES.find(saved_lang)
 
 	_position_flags_instant()
 	_update_labels()
@@ -54,6 +73,9 @@ func _input(event: InputEvent) -> void:
 		_navigate(-1)
 	elif event.is_action_pressed("move_right") or event.is_action_pressed("ui_right"):
 		_navigate(1)
+	elif event.is_action_pressed("move_up") or event.is_action_pressed("ui_up") \
+		or event.is_action_pressed("move_down") or event.is_action_pressed("ui_down"):
+		_toggle_joke_mode()
 	elif event.is_action_pressed("ui_accept") or event.is_action_pressed("pause"):
 		_confirm()
 
@@ -69,6 +91,12 @@ func _navigate(direction: int) -> void:
 	animating = true
 	navigate_sound.play()
 	_animate_flags()
+	_update_labels()
+
+
+func _toggle_joke_mode() -> void:
+	joke_mode = !joke_mode
+	navigate_sound.play()
 	_update_labels()
 
 
@@ -119,15 +147,31 @@ func _on_animation_done() -> void:
 
 
 func _update_labels() -> void:
-	title_label.text = TITLES[current_index]
 	lang_name_label.text = NAMES[current_index]
+	joke_name_label.text = JOKE_NAMES[current_index]
+
+	if joke_mode:
+		title_label.text = JOKE_TITLES[current_index]
+		lang_name_label.add_color_override("font_color", INACTIVE_COLOR)
+		joke_name_label.add_color_override("font_color", JOKE_COLOR)
+	else:
+		title_label.text = TITLES[current_index]
+		lang_name_label.add_color_override("font_color", Color.white)
+		joke_name_label.add_color_override("font_color", INACTIVE_COLOR)
+
+
+func _get_selected_locale() -> String:
+	if joke_mode:
+		return JOKE_LOCALES[current_index]
+	return LOCALES[current_index]
 
 
 func _confirm() -> void:
 	confirmed = true
 	confirm_sound.play()
-	TranslationServer.set_locale(LOCALES[current_index])
-	Configurations.set("Language", LOCALES[current_index])
+	var locale = _get_selected_locale()
+	TranslationServer.set_locale(locale)
+	Configurations.set("Language", locale)
 	Savefile.save_config_data()
 
 	var t = create_tween()
