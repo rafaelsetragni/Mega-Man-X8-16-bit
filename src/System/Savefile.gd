@@ -51,9 +51,94 @@ func load_config_data() -> void :
 		push_warning("Savefile: Legacy encrypted config data not supported, skipping.")
 
 
+# Legacy: returns old single-file path, used for migration detection
 func get_save_slot(slot: int = 0) -> String:
-
 	return "user://saves/save_slot_%d" % slot
+
+func get_save_slot_path(slot: int, sub: String) -> String:
+	return "user://saves/save_slot_%d_%s" % [slot, sub]
+
+func get_marker_path(slot: int) -> String:
+	return "user://saves/save_slot_%d_safe" % slot
+
+func get_safe_sub_slot(slot: int) -> String:
+	var file = File.new()
+	var marker_path = get_marker_path(slot)
+	if not file.file_exists(marker_path):
+		return "a"
+	var err = file.open(marker_path, File.READ)
+	if err != OK:
+		return "a"
+	var content = file.get_as_text().strip_edges()
+	file.close()
+	if content == "b":
+		return "b"
+	return "a"
+
+func get_other_sub_slot(sub: String) -> String:
+	return "b" if sub == "a" else "a"
+
+func write_marker(slot: int, sub: String) -> void :
+	ensure_save_folder_exists()
+	var file = File.new()
+	var err = file.open(get_marker_path(slot), File.WRITE)
+	if err != OK:
+		push_error("Savefile: Failed to write marker for slot %d" % slot)
+		return
+	file.store_string(sub)
+	file.close()
+
+func migrate_old_save(slot: int) -> void :
+	var file = File.new()
+	var old_path = get_save_slot(slot)
+	var new_path_a = get_save_slot_path(slot, "a")
+	if not file.file_exists(old_path) or file.file_exists(new_path_a):
+		return
+	var dir = Directory.new()
+	var err = dir.rename(old_path, new_path_a)
+	if err == OK:
+		write_marker(slot, "a")
+		print("Savefile: Migrated slot %d to A/B format." % slot)
+	else:
+		if file.open(old_path, File.READ) == OK:
+			var data = file.get_buffer(file.get_len())
+			file.close()
+			if file.open(new_path_a, File.WRITE) == OK:
+				file.store_buffer(data)
+				file.close()
+				write_marker(slot, "a")
+				print("Savefile: Migrated slot %d to A/B format (copy)." % slot)
+
+func _try_read_bson(path: String) -> Dictionary:
+	var file = File.new()
+	if not file.file_exists(path):
+		return {}
+	var err = file.open(path, File.READ)
+	if err != OK:
+		return {}
+	var length = file.get_len()
+	if length == 0:
+		file.close()
+		return {}
+	file.seek_end(-1)
+	var final_byte = file.get_8()
+	file.seek(0)
+	if final_byte != 0:
+		file.close()
+		push_warning("Savefile: Legacy or corrupt data at '%s', skipping." % path)
+		return {}
+	var bson_data = file.get_buffer(length)
+	file.close()
+	var dict = BSON.from_bson(bson_data)
+	if typeof(dict) != TYPE_DICTIONARY or not dict.has("version"):
+		push_warning("Savefile: Invalid save data at '%s'." % path)
+		return {}
+	return dict
+
+func _delete_if_exists(path: String) -> void :
+	var dir = Directory.new()
+	if dir.file_exists(path):
+		dir.remove(path)
 
 func ensure_save_folder_exists() -> void :
 	var dir = Directory.new()
@@ -81,11 +166,18 @@ func save(slot: int = 0) -> void :
 
 func write_to_file(slot: int = 0) -> void :
 	ensure_save_folder_exists()
-	var file = File.new()
+	var safe_sub = get_safe_sub_slot(slot)
+	var target_sub = get_other_sub_slot(safe_sub)
+	var target_path = get_save_slot_path(slot, target_sub)
 	var bson = BSON.to_bson(game_data)
-	file.open(get_save_slot(slot), file.WRITE)
+	var file = File.new()
+	var err = file.open(target_path, File.WRITE)
+	if err != OK:
+		push_error("Savefile: Failed to write save slot %d_%s (error %d)" % [slot, target_sub, err])
+		return
 	file.store_buffer(bson)
 	file.close()
+	write_marker(slot, target_sub)
 
 func load_save(slot: int = 0) -> void :
 
@@ -103,22 +195,21 @@ func load_save(slot: int = 0) -> void :
 	emit_signal("loaded")
 
 func load_from_file(slot: int = 0) -> void :
-	var file = File.new()
-	if not file.file_exists(get_save_slot(slot)):
-		clear_save(slot)
-	file.open(get_save_slot(slot), File.READ)
-	file.seek_end(-1)
-	var final = file.get_8()
-	file.seek(0)
-	if final == 0:
-		var bson = file.get_buffer(file.get_len())
-		var dict = BSON.from_bson(bson)
-		game_data = dict
-	else:
-		file.close()
-		push_warning("Savefile: Legacy encrypted save data not supported, skipping.")
-		return
-	file.close()
+	migrate_old_save(slot)
+	var safe_sub = get_safe_sub_slot(slot)
+	var safe_path = get_save_slot_path(slot, safe_sub)
+	var dict = _try_read_bson(safe_path)
+	if dict.empty():
+		var other_sub = get_other_sub_slot(safe_sub)
+		var other_path = get_save_slot_path(slot, other_sub)
+		dict = _try_read_bson(other_path)
+		if dict.empty():
+			clear_save(slot)
+			return
+		else:
+			push_warning("Savefile: Slot %d primary '%s' corrupt, recovered from '%s'." % [slot, safe_sub, other_sub])
+			write_marker(slot, other_sub)
+	game_data = dict
 
 func load_latest_save() -> void :
 	var latest_time: = - 1
@@ -143,27 +234,23 @@ func load_latest_save() -> void :
 		load_save(0)
 
 func load_slot_metadata(slot: int) -> Dictionary:
-	var file = File.new()
-	var path = "user://saves/save_slot_%d" % slot
+	migrate_old_save(slot)
+	var safe_sub = get_safe_sub_slot(slot)
+	var safe_path = get_save_slot_path(slot, safe_sub)
+	var dict = _try_read_bson(safe_path)
+	if dict.empty():
+		var other_sub = get_other_sub_slot(safe_sub)
+		var other_path = get_save_slot_path(slot, other_sub)
+		dict = _try_read_bson(other_path)
+		if dict.empty():
+			return {}
 	var result = {}
-	if not file.file_exists(path):
-		return {}
-	file.open(path, File.READ)
-	file.seek_end(-1)
-	var final = file.get_8()
-	file.seek(0)
-	if final == 0:
-		var bson = file.get_buffer(file.get_len())
-		var dict = BSON.from_bson(bson)
-		if dict.has("meta"):
-			result["meta"] = dict["meta"]
-		if dict.has("collectibles"):
-			result["collectibles"] = dict["collectibles"]
-		if dict.has("variables"):
-			result["variables"] = dict["variables"]
-	else:
-		push_warning("Savefile: Legacy encrypted save slot data not supported, skipping.")
-	file.close()
+	if dict.has("meta"):
+		result["meta"] = dict["meta"]
+	if dict.has("collectibles"):
+		result["collectibles"] = dict["collectibles"]
+	if dict.has("variables"):
+		result["variables"] = dict["variables"]
 	return result
 
 func apply_data(_slot: int = 0) -> void :
@@ -200,6 +287,10 @@ func clear_save(slot: int = 0) -> void :
 	GameManager.collectibles = []
 	GameManager.equip_exceptions = []
 	GlobalVariables.variables = {}
+	_delete_if_exists(get_save_slot(slot))
+	_delete_if_exists(get_save_slot_path(slot, "a"))
+	_delete_if_exists(get_save_slot_path(slot, "b"))
+	_delete_if_exists(get_marker_path(slot))
 	write_to_file(slot)
 
 func clear_global_variables() -> void :

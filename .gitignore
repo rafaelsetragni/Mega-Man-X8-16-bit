@@ -49,3 +49,6 @@ Thumbs.db
 *.wmv
 
 .import/
+
+# Godot auto-generated compiled translations (source is .csv)
+*.translation

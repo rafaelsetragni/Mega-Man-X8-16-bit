@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void :
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		Configurations.set("Fullscreen", OS.window_fullscreen)
-		Savefile.save(Savefile.save_slot)
+		Savefile.save_config_data()
 
 func start_dialog(dialog_tree) -> void:
 	dialog_box.startup(dialog_tree)
