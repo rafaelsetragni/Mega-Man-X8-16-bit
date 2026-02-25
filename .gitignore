@@ -50,5 +50,6 @@ Thumbs.db
 
 .import/
 
-# Godot auto-generated compiled translations (source is .csv)
+# Godot auto-generated import configs and compiled translations
+*.import
 *.translation

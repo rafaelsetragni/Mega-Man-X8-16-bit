@@ -14,26 +14,34 @@ var joke_mode: bool = false
 var animating: bool = false
 var confirmed: bool = false
 
-const LOCALES = ["en", "br", "es", "ja_JP"]
-const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z"]
+const LOCALES = ["en", "br", "es", "ja_JP", "ko", "zh_CN", "hi", "it"]
+const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z", "ko_z", "zh_CN_z", "hi_z", "it_z"]
 
-const NAMES = ["English", "Português (BR)", "Español", "日本語"]
-const JOKE_NAMES = ["Meme Mode", "Modo HUE", "Modo Jaja", "ネタモード"]
+const NAMES = ["English", "Português (BR)", "Español", "日本語", "한국어", "中文", "हिन्दी", "Italiano"]
+const JOKE_NAMES = ["Meme Mode", "Modo HUE", "Modo Jaja", "ネタモード", "밈 모드", "梗模式", "मीम मोड", "Modo Meme"]
 
 const TITLES = [
 	"Select your Language",
 	"Selecione seu Idioma",
 	"Selecciona tu Idioma",
-	"言語を選択してください"
+	"言語を選択してください",
+	"언어를 선택하세요",
+	"选择你的语言",
+	"अपनी भाषा चुनें",
+	"Seleziona la tua Lingua"
 ]
 const JOKE_TITLES = [
 	"Select your Language",
 	"Selecione seu Idioma",
 	"Selecciona tu Idioma",
-	"言語を選択してください"
+	"言語を選択してください",
+	"언어를 선택하세요",
+	"选择你的语言",
+	"अपनी भाषा चुनें",
+	"Seleziona la tua Lingua"
 ]
 
-const FLAG_SPACING := 60.0
+const FLAG_SPACING := 45.0
 const CENTER_X := 199.0
 const FLAGS_Y := 108.0
 const TWEEN_TIME := 0.15
@@ -170,7 +178,7 @@ func _confirm() -> void:
 	confirmed = true
 	confirm_sound.play()
 	var locale = _get_selected_locale()
-	TranslationServer.set_locale(locale)
+	JokeTranslationLoader.apply_language(locale)
 	Configurations.set("Language", locale)
 	Savefile.save_config_data()
 

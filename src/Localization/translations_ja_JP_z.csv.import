@@ -2,11 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-valid=false
 
 [deps]
 
+files=[ "res://src/Localization/translations_ja_JP_z.ja_JP.translation" ]
+
 source_file="res://src/Localization/translations_ja_JP_z.csv"
+dest_files=[ "res://src/Localization/translations_ja_JP_z.ja_JP.translation" ]
+
 [params]
 
 compress=true

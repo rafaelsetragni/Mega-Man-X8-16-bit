@@ -1,7 +1,7 @@
 extends X8OptionButton
 
-const BASE_LOCALES = ["en", "br", "es", "ja_JP"]
-const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z"]
+const BASE_LOCALES = ["en", "br", "es", "ja_JP", "ko", "zh_CN", "hi", "it"]
+const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z", "ko_z", "zh_CN_z", "hi_z", "it_z"]
 
 var current_index := 0
 signal translation_updated
@@ -40,7 +40,7 @@ func decrease_value() -> void:
 
 func _apply_language() -> void:
 	var locale = _get_effective_locale()
-	TranslationServer.set_locale(locale)
+	JokeTranslationLoader.apply_language(locale)
 	Configurations.set("Language", locale)
 	display_value(locale)
 	emit_signal("translation_updated")
@@ -56,9 +56,14 @@ func display_value(new_value) -> void:
 	var display_map := {
 		"ja_JP": "jp",
 		"ja_JP_z": "jp",
+		"zh_CN": "zh",
+		"zh_CN_z": "zh",
 		"pr": "br",
 		"en_z": "en",
 		"es_z": "es",
+		"ko_z": "ko",
+		"hi_z": "hi",
+		"it_z": "it",
 	}
 	if new_value in display_map:
 		new_value = display_map[new_value]

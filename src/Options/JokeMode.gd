@@ -1,7 +1,7 @@
 extends X8OptionButton
 
-const BASE_LOCALES = ["en", "br", "es", "ja_JP"]
-const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z"]
+const BASE_LOCALES = ["en", "br", "es", "ja_JP", "ko", "zh_CN", "hi", "it"]
+const JOKE_LOCALES = ["en_z", "pr", "es_z", "ja_JP_z", "ko_z", "zh_CN_z", "hi_z", "it_z"]
 
 
 func _ready() -> void:
@@ -33,7 +33,7 @@ func _toggle() -> void:
 	else:
 		return
 
-	TranslationServer.set_locale(new_locale)
+	JokeTranslationLoader.apply_language(new_locale)
 	Configurations.set("Language", new_locale)
 	_display_joke_mode()
 	Event.emit_signal("translation_updated")
