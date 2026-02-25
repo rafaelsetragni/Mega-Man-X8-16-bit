@@ -1,0 +1,14 @@
+extends "res://src/Actors/Weapons/Projectiles/Deflectable.gd"
+
+
+func deflect(_body) -> void :
+	get_parent().deflect(_body)
+
+func hit(_d = null) -> void :
+	pass
+
+func leave(_d = null) -> void :
+	pass
+
+func get_facing_direction() -> int:
+	return projectile.get_facing_direction()

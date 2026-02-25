@@ -1,4 +1,6 @@
 extends RigidBody2D
+class_name WeaponDeflectable
+
 onready var projectile: = $".."
 export var deflect_particle : NodePath
 const break_guards := true
