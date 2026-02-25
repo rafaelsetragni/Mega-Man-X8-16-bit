@@ -1929,7 +1929,7 @@ boot_splash/show_image=false
 boot_splash/image="res://src/Screens/bootsplash.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://iconx3.png"
 
 [aseprite_animation_importer]
 
