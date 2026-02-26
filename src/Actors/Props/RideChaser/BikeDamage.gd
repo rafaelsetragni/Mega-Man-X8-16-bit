@@ -1,5 +1,4 @@
 extends Damage
-class_name BikeDamage
 
 func _Setup() -> void:
 	character.current_health -= damage_taken

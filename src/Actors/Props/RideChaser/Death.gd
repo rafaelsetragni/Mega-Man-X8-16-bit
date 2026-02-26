@@ -1,5 +1,4 @@
 extends Ability
-class_name BikeDeath
 
 onready var explosions = $"Explosion Particles"
 onready var sprite = get_parent().get_node("animatedSprite")

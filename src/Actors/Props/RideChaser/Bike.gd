@@ -1,5 +1,4 @@
 extends Character
-class_name Bike
 
 var actual_speed : float
 var timer := 0.0

@@ -1,5 +1,4 @@
 extends BikeMovement
-class_name HyperDash
 
 export var duration := 0.75
 export var charges := 0
