@@ -9,6 +9,7 @@ onready var step: AudioStreamPlayer2D = $step
 
 func _Setup() -> void:
 	animation.play("walk")
+	character.animatedSprite.offset.y = -2
 
 func _Update(_delta) -> void:
 	physics.process_gravity(_delta)
@@ -26,6 +27,7 @@ func play_steps_sounds() -> void:
 
 func _Interrupt() -> void:
 	physics.set_horizontal_speed(0)
+	character.animatedSprite.offset.y = 0
 
 func _on_move_right() -> void:
 	if is_executing():

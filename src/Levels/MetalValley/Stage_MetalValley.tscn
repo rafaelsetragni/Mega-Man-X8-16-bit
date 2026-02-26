@@ -1535,6 +1535,7 @@ camera_limit = NodePath("../../Limits/4")
 
 [node name="animatedSprite" parent="Objects/StartPortal" index="0"]
 visible = true
+frame = 1
 
 [node name="position2D" type="Position2D" parent="Objects/StartPortal" index="4"]
 position = Vector2( 4026, -801 )

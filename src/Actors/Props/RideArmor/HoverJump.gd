@@ -8,6 +8,8 @@ export var hover_speed := 50.0
 var hover_fuel := hover_time
 var current_jump_speed := 90.0
 var current_horizontal_speed := 90.0
+var current_hover_speed := hover_speed
+var hover_started := false
 var stopping := false
 
 onready var stage = AbilityStage.new(self)
@@ -31,6 +33,8 @@ func _Setup() -> void:
 	physics.set_horizontal_speed(0)
 	animation.play("jump")
 	current_jump_speed = jump_speed
+	current_hover_speed = hover_speed
+	hover_started = false
 	stopping = false
 
 func handle_horizontal_speed() -> void:
@@ -53,20 +57,24 @@ func jump() -> void:
 		jump.play_once()
 		physics.set_vertical_speed(-current_jump_speed)
 	else:
-		if physics.get_vertical_speed() < 0:
+		if not stopping:
+			stopping = true
+			tween.attribute("current_jump_speed", 0.0, upward_time)
+		if current_jump_speed > 0:
 			physics.set_vertical_speed(-current_jump_speed)
-			if not stopping:
-				tween.attribute("current_jump_speed",0)
-				stopping = true
 		else:
 			stage.next()
 
 func hover(delta) -> void:
 	hover_fuel -= delta
+	print_debug("HoverJump fuel: " + str(stepify(hover_fuel, 0.01)) + " speed: " + str(stepify(current_hover_speed, 0.1)))
+	if not hover_started:
+		hover_started = true
+		tween.attribute("current_hover_speed", 0.0, max(hover_fuel, 0.1))
 	if hover_fuel > 0:
 		rise.play_once()
 		animation.play_once("jump_loop")
-		physics.set_vertical_speed(-hover_speed)
+		physics.set_vertical_speed(-current_hover_speed)
 	else:
 		EndAbility()
 

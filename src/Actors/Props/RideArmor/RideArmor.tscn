@@ -780,7 +780,7 @@ script = ExtResource( 10 )
 hard_conflicts = [ NodePath("../Start"), NodePath("../Eject") ]
 soft_conflicts = [ NodePath("../Dash"), NodePath("../Punch") ]
 upward_time = 0.15
-jump_speed = 220.0
+jump_speed = 330.0
 
 [node name="move_right" type="Node" parent="Jump"]
 script = ExtResource( 1 )
