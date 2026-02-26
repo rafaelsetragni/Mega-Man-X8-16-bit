@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "BaseAbility",
 "class": "Ability",
 "language": "GDScript",
-"path": "res://src/Actors/Ability.gd"
+"path": "res://Ability.gd"
 }, {
 "base": "Resource",
 "class": "AbilityResource",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Actor",
 "class": "AbilityUser",
 "language": "GDScript",
-"path": "res://src/Actors/AbilityUser.gd"
+"path": "res://AbilityUser.gd"
 }, {
 "base": "BikeMovement",
 "class": "Accelerate",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Actor",
 "language": "GDScript",
-"path": "res://src/Actors/Actor.gd"
+"path": "res://Actor.gd"
 }, {
 "base": "Command",
 "class": "AddToVector2CMD",
@@ -117,7 +117,7 @@ _global_script_classes=[ {
 "base": "Movement",
 "class": "Attack",
 "language": "GDScript",
-"path": "res://src/Actors/Attack.gd"
+"path": "res://Attack.gd"
 }, {
 "base": "EnemyAbility",
 "class": "AttackAbility",
@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BaseAbility",
 "language": "GDScript",
-"path": "res://src/Actors/BaseAbility.gd"
+"path": "res://BaseAbility.gd"
 }, {
 "base": "AttackAbility",
 "class": "BeeAttack",
@@ -508,11 +508,6 @@ _global_script_classes=[ {
 "class": "DoorPassThrough",
 "language": "GDScript",
 "path": "res://src/Objects/Door/PassThrough.gd"
-}, {
-"base": "Object",
-"class": "Encryption",
-"language": "GDScript",
-"path": "res://System/old_encryption.gd"
 }, {
 "base": "AbilityUser",
 "class": "Enemy",
@@ -882,7 +877,7 @@ _global_script_classes=[ {
 "base": "Ability",
 "class": "Movement",
 "language": "GDScript",
-"path": "res://src/Actors/Movement.gd"
+"path": "res://Movement.gd"
 }, {
 "base": "Node",
 "class": "MovementRecorder",
