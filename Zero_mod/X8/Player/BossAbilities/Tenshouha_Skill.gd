@@ -74,6 +74,9 @@ func _Update(_delta: float) -> void :
 func change_animation_if_falling(_s) -> void :
 	pass
 
+func reduce_speed() -> void :
+	pass
+
 func _Interrupt() -> void :
 	._Interrupt()
 
