@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.0.0+6] - 2026-02-26
+
+### Added
+- Debug save/load state (Cmd+S / Cmd+O) for quick in-game state snapshots
+- Ride Armor shock weapon now defuses bomb boxes without chain explosions
+
+### Changed
+- Ride Armor jump uses tween deceleration for natural arc (was constant upward force)
+- Ride Armor hover uses tween deceleration, gradually loses lift over fuel duration
+- Ride Armor jump height increased (jump_speed 220 → 330)
+- Ride Armor walk animation raises sprite 2px for better ground alignment
+- Ride Armor hover time and speed increased for better aerial control
+
+### Fixed
+- Ride Armor jump going up forever (replaced unreliable velocity check with tween-based deceleration)
+- Ride Armor hover going up forever (added tween deceleration from hover_speed to 0)
+- D-pad input dropping intermittently when analog stick is mapped (get_left_analog_direction no longer modifies action deadzones)
+- Debug save/load shortcuts now use Cmd (Mac) / Ctrl (Windows) via command flag
+- MetalValley rising_platform signal connections restored
+- Vile Ridearmor instakill bug
+
 ## [2.0.0+5] - 2026-02-25
 
 ### Added
