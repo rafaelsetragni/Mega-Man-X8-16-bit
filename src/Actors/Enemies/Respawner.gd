@@ -145,9 +145,6 @@ class Watched:
 		object = _object
 		position = _object.global_position
 		parent = _object.get_parent()
+		scene = PackedScene.new()
 		notifier_size = _object.get_visibility_notifier().rect
-		if _object.filename:
-			scene = load(_object.filename)
-		else:
-			scene = PackedScene.new()
-			scene.pack(_object) # warning-ignore:return_value_discarded
+		scene.pack(_object) # warning-ignore:return_value_discarded
