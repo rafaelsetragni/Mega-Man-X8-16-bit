@@ -1535,7 +1535,6 @@ camera_limit = NodePath("../../Limits/4")
 
 [node name="animatedSprite" parent="Objects/StartPortal" index="0"]
 visible = true
-frame = 2
 
 [node name="position2D" type="Position2D" parent="Objects/StartPortal" index="4"]
 position = Vector2( 4026, -801 )
@@ -2063,6 +2062,9 @@ section = "Metal Valley"
 [connection signal="body_entered" from="Objects/MechaStarter" to="Objects/Flamable3/ProjectileDetector" method="_on_MechaStarter_body_entered"]
 [connection signal="body_entered" from="Objects/MechaStarter" to="Enemies/EnemyMechaniloid" method="_on_MechaStarter_body_entered"]
 [connection signal="body_entered" from="Objects/ElevatorStarter" to="Objects/rising_platform" method="_on_ElevatorStarter_body_entered"]
+[connection signal="at_max" from="Objects/rising_platform" to="Objects/rising_platform" method="_on_rising_platform_at_max"]
+[connection signal="at_max" from="Objects/rising_platform" to="Enemies/GiantMechaniloid" method="_on_rising_platform_at_max"]
+[connection signal="started" from="Objects/rising_platform" to="Enemies/GiantMechaniloid" method="_on_rising_platform_started"]
 [connection signal="area_entered" from="Objects/DestructibleRocks/punchDetector" to="Objects/DestructibleRocks" method="_on_punchDetector_area_entered"]
 [connection signal="area_exited" from="Objects/DestructibleRocks/punchDetector" to="Objects/DestructibleRocks" method="_on_punchDetector_area_exited"]
 [connection signal="open" from="Objects/Door2" to="Music Player" method="play_alternate_stage_music"]
