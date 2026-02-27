@@ -39,6 +39,7 @@ var _playback_waiting: bool = false
 var _recording_waiting: bool = false
 var _demo_playlist: Array = []
 var _demo_playlist_index: int = 0
+var _demo_started_from_menu: bool = false
 
 
 func _ready() -> void:
@@ -147,6 +148,8 @@ func _fade_out_music() -> void:
 
 func _try_attract_demo() -> void:
 	idle_timer = 0.0
+	var scene = get_tree().current_scene
+	_demo_started_from_menu = scene != null and scene.get("finished") == true
 	if _demo_playlist.empty():
 		_demo_playlist = get_available_demos()
 		_demo_playlist_index = 0
@@ -298,7 +301,7 @@ func stop_demo() -> void:
 
 
 func _on_stop_demo_fade_done() -> void:
-	GameManager.skip_to_menu = true
+	GameManager.skip_to_menu = _demo_started_from_menu
 	GameManager.force_unpause()
 	GameManager.go_to_intro()
 	call_deferred("_fade_from_black", FADE_DURATION)
