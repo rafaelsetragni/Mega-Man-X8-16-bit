@@ -102,7 +102,7 @@ func is_invulnerable() -> bool:
 func reduce_health(value: float) -> void :
 	var health_to_reduce = (value * (1 - damage_reduction)) * CharacterManager.damage_get_multiplier
 	if health_to_reduce < 1:
-		health_to_reduce = 0
+		health_to_reduce = 1
 	current_health -= health_to_reduce
 
 func flash(duration: float = 0.032) -> void :
