@@ -72,16 +72,16 @@ func get_center() -> Vector2: #returns center with offset
 	return center + Vector2(0,center_offset)
 
 func define_positions() -> void:
-	var segment := Vector2(round(arena_size.x/6),round(arena_size.y/4))
+	var segment := Vector2(round(arena_size.x / 6.0), round(arena_size.y / 4.0))
 	positions[0] = Vector2(arena_pos.x, arena_pos.y)
 	positions[1] = Vector2(arena_pos.x + segment.x, arena_pos.y + segment.y * low_height_segments)
-	positions[2] = Vector2(arena_pos.x + 5*segment.x, arena_pos.y + segment.y * low_height_segments)
-	positions[3] = Vector2(arena_pos.x + 6*segment.x, arena_pos.y)
-	center = Vector2(arena_pos.x + arena_size.x/2, arena_pos.y)
+	positions[2] = Vector2(arena_pos.x + 5 * segment.x, arena_pos.y + segment.y * low_height_segments)
+	positions[3] = Vector2(arena_pos.x + 6 * segment.x, arena_pos.y)
+	center = Vector2(arena_pos.x + arena_size.x / 2.0, arena_pos.y)
 
 func define_boundaries_based_on_camera() -> void:
 	var camera_center = GameManager.camera.get_camera_screen_center()
-	var screen_size = Vector2((398/2),(224/2))
+	var screen_size = Vector2(199, 112)
 	arena_pos.x = camera_center.x - screen_size.x + border_distance
 	arena_size.x = (camera_center.x + screen_size.x - border_distance) - arena_pos.x
 	

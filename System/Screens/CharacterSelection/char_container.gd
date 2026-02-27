@@ -115,14 +115,19 @@ func set_menu_visibility() -> void :
 		right_name.text = "Axl"
 		right_desc.bbcode_text = axl_right_desc
 
-const SCROLL_STEP := 10.0
+const SCROLL_SPEED := 120.0
 
 func scroll_descriptions(amount: float) -> void:
 	for desc in [left_desc, right_desc]:
 		var vscroll: VScrollBar = desc.get_v_scroll()
 		vscroll.value += amount
 
-func _input(event: InputEvent) -> void :
+func _process(delta: float) -> void:
+	var stick_y: float = Input.get_action_strength("analog_down") - Input.get_action_strength("analog_up")
+	if abs(stick_y) > 0.1:
+		scroll_descriptions(stick_y * SCROLL_SPEED * delta)
+
+func _input(_event: InputEvent) -> void :
 	if Input.is_action_just_pressed("move_right"):
 		emit_signal("switch_character", "right")
 	elif Input.is_action_just_pressed("move_left"):
@@ -132,11 +137,6 @@ func _input(event: InputEvent) -> void :
 		switch_armor( - 1)
 	elif Input.is_action_just_pressed("move_down"):
 		switch_armor(1)
-
-	if Input.is_action_just_pressed("weapon_select_right"):
-		scroll_descriptions(SCROLL_STEP)
-	elif Input.is_action_just_pressed("weapon_select_left"):
-		scroll_descriptions(-SCROLL_STEP)
 
 	if Input.is_action_just_pressed("ui_accept"):
 		gamestart_button.on_press()
@@ -293,7 +293,7 @@ func switch_characters(new_direction: String) -> void :
 		tween.start()
 		tween.connect("tween_completed", self, "_on_tween_completed")
 
-func _on_tween_completed(object, key) -> void :
+func _on_tween_completed(_object, _key) -> void :
 	if animating:
 		animating = false
 		if characters.size() > 3:

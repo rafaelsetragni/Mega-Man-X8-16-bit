@@ -7,8 +7,7 @@ func _ready() -> void:
 	pass
 
 
-func _on_ShieldFlier_new_direction(dir) -> void:
+func _on_ShieldFlier_new_direction(_dir) -> void:
 	if not fliped and shield_flier.spawn_direction == -1:
 		fliped = true
 		scale.x = scale.x * -1
-	pass # Replace with function body.

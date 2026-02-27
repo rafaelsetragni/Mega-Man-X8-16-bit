@@ -143,10 +143,10 @@ func follow_target(delta):
 		reduce_drag(delta)
 
 func clamp_position_based_on_limits():
-	if global_position.x < limit_left + 398/2:
-		global_position.x = limit_left + 398/2
-	if global_position.x > limit_right - 398/2:
-		global_position.x = limit_right - 398/2
+	if global_position.x < limit_left + 199:
+		global_position.x = limit_left + 199
+	if global_position.x > limit_right - 199:
+		global_position.x = limit_right - 199
 	
 
 func handle_camera_ahead(delta):

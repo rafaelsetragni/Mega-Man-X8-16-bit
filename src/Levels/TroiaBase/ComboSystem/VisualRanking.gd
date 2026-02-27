@@ -105,10 +105,10 @@ func set_timer_color(color: Color) -> void :
 
 func visually_start_fill() -> void :
 	starting = true
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	tween.tween_method(self, "fill_bar", 100.0, 3.0, 1.25)
-	tween.tween_callback(self, "finished_starting")
+	var fill_tween = create_tween()
+	fill_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	fill_tween.tween_method(self, "fill_bar", 100.0, 3.0, 1.25)
+	fill_tween.tween_callback(self, "finished_starting")
 
 func finished_starting() -> void :
 	starting = false

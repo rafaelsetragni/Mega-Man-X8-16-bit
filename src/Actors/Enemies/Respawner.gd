@@ -140,7 +140,7 @@ class Watched:
 	var scene : PackedScene
 	var outside_timer : Timer
 	var notifier_size : Rect2
-	
+
 	func _init(_object : Node2D) -> void:
 		object = _object
 		position = _object.global_position

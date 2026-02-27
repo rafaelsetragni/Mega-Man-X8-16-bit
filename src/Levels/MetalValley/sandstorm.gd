@@ -5,11 +5,9 @@ func _ready() -> void :
 	pass
 
 
-func _on_sandstorm_detector_body_entered(body: Node) -> void :
+func _on_sandstorm_detector_body_entered(_body: Node) -> void :
 	emitting = true
-	pass
 
 
-func _on_sandstorm_detector_body_exited(body: Node) -> void :
+func _on_sandstorm_detector_body_exited(_body: Node) -> void :
 	emitting = false
-	pass

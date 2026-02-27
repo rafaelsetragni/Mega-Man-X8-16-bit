@@ -32,7 +32,7 @@ func activate():
 	visible = true
 	if GameManager.camera:
 		global_position = GameManager.camera.get_camera_screen_center()
-		global_position -= Vector2(398/2,224/2)
+		global_position -= Vector2(199, 112)
 	targetting_player = false
 	connect_area(areas[get_current_area()])
 	Tools.timer(0.5,"start_visuals",self) #1.6

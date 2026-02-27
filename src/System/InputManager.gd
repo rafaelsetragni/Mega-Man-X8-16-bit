@@ -9,6 +9,10 @@ var timer: = 0.0
 var modified_keys = {}
 var combos: Dictionary
 
+# Analog stick → action mapping (replaces JoypadMotion in move_* actions)
+var analog_action_deadzone := 0.5
+var analog_pressing := {"move_left": false, "move_right": false, "move_up": false, "move_down": false}
+
 signal double_check(event_text, action_name)
 signal double_detected(event_text, actionname)
 
@@ -30,9 +34,35 @@ func activate_dash(key) -> void :
 
 func _physics_process(delta: float) -> void :
 	timer += delta
+	process_analog_stick()
 	add_inputs_to_list()
 	check_for_combos()
 	release_input_when_key_is_released()
+
+func process_analog_stick() -> void:
+	var x = Input.get_joy_axis(0, JOY_AXIS_0)
+	var y = Input.get_joy_axis(0, JOY_AXIS_1)
+	_update_analog_action("move_left", x < -analog_action_deadzone)
+	_update_analog_action("move_right", x > analog_action_deadzone)
+	_update_analog_action("move_up", y < -analog_action_deadzone)
+	_update_analog_action("move_down", y > analog_action_deadzone)
+
+func _update_analog_action(action: String, should_press: bool) -> void:
+	if should_press and not analog_pressing[action]:
+		analog_pressing[action] = true
+		Input.action_press(action)
+	elif not should_press and analog_pressing[action]:
+		analog_pressing[action] = false
+		if not _is_dpad_held(action):
+			Input.action_release(action)
+
+func _is_dpad_held(action: String) -> bool:
+	match action:
+		"move_left": return Input.is_joy_button_pressed(0, JOY_DPAD_LEFT)
+		"move_right": return Input.is_joy_button_pressed(0, JOY_DPAD_RIGHT)
+		"move_up": return Input.is_joy_button_pressed(0, JOY_DPAD_UP)
+		"move_down": return Input.is_joy_button_pressed(0, JOY_DPAD_DOWN)
+	return false
 
 func check_for_combos() -> void :
 	for combo in get_combos_that_matches_last_input():

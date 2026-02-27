@@ -20,9 +20,9 @@ func play(from_position: = 0.0):
 
 func fade_out(duration: = 1.0):
 	tween.reset()
-	tween.attribute("volume_db", - 50, duration)
+	tween.attribute("volume_db", - 50.0, duration)
 	tween.add_callback("stop")
-	tween.attribute("volume_db", - 50, duration, loop)
+	tween.attribute("volume_db", - 50.0, duration, loop)
 	tween.add_callback("stop", loop)
 	tween.add_callback("stop")
 

@@ -18,10 +18,6 @@ func instantiate_spawn() -> void:
 	character.emit_spawned_child(instance,false)
 	if ridearmor:
 		instance.get_node("Eject")._Setup()
-
-		if GameManager.is_player_in_scene():
-			if GameManager.player.ride and GameManager.player.ride.current_health > 0:
-				instance.set_deferred("current_health",0)
-			else:
-				instance.current_health = 16
+		instance.never_player_mounted = true
+		instance.current_health = 0
 		

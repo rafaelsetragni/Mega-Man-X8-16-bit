@@ -20,7 +20,7 @@ func play_loop() -> void :
 
 func fade_out() -> void :
 	var t = create_tween()
-	t.tween_property(self, "volume_db", - 80, 1.5)
+	t.tween_property(self, "volume_db", -80.0, 1.5)
 
 func play(_from_position: float = 0.0) -> void :
 	.play()

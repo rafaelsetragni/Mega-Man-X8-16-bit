@@ -77,29 +77,29 @@ onready var _sigmapalace_intro: AudioStream = preload("res://Remix/Songs/Sigma P
 onready var _sigmapalace_loop: AudioStream = preload("res://Remix/Songs/Sigma Palace - Loop.ogg")
 
 
-func set_music_remix(_boss_intro, _boss_song, _angry_intro, _angry_song, _stage_intro, _stage_song, _miniboss_intro, _miniboss_song, _capsule_song, _clear_song):
+func set_music_remix(p_boss_intro, p_boss_song, p_angry_intro, p_angry_song, p_stage_intro, p_stage_song, p_miniboss_intro, p_miniboss_song, p_capsule_song, p_clear_song):
 	if Configurations.exists("SongRemix"):
 		if Configurations.get("SongRemix"):
-			music_player.boss_intro = _boss_intro
-			music_player.boss_song = _boss_song
+			music_player.boss_intro = p_boss_intro
+			music_player.boss_song = p_boss_song
 			if music_player.boss_song != null:
 				music_player.boss_song.loop = true
-			music_player.angry_boss_intro = _angry_intro
-			music_player.angry_boss_song = _angry_song
+			music_player.angry_boss_intro = p_angry_intro
+			music_player.angry_boss_song = p_angry_song
 			if music_player.angry_boss_song != null:
 				music_player.angry_boss_song.loop = true
-			music_player.stage_intro = _stage_intro
-			music_player.stage_song = _stage_song
+			music_player.stage_intro = p_stage_intro
+			music_player.stage_song = p_stage_song
 			if music_player.stage_song != null:
 				music_player.stage_song.loop = true
-			music_player.miniboss_intro = _miniboss_intro
-			music_player.miniboss_song = _miniboss_song
+			music_player.miniboss_intro = p_miniboss_intro
+			music_player.miniboss_song = p_miniboss_song
 			if music_player.miniboss_song != null:
 				music_player.miniboss_song.loop = true
-			music_player.capsule_song = _capsule_song
+			music_player.capsule_song = p_capsule_song
 			if music_player.capsule_song != null:
 				music_player.capsule_song.loop = true
-			music_player.stage_clear_song = _clear_song
+			music_player.stage_clear_song = p_clear_song
 
 func _ready() -> void :
 	Event.listen("music_changed", self, "change_music")

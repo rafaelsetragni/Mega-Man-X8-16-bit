@@ -60,7 +60,7 @@ func play_fireloop() -> void :
 	
 func stop_fireloop() -> void :
 	var tween = create_tween()
-	tween.tween_property(fire_loop, "volume_db", - 50, 0.45)
+	tween.tween_property(fire_loop, "volume_db", -50.0, 0.45)
 
 func direct_projectile(proj: GenericProjectile) -> void :
 	var v_multiplier = lerp( - 0.75, 0.5, abs(sin(fire_timer / 2)))

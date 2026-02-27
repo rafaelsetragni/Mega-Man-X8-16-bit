@@ -1,4 +1,5 @@
 extends SimplePlayerProjectile
+const defuse_bombs := true
 var target_list : Array
 var interval := 0.064
 const continuous_damage := true

@@ -73,5 +73,5 @@ func activate_laser_eye() -> void:
 	Tools.timer(laser_time[1], "move_laser_eye", self)
 
 func move_laser_eye() -> void:
-	Tools.tween(laser_eye,"position:x",5,0.4)
+	Tools.tween(laser_eye,"position:x",5.0,0.4)
 		
