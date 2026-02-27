@@ -1,4 +1,5 @@
 extends EventAbility
+class_name Melee
 var enemy : Node
 var damage := 0.0
 

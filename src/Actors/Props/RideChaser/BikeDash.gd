@@ -1,4 +1,5 @@
 extends Accelerate
+class_name BikeDash
 
 onready var particles = get_parent().get_node("animatedSprite").get_node("particles2D")
 

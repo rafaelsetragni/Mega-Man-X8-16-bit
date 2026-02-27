@@ -1,4 +1,5 @@
 extends Movement
+class_name BikeMovement
 
 var delta = 0.016
 

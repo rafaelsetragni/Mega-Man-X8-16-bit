@@ -1,4 +1,5 @@
 extends BikeMovement
+class_name BikeJump
 
 export var max_jump_time := 0.65
 export var acceleration := 250.0

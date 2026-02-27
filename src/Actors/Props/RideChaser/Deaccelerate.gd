@@ -1,4 +1,5 @@
 extends BikeMovement
+class_name Deaccelerate
 
 export var deacceleration := 200.0
 export var minimum_speed = 100.0

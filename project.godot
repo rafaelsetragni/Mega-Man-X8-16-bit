@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "BikeMovement",
 "class": "Accelerate",
 "language": "GDScript",
-"path": "res://src/Actors/Props/Accelerate.gd"
+"path": "res://src/Actors/Props/RideChaser/Accelerate.gd"
 }, {
 "base": "Resource",
 "class": "Achievement",
@@ -182,42 +182,42 @@ _global_script_classes=[ {
 "base": "Damage",
 "class": "BikeDamage",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeDamage.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeDamage.gd"
 }, {
 "base": "Accelerate",
 "class": "BikeDash",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeDash.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeDash.gd"
 }, {
 "base": "Ability",
 "class": "BikeDeath",
 "language": "GDScript",
-"path": "res://src/Actors/Props/Death.gd"
+"path": "res://src/Actors/Props/RideChaser/Death.gd"
 }, {
 "base": "Ability",
 "class": "BikeEject",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeEject.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeEject.gd"
 }, {
 "base": "BikeMovement",
 "class": "BikeJump",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeJump.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeJump.gd"
 }, {
 "base": "Movement",
 "class": "BikeMovement",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeMovement.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeMovement.gd"
 }, {
 "base": "BikeMovement",
 "class": "BikeOnTouchDamage",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeOnTouchDamage.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeOnTouchDamage.gd"
 }, {
 "base": "BikeMovement",
 "class": "BikeRest",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeRest.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeRest.gd"
 }, {
 "base": "WeaponShot",
 "class": "BikeShot",
@@ -297,7 +297,7 @@ _global_script_classes=[ {
 "base": "BikeMovement",
 "class": "Break",
 "language": "GDScript",
-"path": "res://src/Actors/Props/Brake.gd"
+"path": "res://src/Actors/Props/RideChaser/Brake.gd"
 }, {
 "base": "Weapon",
 "class": "Buster",
@@ -462,7 +462,7 @@ _global_script_classes=[ {
 "base": "BikeMovement",
 "class": "Deaccelerate",
 "language": "GDScript",
-"path": "res://src/Actors/Props/Deaccelerate.gd"
+"path": "res://src/Actors/Props/RideChaser/Deaccelerate.gd"
 }, {
 "base": "Movement",
 "class": "Death",
@@ -692,7 +692,7 @@ _global_script_classes=[ {
 "base": "BikeMovement",
 "class": "HyperDash",
 "language": "GDScript",
-"path": "res://src/Actors/Props/BikeHyperDash.gd"
+"path": "res://src/Actors/Props/RideChaser/BikeHyperDash.gd"
 }, {
 "base": "AttackAbility",
 "class": "IceDash",
@@ -862,7 +862,7 @@ _global_script_classes=[ {
 "base": "EventAbility",
 "class": "Melee",
 "language": "GDScript",
-"path": "res://src/Actors/Props/MeleeHit.gd"
+"path": "res://src/Actors/Props/RideChaser/MeleeHit.gd"
 }, {
 "base": "AttackAbility",
 "class": "MetoolHide",
@@ -1067,7 +1067,7 @@ _global_script_classes=[ {
 "base": "Ability",
 "class": "Ride",
 "language": "GDScript",
-"path": "res://src/Actors/Props/Ride.gd"
+"path": "res://src/Actors/Props/RideChaser/Ride.gd"
 }, {
 "base": "Ability",
 "class": "Rider",
@@ -2260,6 +2260,11 @@ debug_save_state={
 debug_load_state={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":true,"command":true,"pressed":false,"scancode":79,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+debug_save_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":true,"command":true,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

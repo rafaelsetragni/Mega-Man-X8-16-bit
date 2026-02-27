@@ -1,4 +1,5 @@
 extends BikeMovement
+class_name BikeRest
 
 func _StartCondition() -> bool:
 	if character.is_on_floor():

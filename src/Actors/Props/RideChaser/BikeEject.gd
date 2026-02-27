@@ -1,4 +1,5 @@
 extends Ability
+class_name BikeEject
 
 func _StartCondition() -> bool:
 	if character.listening_to_inputs:

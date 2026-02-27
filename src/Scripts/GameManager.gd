@@ -66,6 +66,7 @@ var lumine_boss_order : Array
 # Debug Save State
 var _debug_save_data: Dictionary = {}
 var _debug_restore_pending := false
+var debug_save_menu: Node
 
 func _ready() -> void :
 	print ("GameManager: Initializing...")
@@ -74,6 +75,13 @@ func _ready() -> void :
 	Savefile.load_latest_save()
 	Savefile.load_config_data()
 	on_level_start()
+	_init_debug_save_menu()
+
+func _init_debug_save_menu() -> void:
+	var scene = load("res://src/HUD/DebugSaveStateMenu.tscn")
+	if scene:
+		var instance = scene.instance()
+		add_child(instance)
 
 func _physics_process(delta: float) -> void :
 	true_delta = delta / Engine.time_scale
@@ -85,10 +93,9 @@ func _physics_process(delta: float) -> void :
 		Savefile.save_config_data()
 
 	if debug_enabled or OS.has_feature("editor"):
-		if Input.is_action_just_pressed("debug_save_state"):
-			debug_save_state()
-		elif Input.is_action_just_pressed("debug_load_state"):
-			debug_load_state()
+		if Input.is_action_just_pressed("debug_save_menu"):
+			if debug_save_menu:
+				debug_save_menu.toggle()
 
 func start_dialog(dialog_tree) -> void:
 	dialog_box.startup(dialog_tree)

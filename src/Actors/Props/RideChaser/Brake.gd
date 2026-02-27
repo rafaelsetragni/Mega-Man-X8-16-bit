@@ -1,4 +1,5 @@
 extends BikeMovement
+class_name Break
 
 export var brake_speed = 640.0
 

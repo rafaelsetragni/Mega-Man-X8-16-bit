@@ -1,4 +1,5 @@
 extends Ability
+class_name Ride
 
 var rider : Node = null
 var recent_rider : Node = null
