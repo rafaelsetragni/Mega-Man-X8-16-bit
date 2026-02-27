@@ -37,6 +37,8 @@ var _fading: bool = false
 var _pending_demo_data: Dictionary = {}
 var _playback_waiting: bool = false
 var _recording_waiting: bool = false
+var _demo_playlist: Array = []
+var _demo_playlist_index: int = 0
 
 
 func _ready() -> void:
@@ -145,12 +147,18 @@ func _fade_out_music() -> void:
 
 func _try_attract_demo() -> void:
 	idle_timer = 0.0
-	var demos := get_available_demos()
-	print("DemoSystem: Attract mode triggered. Found " + str(demos.size()) + " demos")
-	if demos.size() > 0:
-		var pick: String = demos[randi() % demos.size()]
-		print("DemoSystem: Playing demo: " + pick)
-		play_demo(pick)
+	if _demo_playlist.empty():
+		_demo_playlist = get_available_demos()
+		_demo_playlist_index = 0
+		print("DemoSystem: Playlist built with " + str(_demo_playlist.size()) + " demos")
+	if _demo_playlist.empty():
+		return
+	var pick: String = _demo_playlist[_demo_playlist_index]
+	_demo_playlist_index += 1
+	if _demo_playlist_index >= _demo_playlist.size():
+		_demo_playlist_index = 0
+	print("DemoSystem: Playing demo " + str(_demo_playlist_index) + "/" + str(_demo_playlist.size()) + ": " + pick)
+	play_demo(pick)
 
 
 # ── Recording ────────────────────────────────────────────────────
@@ -192,6 +200,8 @@ func _record_frame() -> void:
 	if _recording_waiting:
 		var player = GameManager.player
 		if player and is_instance_valid(player) and player.listening_to_inputs:
+			if GameManager.current_level == "":
+				return
 			_recording_waiting = false
 			current_frame = 0
 			_capture_metadata()

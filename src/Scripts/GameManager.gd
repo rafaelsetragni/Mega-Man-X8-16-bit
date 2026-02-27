@@ -68,6 +68,10 @@ var _debug_save_data: Dictionary = {}
 var _debug_restore_pending := false
 var debug_save_menu: Node
 
+func _is_demo_active() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and (ds.is_demo_playing() or ds.is_recording())
+
 func _is_demo_playing() -> bool:
 	var ds = get_node_or_null("/root/DemoSystem")
 	return ds != null and ds.is_demo_playing()
@@ -163,7 +167,9 @@ func start_stage_music() -> void:
 		music_player.call_deferred("play_stage_song")
 
 func start_level(StageName : String) -> void:
-	
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.disable_idle_tracking()
 	clear_checkpoint()
 	set_player_lives_to_at_least_2()
 	current_level = StageName
@@ -519,7 +525,9 @@ func get_next_spawn_item(
 	big_ammo_chance: float = big_ammo_chance_default, 
 	extra_life_chance: float = extra_life_chance_default
 ) -> PackedScene:
-	
+	if _is_demo_active():
+		return null
+
 	var chance: float = randf() * 100
 	if chance > drop_item_chance:
 		return null
