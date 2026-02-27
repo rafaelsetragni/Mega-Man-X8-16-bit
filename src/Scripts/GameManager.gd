@@ -68,6 +68,10 @@ var _debug_save_data: Dictionary = {}
 var _debug_restore_pending := false
 var debug_save_menu: Node
 
+func _is_demo_playing() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and ds.is_demo_playing()
+
 func _ready() -> void :
 	print ("GameManager: Initializing...")
 	set_pause_mode(2)
@@ -199,6 +203,9 @@ func go_to_lumine_boss_test() -> void:
 	
 
 func end_level():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("EndLevel")
@@ -219,6 +226,9 @@ func end_game():
 	IGT.save_time()
 
 func on_death():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("Death")
@@ -297,7 +307,7 @@ func restart_level():
 	on_level_start()
 
 func reached_checkpoint(new_checkpoint: CheckpointSettings) -> void :
-	if GameManager.time_attack:
+	if GameManager.time_attack or _is_demo_playing():
 		return
 
 	if not checkpoint or new_checkpoint.id > checkpoint.id:

@@ -1965,6 +1965,7 @@ CharacterManager="*res://System/CharacterManager.gd"
 ShaderManager="*res://System/ShaderManager.gd"
 TranslationValidator="*res://src/Localization/TranslationValidator.gd"
 JokeTranslationLoader="*res://src/Localization/JokeTranslationLoader.gd"
+DemoSystem="*res://src/System/DemoSystem.gd"
 
 [debug]
 

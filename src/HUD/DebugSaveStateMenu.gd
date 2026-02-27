@@ -22,7 +22,14 @@ func _ready() -> void:
 	_ensure_dir()
 
 
+func _get_demo_system() -> Node:
+	return get_node_or_null("/root/DemoSystem")
+
 func toggle() -> void:
+	var ds = _get_demo_system()
+	if ds and ds.is_recording():
+		ds.stop_recording()
+		return
 	if is_open:
 		close()
 	else:
@@ -85,6 +92,8 @@ func _input(event: InputEvent) -> void:
 			if slots[selected] != null:
 				confirm_delete = true
 				_rebuild_ui()
+		KEY_R:
+			_toggle_recording()
 		KEY_ESCAPE:
 			close()
 		_:
@@ -95,6 +104,14 @@ func _input(event: InputEvent) -> void:
 	if event.command or event.meta:
 		if event.scancode == KEY_S:
 			close()
+
+
+func _toggle_recording() -> void:
+	var ds = _get_demo_system()
+	print("DebugMenu: _toggle_recording called, DemoSystem = " + str(ds))
+	close()
+	if ds:
+		ds.start_recording()
 
 
 # ── Persistence ──────────────────────────────────────────────────
@@ -250,7 +267,7 @@ func _rebuild_ui() -> void:
 		actions_label.text = "Delete slot " + str(selected) + "? [D] Confirm  [Any] Cancel"
 		actions_label.modulate = Color(1.0, 0.4, 0.4)
 	else:
-		actions_label.text = "[S]ave  [L]oad  [D]elete  [Esc]Close  [0-9]Slot"
+		actions_label.text = "[S]ave [L]oad [D]el [R]ec [Esc]Close [0-9]Slot"
 		actions_label.modulate = Color(0.7, 0.7, 0.7)
 
 
