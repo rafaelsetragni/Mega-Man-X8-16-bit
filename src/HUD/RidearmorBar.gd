@@ -33,7 +33,6 @@ func resize_bar(max_health: float) -> void:
 	var bar_size = 52 + (max_health - 16) * 2
 	rect_position.y = bar_pos
 	rect_size.y = bar_size
-	texture_progress.max_value = max_health
 	sized = true
 
 func _process(_delta: float) -> void:

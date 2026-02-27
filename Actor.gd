@@ -107,7 +107,7 @@ func reduce_health(value: float):
 
 func recover_health(value: float):
 	if current_health < max_health:
-		current_health += value
+		current_health = min(current_health + value, max_health)
 
 func is_invulnerable() -> bool:
 	return invulnerability > 0.0 or toggleable_invulnerabilities.size() > 0

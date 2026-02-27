@@ -44,6 +44,7 @@ anim_speed_curve = SubResource( 9 )
 song_intro = null
 song_loop = null
 damage_reduction = 0.45
+ride_max_health = 16.0
 
 [node name="animatedSprite" parent="." index="4"]
 material = SubResource( 48 )

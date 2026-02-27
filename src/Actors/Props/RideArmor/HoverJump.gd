@@ -67,7 +67,6 @@ func jump() -> void:
 
 func hover(delta) -> void:
 	hover_fuel -= delta
-	print_debug("HoverJump fuel: " + str(stepify(hover_fuel, 0.01)) + " speed: " + str(stepify(current_hover_speed, 0.1)))
 	if not hover_started:
 		hover_started = true
 		tween.attribute("current_hover_speed", 0.0, max(hover_fuel, 0.1))
