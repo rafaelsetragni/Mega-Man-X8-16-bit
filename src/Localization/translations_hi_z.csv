@@ -1128,3 +1128,10 @@ AXLARMS_DISC,Energy goliyon wali pistol
 AXLLEGS_NAME,Leg Part
 AXLLEGS_DISC,Hover aur Air Dash
 JOKE_MODE_OPTION,मीम मोड
+"SAVE_GAME","सेव करो यार"
+"SAVE_OPTION","सेव करो"
+"CONTINUE_OPTION","जाने दो"
+"SAVE_RETURN_MENU","भाग जाओ"
+"SAVE_RETURN_CONFIRM","सच में?"
+"SAVE_EMPTY","खाली है"
+"SAVE_OVERWRITE_CONFIRM","लिखूं?"

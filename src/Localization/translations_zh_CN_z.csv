@@ -1128,3 +1128,10 @@ AXLARMS_DISC,能量子弹手枪（突突突）
 AXLLEGS_NAME,腿部部件
 AXLLEGS_DISC,悬停+空中冲刺（空战达人）
 JOKE_MODE_OPTION,玩梗模式（你在看的就是这个）
+"SAVE_GAME","快存档！"
+"SAVE_OPTION","存！"
+"CONTINUE_OPTION","不存了"
+"SAVE_RETURN_MENU","跑路"
+"SAVE_RETURN_CONFIRM","真的假的？"
+"SAVE_EMPTY","空空如也"
+"SAVE_OVERWRITE_CONFIRM","覆盖？"

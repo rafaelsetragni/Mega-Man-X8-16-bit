@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://src/Options/pause.png" type="Texture" id=1]
 [ext_resource path="res://src/Options/pause_bg.png" type="Texture" id=2]
@@ -141,6 +141,7 @@
 [ext_resource path="res://Zero_mod/X8/Sprites/ZeroX8_Material_Shader.tres" type="Material" id=140]
 [ext_resource path="res://X_mod/UltimateX/Player/NovaStrike/NovaStrike.tres" type="Resource" id=141]
 [ext_resource path="res://System/SFX/open_option.ogg" type="AudioStream" id=142]
+[ext_resource path="res://src/Options/SaveScreen/SaveScreen.tscn" type="PackedScene" id=145]
 
 [sub_resource type="ShortCut" id=1]
 
@@ -368,9 +369,10 @@ focus_neighbour_left = NodePath("../../Subtank Group/gridContainer/Subtank2")
 action_mode = 0
 shortcut = SubResource( 1 )
 texture_normal = ExtResource( 8 )
-script = ExtResource( 6 )
+script = ExtResource( 59 )
 menu_path = NodePath("../../..")
-pick_sound = NodePath("../../../pick")
+pick_sound = NodePath("../../../open_options")
+method = "start_save_screen"
 
 [node name="Disabler" type="Node" parent="pause/Options Group/EXIT_BUTTON"]
 script = ExtResource( 74 )
@@ -2270,6 +2272,10 @@ visible = false
 
 [node name="AchievementsScreen" parent="." instance=ExtResource( 76 )]
 layer = 127
+visible = false
+
+[node name="SaveScreen" parent="." instance=ExtResource( 145 )]
+layer = 8
 visible = false
 
 [node name="CoverScreen" type="ColorRect" parent="."]

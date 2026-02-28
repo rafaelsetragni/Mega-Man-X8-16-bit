@@ -7,6 +7,7 @@ onready var choice: AudioStreamPlayer = $choice
 onready var key_config: CanvasLayer = $KeyConfig
 onready var options_menu: CanvasLayer = $OptionsMenu
 onready var achievements: CanvasLayer = $AchievementsScreen
+onready var save_screen: CanvasLayer = $SaveScreen
 onready var ultimate_life_texture: Texture = preload("res://X_mod/UltimateX/HUD/life.png")
 onready var ultimte_icon_texture: Texture = preload("res://X_mod/UltimateX/HUD/ultimate_x.png")
 onready var ultimte_icon_material: Material = preload("res://X_mod/UltimateX/Sprites/x_ultimate_material.tres")
@@ -37,7 +38,7 @@ func _ready() -> void :
 		Pause()
 	subtanks = get_subtank_controls()
 	connect_subtank_signals()
-	var common_buttons = [key_config, options_menu, achievements]
+	var common_buttons = [key_config, options_menu, achievements, save_screen]
 	for button in common_buttons:
 		button.connect("end", self, "unlock_buttons")
 	Event.connect("lumine_desperation", self, "on_lumine_desperation")
@@ -153,7 +154,7 @@ func _input(event: InputEvent) -> void :
 func pause_input(event: InputEvent) -> void :
 	if using_subtank:
 		return
-	if not key_config.active and not options_menu.active and not achievements.active:
+	if not key_config.active and not options_menu.active and not achievements.active and not save_screen.active:
 		if can_pause():
 			if event.is_action_pressed("pause"):
 				if not paused:
@@ -173,6 +174,10 @@ func start_options() -> void :
 	
 	lock_buttons()
 	options_menu.start()
+
+func start_save_screen() -> void :
+	lock_buttons()
+	save_screen.start()
 
 func start_achievements() -> void :
 	
@@ -201,7 +206,6 @@ func Unpause() -> void :
 	fader.FadeOut()
 	paused = false
 	GameManager.normal_music_volume()
-	Savefile.save(Savefile.save_slot)
 	yield(fader, "finished")
 	Event.emit_signal("pause_menu_closed")
 	GameManager.unpause("PauseMenu")

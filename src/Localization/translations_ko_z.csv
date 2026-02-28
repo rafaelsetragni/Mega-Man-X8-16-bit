@@ -1128,3 +1128,10 @@ AXLARMS_DISC,"뉴트럴 스페셜로, 총을 쏜다"
 AXLLEGS_NAME,다리 파츠
 AXLLEGS_DISC,호버 + 에어대시. X7이랑 같음.
 JOKE_MODE_OPTION,밈 모드
+"SAVE_GAME","저장해줘"
+"SAVE_OPTION","저장 ㄱㄱ"
+"CONTINUE_OPTION","욜로"
+"SAVE_RETURN_MENU","도망가기"
+"SAVE_RETURN_CONFIRM","진짜요?"
+"SAVE_EMPTY","없음ㅋ"
+"SAVE_OVERWRITE_CONFIRM","덮어쓰기?"
