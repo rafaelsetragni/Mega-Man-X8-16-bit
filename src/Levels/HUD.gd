@@ -19,6 +19,8 @@ onready var ride_bar: NinePatchRect = $"Ride Bar"
 onready var ride_hp: TextureProgress = $"Ride Bar/textureProgress"
 
 
+onready var lives_label: Label = $"X Bar/LivesCounter/LivesLabel"
+
 onready var rec_info: RichTextLabel = $"Rec Info"
 
 onready var black_screen = $BlackScreen
@@ -67,6 +69,8 @@ func _ready() -> void:
 	#Event.listen("enemy_kill",self,"try_stop_chronometer")
 	BossRNG.connect("updated_rng",self,"show_rng")
 	BossRNG.connect("decided_boss_order",self,"show_boss_attack")
+	Event.listen("has_life_ups",self,"update_lives_counter")
+	call_deferred("update_lives_counter")
 	call_deferred("connect_debug")
 	call_deferred("on_showdebug","ShowDebug")
 
@@ -207,6 +211,12 @@ func show_healable_amount(healable_amount):
 
 func hide_healable_amount() -> void:
 	player_healable.value = 0
+
+func update_lives_counter(_lives = null) -> void:
+	if GlobalVariables.exists("player_lives"):
+		lives_label.text = str(GlobalVariables.get("player_lives"))
+	else:
+		lives_label.text = "2"
 
 func show_boss_health_and_weapon(delta) -> String:
 	var text := ""

@@ -8,6 +8,7 @@ var destroy_damage: = 8
 var rider
 var recent_rider
 var player_nearby: bool = false
+var eject_cooldown: bool = false
 
 signal rider_on
 signal rider_off
@@ -16,9 +17,19 @@ signal rider_off
 func should_execute() -> bool:
 	if ceiling_check.is_colliding():
 		return false
-	return character.active and character.has_health() and current_conflicts.size() == 0
+	if eject_cooldown:
+		return false
+	var health_ok = character.has_health() or character.never_player_mounted
+	return character.active and health_ok and current_conflicts.size() == 0
 
 func _Setup() -> void :
+	if character.never_player_mounted:
+		character.current_health = character.max_health
+		character.emitted_zero_health = false
+		character.never_player_mounted = false
+		var death_ability = character.get_node_or_null("Death")
+		if death_ability and death_ability.is_executing():
+			death_ability.EndAbility()
 	make_rider()
 	emit_signal("rider_on")
 
@@ -29,6 +40,14 @@ func _Update(_delta: float) -> void :
 func _Interrupt() -> void :
 	eject()
 	emit_signal("rider_off")
+	eject_cooldown = true
+	Tools.timer(1.0, "end_eject_cooldown", self)
+	if character.has_health():
+		active = true
+
+func end_eject_cooldown() -> void :
+	if character.has_health():
+		eject_cooldown = false
 
 func is_body_transformed(body) -> bool:
 	var _body_parent = body.get_parent()
@@ -51,12 +70,16 @@ func is_body_transformed(body) -> bool:
 
 func _on_body_enter(body) -> void :
 	if should_execute() and is_rideable(body) and not is_body_transformed(body):
-		rider = body.get_character()
-		recent_rider = body.get_character()
-		_on_signal()
+		var _rider = body.get_character()
+		if _rider and not _rider.is_on_floor():
+			rider = _rider
+			recent_rider = _rider
+			_on_signal()
 
-func reenable_ride_time() -> void :
-	recent_rider = null
+func _on_body_exit(body) -> void :
+	if body.has_method("get_character"):
+		if recent_rider == body.get_character():
+			recent_rider = null
 
 func is_rideable(player) -> bool:
 	var non_states: = ["Ride", "Forced", "Finish", "Intro"]
@@ -103,7 +126,6 @@ func remove_rider():
 		rider.eject(character)
 		rider.get_node("animatedSprite").modulate = Color(1, 1, 1, 1)
 		Event.emit_signal("ridearmor_deactivate")
-		Tools.timer(0.65, "reenable_ride_time", self)
 
 func return_rider_to_original_parent():
 	get_parent().remove_child(rider)

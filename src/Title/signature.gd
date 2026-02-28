@@ -6,7 +6,7 @@ export  var color2: Color
 onready var tween: TweenController = TweenController.new(self, false)
 onready var signature: Label = $"../signature2"
 onready var by: Label = $"../by"
-onready var fade: Sprite = $"../fade"
+onready var fade_sprite: Sprite = $"../fade"
 onready var jingle: AudioStreamPlayer = $"../jingle"
 
 var able_to_exit: bool = false
@@ -61,8 +61,8 @@ func fadeout() -> void :
 	if not exiting:
 		exiting = true
 		tween.reset()
-		tween.attribute("volume_db", - 50, 1.0, jingle)
-		tween.attribute("modulate", Color.black, 1.0, fade)
+		tween.attribute("volume_db", -50.0, 1.0, jingle)
+		tween.attribute("modulate", Color.black, 1.0, fade_sprite)
 		tween.add_wait(1)
 		tween.add_callback("next_screen")
 

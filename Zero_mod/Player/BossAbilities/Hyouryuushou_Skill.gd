@@ -187,6 +187,9 @@ func change_animation_if_falling(_s) -> void :
 
 
 
+func reduce_speed():
+	horizontal_speed = 0
+
 func _Interrupt():
 
 	particles.emitting = false

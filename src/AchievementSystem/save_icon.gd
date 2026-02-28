@@ -8,6 +8,6 @@ func _ready() -> void:
 
 func display():
 	tween.reset()
-	tween.attribute("modulate:a",0.5,.1)
-	tween.add_attribute("modulate:a",0,0.75)
+	tween.attribute("modulate:a", 0.5, 0.1)
+	tween.add_attribute("modulate:a", 0.0, 0.75)
 	

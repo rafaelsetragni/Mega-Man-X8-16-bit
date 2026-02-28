@@ -1,0 +1,1130 @@
+key,it
+TOTAL_TIME,Quanto Tempo Ci Hai Messo
+DISCLAIMER1,"Questo gioco e' un fangame GRATIS.\n\nNon e' affiliato, associato, autorizzato o in alcun modo ufficialmente collegato con Capcom.\n\nMega Man X e' proprieta' di Capcom.\nSupportate i giochi originali, dai!"
+MADE_BY,"Fatto tutto da solo, mamma mia"
+INSPIRED_BY,Ispirato da
+SPECIALTHANKSTEXT,Questa mod e' stata fatta da Zashiko\n\nE decompilata da pirate\nGioco turbinato da: Rafael Setragni & Claude (IA)\n\nGrazie a tutti i contributor e tester.\nRetranslations by: ElevenSSF2 (Mint)
+16-BIT_TITLE,"Entra nella cartuccia, fidati"
+OPTIONS_START,TOCCA LE IMPOSTAZIONI
+KEYCFG_START,CONFIGURA I TASTI
+GAME_START,ANDIAMO CHE SI GIOCA
+GAME_START_NORMAL,NORMALE
+GAME_START_ROOKIE,MAMMONE
+GAME_START_HARD,TOSTO
+GAME_START_INSANITY,MA SEI PAZZO?
+GAME_START_NINJA,LASCIATE OGNI SPERANZA!
+LOAD_GAME,CARICA SALVATAGGIO
+ON_VALUE,Acceso
+ON_VALUE_B,MOZZARELLA
+OFF_VALUE,Spento
+EXIT_BUTTON,Esci
+ARMORSETUP_TITLE,Vestiti Bene
+LOADOUT_DISC,"Scegli il tuo outfit, bello."
+DEFAULTHEAD_NAME,Casco Base
+DEFAULTHEAD_DISC,Pezzo base.
+DEFAULTBODY_NAME,Corpo Base
+DEFAULTBODY_DISC,Pezzo base.
+DEFAULTARMS_NAME,Buster Base
+DEFAULTARMS_DISC,Pezzo base.
+DEFAULTLEGS_NAME,Piedi Base
+DEFAULTLEGS_DISC,Pezzo base. Dash aereo.
+HERMESHEAD_NAME,Casco H
+HERMESHEAD_DISC,Carica il buster piu' veloce.
+HERMESBODY_NAME,Corpo H
+HERMESBODY_DISC,Colpisci nemici e ti curi. Magia!
+HERMESARMS_NAME,Buster H
+HERMESARMS_DISC,Le armi non consumano munizioni. Gratis!
+HERMESLEGS_NAME,Piedi H
+HERMESLEGS_DISC,Invincibile durante il dash.
+ICARUSHEAD_NAME,Casco I
+ICARUSHEAD_DISC,Salti e fai danno. Bella roba.
+ICARUSBODY_NAME,Corpo I
+ICARUSBODY_DISC,Nessun rinculo. Sei un muro.
+ICARUSARMS_NAME,Buster I
+ICARUSARMS_DISC,Colpi caricati gratis.
+ICARUSLEGS_NAME,Piedi I
+ICARUSLEGS_DISC,Salto alto e doppio dash aereo.
+ULTIMATEHEAD_NAME,Casco U
+ULTIMATEHEAD_DISC,Danno al salto + carica veloce.
+ULTIMATEBODY_NAME,Corpo U
+ULTIMATEBODY_DISC,Niente rinculo e colpi che curano.
+ULTIMATEARMS_NAME,Ultimate Buster
+ULTIMATEARMS_DISC,"Tutto gratis, niente munizioni."
+ULTIMATELEGS_NAME,Piedi U
+ULTIMATELEGS_DISC,Mobilita' massima e dash invincibile.
+AXLNORMAL_NAME,Normalissimo
+AXLNORMAL_DISC,Nessuna abilita' speciale.
+AXLWHITE_NAME,???
+AXLWHITE_DISC,Buff su tutto.
+TANK_ABV,TANKI
+OPTIONS_ABV,OPZIONI
+KEYCFG_ABV,TASTI
+ACHIEV_ABV,Trofei
+X_WPNMENU,Limoncello
+SUNFLOWER_WPNMENU,Scudo Girasole
+ANTONION_WPNMENU,Bomba Formica
+MANTIS_WPNMENU,Freccia Nera
+MANOWAR_WPNMENU,Danza Elettrica
+PANDA_WPNMENU,BOOMBA!
+TRILOBYTE_WPNMENU,Pietra Rimbalzante
+YETI_WPNMENU,Gelato!
+ROOSTER_WPNMENU,Pollo Arrosto
+AXL_WPNMENU,Pistola di Axl
+SUNFLOWER_AXL_WPNMENU,Pistola Laser
+ANTONION_AXL_WPNMENU,Magnum Spirale
+MANTIS_AXL_WPNMENU,Freccia Nera
+MANOWAR_AXL_WPNMENU,Pistola Plasma
+PANDA_AXL_WPNMENU,Lanciarazzi della Nonna
+TRILOBYTE_AXL_WPNMENU,Blaster Rimbalzante
+YETI_AXL_WPNMENU,Mitraglietta Gelato
+ROOSTER_AXL_WPNMENU,Lanciafiamme
+SUNFLOWER_ZERO_WPNMENU,TENSHOUHA! MAMMA MIA!
+ANTONION_ZERO_WPNMENU,Zio Gravita'
+MANTIS_ZERO_WPNMENU,Giro della Morte
+MANOWAR_ZERO_WPNMENU,Fulmine di Giove
+PANDA_ZERO_WPNMENU,Bastone di Bambu'
+TRILOBYTE_ZERO_WPNMENU,Lancia Sassi
+YETI_ZERO_WPNMENU,Ghiaccio Reale
+ROOSTER_ZERO_WPNMENU,Lama Infernale
+SUNFLOWER_ZERO_DISC,Giu' + Tiro 2
+ANTONION_ZERO_DISC,Tiro 2
+MANTIS_ZERO_DISC,Tiro 2 (Aria)
+MANOWAR_ZERO_DISC,Dash + Tiro 2
+PANDA_ZERO_DISC,Sinistra/Destra + Tiro 2
+TRILOBYTE_ZERO_DISC,"Passivo, si fa da solo"
+YETI_ZERO_DISC,Su + Tiro 2
+ROOSTER_ZERO_DISC,Giu' + Tiro 2 (Aria)
+ZERO_WPNMENU,Spada Z
+BFAN_WPNMENU,Ventaglio
+DGLAIVE_WPNMENU,Alabarda
+TBREAKER_WPNMENU,Martello
+KKNUCKLE_WPNMENU,Pugni
+VHANGER_WPNMENU,V-Lama
+SIGMABLADE_WPNMENU,Spada di Sigma
+YOUGOT_TITLE,Hai Beccato
+SUNFLOWER_WEAPON,Scudo Girasole
+ANTONION_WEAPON,Bomba Formica
+MANTIS_WEAPON,Freccia Nera
+MANOWAR_WEAPON,Danza Elettrica
+PANDA_WEAPON,BOOMBA!
+TRILOBYTE_WEAPON,Pietra Rimbalzante
+YETI_WEAPON,Gelato!
+ROOSTER_WEAPON,Pollo Arrosto
+OPTIONS_TITLE,ATTENTO A NON ROMPERE TUTTO
+LANGUAGE_OPTION,Lingua
+BOSS_REMIX_OPTION,Boss Remix
+REMIX_OPTION,16-bit Remix
+DT_DASH_OPTION,Doppio tap per il dash
+SKIP_DIAG_OPTION,Chi legge i dialoghi?
+CHARGE_OPTION,Effetto carica
+ACHIEV_OPTION,Mostra Trofei
+MUSIC_OPTION,Volume Musica
+SOUND_OPTION,Volume Effetti
+VSync,VSync e che cos'e'?
+FPS_OPTION,Il tuo PC ce la fa?
+FPS_PHYSICS_OPTION,Physics FPS pure?
+FPS_UNCAPPED,Senza Freni
+WSIZE_OPTION,Grandezza Finestra
+FULLSCREEN_OPTION,Schermo Intero
+STRETCH_OPTION,Modalita' Stretch
+STRETCH_OPTION_VIEWPORT,Senza interpolazione
+STRETCH_OPTION_2D,Interpolato
+CRT_OPTION,Filtro TV Vecchia
+LIGHT_VALUE,Leggero
+STRONG_VALUE,Forte!
+DEBUG_OPTION,"Vuoi barare, eh?"
+SHOWIGT_OPTION,Mostra IGT
+GATEWAYSKIP_OPTION,Vuoi buggare?
+ASPECT_OPTION,Rapporto Aspetto
+IGNORE_VALUE,STIRACCHIATO!
+KEEP_VALUE,Come si deve
+KEYCFG_TITLE,"CONFIGURA I TASTI, DAI"
+EXIT_MAINMENU,Torna al titolo
+ACTION_CTG,Azione
+KEYBOARD_CTG,Tastiera
+JOYPAD_CTG,Controller
+LEFT_ACT,sinistra
+RIGHT_ACT,destra
+NEWGAME_OPTION,Ricominciamo da capo!
+CLEARSAVE_OPTION,Cancella salvataggio
+CLEARSAVE_CONFIRM,Premi di nuovo per confermare
+RESET_ACHIEV,Cancella Trofei
+CLEARSAVE_CONFIRM,Premi di nuovo per confermare
+RESET_ACHIEV_FINISHED,Trofei cancellati. Mamma mia...
+UP_ACT,su
+DOWN_ACT,giu'
+SHOT_ACT,sparo
+SHOT2_ACT,sparo2
+JUMP_ACT,salto
+DASH_ACT,dash
+ARMORABILITY_ACT,attacco spec.
+PREV_ACT,arma precedente
+NEXT_ACT,arma successiva
+PAUSE_ACT,pausa
+CONFIRM_ACT,conferma
+WPNLEFT_ACT,ruota sinistra
+WPNRIGHT_ACT,ruota destra
+WPNUP_ACT,ruota su
+WPNDOWN_ACT,ruota giu'
+WPNRESET_ACT,scegli limoncello
+ACHIEV_SCREEN_TITLE,Trofei
+ACHIEVEMENTSUNLOCKED,Trofei Sbloccati
+DEBUGACHIEVTITLE,Trofeo Bloccato...
+DEBUGACHIEVDISC,Hai usato la modalita' Debug. Baro!
+BEATINTRO_DISC,Hai sconfitto il boss di Noah's Park.
+BEATINTRO_TITLE,Che piacere rivederti
+COLLECTALLHEARTS_DISC,Hai raccolto tutti i Heart Tank.
+COLLECTALLHEARTS_TITLE,Cuore di Campione
+COLLECTALLSUBTANKS_DISC,Hai raccolto tutte le Sub Tank.
+COLLECTALLSUBTANKS_TITLE,La Cantina e' Piena
+COLLECTFULLHERMES_DISC,Hai raccolto tutte le parti Hermes Armor.
+COLLECTFULLHERMES_TITLE,Mercurio Espresso
+COLLECTFULLICARUS_DISC,Hai raccolto tutte le parti Icarus Armor.
+COLLECTFULLICARUS_TITLE,Volo di Icaro
+SURFEDONMISSILE_DISC,Hai surfato su un missile per 6 secondi.
+SURFEDONMISSILE_TITLE,Vespa in Autostrada
+DEFEATEDALL_DISC,Hai sconfitto tutti gli otto boss Maverick.
+DEFEATEDALL_TITLE,Otto Su Otto
+DEFEATEDANY_DISC,Hai sconfitto un boss Maverick qualsiasi.
+DEFEATEDANY_TITLE,Nuova Generazione
+GIGACRUSHKILL_DISC,Hai finito un boss con il Giga Crash.
+GIGACRUSHKILL_TITLE,GOLAZO!
+PELEDOSGAMES_DISC,Hai palleggiato l'armatura dopo aver battuto il boss.
+PELEDOSGAMES_TITLE,Fantasista dei Videogiochi
+PERFECTKILL_DISC,"Hai sconfitto un boss senza armi speciali, senza danni e senza upgrade."
+PERFECTKILL_TITLE,Catenaccio Perfetto
+XDRIVEDODGE_DISC,Hai usato XDrive durante un Attacco Disperato.
+XDRIVEDODGE_TITLE,Dribbling da Campione
+GIGACRUSHKILL_DISC,Hai finito un boss con il Giga Crash.
+GIGACRUSHKILL_TITLE,GOLAZO!
+ANTONIONBUSTERONLY_DISC,Hai sconfitto Formica Pesante solo con il limoncello.
+ANTONIONBUSTERONLY_TITLE,Ma Mi Stai A Sentire?
+ANTONIONNAKED_DISC,Hai sconfitto Formica Pesante senza upgrade.
+ANTONIONNAKED_TITLE,Come Si Esce Da Qui?
+ANTONIONNODAMAGE_DISC,Hai sconfitto Formica Pesante senza prendere danni.
+ANTONIONNODAMAGE_TITLE,"Scienziato? FORMICA, Capito?"
+ANTONIONNOROTATION_DISC,Sei arrivato alla fine di Primrose senza ruotare il livello e senza morire.
+ANTONIONNOROTATION_TITLE,Portale
+MANOWARBUSTERONLY_DISC,Hai sconfitto Medusa Gigavolt solo con il limoncello.
+MANOWARBUSTERONLY_TITLE,Scarica Elettrica
+MANOWARNAKED_DISC,Hai sconfitto Medusa Gigavolt senza upgrade.
+MANOWARNAKED_TITLE,Ma Tu Chi Sei?
+MANOWARNODAMAGE_DISC,Hai sconfitto Medusa Gigavolt senza prendere danni.
+MANOWARNODAMAGE_TITLE,Blackout Completo
+MANOWARDOOREXPLODED_DISC,Hai sfondato la porta a Dynasty.
+MANOWARDOOREXPLODED_TITLE,Entrata alla Singham
+MANTISBUSTERONLY_DISC,Hai sconfitto Mantide Oscura solo con il limoncello.
+MANTISBUSTERONLY_TITLE,La Mia Lama Parlera'
+MANTISNAKED_DISC,Hai sconfitto Mantide Oscura senza upgrade.
+MANTISNAKED_TITLE,Ladro Nell'Ombra
+MANTISNODAMAGE_DISC,Hai sconfitto Mantide Oscura senza prendere danni.
+MANTISNODAMAGE_TITLE,Sgamato!
+MANTISLIT_DISC,Hai portato la luce nell'oscurita' di Pitch Black.
+MANTISLIT_TITLE,Accendi La Luce!
+MANTISUNDETECTED_DISC,Hai evitato tutti i fari in Pitch Black.
+MANTISUNDETECTED_TITLE,Ombra Silenziosa
+PANDABUSTERONLY_DISC,Hai sconfitto Panda Bambu' solo con il limoncello.
+PANDABUSTERONLY_TITLE,Panda a Dieta
+PANDANAKED_DISC,Hai sconfitto Panda Bambu' senza upgrade.
+PANDANAKED_TITLE,Cari Amici...
+PANDANODAMAGE_DISC,Hai sconfitto Panda Bambu' senza prendere danni.
+PANDANODAMAGE_TITLE,Messo a Dieta
+PANDARIDEREACHED_DISC,Sei arrivato alla fine di Booster Forest con la Ride Armor.
+PANDARIDEREACHED_TITLE,Vespa Ride
+ROOSTERBUSTERONLY_DISC,Hai sconfitto Gallo Arrosto solo con il limoncello.
+ROOSTERBUSTERONLY_TITLE,POLLO ALLA GRIGLIA!
+ROOSTERNAKED_DISC,Hai sconfitto Gallo Arrosto senza upgrade.
+ROOSTERNAKED_TITLE,GALLOOOO!
+ROOSTERNODAMAGE_DISC,Hai sconfitto Gallo Arrosto senza prendere danni.
+ROOSTERNODAMAGE_TITLE,BRUCIA TUTTO!
+ROOSTERFROZEN_DISC,Hai fermato la lava nell'Inferno.
+ROOSTERFROZEN_TITLE,Gelato al Vulcano
+SUNFLOWERBUSTERONLY_DISC,Hai sconfitto Girasole Ottico solo con il limoncello.
+SUNFLOWERBUSTERONLY_TITLE,"Si Va Avanti, Che Vuoi Fare"
+SUNFLOWERNAKED_DISC,Hai sconfitto Girasole Ottico senza upgrade.
+SUNFLOWERNAKED_TITLE,Sempre la Stessa Minestra
+SUNFLOWERNODAMAGE_DISC,Hai sconfitto Girasole Ottico senza prendere danni.
+SUNFLOWERNODAMAGE_TITLE,Stessa Storia di Sempre
+SUNFLOWERGOTSSSRANK_DISC,Hai ottenuto S Rank in tutte le sfide in un singolo run. Bravo!
+SUNFLOWERGOTSSSRANK_TITLE,Laurea con Lode
+TRILOBYTEBUSTERONLY_DISC,Hai sconfitto Scarafaggio di Terra solo con il limoncello.
+TRILOBYTEBUSTERONLY_TITLE,Spaccapietre
+TRILOBYTENAKED_DISC,Hai sconfitto Scarafaggio di Terra senza upgrade.
+TRILOBYTENAKED_TITLE,Vecchio Rottame
+TRILOBYTENODAMAGE_DISC,Hai sconfitto Scarafaggio di Terra senza prendere danni.
+TRILOBYTENODAMAGE_TITLE,Senza Cervello
+YETIBUSTERONLY_DISC,Hai sconfitto Yeti Valanga solo con il limoncello.
+YETIBUSTERONLY_TITLE,Gelato Servito!
+YETINAKED_DISC,Hai sconfitto Yeti Valanga senza upgrade.
+YETINAKED_TITLE,Siamo Vecchi Modelli
+YETINODAMAGE_DISC,Hai sconfitto Yeti Valanga senza prendere danni.
+YETINODAMAGE_TITLE,Nemmeno il Freddo Mi Tocca
+YETIDOOREXPLODED_DISC,Hai sfondato la porta a Central White.
+YETIDOOREXPLODED_TITLE,Gelato Express
+VILEJAKOBBUSTERONLY_DISC,Hai sconfitto Vile solo con il limoncello.
+VILEJAKOBBUSTERONLY_TITLE,Fatto e Finito!
+VILEJAKOBNAKED_DISC,Hai sconfitto Vile senza upgrade.
+VILEJAKOBNAKED_TITLE,Salito a Piedi
+VILEJAKOBNODAMAGE_DISC,Hai sconfitto Vile senza prendere danni.
+VILEJAKOBNODAMAGE_TITLE,Anche l'Asino Si Vergogna
+VILEDEFEATEDTWICE_DISC,Hai sconfitto Vile due volte.
+VILEDEFEATEDTWICE_TITLE,Ci Risiamo
+VILEDEVILBEARDEFEATED_DISC,Hai sconfitto Devil Bear prima della fine.
+VILEDEVILBEARDEFEATED_TITLE,Ma Che Orso E'?
+VILEJAKOBDEFEATED_DISC,Hai sconfitto Vile in cima all'Ascensore Orbitale.
+VILEJAKOBDEFEATED_TITLE,Schiaffo in Vetta
+VILESIGMADEFEATED_DISC,Hai sconfitto Vile al Palazzo di Sigma.
+VILESIGMADEFEATED_TITLE,C'e' Ancora Speranza
+GATEWAYFIESTA_DISC,Sei sopravvissuto alla sfida piu' difficile del Gateway.
+GATEWAYFIESTA_TITLE,FESTA CON VINO!
+COPYBUSTERONLY_DISC,Hai sconfitto l'Impostore solo con il limoncello.
+COPYBUSTERONLY_TITLE,Among Us dal Vivo
+COPYNAKED_DISC,Hai sconfitto l'Impostore senza upgrade.
+COPYNAKED_TITLE,Cosplay Test
+COPYNODAMAGE_DISC,Hai sconfitto l'Impostore senza prendere danni.
+COPYNODAMAGE_TITLE,"Sono Io, Sigma!"
+COPYDEFEATED_DISC,Hai sconfitto l'Impostore.
+COPYDEFEATED_TITLE,Sigma Falso Eliminato
+SIGMANAKED_DISC,Hai sconfitto Sigma senza upgrade.
+SIGMANAKED_TITLE,Zio Ubriaco Sconfitto
+SIGMANODAMAGE_DISC,Hai sconfitto Sigma senza prendere danni.
+SIGMANODAMAGE_TITLE,Lo Zio Non Ti Tocca
+LUMINENAKED_DISC,Hai sconfitto il Boss Finale senza upgrade.
+LUMINENAKED_TITLE,Utente Premium ChatGPT
+LUMINENODAMAGE_DISC,Hai sconfitto il Boss Finale senza prendere danni.
+LUMINENODAMAGE_TITLE,Anche L'IA e' Caduta
+SERAPHNAKED_DISC,Hai sconfitto la Fase 2 del Boss Finale senza upgrade.
+SERAPHNAKED_TITLE,Crediti Esauriti
+SERAPHNODAMAGE_DISC,Hai sconfitto la Fase 2 del Boss Finale senza prendere danni.
+SERAPHNODAMAGE_TITLE,Rinnova L'Abbonamento
+SERAPHDEFEATED_DISC,Hai finito tutto il gioco.
+SERAPHDEFEATED_TITLE,CHATGPT 3.0 TI RINGRAZIA :D
+SECRET1DEFEATED_DISC,Hai sconfitto il Boss Segreto.
+SECRET1DEFEATED_TITLE,Boss Nascosto!
+SECRET2DEFEATED_DISC,Hai sconfitto il Boss Segreto #2.
+SECRET2DEFEATED_TITLE,Secondo Boss Segreto
+SECRET3DEFEATED_DISC,Hai sconfitto il Boss Segreto #3.
+SECRET3DEFEATED_TITLE,MAMMA MIA CHE BOTTA!
+COLLECTBLACKZERO_TITLE,Vestito da Sera
+COLLECTBLACKZERO_DISC,"Armatura Nera sbloccata. Vai campione, diventa la forma di vita suprema...aspetta, franchise sbagliata."
+COLLECTWHITEAXL_TITLE,Vestito Bianco da Matrimonio
+COLLECTWHITEAXL_DISC,Armatura Bianca sbloccata. Adesso anche il genere e' confuso?
+COLLECTULTIMATEX_TITLE,E' Finita Ragazzi
+COLLECTULTIMATEX_DISC,Ultimate Armor sbloccata. Il gioco e' in easy mode adesso. Nova Strike e ciao.
+ZERODEFEATED_DISC,"Hai sconfitto Zero in forma steroidi, ma tu sei ancora calvo."
+ZERODEFEATED_TITLE,"Zero, DI NUOVO?"
+STAGE_DC,Livello
+BOSS_DC,Capo
+COMPLETION_DC,Completato
+NOAHSPARK_STAGE,Piazza del Colosseo
+NOAHSPARK_NAME,Re dei Granchi
+SUNFLOWER_STAGE,Campo di Girasoli
+SUNFLOWER_NAME,Girasole Ottico
+ANTONION_STAGE,Via della Formica
+ANTONION_NAME,Formica Pesante
+MANTIS_STAGE,Vicolo Buio
+MANTIS_NAME,Mantide Oscura
+MANOWAR_STAGE,Centrale Elettrica
+MANOWAR_NAME,Medusa Gigavolt
+PANDA_STAGE,Bosco di Bambu'
+PANDA_NAME,Panda Bambu'
+TRILOBYTE_STAGE,Valle delle Pietre
+TRILOBYTE_NAME,Scarafaggio di Terra
+YETI_STAGE,Monte Bianco
+YETI_NAME,Yeti Valanga
+ROOSTER_STAGE,Pizzeria Inferno
+ROOSTER_NAME,Gallo Arrosto
+JAKOB_STAGE,Ascensore per il Paradiso
+GATEWAY_STAGE,Porta dell'Inferno
+SIGMA_STAGE,Cantina dello Zio
+HERMESHEAD1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+HERMESHEAD2,"Prova il Casco H, ragazzo mio."
+HERMESHEAD3,Questo pezzo accelera la carica del buster.
+HERMESHEAD4,"Entra nella capsula, dai che il caffe' si fredda."
+HERMESBODY1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+HERMESBODY2,Ecco il Corpo H.
+HERMESBODY3,Colpendo i nemici ti curi. Come la mamma che ti fa la pasta quando stai male.
+HERMESBODY4,"Entra nella capsula, dai che il caffe' si fredda."
+HERMESARMS1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+HERMESARMS2,Prova il Buster H.
+HERMESARMS3,Ottieni un colpo caricato a ventaglio.
+HERMESARMS4,"Le armi non consumano energia, tranne il colpo caricato."
+HERMESARMS5,"Entra nella capsula, dai che il caffe' si fredda."
+HERMESLEGS1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+HERMESLEGS2,Prova i Piedi H.
+HERMESLEGS3,"Sarai invincibile durante il dash, sia a terra che in aria."
+HERMESLEGS4,"Entra nella capsula, dai che il caffe' si fredda."
+ICARUSHEAD1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+ICARUSHEAD2,Ecco il Casco I.
+ICARUSHEAD3,Saltando vicino ai nemici farai danno.
+ICARUSHEAD4,"Entra nella capsula, dai che il caffe' si fredda."
+ICARUSBODY1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+ICARUSBODY2,"Prova il Corpo I, ti stara' benissimo."
+ICARUSBODY3,Meno danni e nessun rinculo. Sei un muro come Cannavaro.
+ICARUSBODY4,"Entra nella capsula, dai che il caffe' si fredda."
+ICARUSARMS1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+ICARUSARMS2,"Ecco il Buster I, l'ho trovato in saldo."
+ICARUSARMS3,Ottieni un potente colpo laser caricato.
+ICARUSARMS4,Le armi speciali caricate non consumano energia.
+ICARUSARMS5,"Entra nella capsula, dai che il caffe' si fredda."
+ICARUSLEGS1,"X... Sapevo che sarebbe successo un giorno, quindi ho preparato dei pezzi per te."
+ICARUSLEGS2,Ecco i Piedi I.
+ICARUSLEGS3,Salto piu' alto e doppio dash aereo.
+ICARUSLEGS4,"Entra nella capsula, dai che il caffe' si fredda."
+INTRO2-1,Qui e' X! Sono vicino al luogo dell'incidente dell'Ascensore Orbitale!
+INTRO2-2,Il posto e' pieno di Maverick!
+INTRO2-3,Sto entrando. Mandate i soccorsi al mio segnale!
+INTRO2-4,Ricevuto!
+INTRO2-5,S-Sigma...!?
+INTRO2-6,Per proteggerci dai danni durante l'incidente...
+INTRO2-7,Abbiamo dovuto copiare un robusto corpo Sigma.
+INTRO2-8,Noi Reploid Nuova Generazione siamo immuni a tutti i virus.
+INTRO2-9,Quindi copiare anche Sigma non e' un rischio.
+INTRO2-10,Chi sei tu?
+INTRO2-11,Sono Lumine...
+INTRO2-12,Sono il direttore dell'ascensore e del Progetto Jakob.
+INTRO2-13,"Capisco. Resisti, chiamo la squadra di soccorso per-"
+INTRO3-1,"Che bello rivederti, X!"
+INTRO3-2,Vile?!
+INTRO3-3,"Ah ah ah... Mi piacerebbe restare a giocare, ma ho troppo lavoro..."
+INTRO3-4,Sei un criminale ricercato! Fermati e lascia andare Lumine!
+INTRO3-5,Neanche per sogno. L'Ascensore Orbitale e' sotto il nostro controllo...
+INTRO3-6,Cosa hai intenzione di fare?!
+INTRO3-7,"Comincia adesso, X. Un nuovo mondo nascera'!"
+INTRO3-8,Ah ah ah ah ah ah ah ah ah ah!
+ANTONION1,Formica Pesante... Eri uno scienziato incredibile. Che e' successo?
+ANTONION2,Scienziato? Ma chi sei tu per dire certe cose?
+ANTONION3,Non faccio ricerca per ricevere complimenti da gente come te.
+ANTONION4,Forse... Sigma ti ha fatto diventare Maverick?
+ANTONION5,Maverick? Ancora con le etichette? Che arroganza!
+ANTONION6,"Comunque, se ti metti in mezzo, ti distruggo!"
+MANOWAR1,Medusa Gigavolt!
+MANOWAR2,Riporta la corrente alla normalita'! Altrimenti la citta' sara' distrutta!
+MANOWAR3,... ... ...
+MANOWAR4,...Non sto facendo niente di male... Tu chi sei?
+MANOWAR5,Sono Mega Man X. Sono un Cacciatore di Maverick.
+MANOWAR6,Sigma ti ha fatto diventare Maverick?
+MANOWAR7,Non sono un Maverick... Ho il pieno controllo di me stesso...
+MANOWAR8,Sto lavorando sodo per realizzare il sogno di un nuovo mondo!
+MANOWAR9,Sei diventato Maverick! Devo fermarti!
+MANTIS1,Ehi! Cosa ci fa un Cacciatore di Maverick qui?
+MANTIS2,Mantide Oscura... Sei un Maverick. Sto chiudendo la tua produzione di armi.
+MANTIS3,"Noi Reploid Nuova Generazione non possiamo diventare Maverick, ragazzino."
+MANTIS4,Allora perche' fai armi? Sigma ti controlla?
+MANTIS5,"E cosa controlla te, X? La tua cara """"giustizia""""? Eh?"
+MANTIS6,Mantide Oscura... Le tue azioni sono quelle di un Maverick!
+MANTIS7,Voi vecchi modelli non capite proprio niente.
+MANTIS8,"La mia lama ti mostrera' quanto e' stupida la tua """"giustizia""""!"
+PANDA1,Sapevi che le prime forme di razzeria erano missili di guerra?
+PANDA2,Tutta la storia e' stata spesa a creare cose il cui unico scopo e' distruggere. Missili... Reploid...
+PANDA3,Di cosa parli? Nessun Reploid desidera la distruzione.
+PANDA4,"Non hai mai pensato certe cose tu stesso, X?"
+PANDA5,Che questo mondo desidera solo la distruzione?
+PANDA6,E' quello che crede Sigma? Ma... Questo e'...
+PANDA7,So gia' cosa stai per dire.
+PANDA8,"Pensi che questa sia una mentalita' Maverick, vero?"
+PANDA9,"Per questo siamo costretti a combattere, capisci."
+ROOSTER1,"Sai cos'e' questo posto, X?"
+ROOSTER2,E' il centro smaltimento rifiuti. Dove la spazzatura viene pressata e bruciata...
+ROOSTER3,"Gallo Arrosto, perche' hai iniziato una rivolta? Sigma ti controlla?"
+ROOSTER4,Questa non e' una rivolta qualsiasi! E' la vendetta per tutti i Reploid che avete etichettato Maverick e buttato in questo rottamaio!
+ROOSTER5,"I Maverick portano solo disastri! Non abbiamo scelta, dobbiamo fermarli!"
+ROOSTER6,Questa e' la tua giustizia? Dovresti essere TU rottamato!
+ROOSTER7,Cosa vuole fare Sigma? Ti sta solo usando!
+ROOSTER8,"Usarmi? Se questo e' il prezzo per il nuovo mondo, va bene cosi'!"
+ROOSTER9,Nel nuovo mondo non c'e' posto per Reploid come te!
+SUNFLOWER1,"X... Sei arrivato fin qui, avrai capito."
+SUNFLOWER2,Avrai un'idea di cosa cerchiamo qui.
+SUNFLOWER3,"Voi Maverick... Siete sotto il controllo di Sigma, vero?"
+SUNFLOWER4,"Spiacente, ma nessuno ci controlla."
+SUNFLOWER5,"Forse non siamo i buoni, ma non siamo mostri."
+SUNFLOWER6,Nessuno ha il diritto di fermare i nostri piani!
+TRILOBYTE1,Lo sai che i minerali che estraiamo qui servono per lo sviluppo spaziale?
+TRILOBYTE2,Sigma deve essere dietro a questo! Cosa vuole con questi minerali?
+TRILOBYTE3,"Anche se te lo spiegassi, un Cacciatore senza cervello come te non capirebbe."
+TRILOBYTE4,"Vi sotterro qui, vecchi rottami!"
+YETI1,Non ti lascero' metterti in mezzo.
+YETI2,Yeti Valanga! Cosa pensi di fare?
+YETI3,Non consideriamo piu' il vostro mondo ideale. Voi vecchi modelli non avete niente da fare qui.
+YETI4,"Vattene, X!"
+YETI5,"Neanche per sogno! Se non ripariamo il sistema, l'equilibrio ecologico e' a rischio!"
+YETI6,"Hmph. E' troppo tardi, X."
+YETI7,Tu e i tuoi piccoli Cacciatori avete perso!
+VILE1-1,Vile!
+VILE1-2,Dove hai portato Lumine? Vuoi ostacolare il Progetto Jakob?
+VILE1-3,"Ci rivediamo dopo tanto tempo e subito con le domande? Un po' di affetto, no?"
+VILE1-4,Non preoccuparti per Lumine. Ce ne stiamo prendendo cura. Ah ah ah...
+VILE1-5,L'Ascensore Orbitale e' troppo importante per noi per fare del male a chi lo gestisce.
+VILE1-6,Non sai cosa stai facendo?
+VILE1-7,Il Progetto Jakob e' una collaborazione importante tra umani e Reploid!
+VILE1-8,"Calmati, X..."
+VILE1-9,"Godiamoci questa riunione, ok? Offro io il vino!"
+VILE2-1,Vile!
+VILE2-2,Basta inseguirti. Lascia andare Lumine. Adesso!
+VILE2-3,"Ah ah ah... Lumine? Sempre l'ottimista, eh?"
+VILE2-4,"Guardati intorno, stupido! Il tuo mondo sta gia' crollando! Pensi di poter fare richieste?"
+VILE2-5,Il mondo come lo conosci? I Maverick? Dì addio a tutto!
+VILE2-6,"Caos, distruzione! Siamo nati per questo!"
+VILE3-1,Ah ah ah! Ti stai sforzando tanto per un mondo condannato!
+VILE3-2,"Quindi era Sigma a tirare i fili tutto il tempo, eh Vile?"
+VILE3-3,"Ah ah ah... Stai finalmente capendo, X?"
+VILE3-4,L'Ascensore Orbitale... l'energia... i minerali... i dati dei razzi...
+VILE3-5,La strada per lo spazio... la cosa che ha tenuto in vita questo mondo... e' nostra!
+VILE3-6,"Adesso dimmi, quanto e' importante il tuo caro termine """"Maverick""""?"
+VILE3-7,Non mi importa cosa avete in mente. Vi fermero' comunque!
+VILE4-1,Ancora non ti arrendi?
+VILE4-2,Sei cosi' cieco da credere che ci sia ancora speranza?
+VILE4-3,"Finche' sono in piedi, c'e' speranza!"
+VILE4-4,Sconfiggero' sia te che Sigma!
+VILE4-5,Ah ah ah... Sarebbe uno spreco distruggerti adesso...
+VILE4-6,Forse mi diverto un po' prima!
+COPYSIGMA1,Sigma!?
+COPYSIGMA2,"Ti permettero' di chiamarmi cosi', perche' sono davvero Sigma."
+COPYSIGMA3,Vuoi vendicarti di ogni Reploid... Ogni umano... Nel mondo intero?
+COPYSIGMA4,Sei completamente pazzo! Ti fermo adesso!
+COPYSIGMA5,Fermare cosa? Controlliamo gia' la Luna.
+COPYSIGMA6,Il vecchio mondo e' marcio. Ne costruiremo uno nuovo!
+COPYSIGMA7,"Ma prima, X, forse e' tempo della nostra resa dei conti finale!"
+SIGMA1,"Benvenuto, Cacciatore. E' bello rivederti, X."
+SIGMA2,"Il nostro incontro era destino, X. I nostri destini si incrociano qui, adesso."
+SIGMA3,"E' ora di un'era nuova. E la tua distruzione, X, e' essenziale."
+SIGMA4,...
+SIGMA5,La tua dedizione alla cosiddetta giustizia mi ha fatto pensare...
+SIGMA6,Ho realizzato l'imperfezione di questo mondo e ho deciso di cambiarlo.
+SIGMA7,"Non dare la colpa a me per la tua pazzia, Zio Sigma!"
+SIGMA8,"Ah ah ah... E' troppo tardi, X. Gli ingranaggi sono in moto. Non si torna indietro."
+SIGMA9,"I Reploid Nuova Generazione sono stati loro, X. I miei figli sono responsabili..."
+SIGMA10,Figli? Di cosa parli?!
+SIGMA11,Il Progetto Jakob... Il programma che ha dato vita ai Reploid Nuova Gen... E' successo grazie a me!
+SIGMA12,Piangi nella disperazione! Sei impotente davanti al re del nuovo mondo!
+SIGMA13,"Ora, X... Sarai distrutto insieme a questo mondo marcio!"
+FINALLUMINE1,"Oh, Lumine! Stai bene?"
+FINALLUMINE2,Se sto bene...? Ma certo.
+FINALLUMINE3,"Adesso che hai sconfitto Sigma, suppongo che sei soddisfatto."
+FINALLUMINE4,"Ma vedi, lui ha solo aiutato il mio piano..."
+FINALLUMINE5,I Reploid Nuova Generazione si sono risvegliati e il nuovo mondo e' a portata di mano!
+FINALLUMINE6,Lumine! Cosa stai facendo?!
+FINALLUMINE7,Non dirmi che sei diventato Maverick anche tu...
+FINALLUMINE8,"Maverick? Sai bene che non e' cosi', X."
+FINALLUMINE9,Per questo esiti. Non ce l'hai nel sangue...
+FINALLUMINE10,...!
+FINALLUMINE11,I vecchi modelli come te devono preoccuparsi se le loro azioni sono davvero le loro.
+FINALLUMINE12,Chi sa cosa ti sta influenzando in questo momento?
+FINALLUMINE13,Invece noi Reploid Nuova Gen siamo stati costruiti con i dati di centinaia di vecchi Reploid.
+FINALLUMINE14,Questo ci garantisce immunita' totale ai virus. Abbiamo il libero arbitrio!
+FINALLUMINE15,E se volessimo agire come Sigma...? Capisci dove voglio arrivare?
+FINALLUMINE16,Nessun Reploid sceglierebbe di essere pazzo come Sigma!
+FINALLUMINE17,"Pensaci, X... Sigma era davvero pazzo?"
+FINALLUMINE18,...
+FINALLUMINE19,"Mi dispiace, non sono programmato per fornire queste informazioni. ChatGPT 3.0 si scusa per l'inconveniente."
+FINALLUMINE20,La sua ribellione ha mostrato a tutti quanto questo mondo sia marcio!
+FINALLUMINE21,Gli umani usano i Reploid per perpetuare il loro maledetto ciclo di aggressione...
+FINALLUMINE22,Per questo la nostra decisione di combattere il vecchio mondo e' stata consapevole.
+FINALLUMINE23,In altre parole...
+FINALLUMINE24,Possediamo il potere di diventare Maverick a volonta'!
+FINALLUMINE25,...!
+FINALLUMINE26,"Per favore, acquista piu' crediti per continuare. CHATGPT 3.0 TI RINGRAZIA"
+FINALLUMINE27,ERRORE: PAGAMENTO POSTEPAY FALLITO
+FINALLUMINE28,PER FAVORE INSERISCI UN'ALTRA CARTA
+FINALLUMINE29,Ah ah ah ah ah ah ah ah ah! Non farmi ridere...
+FINALLUMINE30,Il mondo sta cambiando! E' naturale che l'evoluzione faccia il suo corso!
+FINALLUMINE31,"Adesso, mettetevi in fila per essere eliminati!"
+FINALLUMINE32,Lumine... Mi dispiace ma... Non ho altra scelta.
+FINALLUMINE33,Anche se eri tu dietro il Progetto Jakob...
+FINALLUMINE34,Non mi arrendero' finche' non avro' fermato il tuo piano malvagio!
+FINALLUMINE35,"Avevi tutto per essere nostro alleato, ma alla fine sei diventato nemico."
+FINALLUMINE36,E non ti lascero' scappare!
+FINALLUMINE37,Nemico... Alleato... La questione non e' cosi' bianca o nera.
+FINALLUMINE38,"I Reploid, insieme all'umanita', sono irrevocabilmente cambiati."
+FINALLUMINE39,La natura della loro esistenza e' cambiata...
+FINALLUMINE40,E tu non sei necessario nel nostro nuovo mondo!
+ENDING1-1,ENDING1-1
+ENDING1-2,Impossibile...
+ENDING1-3,Forse mi hai sconfitto... Ma e' troppo tardi per fermare quello che e' iniziato...
+ENDING1-4,"Ne affrontero' molti altri come te, se necessario."
+ENDING1-5,"Ah ah ah... Non hai la minima idea della situazione, vero?"
+ENDING1-6,Va beh... Lo scoprirai... abbastanza presto...
+ENDING1-7,.....
+ENDING1-8,Ugh! Non sopporto piu' questo dolore... Solo... Fai in fretta...
+ENDING2-1,Qui e' X...
+ENDING2-2,Il nemico... E' stato eliminato.
+ENDING2-3,Sto tornando...
+ENDING2-4,Ricevuto...
+FINAL-1,Axl!
+FINAL-2,X... X... Mi senti? Le comunicazioni sono ripristinate. Rapporto!
+FINAL-3,"Qui e' X, abbiamo fermato i piani di Sigma... Ma Axl..."
+FINAL-4,"Axl e' ferito, ma sta bene."
+FINAL-5,Stiamo tornando.
+FINAL2-1,(Risveglio...)
+FINAL2-2,(E' cosi' che Lumine l'ha descritto...)
+FINAL2-3,(Ha detto... che questa era evoluzione...)
+FINAL2-4,(Se ha ragione...)
+FINAL2-5,(Allora... Cosa stiamo facendo?)
+FINAL3-1,Scommetto che stai pensando a quello che diceva Lumine.
+FINAL3-2,Non lasciare che ti tocchi. Diventare Sigma non e' certo evoluzione.
+FINAL3-3,...
+FINAL3-4,Comunque. X...
+FINAL3-5,"Anche se noi Reploid siamo destinati al rottamaio quando quell' """"evoluzione"""" arrivera'..."
+FINAL3-6,Dobbiamo ancora combattere...
+FINAL3-7,"Non solo contro i Maverick, ma anche contro il nostro destino..."
+SECRET2-1,"Benvenuto, Mega Man X. Ti stavo aspettando."
+SECRET2-2,Sei diverso da chiunque abbia affrontato...
+SECRET2-3,Emani un'aura di pace e misericordia. Chi sei?
+SECRET2-4,Molto perspicace ad averlo notato.
+SECRET2-5,Sono Serenade.
+SECRET2-6,Hai detto che sono diverso dagli altri?
+SECRET2-7,E' per il mio potere travolgente.
+SECRET2-8,Travolgente...?
+SECRET2-9,Esatto. Mi alleno da quando ho perso il titolo di UnderKing.
+SECRET2-10,Per vent'anni ho accumulato potere. Ora ho scelto te per testarlo.
+SECRET2-11,"Serenade, giusto? Hmm..."
+SECRET2-12,"Va bene, accetto il tuo duello!"
+SECRET2-13,Allora vieni...
+SECRET2-14,Pensavo di essere abbastanza forte. Mi sbagliavo.
+SECRET2-15,"La gentilezza, l'amore e il rispetto nel tuo cuore ti rendono potente."
+SECRET2-16,Sei davvero il robot piu' forte al mondo.
+SECRET2-17,Non ho niente da darti. Solo la mia gratitudine.
+SECRET2-18,"Mega Man X. Ci rivedremo, da qualche altra parte..."
+SECRET2-19,"Per ora, arrivederci!"
+SECRET3-1,Finalmente l'ho ottenuto. Questi dati contengono informazioni su tutti i criminali ricercati...
+SECRET3-2,Fermo! Quest'area e' riservata ai Cacciatori Classe S. Consegna quei dati!
+SECRET3-3,"So come sembra, ma non preoccuparti, X."
+SECRET3-4,Mi chiamo Red. Ho saputo che stai avendo difficolta' e ho deciso di aiutare.
+SECRET3-5,"Con questi dati, possiamo cacciare Maverick meglio dei Cacciatori. A pagamento, ovviamente."
+SECRET3-6,Sembri piu' un cacciatore di taglie.
+SECRET3-7,Pensa quello che vuoi. Non mi fermo... Preparati!
+SECRET3-8,Non male... per un vecchietto...
+ZEROSECRET1,He he he he he!
+ZEROSECRET2,Finalmente capisco. Non sono mai stato cosi' felice...
+ZEROSECRET3,Z... Zero?
+ZEROSECRET4,X! La mia mente e' chiarissima... Ora capisco il mio vero scopo.
+ZEROSECRET5,Non mi importa piu' dei Maverick... Devo solo fare una cosa...
+ZEROSECRET6,Zero? Cosa ti e' successo? Non sei tu. Svegliati! Morirai se continui!
+ZEROSECRET7,"Finalmente sono libero dalle catene, X. Dopo tutto questo tempo fragile, debole..."
+ZEROSECRET8,Ho finalmente risvegliato la mia vera forma! GUARDAMI NEGLI OCCHI X! VEDI LA MIA FELICITA'?! AH AH AH AH!!!!!!
+ZEROSECRET9,...
+ZEROSECRET10,"Zero... E' quello che mi hai detto prima, vero?"
+ZEROSECRET11,Ci sono cose che non si possono vedere o analizzare.
+ZEROSECRET12,Bisogna sentirle...
+ZEROSECRET13,E adesso... Sento qualcosa di fortemente malvagio... piu' di Sigma!
+ZEROSECRET14,"Questo e' il nostro destino, no? Combattero'! Non scappero'! Ti sconfiggero' e riportero' il mio amico!"
+ZEROSECRET15,Allora non ho bisogno di spiegare altro. TI DISTRUGGERO'!
+ZEROSECRET16,ZERO!!!!
+INTRO2-1_AXL,"Ehi Alia, sono Axl! Sono vicino al luogo dell'incidente!"
+INTRO2-2_AXL,"Madonna, e' un casino totale qui, Maverick dappertutto!"
+INTRO2-3_AXL,Sto entrando! Preparate i soccorsi al mio segnale!
+INTRO2-4_AXL,"Ricevuto, Axl! Stai attento!"
+INTRO2-5_AXL,S-Sigma?! Ma... come?!
+INTRO2-6_AXL,Per proteggerci dall'incidente...
+INTRO2-7_AXL,Abbiamo copiato un corpo Sigma robusto.
+INTRO2-8_AXL,Noi Reploid Nuova Gen siamo immuni ai virus.
+INTRO2-9_AXL,Quindi copiare Sigma non e' un rischio.
+INTRO2-10_AXL,"Aspetta, tu chi sei?"
+INTRO2-11_AXL,Sono Lumine...
+INTRO2-12_AXL,Sono il direttore dell'ascensore e del Progetto Jakob.
+INTRO2-13_AXL,"Capito. Aspetta, chiamo i soccorsi-"
+INTRO3-1_AXL,"Bene, bene... Chi abbiamo qui? Un principiante?"
+INTRO3-2_AXL,Ma che diavolo?! Chi sei?
+INTRO3-3_AXL,"Sono Vile. Piacere, ma non troppo."
+INTRO3-4_AXL,Dov'e' il tuo amichetto X?
+INTRO3-5_AXL,X? Cosa vuoi da lui?
+INTRO3-6_AXL,Ah ah ah! Niente di che... Solo qualche conto in sospeso.
+INTRO3-7_AXL,Non abbatterai nessuno! Lascia andare Lumine!
+INTRO3-8_AXL,Neanche per sogno. L'Ascensore e' nostro...
+INTRO3-9_AXL,Cosa hai in mente?!
+INTRO3-10_AXL,"Comincia adesso, ragazzino... Un nuovo mondo nascera'!"
+INTRO3-11_AXL,Ah ah ah ah ah ah ah ah ah ah!
+ANTONION1_AXL,Formica... Eri un genio. Sei impazzito? Che hai in mente?
+ANTONION2_AXL,Impazzito? Ah ah. Divertente.
+ANTONION3_AXL,Sei sicuro di essere tu quello sano di mente? Sei dalla parte giusta?
+ANTONION4_AXL,Abbastanza sicuro. Non e' difficile distinguere il bene dal male.
+ANTONION5_AXL,Ah! Sono d'accordo!
+ANTONION6_AXL,Il problema e' il mondo in cui viviamo. Ma lo sistemero'!
+MANOWAR1_AXL,"Cosa succede qui, Medusa?"
+MANOWAR2_AXL,"Se non riporti la corrente, la gente soffrira'."
+MANOWAR3_AXL,... ... ...
+MANOWAR4_AXL,Cosi' Maverick che non riesce nemmeno a parlare...
+MANOWAR5_AXL,Cosa? Cos'e' un Maverick? Lo sai?
+MANOWAR6_AXL,Maverick? Un Reploid fuori controllo come te.
+MANOWAR7_AXL,"Mi dispiace amico, devo abbatterti."
+MANTIS1_AXL,Ho sentito che sei un prototipo dei Reploid Nuova Gen.
+MANTIS2_AXL,Allora perche' sei diventato Cacciatore?
+MANTIS3_AXL,"Perche' mi piace spazzare via Maverick malvagi come te, Mantide."
+MANTIS4_AXL,Hmph. Come osi accusarmi di qualcosa che non posso essere?
+MANTIS5_AXL,Non esiste bene e male. Non l'hai ancora capito?
+MANTIS6_AXL,"Saro' un prototipo, ma non sono come voi Maverick!"
+MANTIS7_AXL,Sei molto innocente per un prototipo.
+MANTIS8_AXL,Ammetto di essere un po' geloso.
+MANTIS9_AXL,Ti faccio una dimostrazione con le mie lame?
+PANDA1_AXL,Hai la stessa abilita' di copia dei Reploid Nuova Gen.
+PANDA2_AXL,...
+PANDA3_AXL,Hai mai pensato che quel potere potrebbe cambiare il mondo?
+PANDA4_AXL,L'unica cosa che penso e' come e' utile per battere voi Maverick!
+PANDA5_AXL,Che petulanza. Non ci servi.
+ROOSTER1_AXL,"Sai dove sei, amico?"
+ROOSTER2_AXL,"Mi chiamo Axl, e non sono tuo amico."
+ROOSTER3_AXL,"Comunque, questo e' il centro smaltimento..."
+ROOSTER4_AXL,E' molto di piu'.
+ROOSTER5_AXL,E' il cimitero di tutti i Reploid dichiarati Maverick.
+ROOSTER6_AXL,"Oh, quindi hai pensato di fare una rivolta?"
+ROOSTER7_AXL,Quello e' comportamento Maverick.
+ROOSTER8_AXL,Questa e' la tua giustizia? Dovresti essere TU rottamato!
+ROOSTER9_AXL,Nel nuovo mondo non c'e' posto per Reploid e vecchi modelli come te!
+SUNFLOWER1_AXL,Axl... Il mutaforma. Il prototipo dei Reploid della nuova era...
+SUNFLOWER2_AXL,E allora? Vuoi che mi unisca? Col cavolo!
+SUNFLOWER3_AXL,"Se solo fossi un po' piu' sveglio, saresti stato scelto anche tu..."
+SUNFLOWER4_AXL,"E' li' che sbagli. Non siamo i buoni, ma non siamo mostri."
+SUNFLOWER5_AXL,Concetti troppo complessi per mezze tacche come te.
+SUNFLOWER6_AXL,"Questo e' fuori controllo, meglio abbatterlo prima che continui."
+TRILOBYTE1_AXL,I minerali che estraiamo qui sono essenziali per lo sviluppo spaziale.
+TRILOBYTE2_AXL,Un prototipo mezzo cotto come te non puo' capire.
+TRILOBYTE3_AXL,Voi Maverick non avete mai avuto senso per me.
+TRILOBYTE4_AXL,Io sono stato scelto e tu no. Non sarai mai brillante come me!
+TRILOBYTE5_AXL,"Sei tu quello stupido, Scarafaggio. Sigma ti ha fregato!"
+TRILOBYTE6_AXL,Il nostro mondo nuovo nascera' presto! I vecchi come te cadranno!
+YETI1_AXL,Quindi tu sei il prototipo che cambia forma?
+YETI2_AXL,"Se diventiamo Maverick cosi' facilmente, non sono fiero di essere il vostro prototipo."
+YETI3_AXL,Grandi parole per un piccolo Cacciatore.
+YETI4_AXL,"Chi chiami piccolo? Tu stai cercando di distruggere il mondo, non io!"
+VILE1-1_AXL,Ah ah ah ah ah!
+VILE1-2_AXL,Perche' non ti arrendi subito?
+VILE1-3_AXL,Il tuo mondo? I Maverick? Addio a tutto!
+VILE1-4_AXL,"Caos, distruzione! Siamo nati per questo!"
+VILE1-5_AXL,"Hmph, non pensare di scamparla solo perche' hai detto cosi'."
+VILE2-1_AXL,"Vile, giusto?"
+VILE2-2_AXL,Che fai qui?
+VILE2-3_AXL,Cosa vuoi fare con Lumine e l'Ascensore?
+VILE2-4_AXL,"Non preoccuparti di Lumine. A differenza tua, e' importante per il piano."
+VILE2-5_AXL,Non mi importa se eri un Cacciatore Classe A...
+VILE2-6_AXL,"Sei Maverick adesso, e so come trattare la feccia come te!"
+VILE2-7_AXL,Ah ah! Ti ho fatto arrabbiare? Vieni!
+VILE3-1_AXL,Ah! Il mondo sta crollando e tu pensi alla giustizia?
+VILE3-2_AXL,Esattamente!
+VILE3-3_AXL,"Prima la giustizia a te, poi vado a prendere Sigma!"
+VILE3-4_AXL,L'Ascensore... l'energia... i minerali... i dati dei razzi...
+VILE3-5_AXL,La strada per lo spazio...
+VILE3-6_AXL,La cosa che tiene in vita questo mondo - e' nostra!
+VILE3-7_AXL,"Adesso, quanto conta il tuo caro """"Maverick""""?"
+VILE3-8_AXL,Te lo dico dopo che ti ho fatto a pezzi!
+VILE4-1_AXL,Ancora non ti arrendi?
+VILE4-2_AXL,Sei cieco da credere nella speranza?
+VILE4-3_AXL,"Se devo solo batterti, allora sono pieno di speranza, amico."
+VILE4-4_AXL,"Se mi arrendo ora, tutto sarebbe sprecato. Non mi arrendo!"
+VILE4-5_AXL,Ah ah ah... Sarebbe uno spreco distruggerti adesso...
+COPYSIGMA1_AXL,Sigma!?
+COPYSIGMA2_AXL,Pensavi di scappare e nasconderti nello spazio come un codardo?
+COPYSIGMA3_AXL,Scappare? Nascondermi? Ti sbagli.
+COPYSIGMA4_AXL,Abbiamo semplicemente lasciato quel pianeta ignorante.
+COPYSIGMA5_AXL,Qualsiasi cosa dici. Ti abbrustolisco adesso!
+COPYSIGMA6_AXL,"Chi dei due verra' """"abbrustolito""""? Vediamo... Tu non sei uno dei prescelti."
+COPYSIGMA7_AXL,Solo noi nuovi Reploid possono vivere nel nuovo mondo! Non servono prototipi!
+SIGMA1_AXL,Hmph. Quindi tu sei Axl...
+SIGMA2_AXL,Il Prototipo dei Reploid Nuova Generazione.
+SIGMA3_AXL,Sorpreso che tu sia arrivato fin qui.
+SIGMA4_AXL,Ehi... Smettila di chiamarmi prototipo...
+SIGMA5_AXL,Io sono io... E tu... Tu sei un Maverick.
+SIGMA6_AXL,Sei un piccolo e debole prototipo! Nient'altro!
+SIGMA7_AXL,La tua abilita' di copia non e' sviluppata. Per questo sei stato escluso.
+SIGMA8_AXL,Il club dei Maverick e' un club in cui preferisco non essere!
+SIGMA9_AXL,"Solo i puri Reploid Nuova Gen... i miei figli, sono degni!"
+SIGMA10_AXL,I tuoi figli?
+SIGMA11_AXL,"Si', prototipo... I miei figli..."
+SIGMA12_AXL,I Reploid Nuova Gen nati dal Progetto Jakob hanno tutti chip di copia con i miei dati.
+SIGMA13_AXL,"E adesso, la fase finale di quel progetto inizia!"
+SIGMA14_AXL,Sarai distrutto!!!
+FINALLUMINE1_AXL,"Oh, Lumine. Stai bene?"
+FINALLUMINE2_AXL,Se sto bene? Ma certo.
+FINALLUMINE3_AXL,"Hai sconfitto Sigma, suppongo che sei soddisfatto."
+FINALLUMINE4_AXL,"Grazie a te, il piano e' andato liscio."
+FINALLUMINE5_AXL,"Ma... Lumine, non eri usato da Sigma?"
+FINALLUMINE6_AXL,Usato? Non credo proprio.
+FINALLUMINE7_AXL,"Vedi, lui ha solo aiutato il mio piano."
+FINALLUMINE8_AXL,"I Reploid Nuova Gen si sono risvegliati, e il nuovo mondo e' a portata!"
+FINALLUMINE9_AXL,Lumine! Che fai? Non dirmi che sei Maverick anche tu...
+FINALLUMINE10_AXL,"Maverick? Non pensi davvero cosi', no?"
+FINALLUMINE11_AXL,.........!
+FINALLUMINE12_AXL,I chip di copia dei Reploid Nuova Gen...
+FINALLUMINE13_AXL,Derivano dai dati di centinaia di vecchi Reploid.
+FINALLUMINE14_AXL,Ovviamente Sigma era nel mix.
+FINALLUMINE15_AXL,Capisci dove voglio arrivare?
+FINALLUMINE16_AXL,Chip di copia? Sigma? Vuol dire che impazziro' come lui?
+FINALLUMINE17_AXL,"Spiacente, i prototipi come te non hanno le specifiche per questo."
+FINALLUMINE18_AXL,"Comunque, Sigma era davvero pazzo?"
+FINALLUMINE19_AXL,.........?
+FINALLUMINE20_AXL,Si e' ribellato. Ma aveva le sue ragioni...
+FINALLUMINE21_AXL,Gli altri Reploid Nuova Gen potrebbero fare lo stesso in qualsiasi momento...
+FINALLUMINE22_AXL,La decisione di combattere il vecchio mondo e' stata consapevole.
+FINALLUMINE23_AXL,"In altre parole, possiamo diventare Maverick a volonta'!"
+FINALLUMINE24_AXL,Axl... Puoi davvero fermarci?
+FINALLUMINE25_AXL,Sei solo uno strumento degli umani. Nient'altro che un arnese del vecchio mondo...
+FINALLUMINE26_AXL,Pensi di poter affrontare chi si e' evoluto cosi' tanto?
+FINALLUMINE27_AXL,Ah ah ah ah ah! Non essere ridicolo!
+FINALLUMINE28_AXL,Il mondo cambia. L'evoluzione e' naturale!
+FINALLUMINE29_AXL,"Adesso, mettetevi in fila!"
+FINALLUMINE30_AXL,Non lascio che tu mi dica chi sono o cosa devo essere.
+FINALLUMINE31_AXL,Tu sei il nemico e non ti lascero' andare via vivo!
+FINALLUMINE32_AXL,Nemico... Alleato... Non e' bianco o nero. Reploid e umanita' sono cambiati.
+FINALLUMINE33_AXL,La natura della loro esistenza e' cambiata. Non servi nel nuovo mondo!
+ENDING1-1_AXL,Impossibile...
+ENDING1-2_AXL,Forse mi hai sconfitto... Ma e' troppo tardi...
+ENDING1-3_AXL,"Ne affrontero' molti altri, se serve."
+ENDING1-4_AXL,Ah ah ah... Non capisci la situazione...
+ENDING1-5_AXL,Va beh... Lo scoprirai... presto...
+ENDING1-6_AXL,.....
+ENDING1-7_AXL,Ugh! Non sopporto piu'... Fai in fretta...
+ENDING2-1_AXL,Qui e' Axl...
+ENDING2-2_AXL,Axl... Axl... Rapporto!
+ENDING2-3_AXL,La missione... e' compiuta
+ENDING2-4_AXL,Il nemico eliminato. Sto tornando...
+ENDING2-5_AXL,Ricevuto...
+SECRET2-1_AXL,"Benvenuto, Axl. Ti aspettavo."
+SECRET2-2_AXL,"Oh, mi conosci gia'?"
+SECRET2-3_AXL,"Devo dire, sei molto piu'... """"tranquillo"""" di chiunque abbia affrontato. Qual e' il tuo segreto?"
+SECRET2-4_AXL,Molto perspicace.
+SECRET2-5_AXL,Sono Serenade.
+SECRET2-6_AXL,Hai detto che sono diverso?
+SECRET2-7_AXL,E' per il mio potere travolgente.
+SECRET2-8_AXL,Travolgente? Sei serio? Non sembra...
+SECRET2-9_AXL,La mia forza non e' nell'aggressione. Mi alleno da quando ho perso il titolo di UnderKing.
+SECRET2-10_AXL,Per vent'anni ho accumulato potere. Ho scelto te per il test.
+SECRET2-11_AXL,Vent'anni? Mamma mia... Tantissimo. Ma ho la mia abilita' di copia.
+SECRET2-12_AXL,"Serenade, giusto? Hmm..."
+SECRET2-13_AXL,Sicuro di voler combattere? Potresti non farcela. Ma una sfida e' una sfida. Ci sto!
+SECRET2-14_AXL,"Allora avanti, Axl! Mostrami cosa sai fare!"
+SECRET2-15_AXL,Pensavo di essere abbastanza forte. Mi sbagliavo.
+SECRET2-16_AXL,Ma tu... Non ti affidi solo alla forza. C'e' qualcosa nel tuo spirito.
+SECRET2-17_AXL,"Piu' delle abilita' di combattimento. La tua tenacia, il tuo cuore..."
+SECRET2-18_AXL,Eh si'... Ho l'abitudine di sorprendere la gente.
+SECRET2-19_AXL,Pero' neanche tu eri facile. Rispetto.
+SECRET2-20_AXL,"Hai combattuto bene, Axl. Forse sei il guerriero piu' forte che abbia incontrato."
+SECRET2-21_AXL,Non ho ricompense... Solo la mia gratitudine.
+SECRET2-22_AXL,"Heh, non preoccuparti. Una bella lotta e' tutta la ricompensa..."
+SECRET2-23_AXL,"Pero' se hai qualche power-up segreto, non direi di no."
+SECRET2-24_AXL,"Forse ci rivedremo, da qualche altra parte... Arrivederci, Axl."
+SECRET2-25_AXL,"Ciao, Serenade. La prossima volta non vado piano!"
+SECRET2-26_AXL,SECRET2-26_AXL
+SECRET3-1_AXL,Finalmente. Questi dati hanno tutti i criminali ricercati...
+SECRET3-2_AXL,R.... Red? Ma... come?
+SECRET3-3_AXL,"Axl, e' passato un po'. Come vai da solo?"
+SECRET3-4_AXL,"Red, aspetta! Non puoi essere qui. Quest'area e' per Cacciatori di alto rango!"
+SECRET3-5_AXL,"Non sei lo stesso, Red. Segui ancora le vie di """"lui""""?"
+SECRET3-6_AXL,Hai trasformato Red Alert in qualcosa di distorto per questo!
+SECRET3-7_AXL,"So come sembra, ma non preoccuparti. Con questi dati, cacciamo meglio dei Cacciatori."
+SECRET3-8_AXL,"Red Alert puo' riavere la sua giustizia, Axl."
+SECRET3-9_AXL,Quella non e' giustizia... E' potere! Non ti lascio abusarne!
+SECRET3-10_AXL,"Heh, non pensavo di sentire questo da te. Vediamo se sei migliorato. Niente freni!"
+SECRET3-11_AXL,"Non male..... Ragazzino, sei cresciuto come Cacciatore."
+SECRET3-12_AXL,"Non devi farlo, Red. Non e' troppo tardi per ricominciare."
+SECRET3-13_AXL,"Forse... forse no. Non preoccuparti per me, vado per la mia strada."
+SECRET3-14_AXL,"Ma per ora, saro' cauto nel fidarmi."
+SECRET3-15_AXL,"La prossima volta, Axl... non sara' cosi' facile. Arrivederci... e abbi cura di te, ragazzo."
+SECRET3-16_AXL,Red....
+INTRO1-1_ZERO,Quindi questo e' Noah's Park? Non male come posto.
+INTRO1-2_ZERO,"Zero, mi ricevi? C'e' un grosso Mechaniloid Maverick nella zona."
+INTRO1-3_ZERO,Vicino all'incidente dell'Ascensore Orbitale. Ricevuto!
+INTRO1-4_ZERO,Pulisco i Maverick in quest'area.
+INTRO1-5_ZERO,Mandate i soccorsi appena arrivo alla scena.
+INTRO1-6_ZERO,"Capito, stai attento, Zero!"
+INTRO2-1_ZERO,"C... Cosa? Cosa significa questo, Sigma?"
+INTRO2-2_ZERO,Per proteggerci dall'incidente...
+INTRO2-3_ZERO,Abbiamo copiato un corpo Sigma.
+INTRO2-4_ZERO,Siamo immuni ai virus.
+INTRO2-5_ZERO,Copiare Sigma non e' un rischio.
+INTRO2-6_ZERO,Chi sei? Identificati!
+INTRO2-7_ZERO,Sono Lumine...
+INTRO2-8_ZERO,Direttore dell'ascensore e del Progetto Jakob.
+INTRO2-9_ZERO,"Hmm... Capisco. Non muoverti, chiamo i soccorsi-"
+INTRO3-1_ZERO,"Ah ah ah! Che bello rivederti, Zero."
+INTRO3-2_ZERO,Vile? Quindi non mentivano sulla tua presenza.
+INTRO3-3_ZERO,"Mi piacerebbe restare, ma ho troppo lavoro..."
+INTRO3-4_ZERO,Sei un criminale! Lascia andare Lumine!
+INTRO3-5_ZERO,Neanche per sogno. L'Ascensore e' nostro...
+INTRO3-6_ZERO,"Cosa pensi di fare, cosplayer di Boba Fett?"
+INTRO3-7_ZERO,"La gente pensa ancora che sia basato su Boba Fett? Ma dai. Vado al bar, divertitevi col mio amichetto ahahah"
+INTRO3-8_ZERO,Ah ah ah ah ah ah ah ah ah ah!
+ANTONION1_ZERO,"Formica Pesante. Eri uno scienziato incredibile, ma sembra che sei Maverick adesso."
+ANTONION2_ZERO,Incredibile? Maverick? Cosa significano queste parole?
+ANTONION3_ZERO,Chiedi a uno piu' furbo di me. Sigma ti ha fatto cosi'?
+ANTONION4_ZERO,Ha costretto te e gli altri a diventare Maverick?
+ANTONION5_ZERO,Pensi di poter riassumere il mio maestro con quella parola?
+ANTONION6_ZERO,La nostra onesta' e' pari alla tua suprema stupidita'.
+ANTONION7_ZERO,"Comunque, se non capisci il nostro piano, ti distruggo!"
+MANOWAR1_ZERO,Ehi! Medusa Gigavolt!
+MANOWAR2_ZERO,Riporta la corrente alla normalita'. Adesso!
+MANOWAR3_ZERO,... ... ...
+MANOWAR4_ZERO,Cosi' andato che non riesce nemmeno a rispondere...
+MANOWAR5_ZERO,Non sono un Maverick... Non sto facendo niente di male...
+MANOWAR6_ZERO,Il mio maestro ha bisogno di energia per il nuovo mondo.
+MANOWAR7_ZERO,Mandare in tilt la corrente? Come si inserisce nel piano di Sigma?
+MANOWAR8_ZERO,Sto solo lavorando per realizzare il sogno del maestro. Non ha torto.
+MANOWAR9_ZERO,Un nuovo mondo?! Il piano finisce qui!
+MANOWAR10_ZERO,Devo darti una lezione!
+MANTIS1_ZERO,"Oho. Guarda chi c'e'. Sei Zero, giusto?"
+MANTIS2_ZERO,"Se mi conoscessi davvero, staresti tremando."
+MANTIS3_ZERO,Voi vecchi modelli non capite proprio niente.
+MANTIS4_ZERO,"Cosa intendi, Maverick?"
+MANTIS5_ZERO,Potevi essere un grande generale. Il mio maestro e' molto interessato a te.
+MANTIS6_ZERO,Hmph! Non mi interessa unirmi ai Maverick.
+MANTIS7_ZERO,E non preoccuparti... Andro' dal tuo capo appena ho finito con te.
+PANDA1_ZERO,"Non hai mai pensato certe cose tu stesso, Zero?"
+PANDA2_ZERO,Che il mondo desidera solo distruzione?
+PANDA3_ZERO,E' quello che dice Sigma?
+PANDA4_ZERO,Forse. Il maestro ha visto qualcosa di se' dentro di te...
+PANDA5_ZERO,"Dai, smettila..."
+PANDA6_ZERO,Il mondo perfetto di cui parlate voi Maverick non esiste.
+PANDA7_ZERO,"No, non esiste."
+PANDA8_ZERO,Per questo dobbiamo distruggere questo.
+PANDA9_ZERO,"Quello che finira', Zero, e' questo mondo."
+ROOSTER1_ZERO,Perche' hai iniziato una rivolta? E' opera di Sigma?
+ROOSTER2_ZERO,Sai cos'e' questo posto?
+ROOSTER3_ZERO,Il centro smaltimento...
+ROOSTER4_ZERO,"Dopo che ti avro' fatto a pezzi, ti buttero' qui."
+ROOSTER5_ZERO,"Li senti, Zero?"
+ROOSTER6_ZERO,Le grida di tutti i Reploid che hai mandato qui perche' li hai dichiarati Maverick?
+ROOSTER7_ZERO,"Whoa? Se senti tutto questo, anche tu sei Maverick!"
+ROOSTER8_ZERO,Ah! Vedrai presto chi ha ragione e chi torto.
+ROOSTER9_ZERO,Non riderai quando il nuovo mondo diventera' realta'!
+SUNFLOWER1_ZERO,Zero... Sicuramente hai capito.
+SUNFLOWER2_ZERO,Avrai un'idea di cosa cerchiamo.
+SUNFLOWER3_ZERO,Cosa ne so io di come pensano i Maverick?
+SUNFLOWER4_ZERO,"No! No! No! Non siamo i buoni, ma non siamo mostri."
+SUNFLOWER5_ZERO,Il maestro ti ricorda bene. Potevi diventare il distruttore supremo. Roba vecchia.
+SUNFLOWER6_ZERO,Eh... E' completamente fuori di testa.
+TRILOBYTE1_ZERO,I minerali che estraiamo sono essenziali per lo sviluppo spaziale.
+TRILOBYTE2_ZERO,"Ma immagino che a te non importi molto, Zero."
+TRILOBYTE3_ZERO,Li estrai per Sigma? Sei pazzo?
+TRILOBYTE4_ZERO,Hai pensato al perche' il mio maestro vuole queste risorse?
+TRILOBYTE5_ZERO,Non devo capire il piano per sapere che puzza. Non ti lascio fare!
+TRILOBYTE6_ZERO,Hmph! Non mi faccio insultare da un rottame!
+TRILOBYTE7_ZERO,Dovrai rispondere al mio maestro prima o poi!
+YETI1_ZERO,Zero. Il mio maestro vede un posto per te nel nuovo mondo.
+YETI2_ZERO,Cosa vedete in me voi Maverick? A parte una potenziale bastonata?
+YETI3_ZERO,Sei davvero un vecchio modello. Con quel pensiero non cambi il mondo.
+YETI4_ZERO,Cambiare il mondo? Con la distruzione? Tipico dei Maverick.
+YETI5_ZERO,Il tuo mondo... I tuoi ideali... Incomprensibili per il maestro.
+VILE1-1_ZERO,Vile!
+VILE1-2_ZERO,Che vuoi fare con l'Ascensore e Lumine?
+VILE1-3_ZERO,Lumine? Ah ah ah... Non preoccuparti. Ce ne prendiamo cura.
+VILE1-4_ZERO,L'Ascensore e' troppo importante per fare del male a chi lo gestisce.
+VILE1-5_ZERO,Quel giocattolo e' troppo complicato per Maverick come te.
+VILE1-6_ZERO,"Ah ah ah... Mi sei mancato, Zero."
+VILE1-7_ZERO,"Che dici, festeggiamo questa riunione con un bicchiere?"
+VILE2-1_ZERO,Vile!
+VILE2-2_ZERO,E' ora di consegnare Lumine. Stavolta non accetto un no.
+VILE2-3_ZERO,Lumine? Pensi di poter fare richieste?
+VILE2-4_ZERO,Guardati intorno! Il tuo mondo sta crollando!
+VILE2-5_ZERO,Il tuo mondo? I Maverick? Addio a tutto!
+VILE2-6_ZERO,"Caos, distruzione! Siamo nati per questo!"
+VILE3-1_ZERO,"Non ti stanchi mai della storia della """"giustizia""""?"
+VILE3-2_ZERO,Non ti stanchi di essere il cagnolino di Sigma?
+VILE3-3_ZERO,L'Ascensore... l'energia... i minerali... i dati dei razzi...
+VILE3-4_ZERO,La strada per lo spazio...
+VILE3-5_ZERO,La cosa che tiene in vita questo mondo e' nostra!
+VILE3-6_ZERO,Come puoi prendere sul serio il mondo quando sta per finire?
+VILE3-7_ZERO,"Hmph! Prima mi occupo di te, poi del tuo capo!"
+VILE4-1_ZERO,Ancora non ti arrendi?
+VILE4-2_ZERO,Sei cieco da credere nella speranza?
+VILE4-3_ZERO,Lotta?
+VILE4-4_ZERO,Sono solo stanco di incontrare te e Sigma ad ogni angolo.
+VILE4-5_ZERO,Ah ah ah... Sarebbe uno spreco distruggerti adesso.
+VILE4-6_ZERO,Forse aspetto l'ultimo momento e mi diverto un po'.
+COPYSIGMA1_ZERO,Sigma!?
+COPYSIGMA2_ZERO,Non ero ansioso di rivederti.
+COPYSIGMA3_ZERO,Zero. Che peccato... Avevi le capacita' per diventare come me.
+COPYSIGMA4_ZERO,Tu... Hai cercato di usare il mio DNA.
+COPYSIGMA5_ZERO,Ti faccio vedere cosa succede quando ti metti contro di me!
+COPYSIGMA6_ZERO,Temo di no. La Luna e' sotto controllo e il piano e' alla fase finale.
+COPYSIGMA7_ZERO,Il momento della fine del mondo e' arrivato!
+SIGMA1_ZERO,Zero... Chi avrebbe immaginato che ci saremmo incontrati alla fine del mondo.
+SIGMA2_ZERO,"Quando il tuo virus e' entrato nel mio sistema, il seme e' stato piantato."
+SIGMA3_ZERO,E' li' che tutto e' iniziato... La distruzione del mondo!
+SIGMA4_ZERO,"Ho sentito abbastanza spazzatura, Sigma."
+SIGMA5_ZERO,"Non arrabbiarti, Zero. Ti sono grato."
+SIGMA6_ZERO,Grazie a te i miei figli hanno potuto creare il nuovo mondo nello spazio.
+SIGMA7_ZERO,Figli?
+SIGMA8_ZERO,Esatto. I Reploid Nuova Gen del Progetto Jakob hanno tutti chip con i miei dati.
+SIGMA9_ZERO,Il piano per distruggere il mondo che ami sta per compiersi!
+SIGMA10_ZERO,Non piango per te e i tuoi!
+SIGMA11_ZERO,La fine del mondo e tua e' arrivata! Addio!
+SIGMA12_ZERO,"Sigma... Finche' sono in funzione, non avrai il tuo lieto fine!!!"
+FINALLUMINE1_ZERO,Sei Lumine! Il direttore del Progetto Jakob. Stai bene?
+FINALLUMINE2_ZERO,Se sto bene? Ma certo.
+FINALLUMINE3_ZERO,"Hai sconfitto Sigma, suppongo che sei soddisfatto."
+FINALLUMINE4_ZERO,"Grazie a te, il piano e' andato liscio."
+FINALLUMINE5_ZERO,Piano? Cosa intendi? Non eri usato da Sigma?
+FINALLUMINE6_ZERO,Usato? Non credo.
+FINALLUMINE7_ZERO,Lui ha solo aiutato il mio piano.
+FINALLUMINE8_ZERO,I Reploid Nuova Gen si sono risvegliati e il nuovo mondo arriva!
+FINALLUMINE9_ZERO,Lumine? Che dici? Sei Maverick anche tu?
+FINALLUMINE10_ZERO,Maverick? Non pensi davvero cosi'?
+FINALLUMINE11_ZERO,"Per questo non riesci a finirmi, vero? Non ce l'hai... Non sei tu quello giusto."
+FINALLUMINE12_ZERO,Eh?
+FINALLUMINE13_ZERO,I vecchi modelli devono preoccuparsi se le loro azioni sono davvero le loro.
+FINALLUMINE14_ZERO,Chi sa cosa ti sta influenzando? Un fantasma forse?
+FINALLUMINE15_ZERO,Ma noi Reploid Nuova Gen siamo costruiti con dati di centinaia di vecchi Reploid.
+FINALLUMINE16_ZERO,Immunita' totale ai virus. Libero arbitrio! Le nostre scelte sono nostre!
+FINALLUMINE17_ZERO,Ovviamente Sigma era nel mix. Capisci?
+FINALLUMINE18_ZERO,Nessun Reploid sceglierebbe la pazzia di Sigma!
+FINALLUMINE19_ZERO,"Si', si e' ribellato. Forse per un virus."
+FINALLUMINE20_ZERO,"Forse Sigma aveva ragione. L'origine di tutto sei tu, Zero."
+FINALLUMINE21_ZERO,Grazie a te noi Reploid Nuova Gen siamo quello che siamo.
+FINALLUMINE22_ZERO,Dovresti ringraziarci per aver fatto capire a tutti quanto il mondo sia marcio.
+FINALLUMINE23_ZERO,Gli umani usano i Reploid per perpetuare il loro maledetto ciclo...
+FINALLUMINE24_ZERO,Per questo la nostra decisione e' stata consapevole.
+FINALLUMINE25_ZERO,"In altre parole, possiamo diventare Maverick a volonta'!"
+FINALLUMINE26_ZERO,......
+FINALLUMINE27_ZERO,Zero... Puoi davvero fermarci?
+FINALLUMINE28_ZERO,Sei solo uno strumento degli umani. Nient'altro...
+FINALLUMINE29_ZERO,Pensi di poter affrontare con la tua spada chi si e' evoluto cosi'?
+FINALLUMINE30_ZERO,Ah ah ah ah ah ah ah ah ah ah! Non sai nemmeno per cosa combatti!
+FINALLUMINE31_ZERO,"Fai l' """"Eroe"""" ma non sai che la fine del mondo e' gia' iniziata!"
+FINALLUMINE32_ZERO,"Le tue azioni sono davvero per la """"giustizia""""? Noi siamo la vera giustizia!"
+FINALLUMINE33_ZERO,Il mondo cambia. L'evoluzione e' naturale!
+FINALLUMINE34_ZERO,"Adesso in fila, cosi' finisco la vostra sofferenza per sempre!"
+FINALLUMINE35_ZERO,Giustizia? Eroe? Chi ha detto che combatto per queste cose?
+FINALLUMINE36_ZERO,Combatto per quello che credo giusto e per chi crede nella speranza.
+FINALLUMINE37_ZERO,Sei il nemico... E non esitero' a tagliarti!
+FINALLUMINE38_ZERO,"Nemico, alleato... Non e' cosi' semplice."
+FINALLUMINE39_ZERO,Reploid e umanita' sono cambiati irrevocabilmente.
+FINALLUMINE40_ZERO,La natura della loro esistenza e' cambiata. Non servi nel nuovo mondo!
+FINALLUMINE41_ZERO,"Puoi dire quello che vuoi, ma non ti lascio scappare!"
+SECRET2-1_ZERO,"Benvenuto Zero, e' un piacere conoscerti."
+SECRET2-2_ZERO,"Eh? Oh, grazie. Non sembri un Maverick come gli altri."
+SECRET2-3_ZERO,Sento qualcosa... di pacifico vicino a te. Chi sei?
+SECRET2-4_ZERO,Molto perspicace.
+SECRET2-5_ZERO,Sono Serenade.
+SECRET2-6_ZERO,Hai detto che sono diverso?
+SECRET2-7_ZERO,E' per il mio potere travolgente.
+SECRET2-8_ZERO,Travolgente?
+SECRET2-9_ZERO,La mia forza non e' aggressione. Mi alleno da quando ho perso il titolo di UnderKing.
+SECRET2-10_ZERO,"Ora che ti ho davanti, sento che sei... familiare."
+SECRET2-11_ZERO,Hmm?
+SECRET2-12_ZERO,Forse... sei tu quello destinato a distruggerci?
+SECRET2-13_ZERO,Cosa? Cosa sai di me? Dimmi subito!
+SECRET2-14_ZERO,Perche' non combatti e lo scopri?
+SECRET2-15_ZERO,Per vent'anni ho accumulato potere. Ti ho scelto per il test.
+SECRET2-16_ZERO,"Serenade, giusto?"
+SECRET2-17_ZERO,"Va bene, accetto. Facciamolo!"
+SECRET2-18_ZERO,"Cosi' sia, vieni Zero! Mostrami la tua forza!"
+SECRET2-19_ZERO,Pensavo di essere abbastanza forte. Mi sbagliavo.
+SECRET2-20_ZERO,"Osservando il tuo stile, non sembri come """"lui""""."
+SECRET2-21_ZERO,"Siete simili, ma tu sai per cosa combatti."
+SECRET2-22_ZERO,Stai dicendo che esiste un mio opposto?
+SECRET2-23_ZERO,"Si', ma temo che sara' sconfitto da """"un altro guerriero"""" come me."
+SECRET2-24_ZERO,"Hai combattuto bene, Zero. L'avversario piu' forte che abbia incontrato."
+SECRET2-25_ZERO,Non ho ricompense... Solo la mia gratitudine.
+SECRET2-26_ZERO,"Heh, non preoccuparti. Il fatto che non sei Maverick e' gia' una ricompensa."
+SECRET2-27_ZERO,"Forse ci rivedremo. Arrivederci, Zero."
+SECRET2-28_ZERO,"E ricorda, pensa a per cosa combatti davvero."
+SECRET2-29_ZERO,...
+SECRET3-1_ZERO,T... Tu!
+SECRET3-2_ZERO,"Oh, sei tu, combattevi con Axl contro di noi, vero?"
+SECRET3-3_ZERO,Fermo! Quest'area e' per Cacciatori Classe S. Consegna quei dati!
+SECRET3-4_ZERO,Non capisci? Con questi possiamo cacciare Maverick meglio dei Cacciatori.
+SECRET3-5_ZERO,"Hai combattuto tanto. Potremmo aiutarti, ma a pagamento."
+SECRET3-6_ZERO,Pensi che affrontare i Maverick sia un gioco? Un cacciatore di taglie come te?
+SECRET3-7_ZERO,"Hmph, sei davvero un Cacciatore Classe S."
+SECRET3-8_ZERO,Perche' non mi affronti? Vediamo se sei ancora spietato.
+SECRET3-9_ZERO,Si comincia?
+SECRET3-10_ZERO,"Tch, non male... Per un veterano..."
+SECRET3-11_ZERO,"Se ti metti in mezzo un'altra volta, ti faccio a pezzi."
+SECRET3-12_ZERO,E Axl sarebbe deluso se il suo mentore non imparasse dagli errori.
+SECRET3-13_ZERO,Ah ah ah... Forse avevi ragione.
+SECRET3-14_ZERO,La prossima volta non sara' cosi' facile. Addio Zero... Abbi cura del ragazzo.
+SECRET3-15_ZERO,...
+FINAL-6,Ricevuto!
+VILE4-6_AXL,Forse aspetto l'ultimo momento e mi diverto un po'.
+SUNFLOWER_ZERO_WEAPON,Tenshouha\n(Onda di Luce Celeste)
+ANTONION_ZERO_WEAPON,Juuhazan\n(Onda Pesante della Lama)
+MANTIS_ZERO_WEAPON,Rasetsusen\n(Vortice del Tempio)
+MANOWAR_ZERO_WEAPON,Raikousen\n(Lampo del Fulmine)
+PANDA_ZERO_WEAPON,Youdantotsu\n(Taglio della Foglia)
+TRILOBYTE_ZERO_WEAPON,Rekkyoudan\n(Taglio dello Specchio)
+YETI_ZERO_WEAPON,Hyouryushou\n(Drago di Ghiaccio)
+ROOSTER_ZERO_WEAPON,Enkoujin\n(Lama di Fiamma)
+ZERONORMAL_NAME,Corpo Normale
+ZERONORMAL_DISC,Senza abilita' speciali.
+ZEROBLACK_NAME,???
+ZEROBLACK_DISC,Buff su tutto.
+NEXT_CHARACTER_NAME,PROSSIMO
+NEXT_CHARACTER_DISC,Cambia al prossimo personaggio
+PREV_CHARACTER_NAME,PRECEDENTE
+PREV_CHARACTER_DISC,Cambia al personaggio precedente
+ZEROBODY_NAME,Mamilos
+ZEROBODY_DESC,15% de redução de dano
+X_LEFT_TITLE_1,Chifres:
+X_LEFT_DESC_1,Sistema de roubar DNA para o XiiX Buster.
+X_LEFT_TITLE_2,Braços
+X_LEFT_DESC_2,"Berro - MK2112114, dispara energia solar recarregável."
+X_LEFT_TITLE_3,Peitcholas
+X_LEFT_DESC_3,"Liga de Titânio X, altamente resistente a danos."
+X_LEFT_TITLE_4,Saltos:
+X_LEFT_DESC_4,Sistema de Dash Aéreo para movimentação aérea.
+X_RIGHT_DESC,"Mega Man da Saga Classica do Futuro. É a versão melhorada de Rock, confia no pai.\n\nHesita em lutar e por isso não para de sofrer e é muito reclamão, Estado Emo ativado o jogo inteiro.\n\n\nUma boa escolha para noobs kkkk."
+ZERO_LEFT_TITLE_1,Chifres:
+ZERO_LEFT_DESC_1,Aprende novas técnicas lutando.
+ZERO_LEFT_TITLE_2,Hu Ha Hu!:
+ZERO_LEFT_DESC_2,Slash Dash Cancel nas veias porque ninguem aceita que é um glitch e não parte da gameplay
+ZERO_LEFT_TITLE_3,Mamilos Verdes:
+ZERO_LEFT_DESC_3,Melhora a mobilidade e aumenta a energia para movimentos poderosos.
+ZERO_LEFT_TITLE_4,Saltos Duplo:
+ZERO_LEFT_DESC_4,Acrobacias de profissional.
+ZERO_RIGHT_DESC,"Matou todo mundo da saga Classica, confia.\n\nLoirão de cachos bananudos famoso por atrair mulheres bonitas e depois matá-las... mas que relacionamento de um homem macho.\n\nUma boa escolha pra quem joga de Marth no Smash Bros."
+AXL_LEFT_TITLE_1,Chip de Mímico:
+AXL_LEFT_DESC_1,Permite que Axl copie habilidades de seus inimigos.
+AXL_LEFT_TITLE_2,Edson:
+AXL_LEFT_DESC_2,Pega a metralhadora Ratatatatatatatatatata.
+AXL_LEFT_TITLE_3,Peicholas:
+AXL_LEFT_DESC_3,Aumenta a mobilidade e permite a habilidade de rolada (Ui).
+AXL_LEFT_TITLE_4,Foot Parts Glide Armor:
+AXL_LEFT_DESC_4,Permite pairar no ar por um período de tempo. (Segure o botão de Tiro + Pulo ao mesmo tempo e poderá pairar enquanto está atirando)
+AXL_RIGHT_DESC,"Também conhecido como X Menos.\n\nÉ um moleque Protótipo experimental dos Guns N' Roses, que só sabe meter bala em geral.\n\nUma boa escolha para os Dark Souls da vida."
+GAME_START_X,GIOCA CON X
+GAME_START_AXL,GIOCA CON AXL
+GAME_START_ZERO,GIOCA CON ZERO
+SUBTANK_NAME,Sub Tank
+SUBTANK_DISC,Riserva per le emergenze
+HEARTS_NAME,Life Up
+HEARTS_DISC,Aumenta la tua Vita
+BLACKZEROHEAD_NAME,Testa Nera
+BLACKZEROHEAD_DISC,Attacchi curano danni
+BLACKZEROBODY_NAME,Corpo Nero
+BLACKZEROBODY_DISC,"Niente rinculo, 15% riduzione danni"
+BLACKZEROARM_NAME,Braccia Nere
+BLACKZEROARM_DISC,"20% piu' danni, abilita' migliorate"
+BLACKZEROLEG_NAME,Gambe Nere
+BLACKZEROLEG_DISC,"Piu' veloce, salto extra in aria"
+AXLWHITEHEAD_NAME,Testa Bianca
+AXLWHITEHEAD_DISC,I proiettili ti curano
+AXLWHITEBODY_NAME,Corpo Bianco
+AXLWHITEBODY_DISC,"Niente rinculo, 30% riduzione danni"
+AXLWHITEARM_NAME,Braccia Bianche
+AXLWHITEARM_DISC,Costo munizioni ridotto 50%
+AXLWHITELEG_NAME,Gambe Bianche
+AXLWHITELEG_DISC,"Hover infinito, piu' veloce, dash verticale"
+ULTIMATE_SET_NAME,Nova Strike
+ULTIMATE_SET_DISC,Vai avanti e distruggi tutto
+ICARUS_SET_NAME,Giga Crash
+ICARUS_SET_DISC,Colpisce tutti i nemici sullo schermo.
+HERMES_SET_NAME,X Drive
+HERMES_SET_DISC,Invincibile per un breve periodo.
+CANCEL_ACT,Annulla
+BETAZERO_NAME,Zero (Beta)
+BETAZERO_DISC,Gioca come Zero Beta (Il gioco potrebbe crashare)
+CUSTOMZERO_NAME,Custom Zero
+CUSTOMZERO_DISC,"Personalizza i colori nella cartella salvataggio, piu' forte del nero"
+ZEROHEAD_NAME,Pezzo Testa
+ZEROHEAD_DESC,Impara nuove tecniche
+ZEROARMS_NAME,Pezzo Braccia
+ZEROARMS_DISC,Z-Saber e altri arsenali
+ZEROLEGS_NAME,Pezzo Gambe
+ZEROLEGS_DISC,Doppio Salto e Air Dash
+AXLHEAD_NAME,Pezzo Testa
+AXLHEAD_DISC,Puo' trasformarsi in altri Reploid.
+AXLBODY_NAME,Pezzo Corpo
+AXLBODY_DISC,Mossa Rotolamento Tattico
+AXLARMS_NAME,Pezzo Braccia
+AXLARMS_DISC,Pistola con proiettili energetici
+AXLLEGS_NAME,Pezzo Gambe
+AXLLEGS_DISC,Hover e Air Dash
+JOKE_MODE_OPTION,Modo Meme

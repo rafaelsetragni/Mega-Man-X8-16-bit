@@ -63,6 +63,19 @@ var last_player_position := Vector2.ZERO
 
 var lumine_boss_order : Array
 
+# Debug Save State
+var _debug_save_data: Dictionary = {}
+var _debug_restore_pending := false
+var debug_save_menu: Node
+
+func _is_demo_active() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and (ds.is_demo_playing() or ds.is_recording())
+
+func _is_demo_playing() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and ds.is_demo_playing()
+
 func _ready() -> void :
 	print ("GameManager: Initializing...")
 	set_pause_mode(2)
@@ -70,15 +83,27 @@ func _ready() -> void :
 	Savefile.load_latest_save()
 	Savefile.load_config_data()
 	on_level_start()
+	_init_debug_save_menu()
+
+func _init_debug_save_menu() -> void:
+	var scene = load("res://src/HUD/DebugSaveStateMenu.tscn")
+	if scene:
+		var instance = scene.instance()
+		add_child(instance)
 
 func _physics_process(delta: float) -> void :
 	true_delta = delta / Engine.time_scale
 	handle_end_of_level(delta)
-	
+
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		Configurations.set("Fullscreen", OS.window_fullscreen)
-		Savefile.save(Savefile.save_slot)
+		Savefile.save_config_data()
+
+	if debug_enabled or OS.has_feature("editor"):
+		if Input.is_action_just_pressed("debug_save_menu"):
+			if debug_save_menu:
+				debug_save_menu.toggle()
 
 func start_dialog(dialog_tree) -> void:
 	dialog_box.startup(dialog_tree)
@@ -131,6 +156,7 @@ func on_level_start():
 	call_deferred("emit_stage_start_signal")
 	call_deferred("save_stage_start_msec")
 	call_deferred("position_player_on_checkpoint")
+	call_deferred("_debug_restore_player_state")
 	call_deferred("start_stage_music")
 	end_stage_timer = 0
 	BossRNG.reset_seed()
@@ -141,7 +167,9 @@ func start_stage_music() -> void:
 		music_player.call_deferred("play_stage_song")
 
 func start_level(StageName : String) -> void:
-	
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.disable_idle_tracking()
 	clear_checkpoint()
 	set_player_lives_to_at_least_2()
 	current_level = StageName
@@ -181,6 +209,9 @@ func go_to_lumine_boss_test() -> void:
 	
 
 func end_level():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("EndLevel")
@@ -201,6 +232,9 @@ func end_game():
 	IGT.save_time()
 
 func on_death():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("Death")
@@ -279,7 +313,7 @@ func restart_level():
 	on_level_start()
 
 func reached_checkpoint(new_checkpoint: CheckpointSettings) -> void :
-	if GameManager.time_attack:
+	if GameManager.time_attack or _is_demo_playing():
 		return
 
 	if not checkpoint or new_checkpoint.id > checkpoint.id:
@@ -491,7 +525,9 @@ func get_next_spawn_item(
 	big_ammo_chance: float = big_ammo_chance_default, 
 	extra_life_chance: float = extra_life_chance_default
 ) -> PackedScene:
-	
+	if _is_demo_active():
+		return null
+
 	var chance: float = randf() * 100
 	if chance > drop_item_chance:
 		return null
@@ -625,3 +661,99 @@ func finish_weapon_get() -> void:
 
 func has_beaten_the_game() -> bool:
 	return GlobalVariables.get("seraph_lumine_defeated")
+
+# ── Debug Save State ──────────────────────────────────────────────
+
+func debug_save_state() -> void:
+	if not player or not is_instance_valid(player):
+		print_debug("DEBUG SAVE STATE: No player found")
+		return
+
+	_debug_save_data = {
+		"position": player.global_position,
+		"current_health": player.current_health,
+		"max_health": player.max_health,
+		"facing_right": player.facing_right,
+		"current_level": current_level,
+		"collectibles": collectibles.duplicate(),
+		"equip_exceptions": equip_exceptions.duplicate(),
+		"global_variables": GlobalVariables.variables.duplicate(true),
+		"state": state,
+	}
+
+	# Save checkpoint (deep copy essential fields)
+	if checkpoint:
+		_debug_save_data["checkpoint"] = {
+			"id": checkpoint.id,
+			"respawn_position": checkpoint.respawn_position,
+			"character_direction": checkpoint.character_direction,
+			"last_door": checkpoint.last_door,
+		}
+
+	# Save weapon ammo for each weapon in Shot node
+	var shot_node = player.get_node_or_null("Shot")
+	if shot_node:
+		var ammo_data := {}
+		for child in shot_node.get_children():
+			if child is Weapon:
+				ammo_data[child.name] = child.current_ammo
+		_debug_save_data["weapon_ammo"] = ammo_data
+
+	print_debug("===== DEBUG SAVE STATE: SAVED =====")
+	print_debug("  Position: " + str(player.global_position))
+	print_debug("  Health: " + str(player.current_health) + "/" + str(player.max_health))
+
+func debug_load_state() -> void:
+	if _debug_save_data.empty():
+		print_debug("DEBUG LOAD STATE: No save state found")
+		return
+
+	# Restore global variables (full replace)
+	GlobalVariables.variables = _debug_save_data["global_variables"].duplicate(true)
+
+	# Restore collectibles and equip exceptions
+	collectibles = _debug_save_data["collectibles"].duplicate()
+	equip_exceptions = _debug_save_data["equip_exceptions"].duplicate()
+
+	# Create a checkpoint from saved position
+	var saved_cp = CheckpointSettings.new()
+	saved_cp.respawn_position = _debug_save_data["position"]
+	saved_cp.character_direction = 1 if _debug_save_data["facing_right"] else -1
+	saved_cp.id = 999
+	if _debug_save_data.has("checkpoint") and _debug_save_data["checkpoint"]:
+		saved_cp.last_door = _debug_save_data["checkpoint"]["last_door"]
+	checkpoint = saved_cp
+
+	_debug_restore_pending = true
+
+	print_debug("===== DEBUG LOAD STATE: LOADING =====")
+	restart_level()
+
+func _debug_restore_player_state() -> void:
+	if not _debug_restore_pending:
+		return
+	_debug_restore_pending = false
+
+	if not player or not is_instance_valid(player):
+		print_debug("DEBUG RESTORE: No player to restore")
+		return
+
+	# Restore health
+	player.max_health = _debug_save_data["max_health"]
+	player.current_health = _debug_save_data["current_health"]
+
+	# Restore weapon ammo
+	if _debug_save_data.has("weapon_ammo"):
+		var shot_node = player.get_node_or_null("Shot")
+		if shot_node:
+			for child in shot_node.get_children():
+				if child is Weapon and child.name in _debug_save_data["weapon_ammo"]:
+					child.current_ammo = _debug_save_data["weapon_ammo"][child.name]
+
+	# Restore game state
+	if _debug_save_data.has("state"):
+		change_state(_debug_save_data["state"])
+
+	print_debug("===== DEBUG SAVE STATE: RESTORED =====")
+	print_debug("  Position: " + str(player.global_position))
+	print_debug("  Health: " + str(player.current_health) + "/" + str(player.max_health))

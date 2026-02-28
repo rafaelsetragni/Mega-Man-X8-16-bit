@@ -31,9 +31,9 @@ func _on_area2D_body_exited(_body: Node) -> void :
 	if _body.is_in_group("Player Projectile"):
 		_body.leave(self)
 
-func damage(damage, inflicter) -> float:
+func damage(amount, inflicter) -> float:
 	if active and GameManager.is_on_screen(global_position):
-		emit_signal("received_damage", damage, inflicter)
+		emit_signal("received_damage", amount, inflicter)
 		emit_signal("got_hit")
 	return get_current_hp()
 

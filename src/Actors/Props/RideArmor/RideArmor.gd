@@ -3,8 +3,11 @@ extends Actor
 export  var song_intro: AudioStream
 export  var song_loop: AudioStream
 export  var damage_reduction: float = 0.7
+export  var ride_max_health: float = 0.0
+export  var stomp_damage: float = 20.0
 
 onready var ride: Node = $Ride
+onready var stomp_area: Area2D = $StompArea
 onready var song_remix_intro: AudioStream = preload("res://Remix/Songs/Ride Armor - Intro.ogg")
 onready var song_remix_loop: AudioStream = preload("res://Remix/Songs/Ride Armor - Loop.ogg")
 
@@ -12,6 +15,7 @@ var song_timer: float = 0.0
 var grounded: bool = false
 var listening_to_inputs: bool = true
 var queued_up_for_destruction: bool = false
+var never_player_mounted: bool = false
 
 signal spawned
 signal on_floor
@@ -23,6 +27,9 @@ signal listening_to_inputs(state)
 
 
 func _ready() -> void :
+	if ride_max_health > 0:
+		max_health = ride_max_health
+		current_health = ride_max_health
 	Event.listen("cutscene_start", self, "stop_listening_to_inputs")
 	Event.listen("cutscene_over", self, "start_listening_to_inputs")
 	Event.listen("end_cutscene_start", self, "end_stage")
@@ -76,6 +83,19 @@ func process_movement() -> void :
 		final_velocity = process_final_velocity()
 		velocity.y = final_velocity.y
 
+func _on_stomp_land() -> void :
+	if not is_instance_valid(stomp_area) or not ride.is_executing():
+		return
+	for body in stomp_area.get_overlapping_bodies():
+		if body == self:
+			continue
+		if body.has_method("crush"):
+			body.crush()
+		elif body.has_method("damage"):
+			body.damage(stomp_damage, self)
+			if body.has_health():
+				damage(stomp_damage, body)
+
 func get_animation() -> String:
 	return "idle"
 
@@ -102,7 +122,7 @@ func is_invulnerable() -> bool:
 func reduce_health(value: float) -> void :
 	var health_to_reduce = (value * (1 - damage_reduction)) * CharacterManager.damage_get_multiplier
 	if health_to_reduce < 1:
-		health_to_reduce = 0
+		health_to_reduce = 1
 	current_health -= health_to_reduce
 
 func flash(duration: float = 0.032) -> void :
@@ -178,9 +198,11 @@ func fade_out() -> void :
 			GameManager.music_player.start_slow_fade_out()
 
 func process_destruction() -> void :
-	pass
+	process_zero_health()
 
 func queue_up_for_destruction():
+	if ride.is_executing():
+		return
 	if song_timer > 0:
 		queued_up_for_destruction = true
 	else:

@@ -38,8 +38,8 @@ func full_deactivate() -> void :
 func deactivate() -> void :
 	emitting = false
 	var t = create_tween().set_parallel(true)
-	t.tween_property(expl, "volume_db", - 14, 0.5)
-	t.tween_property(expl2, "volume_db", - 14, 0.5)
+	t.tween_property(expl, "volume_db", -14.0, 0.5)
+	t.tween_property(expl2, "volume_db", -14.0, 0.5)
 
 func screenshake() -> void :
 	if stopped:

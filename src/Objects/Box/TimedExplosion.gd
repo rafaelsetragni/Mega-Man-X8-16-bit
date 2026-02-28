@@ -5,6 +5,7 @@ export  var blast_area: PackedScene
 signal beep
 signal exploded
 var exploded: = false
+var defused: = false
 var still_starting: = true
 
 var timer: = 0.0
@@ -50,8 +51,17 @@ func explode() -> void :
 		create_blast_area()
 		exploded = true
 
+func defuse() -> void :
+	defused = true
+	active = false
+	set_physics_process(false)
+	emit_signal("exploded")
+
 func _on_EnemyShield_shield_hit(_projectile) -> void :
-	activate()
+	if is_instance_valid(_projectile) and "defuse_bombs" in _projectile and _projectile.defuse_bombs:
+		defuse()
+	else:
+		activate()
 
 func create_blast_area(instance_position: = get_parent().global_position):
 	var instance = blast_area.instance()
@@ -64,7 +74,7 @@ func _on_player_detector_body_entered(_body: Node) -> void :
 
 
 func _on_Health_zero_health() -> void :
-	create_blast_area()
+	if not defused:
+		create_blast_area()
 	exploded = true
 	deactivate()
-	pass

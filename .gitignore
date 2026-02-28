@@ -49,3 +49,7 @@ Thumbs.db
 *.wmv
 
 .import/
+
+# Godot auto-generated import configs and compiled translations
+*.import
+*.translation

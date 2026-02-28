@@ -334,20 +334,21 @@ func print_states() -> String:
 var analog_deadzone = 0.1
 func get_left_analog_direction():
 	if listening_to_inputs:
-		if InputMap.has_action("move_left") or InputMap.has_action("move_right") or InputMap.has_action("move_up") or InputMap.has_action("move_down"):
-			InputMap.action_set_deadzone("move_left", analog_deadzone)
-			InputMap.action_set_deadzone("move_right", analog_deadzone)
-			InputMap.action_set_deadzone("move_up", analog_deadzone)
-			InputMap.action_set_deadzone("move_down", analog_deadzone)
+		var raw_x = Input.get_joy_axis(0, 0)
+		var raw_y = Input.get_joy_axis(0, 1)
 
-			var left_stick_x = Input.get_action_strength("move_left") - Input.get_action_strength("move_right")
-			var left_stick_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-			
-			var analog_direction = Vector2(left_stick_x, left_stick_y)
+		if abs(raw_x) < analog_deadzone:
+			raw_x = 0.0
+		if abs(raw_y) < analog_deadzone:
+			raw_y = 0.0
+
+		var analog_direction = Vector2(-raw_x, raw_y)
+		if analog_direction.length() > analog_deadzone:
 			analog_direction = analog_direction.normalized()
-				
-			return analog_direction
-		return Vector2.ZERO
+		else:
+			analog_direction = Vector2.ZERO
+
+		return analog_direction
 	else:
 		return false
 

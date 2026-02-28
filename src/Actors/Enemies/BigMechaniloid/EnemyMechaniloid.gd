@@ -23,11 +23,11 @@ func on_spike_land(_discard = null):
 	current_health = 0
 	emit_zero_health_signal()
 
-func _on_MechaStarter_body_entered(body: Node) -> void:
+func _on_MechaStarter_body_entered(_body: Node) -> void:
 	active = true
 	started_pursuit = true
 
-func _on_MechaStarter_left_body_entered(body: Node) -> void:
+func _on_MechaStarter_left_body_entered(_body: Node) -> void:
 	active = true
 	started_pursuit = true
 	$Punch/damage_area.scale.x = -1

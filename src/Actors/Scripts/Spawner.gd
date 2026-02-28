@@ -1,5 +1,4 @@
 extends Node2D
-class_name Spawner
 
 export var active := true
 export var debug_logs := false

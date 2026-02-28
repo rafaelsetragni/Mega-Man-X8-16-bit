@@ -8,8 +8,10 @@ var frequency: float = 0.5
 var timer: float = 0.0
 
 func _ready() -> void :
-	var _s = Savefile.connect("loaded", self, "setup")
-	Event.listen("update_options", self, "setup")
+	if not Savefile.is_connected("loaded", self, "setup"):
+		var _s = Savefile.connect("loaded", self, "setup")
+	if not Event.is_connected("update_options", self, "setup"):
+		Event.listen("update_options", self, "setup")
 
 func setup() -> void :
 	pass

@@ -733,7 +733,7 @@ func set_white_zeroX8_colors(node) -> void :
 		node.material.set_shader_param("R_SaberColor4", Color("#C6426E"))
 
 func set_custom_zeroX8_colors(node) -> void :
-	var colors = {
+	var _colors = {
 		"R_OutlineColor": "#0e111e", 
 		
 		"R_LightRedColor1": "#C56AF6", 
@@ -1037,23 +1037,23 @@ func update_texture_animations(texture: Texture, reference_tex: SpriteFrames, an
 func update_texture_specific_animations(texture: Texture, reference_tex: SpriteFrames, animations_to_update: Array):
 	var reference_frames: SpriteFrames = reference_tex
 	var updated_frames = SpriteFrames.new()
-	
-	var frames_per_row = 13
-	
+
+	var _frames_per_row = 13
+
 	for animation in reference_frames.get_animation_names():
 		updated_frames.add_animation(animation)
 		updated_frames.set_animation_speed(animation, reference_frames.get_animation_speed(animation))
 		updated_frames.set_animation_loop(animation, reference_frames.get_animation_loop(animation))
-		
+
 		if animation in animations_to_update:
-			
+
 			for i in range(reference_frames.get_frame_count(animation)):
 				var updated_texture: AtlasTexture = reference_frames.get_frame(animation, i).duplicate()
 				updated_texture.atlas = texture
 				updated_frames.add_frame(animation, updated_texture)
-				
-				var x_index = i % frames_per_row
-				var y_index = i / frames_per_row
+
+				var _x_index = i % _frames_per_row
+				var _y_index = i / _frames_per_row
 				
 		else:
 			for i in range(reference_frames.get_frame_count(animation)):
@@ -1063,20 +1063,20 @@ func update_texture_specific_animations(texture: Texture, reference_tex: SpriteF
 func get_texture_animation(texture: Texture, reference_tex: SpriteFrames, animations_to_update: Array) -> SpriteFrames:
 	var reference_frames: SpriteFrames = reference_tex
 	var updated_frames = SpriteFrames.new()
-	var frames_per_row = 13
+	var _frames_per_row = 13
 	for animation in reference_frames.get_animation_names():
 		updated_frames.add_animation(animation)
 		updated_frames.set_animation_speed(animation, reference_frames.get_animation_speed(animation))
 		updated_frames.set_animation_loop(animation, reference_frames.get_animation_loop(animation))
-		
+
 		if animation in animations_to_update:
 			for i in range(reference_frames.get_frame_count(animation)):
 				var atlas_texture: AtlasTexture = reference_frames.get_frame(animation, i)
-				
+
 				if atlas_texture is AtlasTexture:
 					var region = atlas_texture.region
-					var frame_x = int(region.position.x / region.size.x)
-					var frame_y = int(region.position.y / region.size.y)
+					var _frame_x = int(region.position.x / region.size.x)
+					var _frame_y = int(region.position.y / region.size.y)
 					
 				var updated_texture: AtlasTexture = atlas_texture.duplicate()
 				updated_texture.atlas = texture
@@ -1106,10 +1106,10 @@ func process_res_file(input_res_path: String, new_texture_path: String, output_r
 				var updated_texture = atlas_texture.duplicate() as AtlasTexture
 				updated_texture.atlas = new_texture
 				updated_texture.region = atlas_texture.region
-				var original_position = atlas_texture.region.position
-				var new_position = updated_texture.region.position
+				var _original_position = atlas_texture.region.position
+				var _new_position = updated_texture.region.position
 				sprite_frames.set_frame(animation_name, i, updated_texture)
-	var result = ResourceSaver.save(output_res_path, sprite_frames)
+	var _result = ResourceSaver.save(output_res_path, sprite_frames)
 
 
 func process_res_file_include(input_res_path: String, new_texture_path: String, output_res_path: String, animations_to_include: Array):
@@ -1136,7 +1136,7 @@ func process_res_file_include(input_res_path: String, new_texture_path: String, 
 				new_atlas.margin = old_atlas.margin
 				new_atlas.filter_clip = old_atlas.filter_clip
 				sprite_frames.set_frame(animation_name, i, new_atlas)
-	var result = ResourceSaver.save(output_res_path, sprite_frames)
+	var _result = ResourceSaver.save(output_res_path, sprite_frames)
 
 
 

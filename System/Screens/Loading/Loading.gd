@@ -116,10 +116,12 @@ func unix_to_string(unix_time: int) -> String:
 	]
 
 func igt_formatting(accumulated_time: float) -> String:
+	# warning-ignore:integer_division
 	var hours = int(accumulated_time) / 3600
-	var minutes = (int(accumulated_time) %3600) / 60
-	var seconds = int(accumulated_time) %60
-	var milliseconds = int(accumulated_time * 100) %100
+	# warning-ignore:integer_division
+	var minutes = (int(accumulated_time) % 3600) / 60
+	var seconds = int(accumulated_time) % 60
+	var milliseconds = int(accumulated_time * 100) % 100
 	var hours_str = str(hours).pad_zeros(2)
 	var minutes_str = str(minutes).pad_zeros(2)
 	var seconds_str = str(seconds).pad_zeros(2)
@@ -142,9 +144,9 @@ func load_all_slots() -> void :
 		var meta = {}
 		if data.has("meta"):
 			meta = data["meta"]
-		var collectibles = []
+		var slot_collectibles = []
 		if data.has("collectibles"):
-			collectibles = data.get("collectibles", [])
+			slot_collectibles = data.get("collectibles", [])
 			btn.get_node("boss_icons").visible = true
 			var bosses = [
 				"panda", 
@@ -158,7 +160,7 @@ func load_all_slots() -> void :
 			]
 			for boss in bosses:
 				var weapon_name = boss + "_weapon"
-				if weapon_name in collectibles:
+				if weapon_name in slot_collectibles:
 					btn.get_node("boss_icons").get_node(boss).get_node("animatedSprite").frame = 1
 					
 			var secret_bosses = [
@@ -166,7 +168,7 @@ func load_all_slots() -> void :
 				"zero_defeated", 
 			]
 			for boss in secret_bosses:
-				if boss in collectibles:
+				if boss in slot_collectibles:
 					if boss == "zero_seen":
 						btn.get_node("boss_icons").get_node("zero").visible = true
 					if boss == "zero_defeated":
@@ -201,7 +203,7 @@ func load_all_slots() -> void :
 			var subtanks: = 0
 			var hearts: = 0
 			for item in items:
-				if item in collectibles:
+				if item in slot_collectibles:
 					if item == "white_axl_armor":
 						btn.get_node("item_icons").get_node("white_axl_armor").visible = true
 					if item == "black_zero_armor":
@@ -259,27 +261,27 @@ func load_all_slots() -> void :
 				var total_completion = 0
 				if meta["difficulty"] == - 1:
 					difficulty_text = "GAME_START_ROOKIE"
-					total_completion = calculate_completion(collectibles, variables, max_collectibles - 6)
+					total_completion = calculate_completion(slot_collectibles, variables, max_collectibles - 6)
 					btn.get_node("difficulty").idle_color = Color("#329632")
 					btn.get_node("difficulty").focus_color = Color("#8cff8c")
 				elif meta["difficulty"] == 0:
 					difficulty_text = "GAME_START_NORMAL"
-					total_completion = calculate_completion(collectibles, variables, max_collectibles)
+					total_completion = calculate_completion(slot_collectibles, variables, max_collectibles)
 					btn.get_node("difficulty").idle_color = Color("#68caff")
 					btn.get_node("difficulty").focus_color = Color("#fbffaf")
 				elif meta["difficulty"] == 1:
 					difficulty_text = "GAME_START_HARD"
-					total_completion = calculate_completion(collectibles, variables, max_collectibles - 2)
+					total_completion = calculate_completion(slot_collectibles, variables, max_collectibles - 2)
 					btn.get_node("difficulty").idle_color = Color("#960000")
 					btn.get_node("difficulty").focus_color = Color("#ff4b4b")
 				elif meta["difficulty"] == 2:
 					difficulty_text = "GAME_START_INSANITY"
-					total_completion = calculate_completion(collectibles, variables, max_collectibles - 4)
+					total_completion = calculate_completion(slot_collectibles, variables, max_collectibles - 4)
 					btn.get_node("difficulty").idle_color = Color("#771313")
 					btn.get_node("difficulty").focus_color = Color("#ff7200")
 				elif meta["difficulty"] == 3:
 					difficulty_text = "GAME_START_NINJA"
-					total_completion = calculate_completion(collectibles, variables, max_collectibles - 12)
+					total_completion = calculate_completion(slot_collectibles, variables, max_collectibles - 12)
 					btn.get_node("difficulty").idle_color = Color("#832b7f")
 					btn.get_node("difficulty").focus_color = Color("#e090f2")
 				btn.completion.text = "Completion: %3.0f%%" % total_completion

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/Levels/HUD.gd" type="Script" id=1]
 [ext_resource path="res://src/HUD/BossBar.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://src/HUD/R2_bar.png" type="Texture" id=21]
 [ext_resource path="res://src/Effects/Materials/crt_shader_1.tres" type="Material" id=22]
 [ext_resource path="res://System/IGT/HUD/InGame_Timer.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/Options/lives.png" type="Texture" id=24]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -194,6 +195,28 @@ margin_top = -53.0
 margin_right = 0.0
 margin_bottom = 1.0
 
+[node name="LivesCounter" type="HBoxContainer" parent="X Bar"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 14.0
+mouse_filter = 2
+
+[node name="LivesIcon" type="TextureRect" parent="X Bar/LivesCounter"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 24 )
+stretch_mode = 4
+
+[node name="LivesLabel" type="Label" parent="X Bar/LivesCounter"]
+margin_left = 12.0
+margin_right = 30.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 8 )
+text = "2"
+
 [node name="Ride Bar" type="NinePatchRect" parent="."]
 margin_left = -14.0
 margin_top = 56.0
@@ -216,7 +239,7 @@ fill_mode = 3
 
 [node name="RideArmor Bar" type="NinePatchRect" parent="."]
 margin_left = -14.0
-margin_top = 24.0
+margin_top = 56.0
 margin_bottom = 108.0
 texture = ExtResource( 21 )
 patch_margin_top = 4
