@@ -55,6 +55,43 @@ func ExecuteOnce() -> void :
 		Initialize()
 		_Setup()
 		_commandList.ExecuteAll()
+		_demo_record()
+
+
+# ── Demo observer interface ─────────────────────────────────────
+
+func _demo_record() -> void:
+	if not character.get_node_or_null("AI"):
+		return
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds and ds.is_recording():
+		var data := _demo_setup_data()
+		data["_px"] = character.global_position.x
+		data["_py"] = character.global_position.y
+		ds.emit_game_event(self, "execute", data)
+
+
+func _demo_setup_data() -> Dictionary:
+	return {}
+
+
+func _demo_apply_setup(_data: Dictionary) -> void:
+	_Setup()
+
+
+func demo_execute(data: Dictionary) -> void:
+	if not executing:
+		if data.has("_px") and data.has("_py"):
+			character.global_position = Vector2(float(data["_px"]), float(data["_py"]))
+		Log("Demo executing")
+		emit_signal("ability_start", self)
+		StopAnyConflictingMoves()
+		Initialize()
+		_demo_apply_setup(data)
+		_commandList.ExecuteAll()
+
+
+# ─────────────────────────────────────────────────────────────────
 
 func Initialize() -> void :
 	executing = true

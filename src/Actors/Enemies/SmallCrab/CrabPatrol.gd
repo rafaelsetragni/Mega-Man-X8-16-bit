@@ -6,20 +6,36 @@ export var random_turn := true
 export var travel_time := 1.25
 export var travel_speed := 70.0
 export var rest_time := 0.8
+var _last_dir := 0
+var _last_rest := 0.0
 
 func _ready() -> void:
 	initial_position = global_position
-	
+
 func _Setup() -> void:
 	attack_stage = 0
 	if random_turn:
-		var move_direction = random_n()
-		set_direction(move_direction)
-		set_movement_and_turn(move_direction, travel_speed)
+		_last_dir = random_n()
+		set_direction(_last_dir)
+		set_movement_and_turn(_last_dir, travel_speed)
 	else:
+		_last_dir = -character.get_facing_direction()
 		turn()
 		Tools.timer(0.05,"move",self)
-	random_rest_time()
+	_last_rest = 0.8 + randf()
+	rest_time = _last_rest
+
+
+func _demo_setup_data() -> Dictionary:
+	return {"dir": _last_dir, "rt": _last_rest}
+
+
+func _demo_apply_setup(data: Dictionary) -> void:
+	attack_stage = 0
+	_last_dir = int(data["dir"])
+	set_direction(_last_dir)
+	set_movement_and_turn(_last_dir, travel_speed)
+	rest_time = float(data["rt"])
 
 func move() -> void:
 	if executing:

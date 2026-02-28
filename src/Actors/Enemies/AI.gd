@@ -113,15 +113,22 @@ func on_zero_health() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if _is_demo_playing():
+		return
 	if active:
 		timer += _delta
 		handle_direction() #is this necessary?
 		handle_vision_ability_calls()
-		on_wallhit_activate_ability() 
+		on_wallhit_activate_ability()
 		handle_idle_ability_calls()
 		if not animated_sprite.visible and GameManager.precise_is_on_screen(character.global_position):
 			#push_error("Error, on camera but not visible: " + get_parent().name)
 			animated_sprite.visible = true
+
+
+func _is_demo_playing() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and ds.is_demo_playing()
 
 func handle_not_onscreen_calls() -> void:
 	activate_ability(_on_exit_screen)

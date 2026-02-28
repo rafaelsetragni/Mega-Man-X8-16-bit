@@ -2,8 +2,7 @@ extends Node
 
 enum State { IDLE, RECORDING, PLAYING }
 
-const DEMO_DIR := "user://demos/"
-const BUNDLED_DEMO_DIR := "res://demos/"
+const DEMO_DIR := "res://demos/"
 const MAX_RECORD_FRAMES := 3600
 const FADE_DURATION := 1.0
 const TRACKED_ACTIONS := [
@@ -17,6 +16,8 @@ var state: int = State.IDLE
 var current_frame: int = 0
 var events: Array = []
 var event_index: int = 0
+var game_events: Array = []
+var game_event_index: int = 0
 var demo_metadata: Dictionary = {}
 var pressed_actions: Dictionary = {}
 
@@ -29,7 +30,7 @@ var _saved_rng_seed: int = 0
 
 var idle_timer: float = 0.0
 var idle_tracking_enabled: bool = false
-const IDLE_DEMO_TIME := 20.0
+const IDLE_DEMO_TIME := 60.0
 
 var _fade_layer: CanvasLayer
 var _fade_rect: ColorRect
@@ -40,13 +41,13 @@ var _recording_waiting: bool = false
 var _demo_playlist: Array = []
 var _demo_playlist_index: int = 0
 var _demo_started_from_menu: bool = false
+var _deferred_game_events: Array = []
 
 
 func _ready() -> void:
 	set_pause_mode(2)
 	_create_fade_overlay()
-	_ensure_dir()
-	print("DemoSystem: Initialized. Save dir: " + DEMO_DIR)
+	print("DemoSystem: Initialized. Demo dir: " + DEMO_DIR)
 
 
 func _create_fade_overlay() -> void:
@@ -169,6 +170,7 @@ func _try_attract_demo() -> void:
 func start_recording() -> void:
 	disable_idle_tracking()
 	events.clear()
+	game_events.clear()
 	state = State.RECORDING
 	current_frame = 0
 	_recording_waiting = true
@@ -180,12 +182,12 @@ func stop_recording() -> void:
 		return
 	_save_demo()
 	state = State.IDLE
-	print("DemoSystem: Recording stopped. " + str(events.size()) + " events in " + str(current_frame) + " frames.")
+	print("DemoSystem: Recording stopped. " + str(events.size()) + " input events, " + str(game_events.size()) + " game events in " + str(current_frame) + " frames.")
 
 
 func _capture_metadata() -> void:
 	demo_metadata = {
-		"version": 1,
+		"version": 2,
 		"level": GameManager.current_level,
 		"character": CharacterManager.player_character,
 		"game_mode": CharacterManager.game_mode,
@@ -195,7 +197,8 @@ func _capture_metadata() -> void:
 		"rng_seed": BossRNG.seed_rng,
 		"global_seed": randi(),
 		"total_frames": 0,
-		"events": []
+		"events": [],
+		"game_events": []
 	}
 
 
@@ -214,11 +217,55 @@ func _record_frame() -> void:
 	for action in TRACKED_ACTIONS:
 		if Input.is_action_just_pressed(action):
 			events.append([current_frame, action, true])
+			print("[%d @ %.2fs] REC: %s ↓" % [current_frame, OS.get_ticks_msec() / 1000.0, action])
 		elif Input.is_action_just_released(action):
 			events.append([current_frame, action, false])
+			print("[%d @ %.2fs] REC: %s ↑" % [current_frame, OS.get_ticks_msec() / 1000.0, action])
 	current_frame += 1
 	if current_frame >= MAX_RECORD_FRAMES:
 		stop_recording()
+
+
+# ── Game events (observer pattern) ───────────────────────────────
+
+func emit_game_event(caller: Node, event_name: String, data: Dictionary = {}) -> void:
+	if state != State.RECORDING or _recording_waiting:
+		return
+	var scene = get_tree().current_scene
+	if not scene:
+		return
+	var path := str(scene.get_path_to(caller))
+	game_events.append([current_frame, path, event_name, data])
+
+
+func _playback_game_events() -> void:
+	# Retry deferred events from previous frames
+	var still_deferred := []
+	for ev in _deferred_game_events:
+		var path: String = ev[1]
+		var data: Dictionary = ev[3] if ev[3] is Dictionary else {}
+		var node = get_tree().current_scene.get_node_or_null(path)
+		if node and node.has_method("demo_execute"):
+			print("[%d @ %.2fs] PLAY (deferred): %s" % [current_frame, OS.get_ticks_msec() / 1000.0, path])
+			node.demo_execute(data)
+		else:
+			still_deferred.append(ev)
+	_deferred_game_events = still_deferred
+
+	# Dispatch events for the current frame
+	while game_event_index < game_events.size():
+		var ev = game_events[game_event_index]
+		if ev[0] != current_frame:
+			break
+		var path: String = ev[1]
+		var data: Dictionary = ev[3] if ev[3] is Dictionary else {}
+		var node = get_tree().current_scene.get_node_or_null(path)
+		if node and node.has_method("demo_execute"):
+			node.demo_execute(data)
+		else:
+			print("[%d @ %.2fs] PLAY: node not found yet, deferring: %s" % [current_frame, OS.get_ticks_msec() / 1000.0, path])
+			_deferred_game_events.append(ev)
+		game_event_index += 1
 
 
 # ── Playback ─────────────────────────────────────────────────────
@@ -249,6 +296,7 @@ func _on_play_demo_fade_done() -> void:
 
 	demo_metadata = data
 	events = data.get("events", [])
+	game_events = data.get("game_events", [])
 
 	_backup_game_state()
 	_restore_game_state(data)
@@ -256,6 +304,7 @@ func _on_play_demo_fade_done() -> void:
 	state = State.PLAYING
 	current_frame = 0
 	event_index = 0
+	game_event_index = 0
 	pressed_actions.clear()
 	_playback_waiting = true
 
@@ -270,8 +319,10 @@ func _playback_frame() -> void:
 		if player and is_instance_valid(player) and player.listening_to_inputs:
 			_playback_waiting = false
 			current_frame = 0
-			print("DemoSystem: Player ready, starting playback")
+			print("DemoSystem: Player ready, starting playback (" + str(game_events.size()) + " game events)")
 		return
+
+	_playback_game_events()
 
 	while event_index < events.size():
 		var ev = events[event_index]
@@ -294,6 +345,7 @@ func stop_demo() -> void:
 		return
 	_release_all_actions()
 	state = State.IDLE
+	_deferred_game_events.clear()
 	_restore_backed_up_state()
 	print("DemoSystem: Demo stopped.")
 
@@ -308,6 +360,7 @@ func _on_stop_demo_fade_done() -> void:
 
 
 func _inject_action(action: String, pressed: bool) -> void:
+	print("[%d @ %.2fs] PLAY: %s %s" % [current_frame, OS.get_ticks_msec() / 1000.0, action, "↓" if pressed else "↑"])
 	var event := InputEventAction.new()
 	event.action = action
 	event.pressed = pressed
@@ -365,6 +418,7 @@ func _save_demo() -> void:
 	_ensure_dir()
 	demo_metadata["total_frames"] = current_frame
 	demo_metadata["events"] = events
+	demo_metadata["game_events"] = game_events
 
 	var ts := OS.get_unix_time()
 	var level_name: String = demo_metadata.get("level", "unknown")
@@ -403,10 +457,7 @@ func _is_valid_demo(data: Dictionary) -> bool:
 
 
 func get_available_demos() -> Array:
-	var demos := []
-	demos.append_array(_list_valid_demos(BUNDLED_DEMO_DIR))
-	demos.append_array(_list_valid_demos(DEMO_DIR))
-	return demos
+	return _list_valid_demos(DEMO_DIR)
 
 
 func _list_valid_demos(dir_path: String) -> Array:
