@@ -134,7 +134,7 @@ func on_area_exit(area: Area2D) -> void :
 		print_debug("[CAM] Zone EXIT: ", area.name, " | remaining: ", remaining, " | cam:", global_position, " | player:", player_pos())
 		if not is_door_translating():
 			update_area_limits()
-			if not ignore_translate:
+			if not ignore_translate and areas.size() > 0:
 				start_zonetranslate(get_nearest_position())
 
 func on_area_enter(area: Area2D) -> void :
@@ -195,8 +195,10 @@ func update_area_limits(recent_area = null) -> void :
 		combined_limits = combine_area_limits(combined_limits)
 		set_limits(combined_limits)
 	elif areas.size() == 0:
-		print_debug("[CAM] No zones active, resetting limits to defaults")
-		set_limits([-1000000000.0, 1000000000.0, -1000000000.0, 1000000000.0])
+		print_debug("[CAM] No zones active, keeping previous limits")
+		# Deliberately not resetting to defaults: keeps camera bounded at last zone boundary
+		# (prevents camera from following player into pits or off-map areas).
+		# Use clear_area_limits() for explicit resets (doors, scene transitions, etc.)
 
 func remove_disabled_areas() -> void :
 	for area in areas:
