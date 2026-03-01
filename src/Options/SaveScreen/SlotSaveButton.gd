@@ -4,15 +4,17 @@ export var slot_index: int = 0
 
 onready var slot_number: Label = $number
 onready var difficulty_label = $difficulty
-onready var completion_label: Label = $completion
+onready var completion_label: Label = $completion_display
 onready var newgame_plus_label: Label = $newgameplus
-onready var last_saved_label: Label = $last_saved
+onready var last_saved_label: Label = $date_display
+onready var igt_label: Label = $igt_display
 onready var status_label: Label = $status
 onready var boss_icons: HBoxContainer = $boss_icons
 onready var item_icons: HBoxContainer = $item_icons
 
 var _is_occupied: bool = false
 var _confirm_pending: bool = false
+var _igt_str: String = ""
 
 const COLLECTIBLES := [
 	"finished_intro",
@@ -44,12 +46,17 @@ func setup_save(data: Dictionary, idx: int) -> void:
 
 	if data.empty():
 		_is_occupied = false
+		_igt_str = ""
 		difficulty_label.text = ""
 		difficulty_label.idle_color = Color.dimgray
 		difficulty_label.focus_color = Color.white
 		completion_label.text = ""
-		last_saved_label.text = tr("SAVE_EMPTY")
+		last_saved_label.text = ""
+		igt_label.text = ""
+		igt_label.visible = false
 		newgame_plus_label.text = ""
+		status_label.modulate = Color.white
+		status_label.text = tr("SAVE_EMPTY")
 		_reset_item_icons()
 	else:
 		_is_occupied = true
@@ -62,44 +69,43 @@ func setup_save(data: Dictionary, idx: int) -> void:
 		# Difficulty + completion
 		var total_collectibles := COLLECTIBLES.size()
 		if meta.has("difficulty"):
+			var diff_name := ""
 			match int(meta["difficulty"]):
 				-1:
-					difficulty_label.text = tr("GAME_START_ROOKIE")
+					diff_name = tr("GAME_START_ROOKIE")
 					difficulty_label.idle_color = Color("#329632")
 					difficulty_label.focus_color = Color("#8cff8c")
 					total_collectibles -= 6
 				0:
-					difficulty_label.text = tr("GAME_START_NORMAL")
+					diff_name = tr("GAME_START_NORMAL")
 					difficulty_label.idle_color = Color("#68caff")
 					difficulty_label.focus_color = Color("#fbffaf")
 				1:
-					difficulty_label.text = tr("GAME_START_HARD")
+					diff_name = tr("GAME_START_HARD")
 					difficulty_label.idle_color = Color("#960000")
 					difficulty_label.focus_color = Color("#ff4b4b")
 					total_collectibles -= 2
 				2:
-					difficulty_label.text = tr("GAME_START_INSANITY")
+					diff_name = tr("GAME_START_INSANITY")
 					difficulty_label.idle_color = Color("#771313")
 					difficulty_label.focus_color = Color("#ff7200")
 					total_collectibles -= 4
 				3:
-					difficulty_label.text = tr("GAME_START_NINJA")
+					diff_name = tr("GAME_START_NINJA")
 					difficulty_label.idle_color = Color("#832b7f")
 					difficulty_label.focus_color = Color("#e090f2")
 					total_collectibles -= 12
+			difficulty_label.text = tr("SAVE_DIFFICULTY") + ": " + diff_name
 			completion_label.text = "Completion: %3.0f%%" % _calc_completion(slot_collectibles, variables, total_collectibles)
 		else:
 			difficulty_label.text = ""
 			completion_label.text = ""
 
 		# IGT + date
-		var igt_str := "-"
-		if variables.has("igt"):
-			igt_str = _format_igt(variables["igt"])
-		var date_str := "-"
-		if meta.has("last_saved"):
-			date_str = _unix_to_string(meta["last_saved"])
-		last_saved_label.text = "IGT: " + igt_str + " - " + date_str
+		_igt_str = _format_igt(variables["igt"]) if variables.has("igt") else ""
+		igt_label.text = _igt_str
+		igt_label.visible = _igt_str != ""
+		last_saved_label.text = _unix_to_string(meta["last_saved"]) if meta.has("last_saved") else ""
 
 		# New game+
 		var ng := int(meta.get("newgame_plus", 0))
@@ -141,13 +147,20 @@ func on_press() -> void:
 		strong_flash()
 		if menu:
 			menu.play_equip_sound()
+		igt_label.text = ""
+		status_label.modulate = Color.white
 		status_label.text = tr("SAVE_OVERWRITE_CONFIRM")
 
 
 func _on_focus_exited() -> void:
 	._on_focus_exited()
 	_confirm_pending = false
-	status_label.text = ""
+	if _is_occupied:
+		status_label.text = ""
+		igt_label.text = _igt_str
+	else:
+		status_label.modulate = Color.white
+		status_label.text = tr("SAVE_EMPTY")
 
 
 func _reset_item_icons() -> void:
@@ -157,8 +170,10 @@ func _reset_item_icons() -> void:
 
 func _populate_boss_icons(slot_collectibles: Array, variables: Dictionary) -> void:
 	for boss in ["panda", "yeti", "manowar", "rooster", "trilobyte", "mantis", "antonion", "sunflower"]:
-		boss_icons.get_node(boss + "/animatedSprite").frame = \
-			1 if (boss + "_weapon") in slot_collectibles else 0
+		var defeated: bool = (boss + "_weapon") in slot_collectibles
+		boss_icons.get_node(boss).visible = defeated
+		if defeated:
+			boss_icons.get_node(boss + "/animatedSprite").frame = 1
 	for hidden in ["zero", "red", "serenade"]:
 		boss_icons.get_node(hidden).visible = false
 	var secret_checks := {
@@ -177,8 +192,11 @@ func _populate_boss_icons(slot_collectibles: Array, variables: Dictionary) -> vo
 		"seraph_lumine_defeated": "lumine",
 	}
 	for key in end_boss_map:
-		if key in variables:
-			boss_icons.get_node(end_boss_map[key] + "/animatedSprite").frame = 1
+		var node_name: String = end_boss_map[key]
+		var has_key: bool = key in variables
+		boss_icons.get_node(node_name).visible = has_key
+		if has_key:
+			boss_icons.get_node(node_name + "/animatedSprite").frame = 1
 
 
 func _populate_item_icons(slot_collectibles: Array) -> void:

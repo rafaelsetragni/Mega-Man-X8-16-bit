@@ -16,6 +16,7 @@ onready var choice: AudioStreamPlayer = $choice
 onready var equip: AudioStreamPlayer = $equip
 onready var cancel: AudioStreamPlayer = $cancel
 onready var salvar_button: Control = $ContentRoot/MainView/SalvarButton
+onready var back_button: Control = $ContentRoot/SlotsView/BackButton
 
 var active: bool = false
 var locked: bool = true
@@ -25,12 +26,20 @@ var _transition_mode: bool = false
 func _ready() -> void:
 	visible = true
 	content_root.visible = false
+	call_deferred("_style_scrollbar")
 	if _is_debugging():
 		content_root.visible = true
 		main_view.visible = true
 		slots_view.visible = false
 		unlock_buttons()
 		call_deferred("_give_main_focus")
+
+
+func _style_scrollbar() -> void:
+	var vscroll = $ContentRoot/SlotsView/ScrollContainer.get_v_scrollbar()
+	var blue_style = vscroll.get_stylebox("grabber_highlight")
+	if blue_style:
+		vscroll.add_stylebox_override("grabber", blue_style)
 
 
 func _is_debugging() -> bool:
@@ -121,7 +130,7 @@ func on_voltar_confirmed() -> void:
 
 func _load_slot_list() -> void:
 	for child in slot_container.get_children():
-		child.queue_free()
+		child.free()
 	var focus_btn: Control = null
 	for i in range(Savefile.max_slots):
 		var btn = SlotButtonScene.instance()
@@ -132,13 +141,16 @@ func _load_slot_list() -> void:
 			focus_btn = btn
 	if not focus_btn and slot_container.get_child_count() > 0:
 		focus_btn = slot_container.get_child(0)
-	# Circular focus navigation
+	# Focus navigation: edges wrap to the back button
 	var children := slot_container.get_children()
 	var total := children.size()
 	for i in range(total):
 		var btn = children[i]
-		btn.focus_neighbour_top = children[(i - 1 + total) % total].get_path()
-		btn.focus_neighbour_bottom = children[(i + 1) % total].get_path()
+		btn.focus_neighbour_top = children[i - 1].get_path() if i > 0 else back_button.get_path()
+		btn.focus_neighbour_bottom = children[i + 1].get_path() if i < total - 1 else back_button.get_path()
+	if total > 0:
+		back_button.focus_neighbour_bottom = children[0].get_path()
+		back_button.focus_neighbour_top = children[total - 1].get_path()
 	if focus_btn:
 		call_deferred("_set_focus", focus_btn)
 

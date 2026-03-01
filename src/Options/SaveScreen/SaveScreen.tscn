@@ -43,24 +43,49 @@ texture = ExtResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Title" type="Label" parent="ContentRoot/MainView"]
+[node name="Title" type="Control" parent="ContentRoot/MainView"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -100.0
-margin_top = 15.0
+margin_top = 5.0
 margin_right = 100.0
-margin_bottom = 30.0
-custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 1
-custom_constants/shadow_offset_y = 1
-custom_fonts/font = ExtResource( 5 )
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="detail" type="Label" parent="ContentRoot/MainView/Title"]
+modulate = Color( 0.2, 0.247059, 0.415686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "-                                        -"
+align = 1
+uppercase = true
+
+[node name="text" type="Label" parent="ContentRoot/MainView/Title"]
+modulate = Color( 0.407843, 0.792157, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "SAVE_GAME"
 align = 1
 uppercase = true
 
 [node name="SalvarButton" type="TextureButton" parent="ContentRoot/MainView"]
-modulate = Color( 1, 1, 1, 1 )
+modulate = Color( 0.412, 0.412, 0.412, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -100.0
@@ -75,8 +100,8 @@ script = ExtResource( 3 )
 menu_path = NodePath("../../..")
 pick_sound = NodePath("../../../equip")
 method = "_on_salvar_pressed"
-idle_color = Color( 1, 1, 1, 1 )
-focus_color = Color( 1, 0.913725, 0, 1 )
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
 
 [node name="label" type="Label" parent="ContentRoot/MainView/SalvarButton"]
 anchor_left = 0.0
@@ -93,13 +118,13 @@ valign = 1
 uppercase = true
 
 [node name="ContinuarButton" type="TextureButton" parent="ContentRoot/MainView"]
-modulate = Color( 1, 1, 1, 1 )
+modulate = Color( 0.412, 0.412, 0.412, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -100.0
-margin_top = 102.0
+margin_top = 98.0
 margin_right = 100.0
-margin_bottom = 118.0
+margin_bottom = 114.0
 rect_min_size = Vector2( 200, 16 )
 focus_neighbour_bottom = NodePath("../VoltarButton")
 focus_neighbour_top = NodePath("../SalvarButton")
@@ -108,8 +133,8 @@ script = ExtResource( 3 )
 menu_path = NodePath("../../..")
 pick_sound = NodePath("../../../choice")
 method = "_on_continuar_pressed"
-idle_color = Color( 1, 1, 1, 1 )
-focus_color = Color( 1, 0.913725, 0, 1 )
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
 
 [node name="label" type="Label" parent="ContentRoot/MainView/ContinuarButton"]
 anchor_left = 0.0
@@ -126,7 +151,7 @@ valign = 1
 uppercase = true
 
 [node name="VoltarButton" type="TextureButton" parent="ContentRoot/MainView"]
-modulate = Color( 1, 1, 1, 1 )
+modulate = Color( 0.412, 0.412, 0.412, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -100.0
@@ -141,14 +166,14 @@ script = ExtResource( 4 )
 menu_path = NodePath("../../..")
 default_label = "SAVE_RETURN_MENU"
 confirmation = "SAVE_RETURN_CONFIRM"
-idle_color = Color( 1, 1, 1, 1 )
-focus_color = Color( 1, 0.913725, 0, 1 )
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
 
 [node name="text" type="Label" parent="ContentRoot/MainView/VoltarButton"]
 anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -207,25 +232,24 @@ uppercase = true
 [node name="ScrollContainer" type="ScrollContainer" parent="ContentRoot/SlotsView"]
 margin_left = 66.0
 margin_top = 42.0
-margin_right = 332.0
+margin_right = 360.0
 margin_bottom = 201.0
 rect_min_size = Vector2( 266, 159 )
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="SlotContainer" type="VBoxContainer" parent="ContentRoot/SlotsView/ScrollContainer"]
-anchor_right = 1.0
 rect_min_size = Vector2( 266, 0 )
 custom_constants/separation = 3
 
 [node name="BackButton" type="TextureButton" parent="ContentRoot/SlotsView"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -30.0
-margin_top = 203.0
-margin_right = 30.0
-margin_bottom = 215.0
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 67.0
+margin_top = 5.0
+margin_right = 127.0
+margin_bottom = 21.0
 rect_min_size = Vector2( 60, 12 )
 action_mode = 0
 script = ExtResource( 3 )
