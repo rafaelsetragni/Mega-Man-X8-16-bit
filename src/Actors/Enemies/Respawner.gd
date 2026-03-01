@@ -13,12 +13,37 @@ const respawn_marker := preload("res://src/System/Respawn/RespawnMark.tscn")
 signal respawned
 signal despawned
 
+# True during demo playback when this Respawner has recorded game_events.
+# In that case, all respawning is driven by DemoSystem game_events (exact frame timing).
+# False when there are no recorded events — marks are used as normal fallback.
+var _demo_using_game_events := false
+
 func _ready() -> void:
 	_initialize_enemies_watched_list()
 	despawn_all()
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds and ds.is_demo_playing():
+		_demo_using_game_events = _has_recorded_respawn_events(ds)
+		if _demo_using_game_events:
+			# Respawn lifecycle managed entirely by DemoSystem game_events.
+			Event.listen("moved_player_to_checkpoint",self,"on_checkpoint_start")
+			return
+		# No recorded events for this Respawner: fall back to mark-based respawning.
+		# The small real-time timer drift (~1-2 frames) is acceptable for
+		# enemies in sections the player doesn't reach during recording.
 	mark_all_for_respawn()
 	Tools.timer(0.1,"first_checkpoint_spawn",self)
 	Event.listen("moved_player_to_checkpoint",self,"on_checkpoint_start")
+
+func _has_recorded_respawn_events(ds) -> bool:
+	var scene = get_tree().current_scene
+	if not scene:
+		return false
+	var my_path := str(scene.get_path_to(self))
+	for ev in ds.game_events:
+		if ev[1] == my_path and ev[2] == "respawn":
+			return true
+	return false
 
 func _initialize_enemies_watched_list():
 	for child in get_children():
@@ -28,7 +53,7 @@ func _initialize_enemies_watched_list():
 				starter_enemies.append(watched_enemy)
 			else:
 				enemies.append(watched_enemy)
-				
+
 		else:
 			extras.append(child)
 
@@ -40,6 +65,9 @@ func connect_death_and_screen_signals(enemy : Watched):
 func on_enemy_exit_screen(enemy : Watched):
 	if is_instance_valid(enemy.object):
 		if active and enemy.object.current_health > 0:
+			var ds = get_node_or_null("/root/DemoSystem")
+			if ds and ds.is_demo_playing():
+				return  # No exit-despawn timers during demo playback
 			enemy.outside_timer = Tools.timer_r(on_exit_despawn_after,"despawn_and_mark_for_respawn",self,[enemy])
 
 func on_enemy_enter_screen(enemy : Watched):
@@ -47,7 +75,7 @@ func on_enemy_enter_screen(enemy : Watched):
 		enemy.outside_timer.stop()
 		enemy.outside_timer.queue_free()
 		enemy.outside_timer = null
-		
+
 
 func despawn_and_mark_for_respawn(enemy : Watched):
 	if active:
@@ -61,6 +89,8 @@ func despawn(enemy : Watched):
 		emit_signal("despawned")
 
 func mark_for_respawn(enemy : Watched, death_duration = minimum_death_duration):
+	if _demo_using_game_events:
+		return  # This Respawner uses game_events; marks would cause non-deterministic timing
 	if active:
 		var mark := respawn_marker.instance()
 		enemy.parent.add_child(mark,true)
@@ -81,6 +111,29 @@ func respawn(enemy : Watched):
 		connect_death_and_screen_signals(enemy)
 		emit_signal("respawned")
 		Event.emit_signal("respawned",spawn)
+		_demo_record_respawn(enemy)
+
+func _demo_record_respawn(enemy: Watched) -> void:
+	var ds = get_node_or_null("/root/DemoSystem")
+	if not ds or not ds.is_recording():
+		return
+	var idx := enemies.find(enemy)
+	if idx >= 0:
+		ds.emit_game_event(self, "respawn", {"idx": idx, "list": "enemies"})
+		return
+	idx = starter_enemies.find(enemy)
+	if idx >= 0:
+		ds.emit_game_event(self, "respawn", {"idx": idx, "list": "starters"})
+
+func demo_execute(data: Dictionary) -> void:
+	var idx := int(data.get("idx", -1))
+	var list_name: String = data.get("list", "enemies")
+	if list_name == "enemies":
+		if idx >= 0 and idx < enemies.size():
+			respawn(enemies[idx])
+	elif list_name == "starters":
+		if idx >= 0 and idx < starter_enemies.size():
+			respawn(starter_enemies[idx])
 
 func activate():
 	active = true
@@ -114,6 +167,9 @@ var deactivated_by_checkpoints := false
 
 func on_checkpoint_start(checkpoint : CheckpointSettings):
 	print_debug(name + ": on_checkpoint_start")
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds and ds.is_demo_playing():
+		return  # Skip checkpoint handling during demo playback
 	if checkpoint.id > next_checkpoint:
 		print_debug(name + ": Deactivating based on Checkpoint")
 		deactivate()
@@ -131,7 +187,7 @@ func first_checkpoint_spawn():
 func spawn_starter_enemies():
 	for each in starter_enemies:
 		respawn(each)
-		
+
 
 class Watched:
 	var object : Enemy

@@ -45,7 +45,15 @@ func hide_intro() -> void :
 	inspired.visible = false
 	black.visible = false
 
+func _exit_tree() -> void:
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.disable_idle_tracking()
+
 func _ready() -> void :
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.enable_idle_tracking()
 	capcom_logo.modulate = Color(0, 0, 0, 1)
 	inspired.modulate = Color( - 1, - 1, 0, 1)
 	if GameManager.skip_to_menu:

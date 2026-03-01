@@ -1,0 +1,317 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Options/SaveScreen/SaveScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/Options/CoverScreen.gd" type="Script" id=2]
+[ext_resource path="res://src/Options/CallbackButton.gd" type="Script" id=3]
+[ext_resource path="res://src/Options/SaveScreen/VoltarButton.gd" type="Script" id=4]
+[ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://System/SFX/option_b_select.ogg" type="AudioStream" id=6]
+[ext_resource path="res://System/SFX/open_option.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/Options/SaveScreen/SlotSaveButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Options/pause_bg.png" type="Texture" id=9]
+[ext_resource path="res://System/Screens/Loading/Loading_Screen.png" type="Texture" id=10]
+[ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=11]
+
+[node name="SaveScreen" type="CanvasLayer"]
+layer = 5
+pause_mode = 2
+script = ExtResource( 1 )
+SlotButtonScene = ExtResource( 8 )
+
+[node name="ContentRoot" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="Background" type="TextureRect" parent="ContentRoot"]
+margin_right = 398.0
+margin_bottom = 224.0
+texture = ExtResource( 9 )
+
+[node name="Panel" type="TextureRect" parent="ContentRoot"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -84.0
+margin_right = 142.0
+margin_bottom = 132.0
+texture = ExtResource( 10 )
+
+[node name="MainView" type="Control" parent="ContentRoot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Title" type="Control" parent="ContentRoot/MainView"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="detail" type="Label" parent="ContentRoot/MainView/Title"]
+modulate = Color( 0.2, 0.247059, 0.415686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "-                                        -"
+align = 1
+uppercase = true
+
+[node name="text" type="Label" parent="ContentRoot/MainView/Title"]
+modulate = Color( 0.407843, 0.792157, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -7.0
+margin_right = 100.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "SAVE_GAME"
+align = 1
+uppercase = true
+
+[node name="SalvarButton" type="TextureButton" parent="ContentRoot/MainView"]
+modulate = Color( 0.412, 0.412, 0.412, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 80.0
+margin_right = 100.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 200, 16 )
+focus_neighbour_bottom = NodePath("../ContinuarButton")
+focus_neighbour_top = NodePath("../VoltarButton")
+action_mode = 0
+script = ExtResource( 3 )
+menu_path = NodePath("../../..")
+pick_sound = NodePath("../../../equip")
+method = "_on_salvar_pressed"
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
+
+[node name="label" type="Label" parent="ContentRoot/MainView/SalvarButton"]
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 5 )
+text = "SAVE_OPTION"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="ContinuarButton" type="TextureButton" parent="ContentRoot/MainView"]
+modulate = Color( 0.412, 0.412, 0.412, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 98.0
+margin_right = 100.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 200, 16 )
+focus_neighbour_bottom = NodePath("../VoltarButton")
+focus_neighbour_top = NodePath("../SalvarButton")
+action_mode = 0
+script = ExtResource( 3 )
+menu_path = NodePath("../../..")
+pick_sound = NodePath("../../../choice")
+method = "_on_continuar_pressed"
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
+
+[node name="label" type="Label" parent="ContentRoot/MainView/ContinuarButton"]
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 5 )
+text = "CONTINUE_OPTION"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="VoltarButton" type="TextureButton" parent="ContentRoot/MainView"]
+modulate = Color( 0.412, 0.412, 0.412, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 200, 16 )
+focus_neighbour_bottom = NodePath("../SalvarButton")
+focus_neighbour_top = NodePath("../ContinuarButton")
+action_mode = 0
+script = ExtResource( 4 )
+menu_path = NodePath("../../..")
+default_label = "SAVE_RETURN_MENU"
+confirmation = "SAVE_RETURN_CONFIRM"
+idle_color = Color( 0.412, 0.412, 0.412, 1 )
+focus_color = Color( 1, 1, 1, 1 )
+
+[node name="text" type="Label" parent="ContentRoot/MainView/VoltarButton"]
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.913725, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 5 )
+text = "SAVE_RETURN_MENU"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="SlotsView" type="Control" parent="ContentRoot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="Title" type="Control" parent="ContentRoot/SlotsView"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -30.0
+margin_top = 5.0
+margin_right = 30.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 16 )
+
+[node name="detail" type="Label" parent="ContentRoot/SlotsView/Title"]
+modulate = Color( 0.2, 0.247059, 0.415686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.5
+margin_top = -7.0
+margin_right = 44.5
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "-               -"
+align = 1
+uppercase = true
+
+[node name="text" type="Label" parent="ContentRoot/SlotsView/Title"]
+modulate = Color( 0.407843, 0.792157, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -7.0
+margin_right = 90.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "SELECT SAVE SLOT"
+align = 1
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ContentRoot/SlotsView"]
+margin_left = 66.0
+margin_top = 42.0
+margin_right = 360.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 266, 159 )
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="SlotContainer" type="VBoxContainer" parent="ContentRoot/SlotsView/ScrollContainer"]
+rect_min_size = Vector2( 266, 0 )
+custom_constants/separation = 3
+
+[node name="BackButton" type="TextureButton" parent="ContentRoot/SlotsView"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 67.0
+margin_top = 5.0
+margin_right = 127.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 60, 12 )
+action_mode = 0
+script = ExtResource( 3 )
+menu_path = NodePath("../../..")
+pick_sound = NodePath("../../../cancel")
+method = "_show_main_view"
+
+[node name="label" type="Label" parent="ContentRoot/SlotsView/BackButton"]
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 5 )
+text = "BACK"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Fader" type="ColorRect" parent="."]
+margin_right = 398.0
+margin_bottom = 224.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+visible = false
+script = ExtResource( 2 )
+menu = NodePath("../ContentRoot")
+
+[node name="choice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -4.0
+bus = "SFX"
+
+[node name="equip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -4.0
+bus = "SFX"
+
+[node name="cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -4.0
+bus = "SFX"
+
+[connection signal="focus_entered" from="ContentRoot/MainView/SalvarButton" to="ContentRoot/MainView/SalvarButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentRoot/MainView/SalvarButton" to="ContentRoot/MainView/SalvarButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ContentRoot/MainView/SalvarButton" to="ContentRoot/MainView/SalvarButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ContentRoot/MainView/SalvarButton" to="ContentRoot/MainView/SalvarButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ContentRoot/MainView/SalvarButton" to="ContentRoot/MainView/SalvarButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ContentRoot/MainView/ContinuarButton" to="ContentRoot/MainView/ContinuarButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentRoot/MainView/ContinuarButton" to="ContentRoot/MainView/ContinuarButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ContentRoot/MainView/ContinuarButton" to="ContentRoot/MainView/ContinuarButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ContentRoot/MainView/ContinuarButton" to="ContentRoot/MainView/ContinuarButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ContentRoot/MainView/ContinuarButton" to="ContentRoot/MainView/ContinuarButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ContentRoot/MainView/VoltarButton" to="ContentRoot/MainView/VoltarButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentRoot/MainView/VoltarButton" to="ContentRoot/MainView/VoltarButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ContentRoot/MainView/VoltarButton" to="ContentRoot/MainView/VoltarButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ContentRoot/MainView/VoltarButton" to="ContentRoot/MainView/VoltarButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ContentRoot/MainView/VoltarButton" to="ContentRoot/MainView/VoltarButton" method="_on_pressed"]
+[connection signal="focus_entered" from="ContentRoot/SlotsView/BackButton" to="ContentRoot/SlotsView/BackButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="ContentRoot/SlotsView/BackButton" to="ContentRoot/SlotsView/BackButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="ContentRoot/SlotsView/BackButton" to="ContentRoot/SlotsView/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ContentRoot/SlotsView/BackButton" to="ContentRoot/SlotsView/BackButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="ContentRoot/SlotsView/BackButton" to="ContentRoot/SlotsView/BackButton" method="_on_pressed"]

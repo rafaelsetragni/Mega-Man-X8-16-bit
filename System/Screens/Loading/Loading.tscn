@@ -9,7 +9,7 @@
 [ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=7]
 [ext_resource path="res://src/Sounds/CHARGED_SHOT.wav" type="AudioStream" id=8]
 [ext_resource path="res://System/Screens/Loading/Loading.gd" type="Script" id=9]
-[ext_resource path="res://System/Screens/Loading/SlotButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://System/Screens/Loading/SlotLoadButton.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=11]
 [ext_resource path="res://System/Screens/Loading/Loading_Screen.png" type="Texture" id=12]
 [ext_resource path="res://System/SFX/choose_x8.ogg" type="AudioStream" id=15]
@@ -82,9 +82,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -61.0
+margin_left = -90.0
 margin_top = -7.0
-margin_right = 60.0
+margin_right = 90.0
 margin_bottom = 9.0
 custom_colors/font_color_shadow = Color( 0.372549, 0.372549, 0.372549, 1 )
 custom_fonts/font = ExtResource( 11 )
@@ -95,45 +95,46 @@ uppercase = true
 [node name="scrollContainer" type="ScrollContainer" parent="Menu"]
 margin_left = 66.0
 margin_top = 42.0
-margin_right = 332.0
+margin_right = 360.0
 margin_bottom = 201.0
+rect_min_size = Vector2( 266, 159 )
 theme = ExtResource( 17 )
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="OptionHolder" type="VBoxContainer" parent="Menu/scrollContainer"]
-grow_horizontal = 2
+rect_min_size = Vector2( 266, 0 )
 custom_constants/separation = 3
 
 [node name="exit" type="TextureButton" parent="Menu"]
-self_modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -42.0
-margin_top = -24.0
-margin_right = 42.0
-margin_bottom = -14.0
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 67.0
+margin_top = 5.0
+margin_right = 127.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 60, 12 )
 action_mode = 0
 script = ExtResource( 2 )
 menu_path = NodePath("../..")
+idle_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+focus_color = Color( 1, 1, 1, 1 )
 
 [node name="text" type="Label" parent="Menu/exit"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -133.0
-margin_top = -9.0
-margin_right = 133.0
-margin_bottom = 5.0
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_fonts/font = ExtResource( 7 )
 text = "EXIT_BUTTON"
 align = 1
+valign = 1
 uppercase = true
 
 [node name="Fader" type="ColorRect" parent="."]

@@ -1128,3 +1128,11 @@ AXLARMS_DISC,Pistola con proiettili energetici
 AXLLEGS_NAME,Pezzo Gambe
 AXLLEGS_DISC,Hover e Air Dash
 JOKE_MODE_OPTION,Modo Meme
+"SAVE_GAME","Salva Dai"
+"SAVE_OPTION","Salva Cazzo"
+"CONTINUE_OPTION","Yolo"
+"SAVE_RETURN_MENU","Scappo"
+"SAVE_RETURN_CONFIRM","Sul serio?"
+"SAVE_EMPTY","Vuoto lol"
+"SAVE_DIFFICULTY","Difficoltà lol"
+"SAVE_OVERWRITE_CONFIRM","Sovrascrivi?"

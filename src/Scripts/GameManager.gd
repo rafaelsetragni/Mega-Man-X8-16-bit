@@ -68,6 +68,14 @@ var _debug_save_data: Dictionary = {}
 var _debug_restore_pending := false
 var debug_save_menu: Node
 
+func _is_demo_active() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and (ds.is_demo_playing() or ds.is_recording())
+
+func _is_demo_playing() -> bool:
+	var ds = get_node_or_null("/root/DemoSystem")
+	return ds != null and ds.is_demo_playing()
+
 func _ready() -> void :
 	print ("GameManager: Initializing...")
 	set_pause_mode(2)
@@ -159,7 +167,9 @@ func start_stage_music() -> void:
 		music_player.call_deferred("play_stage_song")
 
 func start_level(StageName : String) -> void:
-	
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.disable_idle_tracking()
 	clear_checkpoint()
 	set_player_lives_to_at_least_2()
 	current_level = StageName
@@ -199,11 +209,13 @@ func go_to_lumine_boss_test() -> void:
 	
 
 func end_level():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("EndLevel")
 	debug_go_to_next_stage = true
-	Savefile.save(Savefile.save_slot)
 	IGT.save_time()
 
 var won_against_final_boss := false
@@ -214,16 +226,17 @@ func end_game():
 	GameManager.pause("EndGame")
 	debug_go_to_next_stage = true
 	won_against_final_boss = true
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()
 	IGT.save_time()
 
 func on_death():
+	if _is_demo_playing():
+		get_node("/root/DemoSystem").stop_demo()
+		return
 	Event.emit_signal("fade_out")
 	end_stage_timer = 0.01
 	GameManager.pause("Death")
 	BossRNG.player_died()
-	Savefile.save(Savefile.save_slot)
 	player_died = true
 
 func finished_fade_out() -> void :
@@ -236,15 +249,29 @@ func finished_fade_out() -> void :
 			call_deferred("restart_level")
 		else:
 			Event.emit_signal("game_over")
-			call_deferred("go_to_stage_select")
+			_show_transition_save_screen("go_to_stage_select")
 	else:
 		if won_against_final_boss:
 			won_against_final_boss = false
-			call_deferred("go_to_end_cutscene")
+			_show_transition_save_screen("go_to_end_cutscene")
 		elif weapon_got and weapon_got != "none":
-			call_deferred("go_to_weapon_get")
+			_show_transition_save_screen("go_to_weapon_get")
 		else:
-			call_deferred("go_to_stage_select")
+			_show_transition_save_screen("go_to_stage_select")
+
+
+func _show_transition_save_screen(callback_method: String) -> void:
+	end_stage_timer = 0
+	GameManager.pause("TransitionSave")
+	var save_screen = load("res://src/Options/SaveScreen/SaveScreen.tscn").instance()
+	get_tree().current_scene.add_child(save_screen)
+	save_screen.connect("transition_committed", self, "_on_transition_committed", [callback_method])
+	save_screen.start_for_transition()
+
+
+func _on_transition_committed(callback_method: String) -> void:
+	force_unpause()
+	call(callback_method)
 
 func go_to_end_cutscene():
 	print_debug(":::::::: going to final cutscene")
@@ -297,7 +324,7 @@ func restart_level():
 	on_level_start()
 
 func reached_checkpoint(new_checkpoint: CheckpointSettings) -> void :
-	if GameManager.time_attack:
+	if GameManager.time_attack or _is_demo_playing():
 		return
 
 	if not checkpoint or new_checkpoint.id > checkpoint.id:
@@ -509,7 +536,9 @@ func get_next_spawn_item(
 	big_ammo_chance: float = big_ammo_chance_default, 
 	extra_life_chance: float = extra_life_chance_default
 ) -> PackedScene:
-	
+	if _is_demo_active():
+		return null
+
 	var chance: float = randf() * 100
 	if chance > drop_item_chance:
 		return null
