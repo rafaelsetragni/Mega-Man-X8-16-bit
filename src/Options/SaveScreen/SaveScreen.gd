@@ -105,7 +105,11 @@ func start_for_transition() -> void:
 	slots_view.visible = false
 	content_root.visible = true
 	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
+	GameManager.change_state("Normal")
+	if GameManager.player and is_instance_valid(GameManager.player):
+		GameManager.resume_character_inputs()
 	unlock_buttons()
+	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	_give_main_focus()
 

@@ -132,22 +132,27 @@ func show_debug_text() -> void:
 
 func start_fade_out() -> void:
 	fade_out = true
-	
+	_fade_finished = false
+
 var fade_out_to_white := false
+var _fade_finished := false
 
 func start_final_fade_out() -> void:
 	fade_out = true
 	fade_out_to_white = true
+	_fade_finished = false
 
 func process_fade(delta):
 	if fade_out and black_screen_alpha < 1:
+		black_screen.visible = true
 		if GameManager.player.is_executing("Death"):
 			white_screen.visible = true
-		black_screen.visible = true
 		black_screen_alpha += delta * 2
 		fade()
 	elif fade_out and black_screen_alpha >= 1:
-		GameManager.finished_fade_out()
+		if not _fade_finished:
+			_fade_finished = true
+			GameManager.finished_fade_out()
 	elif not fade_out and black_screen_alpha > 0:
 		black_screen_alpha -= delta * 2
 		call_deferred("fade")
