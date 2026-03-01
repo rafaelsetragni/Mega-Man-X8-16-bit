@@ -52,6 +52,7 @@ func increment_timers_and_set_camera_limits(delta: float) -> void:
 	timer += delta
 	biker_spawn_timer += delta
 	GameManager.camera.custom_limits_right = walls.global_position.x
+	GameManager.camera.custom_limits_bot = -185.0
 
 func increment_endtimer(delta: float) -> void:
 	if is_ending():

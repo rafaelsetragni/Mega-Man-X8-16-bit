@@ -103,20 +103,23 @@ func start_for_transition() -> void:
 	active = true
 	main_view.visible = true
 	slots_view.visible = false
-	content_root.visible = true
+	content_root.visible = false
 	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
 	GameManager.change_state("Normal")
 	if GameManager.player and is_instance_valid(GameManager.player):
 		GameManager.resume_character_inputs()
+	fader.visible = true
+	fader.FadeIn()
+	yield(fader, "finished")
 	unlock_buttons()
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
 	_give_main_focus()
 
 
 func on_voltar_confirmed() -> void:
 	lock_buttons()
 	if _transition_mode:
+		fader.SoftFadeOut()
+		yield(fader, "finished")
 		content_root.visible = false
 		GameManager.reset_stretch_mode()
 		GameManager.unpause("TransitionSave")
@@ -163,15 +166,13 @@ func _set_focus(node: Control) -> void:
 func _close() -> void:
 	active = false
 	lock_buttons()
-	if _transition_mode:
-		content_root.visible = false
-		GameManager.reset_stretch_mode()
-		emit_signal("transition_committed")
-		return
 	fader.FadeOut()
 	yield(fader, "finished")
 	GameManager.reset_stretch_mode()
-	emit_signal("end")
+	if _transition_mode:
+		emit_signal("transition_committed")
+	else:
+		emit_signal("end")
 
 
 func play_choice_sound() -> void:
