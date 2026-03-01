@@ -44,6 +44,8 @@ onready var debugtext_3: RichTextLabel = $debugtext3
 var ignore_translate: = false
 
 var areas = []
+var _dbg_mode_x: String = ""
+var _dbg_mode_y: String = ""
 
 func _ready() -> void :
 	GameManager.camera = self
@@ -88,6 +90,12 @@ func _process(delta: float) -> void :
 	new_pos = process_screenshake(new_pos, delta)
 	debug_information()
 	global_position = new_pos
+	var _mx: String = current_mode_x.name if current_mode_x else "Follow"
+	var _my: String = current_mode_y.name if current_mode_y else "Follow"
+	if _mx != _dbg_mode_x or _my != _dbg_mode_y:
+		print_debug("[CAM] Mode | X:", _dbg_mode_x, "->", _mx, " Y:", _dbg_mode_y, "->", _my, " | cam:", global_position, " | player:", player_pos(), " | L:", custom_limits_left, " R:", custom_limits_right)
+		_dbg_mode_x = _mx
+		_dbg_mode_y = _my
 
 func process_x(new_position, delta) -> Vector2:
 	if current_mode_x:
@@ -120,6 +128,10 @@ func add_trauma(amount):
 func on_area_exit(area: Area2D) -> void :
 	if area in areas:
 		areas.erase(area)
+		var remaining = []
+		for a in areas:
+			remaining.append(a.name)
+		print_debug("[CAM] Zone EXIT: ", area.name, " | remaining: ", remaining, " | cam:", global_position, " | player:", player_pos())
 		if not is_door_translating():
 			update_area_limits()
 			if not ignore_translate:
@@ -127,6 +139,7 @@ func on_area_exit(area: Area2D) -> void :
 
 func on_area_enter(area: Area2D) -> void :
 	if not area.disabled:
+		print_debug("[CAM] Zone ENTER: ", area.name, " | L:", area.get_limit_left(), " R:", area.get_limit_right(), " T:", area.get_limit_top(), " B:", area.get_limit_bottom(), " | cam:", global_position, " | player:", player_pos())
 		include_area_limit(area)
 
 func include_area_limit(area: Area2D) -> void :
@@ -172,7 +185,7 @@ func start_door_translate(_position: Vector2, post_door_limits, should_lock: = f
 func update_area_limits(recent_area = null) -> void :
 	if not recent_area and areas.size() > 0:
 		recent_area = areas[0]
-		
+
 	if recent_area:
 		var combined_limits: = []
 		combined_limits.append(recent_area.get_limit_left())
@@ -181,6 +194,9 @@ func update_area_limits(recent_area = null) -> void :
 		combined_limits.append(recent_area.get_limit_bottom())
 		combined_limits = combine_area_limits(combined_limits)
 		set_limits(combined_limits)
+	elif areas.size() == 0:
+		print_debug("[CAM] No zones active, resetting limits to defaults")
+		set_limits([-1000000000.0, 1000000000.0, -1000000000.0, 1000000000.0])
 
 func remove_disabled_areas() -> void :
 	for area in areas:
@@ -224,6 +240,10 @@ func set_limits(limits: Array):
 	custom_limits_right = limits[1]
 	custom_limits_top = limits[2]
 	custom_limits_bot = limits[3]
+	var zone_names = []
+	for a in areas:
+		zone_names.append(a.name)
+	print_debug("[CAM] Limits set | L:", custom_limits_left, " R:", custom_limits_right, " T:", custom_limits_top, " B:", custom_limits_bot, " | zones:", zone_names, " | cam:", global_position)
 
 func _physics_process(_delta: float) -> void :
 	adjust_collisor_position()

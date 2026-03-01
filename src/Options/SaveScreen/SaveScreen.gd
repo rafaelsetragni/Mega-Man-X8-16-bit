@@ -103,25 +103,21 @@ func start_for_transition() -> void:
 	active = true
 	main_view.visible = true
 	slots_view.visible = false
-	# Hide VoltarButton — not applicable in level-transition context
-	var voltar_btn := get_node_or_null("ContentRoot/MainView/VoltarButton")
-	if voltar_btn:
-		voltar_btn.visible = false
-	# Fix circular focus: only Salvar and Continuar remain
-	var continuar_btn := get_node_or_null("ContentRoot/MainView/ContinuarButton")
-	if salvar_button and continuar_btn:
-		salvar_button.focus_neighbour_top = continuar_btn.get_path()
-		continuar_btn.focus_neighbour_bottom = salvar_button.get_path()
 	content_root.visible = true
 	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
 	unlock_buttons()
-	call_deferred("_give_main_focus")
+	yield(get_tree(), "idle_frame")
+	_give_main_focus()
 
 
 func on_voltar_confirmed() -> void:
-	if _transition_mode:
-		return
 	lock_buttons()
+	if _transition_mode:
+		content_root.visible = false
+		GameManager.reset_stretch_mode()
+		GameManager.unpause("TransitionSave")
+		GameManager.go_to_intro()
+		return
 	fader.SoftFadeOut()
 	yield(fader, "finished")
 	GameManager.unpause("PauseMenu")
