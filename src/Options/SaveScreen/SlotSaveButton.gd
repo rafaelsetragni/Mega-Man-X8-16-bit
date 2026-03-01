@@ -72,26 +72,26 @@ func setup_save(data: Dictionary, idx: int) -> void:
 			var diff_name := ""
 			match int(meta["difficulty"]):
 				-1:
-					diff_name = tr("GAME_START_ROOKIE")
+					diff_name = tr("SAVE_DIFF_ROOKIE")
 					difficulty_label.idle_color = Color("#329632")
 					difficulty_label.focus_color = Color("#8cff8c")
 					total_collectibles -= 6
 				0:
-					diff_name = tr("GAME_START_NORMAL")
+					diff_name = tr("SAVE_DIFF_NORMAL")
 					difficulty_label.idle_color = Color("#68caff")
 					difficulty_label.focus_color = Color("#fbffaf")
 				1:
-					diff_name = tr("GAME_START_HARD")
+					diff_name = tr("SAVE_DIFF_HARD")
 					difficulty_label.idle_color = Color("#960000")
 					difficulty_label.focus_color = Color("#ff4b4b")
 					total_collectibles -= 2
 				2:
-					diff_name = tr("GAME_START_INSANITY")
+					diff_name = tr("SAVE_DIFF_INSANITY")
 					difficulty_label.idle_color = Color("#771313")
 					difficulty_label.focus_color = Color("#ff7200")
 					total_collectibles -= 4
 				3:
-					diff_name = tr("GAME_START_NINJA")
+					diff_name = tr("SAVE_DIFF_NINJA")
 					difficulty_label.idle_color = Color("#832b7f")
 					difficulty_label.focus_color = Color("#e090f2")
 					total_collectibles -= 12

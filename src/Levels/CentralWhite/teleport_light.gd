@@ -24,9 +24,11 @@ func teleport_player() -> void :
 			GameManager.camera.set_ignore_translate(true)
 			GameManager.camera.ignore_translate = true
 			GameManager.player.get_node("Ride").ride.global_position = Vector2( - 4500, - 225)
+			GameManager.camera.clear_area_limits()
 			GameManager.camera.go_to_player()
 		else:
 			GameManager.camera.set_ignore_translate(true)
 			GameManager.camera.ignore_translate = true
 			GameManager.player.global_position = Vector2( - 4500, - 225)
+			GameManager.camera.clear_area_limits()
 			GameManager.camera.go_to_player()

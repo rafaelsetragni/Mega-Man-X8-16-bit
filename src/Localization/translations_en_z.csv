@@ -1136,3 +1136,8 @@
 "SAVE_EMPTY","Nope"
 "SAVE_DIFFICULTY","Difficulty xd"
 "SAVE_OVERWRITE_CONFIRM","Rly Overwrite?"
+"SAVE_DIFF_ROOKIE","Baby"
+"SAVE_DIFF_NORMAL","Mid"
+"SAVE_DIFF_HARD","Skill Check"
+"SAVE_DIFF_INSANITY","Regret"
+"SAVE_DIFF_NINJA","Touch Grass"

@@ -15,7 +15,7 @@ func on_rotate_stage() -> void :
 func process_effect(delta: float) -> void :
 	if executing:
 		timer += delta
-		if is_instance_valid(player.ride) and player.ride.current_health < player.ride.max_health:
+		if is_instance_valid(player.ride) and player.ride.current_health > 0 and player.ride.current_health < player.ride.max_health:
 			do_ride_heal(player.ride)
 			if amount_to_ammo == 0:
 				timer = 0
