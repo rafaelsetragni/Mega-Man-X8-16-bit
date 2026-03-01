@@ -15,6 +15,7 @@ onready var pick: AudioStreamPlayer = $pick
 onready var loaded: AudioStreamPlayer = $load
 onready var cancel: AudioStreamPlayer = $cancel
 onready var save_button_container: VBoxContainer = $Menu / scrollContainer / OptionHolder
+onready var exit_button: Control = $Menu / exit
 
 var active: bool = false
 var locked: bool = true
@@ -332,17 +333,13 @@ func load_all_slots() -> void :
 
 	var children: = save_button_container.get_children()
 	var total: = children.size()
-	for i in range(children.size()):
+	for i in range(total):
 		var btn = children[i]
-		if i == 0:
-			btn.focus_neighbour_top = children[total - 1].get_path()
-		else:
-			btn.focus_neighbour_top = children[i - 1].get_path()
-
-		if i < total - 1:
-			btn.focus_neighbour_bottom = children[i + 1].get_path()
-		else:
-			btn.focus_neighbour_bottom = children[0].get_path()
+		btn.focus_neighbour_top = children[i - 1].get_path() if i > 0 else exit_button.get_path()
+		btn.focus_neighbour_bottom = children[i + 1].get_path() if i < total - 1 else exit_button.get_path()
+	if total > 0:
+		exit_button.focus_neighbour_bottom = children[0].get_path()
+		exit_button.focus_neighbour_top = children[total - 1].get_path()
 
 func loaded_end() -> void :
 	Savefile.load_save(Savefile.save_slot)
@@ -357,8 +354,16 @@ func loaded_end() -> void :
 	else:
 		get_tree().change_scene("res://System/Screens/CharacterSelection/Character_Selection.tscn")
 
+func _style_scrollbar() -> void:
+	var vscroll = $Menu/scrollContainer.get_v_scrollbar()
+	var blue_style = vscroll.get_stylebox("grabber_highlight")
+	if blue_style:
+		vscroll.add_stylebox_override("grabber", blue_style)
+
+
 func _ready() -> void :
 	load_all_slots()
+	call_deferred("_style_scrollbar")
 	if get_parent().name == "root":
 		start()
 	else:
