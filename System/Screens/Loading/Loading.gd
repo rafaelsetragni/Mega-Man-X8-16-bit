@@ -93,6 +93,9 @@ func _input(event: InputEvent) -> void :
 
 
 func start() -> void :
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.disable_idle_tracking()
 	load_all_slots()
 	emit_signal("initialize")
 	active = true
@@ -119,6 +122,9 @@ func end() -> void :
 	fader.FadeOut()
 	yield(fader, "finished")
 	GameManager.reset_stretch_mode()
+	var ds = get_node_or_null("/root/DemoSystem")
+	if ds:
+		ds.enable_idle_tracking()
 	emit_signal("end")
 	active = false
 
