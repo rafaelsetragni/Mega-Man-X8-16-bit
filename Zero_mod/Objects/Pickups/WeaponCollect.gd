@@ -110,6 +110,4 @@ func lock_weapon() -> void :
 					shot_node.update_list_of_weapons()
 
 func achievement_check() -> void :
-	
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()

@@ -8,5 +8,4 @@ func _Setup():
 	GameManager.add_collectible_to_savedata("ultima_arms")
 	GameManager.add_collectible_to_savedata("ultima_legs")
 	Achievements.unlock("COLLECTULTIMATEX")
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()
