@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/Actors/Player/x_sprites/x.res" type="SpriteFrames" id=15]
 [ext_resource path="res://src/Options/LilMegamanOnScreen.gd" type="Script" id=16]
 [ext_resource path="res://src/Actors/Weapons/Projectiles/medium_shot.res" type="SpriteFrames" id=17]
+[ext_resource path="res://src/Actors/Weapons/Projectiles/heavy_shot.res" type="SpriteFrames" id=25]
 [ext_resource path="res://src/Actors/Player/x_sprites/x_crystal_pallette.png" type="Texture" id=18]
 [ext_resource path="res://addons/PaletteSwap/PaletteSwap.gdshader" type="Shader" id=19]
 [ext_resource path="res://System/Screens/Loading/Loading.tscn" type="PackedScene" id=20]
@@ -285,7 +286,7 @@ align = 1
 
 [node name="MegamanCursor" type="AnimatedSprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 110, 144 )
+position = Vector2( 108, 144 )
 frames = ExtResource( 15 )
 animation = "idle"
 script = ExtResource( 16 )
@@ -294,9 +295,9 @@ script = ExtResource( 16 )
 visible = false
 position = Vector2( 13, 2 )
 z_index = -1
-frames = ExtResource( 17 )
-animation = "loop"
-frame = 3
+frames = ExtResource( 25 )
+animation = "Tag"
+frame = 5
 playing = true
 
 [node name="equip" type="AudioStreamPlayer" parent="."]

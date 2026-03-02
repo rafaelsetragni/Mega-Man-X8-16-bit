@@ -189,13 +189,16 @@ extents = Vector2( 2901.25, 452.25 )
 extents = Vector2( 288.5, 112 )
 
 [sub_resource type="RectangleShape2D" id=84]
-extents = Vector2( 198, 112 )
+extents = Vector2( 200, 112 )
+
+[sub_resource type="RectangleShape2D" id=189]
+extents = Vector2( 520, 112 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 610, 151.5 )
 
 [sub_resource type="RectangleShape2D" id=85]
-extents = Vector2( 197.5, 112 )
+extents = Vector2( 200, 112 )
 
 [node name="CentralWhite" type="Node2D"]
 script = ExtResource( 2 )
@@ -681,7 +684,7 @@ script = ExtResource( 31 )
 
 [node name="collisionShape2D" type="CollisionShape2D" parent="Limits/6"]
 position = Vector2( -1, 0 )
-shape = SubResource( 84 )
+shape = SubResource( 189 )
 
 [node name="33" type="Area2D" parent="Limits"]
 position = Vector2( 12575, -337 )

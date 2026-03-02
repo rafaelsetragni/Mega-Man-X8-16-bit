@@ -1136,3 +1136,8 @@
 "SAVE_EMPTY","Vazio"
 "SAVE_DIFFICULTY","Dificuldade"
 "SAVE_OVERWRITE_CONFIRM","Sobrescrever?"
+"SAVE_DIFF_ROOKIE","Fácil"
+"SAVE_DIFF_NORMAL","Normal"
+"SAVE_DIFF_HARD","Difícil"
+"SAVE_DIFF_INSANITY","Insano"
+"SAVE_DIFF_NINJA","N. Impossível"

@@ -1136,3 +1136,8 @@
 "SAVE_EMPTY","खाली"
 "SAVE_DIFFICULTY","कठिनाई"
 "SAVE_OVERWRITE_CONFIRM","अधिलेखित करें?"
+"SAVE_DIFF_ROOKIE","नौसिखिया"
+"SAVE_DIFF_NORMAL","सामान्य"
+"SAVE_DIFF_HARD","कठिन"
+"SAVE_DIFF_INSANITY","पागलपन"
+"SAVE_DIFF_NINJA","Ninja"
