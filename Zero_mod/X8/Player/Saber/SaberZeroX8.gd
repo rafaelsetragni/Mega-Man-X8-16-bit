@@ -100,7 +100,6 @@ func update_character_sprites() -> void :
 		if character._beta_shader_material:
 			animatedSprite.material = character._beta_shader_material
 		CharacterManager.set_zero_colors(animatedSprite)
-		print("[ZSABER-B] Switched to beta sprites. material=", animatedSprite.material, " frames=", animatedSprite.frames)
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
 		call_deferred("deactivate_knuckle_moves")
@@ -112,7 +111,6 @@ func update_character_sprites() -> void :
 		if character._x8_shader_material:
 			animatedSprite.material = character._x8_shader_material
 		CharacterManager.set_zeroX8_colors(animatedSprite)
-		print("[ZSABER-A] Switched to X8 sprites. material=", animatedSprite.material, " frames=", animatedSprite.frames)
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
 		call_deferred("deactivate_knuckle_moves")

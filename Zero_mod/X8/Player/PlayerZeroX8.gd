@@ -17,7 +17,6 @@ onready var _sigmablade_sprites: Resource = preload("res://Zero_mod/X8/Sprites/z
 onready var _beta_saber_sprites: Resource = preload("res://Zero_mod/Sprites/zero.tres")
 var _beta_shader_material: Material
 var _x8_shader_material: Material
-
 onready var rekkyoudan_hitbox = preload("res://Zero_mod/Player/Hitboxes/Rekkyoudan_Hitbox.tscn")
 onready var saber_hitbox = preload("res://Zero_mod/Player/Hitboxes/Saber_Hitbox.tscn")
 onready var bfan_shield: = get_node("FanShield")
@@ -237,19 +236,21 @@ func _ready() -> void :
 	GameManager.set_player(self)
 	Event.call_deferred("emit_signal", "player_set")
 	animatedSprite.offset.y = - 2
-	change_ride_chaser_sprites()
+	saber_node.update_character_sprites()
+	listen("ride", self, "_on_start_ride")
+	listen("eject", self, "_on_end_ride")
 	if not "z_saber_zero" in GameManager.collectibles:
 		GameManager.add_collectible_to_savedata("z_saber_zero")
 	if not "z_saber_b_zero" in GameManager.collectibles:
 		GameManager.add_collectible_to_savedata("z_saber_b_zero")
 
-func change_ride_chaser_sprites() -> void :
-	var _texture = load("res://Zero_mod/X8/Sprites/zero_ride_chaser.png")
-	var _reference_frames = load("res://Zero_mod/X8/Sprites/zerox8.tres")
-	var _replace_animations = [
-		"empty", 
-	]
-	animatedSprite.frames = CharacterManager.update_texture_specific_animations(_texture, _reference_frames, _replace_animations)
+func _on_start_ride(_ride_object) -> void :
+	if saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
+		animatedSprite.material = _beta_shader_material
+		CharacterManager.set_zero_colors(animatedSprite)
+
+func _on_end_ride(_ride_object) -> void :
+	saber_node.update_character_sprites()
 
 func get_armor_sprites() -> Array:
 	var sprites = []
@@ -258,38 +259,12 @@ func get_armor_sprites() -> Array:
 			sprites.append(child)
 	return sprites
 
-var _debug_last_frames = null
-var _debug_last_material = null
-var _debug_last_anim = ""
-var _debug_printed_visible = false
 func _process(delta: float) -> void :
-	if animatedSprite.frames != _debug_last_frames or animatedSprite.material != _debug_last_material:
-		_debug_last_frames = animatedSprite.frames
-		_debug_last_material = animatedSprite.material
-		print("[SPRITE-CHANGE] frames=", animatedSprite.frames, " material=", animatedSprite.material, " anim=", animatedSprite.animation)
-	var _cur_anim = animatedSprite.animation
-	if _cur_anim != _debug_last_anim:
-		_debug_last_anim = _cur_anim
-		if "saber" in _cur_anim or _cur_anim in ["juuhazan", "rasetsusen", "tenshouha", "youdantotsu", "hyouryuushou", "enkoujin", "raikousen"]:
-			_debug_printed_visible = false
-	if not _debug_printed_visible and ("saber" in _cur_anim or _cur_anim in ["juuhazan", "rasetsusen", "tenshouha", "youdantotsu", "hyouryuushou", "enkoujin", "raikousen"]):
-		_debug_printed_visible = true
-		print("[VISIBLE-DEBUG] anim=", _cur_anim, " frames=", animatedSprite.frames, " mat=", animatedSprite.material)
-		_debug_print_visible_sprites(self, "")
 	if skill_rasetsusen.saber_sound.playing and animatedSprite.animation != "rasetsusen":
 		skill_rasetsusen.saber_sound.stop()
 	if ride_eject_delay >= 0:
 		ride_eject_delay -= delta
 	process_flash(delta)
-
-func _debug_print_visible_sprites(node: Node, indent: String) -> void :
-	if node is AnimatedSprite and node.visible:
-		var anim_sprite = node as AnimatedSprite
-		print("[VISIBLE-SPRITE] ", indent, node.name, " frames=", anim_sprite.frames, " mat=", anim_sprite.material, " anim=", anim_sprite.animation, " z=", anim_sprite.z_index, " gpos=", anim_sprite.global_position)
-	elif node is Sprite and node.visible:
-		print("[VISIBLE-SPRITE] ", indent, node.name, " texture=", (node as Sprite).texture, " z=", node.z_index)
-	for child in node.get_children():
-		_debug_print_visible_sprites(child, indent + "  ")
 
 func process_flash(delta: float) -> void :
 	if flash_timer > 0:
