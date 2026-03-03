@@ -251,6 +251,10 @@ func _on_start_ride(_ride_object) -> void :
 		CharacterManager.set_zero_colors(animatedSprite)
 
 func _on_end_ride(_ride_object) -> void :
+	start_listening_to_inputs()
+	call_deferred("_restore_sprites_after_ride")
+
+func _restore_sprites_after_ride() -> void :
 	saber_node.update_character_sprites()
 
 func _on_weapon_changed(_weapon) -> void :

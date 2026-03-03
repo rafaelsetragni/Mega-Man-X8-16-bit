@@ -188,10 +188,4 @@ func _confirm() -> void:
 
 
 func _go_to_disclaimer() -> void:
-	# TODO: remover este bloco de teste
-	Savefile.save_slot = 2
-	Savefile.load_save(2)
-	GameManager.go_to_stage_select()
-	return
-	# TODO: descomentar a linha original
 	get_tree().change_scene("res://src/Title/DisclaimerScreen.tscn")
