@@ -7,6 +7,7 @@ onready var x8_color: Sprite = $x8_color
 onready var x8_shineleft: Sprite = $x8_shineleft
 onready var x8_shineright: Sprite = $x8_shineright
 onready var x8_shinefull: Sprite = $x8_shinefull
+onready var turbo: Sprite = $turbo
 onready var twish: AudioStreamPlayer = $twish
 
 const white_half: = Color(1, 1, 1, 0.5)
@@ -96,7 +97,10 @@ func appear_x8() -> void :
 		tween3.tween_property(x8_shinefull, "modulate", white_zero, 2.5)
 		tween3.tween_property(blackness, "modulate", Color.white, 0.75)
 		next_step()
-	elif step == 13 and timer > 1.25:
+	elif step == 13 and timer > 1.0:
+		appear(turbo)
+		next_step()
+	elif step == 14 and timer > 0.25:
 		appear(demo)
 		next_step()
 

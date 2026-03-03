@@ -11,13 +11,11 @@
 [ext_resource path="res://src/Options/AutonomousMenuButton.gd" type="Script" id=9]
 [ext_resource path="res://src/Sounds/CHARGED_SHOT.wav" type="AudioStream" id=10]
 [ext_resource path="res://System/SFX/move_cursor.ogg" type="AudioStream" id=11]
-[ext_resource path="res://src/Title/title_megaman.png" type="Texture" id=12]
+[ext_resource path="res://src/Title/turbo-megaman.png" type="Texture" id=12]
 [ext_resource path="res://src/Title/title_bg.png" type="Texture" id=13]
 [ext_resource path="res://src/Fonts/x8_bitmapfont.tres" type="BitmapFont" id=14]
 [ext_resource path="res://src/Actors/Player/x_sprites/x.res" type="SpriteFrames" id=15]
 [ext_resource path="res://src/Options/LilMegamanOnScreen.gd" type="Script" id=16]
-[ext_resource path="res://src/Actors/Weapons/Projectiles/medium_shot.res" type="SpriteFrames" id=17]
-[ext_resource path="res://src/Actors/Weapons/Projectiles/heavy_shot.res" type="SpriteFrames" id=25]
 [ext_resource path="res://src/Actors/Player/x_sprites/x_crystal_pallette.png" type="Texture" id=18]
 [ext_resource path="res://addons/PaletteSwap/PaletteSwap.gdshader" type="Shader" id=19]
 [ext_resource path="res://System/Screens/Loading/Loading.tscn" type="PackedScene" id=20]
@@ -25,6 +23,8 @@
 [ext_resource path="res://Axl_mod/SFX/copy_bullet.wav" type="AudioStream" id=22]
 [ext_resource path="res://System/SFX/window_close.ogg" type="AudioStream" id=23]
 [ext_resource path="res://Zero_mod/SFX/sfx_Saber.wav" type="AudioStream" id=24]
+[ext_resource path="res://src/Actors/Weapons/Projectiles/heavy_shot.res" type="SpriteFrames" id=25]
+[ext_resource path="res://src/Title/title_megaman.png" type="Texture" id=26]
 
 [sub_resource type="ShortCut" id=1]
 
@@ -59,7 +59,7 @@ margin_left = 83.0
 margin_top = 12.0
 margin_right = 236.0
 margin_bottom = 107.0
-texture = ExtResource( 12 )
+texture = ExtResource( 26 )
 
 [node name="X8" type="TextureRect" parent="Menu"]
 margin_left = 135.0
@@ -67,6 +67,13 @@ margin_top = -34.0
 margin_right = 385.0
 margin_bottom = 146.0
 texture = ExtResource( 6 )
+
+[node name="Turbo" type="TextureRect" parent="Menu"]
+margin_left = 239.0
+margin_top = 73.0
+margin_right = 339.0
+margin_bottom = 140.0
+texture = ExtResource( 12 )
 
 [node name="EVENT" type="TextureRect" parent="Menu"]
 
@@ -265,9 +272,9 @@ align = 2
 
 [node name="16-bit_shadow" type="Label" parent="Menu"]
 modulate = Color( 0, 0, 0, 1 )
-margin_top = 121.0
+margin_top = 129.0
 margin_right = 398.0
-margin_bottom = 148.0
+margin_bottom = 156.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 14 )
@@ -275,9 +282,9 @@ text = "16-BIT_TITLE"
 align = 1
 
 [node name="16-bit" type="Label" parent="Menu"]
-margin_top = 119.0
+margin_top = 127.0
 margin_right = 398.0
-margin_bottom = 146.0
+margin_bottom = 154.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 14 )
@@ -297,7 +304,7 @@ position = Vector2( 13, 2 )
 z_index = -1
 frames = ExtResource( 25 )
 animation = "Tag"
-frame = 5
+frame = 4
 playing = true
 
 [node name="equip" type="AudioStreamPlayer" parent="."]
