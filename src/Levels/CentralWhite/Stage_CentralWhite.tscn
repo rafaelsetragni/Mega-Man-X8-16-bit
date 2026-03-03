@@ -567,7 +567,6 @@ pause_mode = 2
 position = Vector2( 4406, -1313 )
 z_index = 2
 frames = SubResource( 187 )
-frame = 2
 playing = true
 flip_h = true
 script = ExtResource( 82 )

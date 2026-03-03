@@ -25,12 +25,12 @@ func set_weapon_as_player_current_weapon() -> void :
 	var current_player_weapon
 	if GameManager.is_player_in_scene():
 		current_player_weapon = GameManager.player.get_current_weapon()
-	if current_player_weapon is ZeroSpecialWeapon:
+	if current_player_weapon:
 		for weapon in weapons:
 			if weapon.weapon_resource == current_player_weapon.weapon:
 				set_weapon(weapon)
-	else:
-		set_weapon(weapons[0])
+				return
+	set_weapon(weapons[0])
 
 func _ready() -> void :
 	pause.character_menu_visibility()

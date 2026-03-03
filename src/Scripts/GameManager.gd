@@ -261,6 +261,9 @@ func finished_fade_out() -> void :
 func _show_transition_save_screen(callback_method: String) -> void:
 	end_stage_timer = 0
 	GameManager.pause("TransitionSave")
+	normal_music_volume()
+	if music_player:
+		music_player.stop()
 	var save_screen = load("res://src/Options/SaveScreen/SaveScreen.tscn").instance()
 	get_tree().current_scene.add_child(save_screen)
 	save_screen.connect("transition_committed", self, "_on_transition_committed", [callback_method])
