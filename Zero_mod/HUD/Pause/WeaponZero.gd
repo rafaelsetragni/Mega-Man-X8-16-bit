@@ -19,6 +19,7 @@ onready var zero_base3: Texture = preload("res://Zero_mod/HUD/ZeroX8_base.png")
 onready var zero_beta: Texture = preload("res://Zero_mod/HUD/Zero_base.png")
 onready var black_zero_beta_icon: Texture = preload("res://Zero_mod/HUD/Pause/beta_black_zero_collectible.png")
 onready var zero_beta_material: = preload("res://Zero_mod/Sprites/Zero_Material_Shader.tres")
+onready var zero_x8_material: Material = zero_icon.material
 
 var weapon
 
@@ -36,28 +37,45 @@ func on_start() -> void :
 
 func set_pause_icon(_weapon) -> void :
 	if not _weapon:
+		zero_icon.material = zero_x8_material
 		zero_icon.texture = zero_base
+		CharacterManager.set_zeroX8_colors(zero_icon)
 	else:
 		if weapon.name == "Z-Saber-B":
+			zero_icon.material = zero_beta_material
 			zero_icon.texture = zero_beta
+			CharacterManager.set_zero_colors(zero_icon)
 		elif weapon.name == "B-Fan":
 			zero_icon.texture = zero_bfan
+			set_x8_icon_colors()
 		elif weapon.name == "D-Glaive":
 			zero_icon.texture = zero_dglaive
+			set_x8_icon_colors()
 		elif weapon.name == "K-Knuckle":
 			zero_icon.texture = zero_kknuckle
+			set_x8_icon_colors()
 		elif weapon.name == "T-Breaker":
 			zero_icon.texture = zero_tbreaker
+			set_x8_icon_colors()
 		elif weapon.name == "V-Hanger":
 			zero_icon.texture = zero_vhanger
+			set_x8_icon_colors()
 		elif weapon.name == "Sigma-Blade":
 			zero_icon.texture = zero_sigmablade
+			set_x8_icon_colors()
 		elif weapon.name == "lol":
 			zero_icon.texture = zero_base2
+			set_x8_icon_colors()
 		elif weapon.name == "lel":
 			zero_icon.texture = zero_base3
+			set_x8_icon_colors()
 		else:
 			zero_icon.texture = zero_base
+			set_x8_icon_colors()
+
+func set_x8_icon_colors() -> void :
+	zero_icon.material = zero_x8_material
+	CharacterManager.set_zeroX8_colors(zero_icon)
 
 func set_player_weapon() -> void :
 	if weapon_resource and GameManager.player:
