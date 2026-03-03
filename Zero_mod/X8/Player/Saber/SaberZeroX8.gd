@@ -82,6 +82,12 @@ func set_current_weapon(weapon) -> void :
 		update_character_sprites()
 		Event.emit_signal("changed_weapon", current_weapon)
 
+func reapply_saber_colors() -> void :
+	if "Z-Saber-B" in current_weapon.name:
+		CharacterManager.set_saber_colors(animatedSprite)
+	else:
+		CharacterManager.set_saberX8_colors(animatedSprite)
+
 func direct_weapon_select(weapon_resource) -> void :
 	for weapon in weapons:
 		if weapon.weapon == weapon_resource:
@@ -89,15 +95,35 @@ func direct_weapon_select(weapon_resource) -> void :
 			return
 
 func update_character_sprites() -> void :
-	if current_weapon_is_saber():
-		animatedSprite.frames = character._saber_sprites
+	if "Z-Saber-B" in current_weapon.name:
+		animatedSprite.frames = character._beta_saber_sprites
+		if character._beta_shader_material:
+			animatedSprite.material = character._beta_shader_material
+		CharacterManager.set_zero_colors(animatedSprite)
+		print("[ZSABER-B] Switched to beta sprites. material=", animatedSprite.material, " frames=", animatedSprite.frames)
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
 		call_deferred("deactivate_knuckle_moves")
 		call_deferred("deactivate_breaker_moves")
+		call_deferred("deactivate_saber_moves")
+		call_deferred("activate_beta_saber_moves")
+	elif current_weapon_is_saber():
+		animatedSprite.frames = character._saber_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
+		print("[ZSABER-A] Switched to X8 sprites. material=", animatedSprite.material, " frames=", animatedSprite.frames)
+		call_deferred("deactivate_fan_moves")
+		call_deferred("deactivate_glaive_moves")
+		call_deferred("deactivate_knuckle_moves")
+		call_deferred("deactivate_breaker_moves")
+		call_deferred("deactivate_beta_saber_moves")
 		call_deferred("activate_saber_moves")
 	elif "B-Fan" in current_weapon.name:
 		animatedSprite.frames = character._fan_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_glaive_moves")
 		call_deferred("deactivate_knuckle_moves")
@@ -105,6 +131,9 @@ func update_character_sprites() -> void :
 		call_deferred("activate_fan_moves")
 	elif "D-Glaive" in current_weapon.name:
 		animatedSprite.frames = character._glaive_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_knuckle_moves")
@@ -112,6 +141,9 @@ func update_character_sprites() -> void :
 		call_deferred("activate_glaive_moves")
 	elif "K-Knuckle" in current_weapon.name:
 		animatedSprite.frames = character._knuckle_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
@@ -119,6 +151,9 @@ func update_character_sprites() -> void :
 		call_deferred("activate_knuckle_moves")
 	elif "T-Breaker" in current_weapon.name:
 		animatedSprite.frames = character._breaker_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
@@ -126,6 +161,9 @@ func update_character_sprites() -> void :
 		call_deferred("activate_breaker_moves")
 	elif "V-Hanger" in current_weapon.name:
 		animatedSprite.frames = character._hanger_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
@@ -133,6 +171,9 @@ func update_character_sprites() -> void :
 		call_deferred("deactivate_breaker_moves")
 	elif "Sigma-Blade" in current_weapon.name:
 		animatedSprite.frames = character._sigmablade_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
@@ -140,12 +181,89 @@ func update_character_sprites() -> void :
 		call_deferred("deactivate_breaker_moves")
 	else:
 		animatedSprite.frames = character._saber_sprites
+		if character._x8_shader_material:
+			animatedSprite.material = character._x8_shader_material
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 		call_deferred("deactivate_saber_moves")
 		call_deferred("deactivate_fan_moves")
 		call_deferred("deactivate_glaive_moves")
 		call_deferred("deactivate_knuckle_moves")
 		call_deferred("deactivate_breaker_moves")
+	reapply_saber_colors()
 
+
+func activate_saber_skills() -> void :
+	character.skill_tenshouha.laser_cast_frame = 5
+
+	character.skill_juuhazan.hitbox_name = "Juuhazan"
+	character.skill_juuhazan.damage = 12
+	character.skill_juuhazan.damage_boss = 6
+	character.skill_juuhazan.damage_weakness = 20
+	character.skill_juuhazan.deflectable_type = - 1
+	character.skill_juuhazan.only_deflect_weak = false
+	character.skill_juuhazan.movement_frame_start = 5
+	character.skill_juuhazan.movement_frame_end = 13
+	character.skill_juuhazan.effect_only_frame = 5
+
+	character.skill_rasetsusen.hitbox_name = "Rasetsusen"
+	character.skill_rasetsusen.max_time = 2.0
+	character.skill_rasetsusen.damage = 3
+	character.skill_rasetsusen.damage_boss = 3
+	character.skill_rasetsusen.damage_weakness = 24
+	character.skill_rasetsusen.deflectable_type = 0
+	character.skill_rasetsusen.only_deflect_weak = true
+	character.skill_rasetsusen.hitbox_rehit_time = 0.15
+	character.skill_rasetsusen.hitbox_radius = 48
+	character.skill_rasetsusen.hitbox_inner_radius = 0
+
+	character.skill_raikousen.hitbox_name = "Raikousen"
+	character.skill_raikousen.effect_transparency = 0.65
+	character.skill_raikousen.damage = 5
+	character.skill_raikousen.damage_boss = 5
+	character.skill_raikousen.damage_weakness = 24
+	character.skill_raikousen.deflectable_type = - 1
+	character.skill_raikousen.only_deflect_weak = false
+	character.skill_raikousen.instant_damage = false
+	character.skill_raikousen.vulnerable = true
+	character.skill_raikousen.start_speed = 900
+	character.skill_raikousen.movement_frame_start = 3
+	character.skill_raikousen.movement_frame_end = 16
+	character.skill_raikousen.shadow_frame = 3
+	character.skill_raikousen.sound_1_frame = 0
+	character.skill_raikousen.sound_2_frame = 8
+	character.skill_raikousen.hitbox_frame_start = 10
+	character.skill_raikousen.hitbox_frame_end = 16
+	character.skill_raikousen.hitbox_upleft_corner = Vector2( - 120, - 15)
+	character.skill_raikousen.hitbox_downright_corner = Vector2(100, 5)
+	character.skill_raikousen.light_size = Vector2(3, 2)
+
+	character.skill_youdantotsu.hitbox_name = "Youdantotsu"
+	character.skill_youdantotsu.movement_frame = 5
+	character.skill_youdantotsu.start_speed = 500
+	character.skill_youdantotsu.damage = 6
+	character.skill_youdantotsu.damage_boss = 6
+	character.skill_youdantotsu.damage_weakness = 24
+	character.skill_youdantotsu.deflectable_type = - 1
+	character.skill_youdantotsu.only_deflect_weak = false
+	character.skill_youdantotsu.hitbox_break_guards = true
+	character.skill_youdantotsu.hitbox_rehit_time = 0.075
+	character.skill_youdantotsu.hitbox_upleft_corner = Vector2(7, - 35)
+	character.skill_youdantotsu.hitbox_downright_corner = Vector2(94, 30)
+	character.skill_youdantotsu.effect_transparency = 0.75
+
+	character.skill_hyouryuushou.loop_frame = 10
+	character.skill_hyouryuushou.loop_start_frame = 4
+	character.skill_hyouryuushou.damage = 6
+	character.skill_hyouryuushou.damage_boss = 6
+	character.skill_hyouryuushou.damage_weakness = 24
+	character.skill_hyouryuushou.deflectable_type = - 1
+	character.skill_hyouryuushou.only_deflect_weak = true
+
+	character.skill_enkoujin.hitbox_name = "Enkoujin"
+	character.skill_enkoujin.hitbox_upward_movement = 100
+	character.skill_enkoujin.deflectable_type = - 1
+	character.skill_enkoujin.only_deflect_weak = true
+	character.skill_enkoujin.hitbox_break_guards = false
 
 func activate_saber_moves() -> void :
 	character.saber_combo.active = true
@@ -172,78 +290,40 @@ func activate_saber_moves() -> void :
 	character.saber_wall.damage_weakness = 10
 	character.saber_wall.deflectable_type = 0
 	character.saber_wall.only_deflect_weak = true
-	
-	character.skill_tenshouha.laser_cast_frame = 5
-	
-	character.skill_juuhazan.hitbox_name = "Juuhazan"
-	character.skill_juuhazan.damage = 12
-	character.skill_juuhazan.damage_boss = 6
-	character.skill_juuhazan.damage_weakness = 20
-	character.skill_juuhazan.deflectable_type = - 1
-	character.skill_juuhazan.only_deflect_weak = false
-	character.skill_juuhazan.movement_frame_start = 5
-	character.skill_juuhazan.movement_frame_end = 13
-	character.skill_juuhazan.effect_only_frame = 5
-	
-	character.skill_rasetsusen.hitbox_name = "Rasetsusen"
-	character.skill_rasetsusen.max_time = 2.0
-	character.skill_rasetsusen.damage = 3
-	character.skill_rasetsusen.damage_boss = 3
-	character.skill_rasetsusen.damage_weakness = 24
-	character.skill_rasetsusen.deflectable_type = 0
-	character.skill_rasetsusen.only_deflect_weak = true
-	character.skill_rasetsusen.hitbox_rehit_time = 0.15
-	character.skill_rasetsusen.hitbox_radius = 48
-	character.skill_rasetsusen.hitbox_inner_radius = 0
-	
-	character.skill_raikousen.hitbox_name = "Raikousen"
-	character.skill_raikousen.effect_transparency = 0.65
-	character.skill_raikousen.damage = 5
-	character.skill_raikousen.damage_boss = 5
-	character.skill_raikousen.damage_weakness = 24
-	character.skill_raikousen.deflectable_type = - 1
-	character.skill_raikousen.only_deflect_weak = false
-	character.skill_raikousen.instant_damage = false
-	character.skill_raikousen.vulnerable = true
-	character.skill_raikousen.start_speed = 900
-	character.skill_raikousen.movement_frame_start = 3
-	character.skill_raikousen.movement_frame_end = 16
-	character.skill_raikousen.shadow_frame = 3
-	character.skill_raikousen.sound_1_frame = 0
-	character.skill_raikousen.sound_2_frame = 8
-	character.skill_raikousen.hitbox_frame_start = 10
-	character.skill_raikousen.hitbox_frame_end = 16
-	character.skill_raikousen.hitbox_upleft_corner = Vector2( - 120, - 15)
-	character.skill_raikousen.hitbox_downright_corner = Vector2(100, 5)
-	character.skill_raikousen.light_size = Vector2(3, 2)
-	
-	character.skill_youdantotsu.hitbox_name = "Youdantotsu"
-	character.skill_youdantotsu.movement_frame = 5
-	character.skill_youdantotsu.start_speed = 500
-	character.skill_youdantotsu.damage = 6
-	character.skill_youdantotsu.damage_boss = 6
-	character.skill_youdantotsu.damage_weakness = 24
-	character.skill_youdantotsu.deflectable_type = - 1
-	character.skill_youdantotsu.only_deflect_weak = false
-	character.skill_youdantotsu.hitbox_break_guards = true
-	character.skill_youdantotsu.hitbox_rehit_time = 0.075
-	character.skill_youdantotsu.hitbox_upleft_corner = Vector2(7, - 35)
-	character.skill_youdantotsu.hitbox_downright_corner = Vector2(94, 30)
-	character.skill_youdantotsu.effect_transparency = 0.75
-	
-	character.skill_hyouryuushou.loop_frame = 10
-	character.skill_hyouryuushou.loop_start_frame = 4
-	character.skill_hyouryuushou.damage = 6
-	character.skill_hyouryuushou.damage_boss = 6
-	character.skill_hyouryuushou.damage_weakness = 24
-	character.skill_hyouryuushou.deflectable_type = - 1
-	character.skill_hyouryuushou.only_deflect_weak = true
-	
-	character.skill_enkoujin.hitbox_name = "Enkoujin"
-	character.skill_enkoujin.hitbox_upward_movement = 100
-	character.skill_enkoujin.deflectable_type = - 1
-	character.skill_enkoujin.only_deflect_weak = true
-	character.skill_enkoujin.hitbox_break_guards = false
+	activate_saber_skills()
+
+func activate_beta_saber_moves() -> void :
+	character.saber_combo.active = true
+	character.saber_combo.damage = 2
+	character.saber_combo.damage_boss = 4
+	character.saber_combo.damage_weakness = 24
+	character.saber_combo.deflectable_type = 0
+	character.saber_combo.only_deflect_weak = true
+	character.saber_dash.active = true
+	character.saber_dash.damage = 4
+	character.saber_dash.damage_boss = 4
+	character.saber_dash.damage_weakness = 24
+	character.saber_dash.deflectable_type = 0
+	character.saber_dash.only_deflect_weak = true
+	character.saber_jump.active = true
+	character.saber_jump.damage = 4
+	character.saber_jump.damage_boss = 4
+	character.saber_jump.damage_weakness = 24
+	character.saber_jump.deflectable_type = 0
+	character.saber_jump.only_deflect_weak = true
+	character.saber_wall.active = true
+	character.saber_wall.damage = 4
+	character.saber_wall.damage_boss = 4
+	character.saber_wall.damage_weakness = 24
+	character.saber_wall.deflectable_type = 0
+	character.saber_wall.only_deflect_weak = true
+	activate_saber_skills()
+
+func deactivate_beta_saber_moves() -> void :
+	character.saber_combo.active = false
+	character.saber_dash.active = false
+	character.saber_jump.active = false
+	character.saber_wall.active = false
 
 func deactivate_saber_moves() -> void :
 	character.saber_combo.active = false

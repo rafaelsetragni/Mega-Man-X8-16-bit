@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=2]
+[gd_scene load_steps=104 format=2]
 
 [ext_resource path="res://src/Levels/CentralWhite/Music Player.gd" type="Script" id=1]
 [ext_resource path="res://System/Character_Spawner.gd" type="Script" id=2]
@@ -188,14 +188,14 @@ extents = Vector2( 2901.25, 452.25 )
 [sub_resource type="RectangleShape2D" id=83]
 extents = Vector2( 288.5, 112 )
 
-[sub_resource type="RectangleShape2D" id=84]
-extents = Vector2( 200, 112 )
-
 [sub_resource type="RectangleShape2D" id=189]
 extents = Vector2( 520, 112 )
 
 [sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 610, 151.5 )
+
+[sub_resource type="RectangleShape2D" id=84]
+extents = Vector2( 200, 112 )
 
 [sub_resource type="RectangleShape2D" id=85]
 extents = Vector2( 200, 112 )

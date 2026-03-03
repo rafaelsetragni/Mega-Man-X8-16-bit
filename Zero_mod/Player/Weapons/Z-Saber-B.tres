@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
-short_name = "ZSABERA_WPNMENU"
-collectible = "z_saber_zero"
+short_name = "ZSABERB_WPNMENU"
+collectible = "z_saber_b_zero"
 icon = ExtResource( 1 )
 faded_icon = ExtResource( 1 )
 regular_ammo_cost = 1.0

@@ -121,7 +121,7 @@ func hitbox_and_position() -> void :
 		hitbox_damage_weakness = damage_weakness
 		hitbox_break_guards = true
 		
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			if animatedSprite.frame >= movement_frame and animatedSprite.frame < movement_frame + 7:
 				hitbox_upleft = hitbox_upleft_corner
 				hitbox_downright = hitbox_downright_corner
@@ -251,6 +251,9 @@ func _EndCondition() -> bool:
 func _Setup() -> void :
 	if character.saber_node.current_weapon.name == "Saber":
 		effect_emit("youdantotsu")
+
+	elif character.saber_node.current_weapon.name == "Z-Saber-B":
+		pass
 
 	elif character.saber_node.current_weapon.name == "B-Fan":
 		effect_emit("youdantotsu_fan")

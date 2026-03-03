@@ -46,6 +46,8 @@ func show_weapons() -> void :
 		else:
 			weapon.visible = false
 	weapons[0].visible = true
+	if weapons.size() > 1:
+		weapons[1].visible = true
 	set_weapon_as_player_current_weapon()
 	if choosen_weapon:
 		choosen_weapon.silent = true

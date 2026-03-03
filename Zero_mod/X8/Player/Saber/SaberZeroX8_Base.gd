@@ -94,7 +94,7 @@ func spawn_hitbox(_hitbox_upleft: Vector2, _hitbox_downright: Vector2):
 	current_hitbox.position = hitbox_position
 	
 	add_child(current_hitbox)
-		
+
 	current_hitbox.damage = hitbox_damage * hitbox_extra_damage
 	current_hitbox.damage_to_bosses = hitbox_damage_boss * hitbox_extra_damage_boss
 	current_hitbox.damage_to_weakness = hitbox_damage_weakness * hitbox_extra_damage_weakness

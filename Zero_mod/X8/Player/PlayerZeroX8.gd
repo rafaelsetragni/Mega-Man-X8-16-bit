@@ -14,6 +14,9 @@ onready var _knuckle_sprites: Resource = preload("res://Zero_mod/X8/Sprites/kknu
 onready var _breaker_sprites: Resource = preload("res://Zero_mod/X8/Sprites/tbreaker/tbreaker.tres")
 onready var _hanger_sprites: Resource = preload("res://Zero_mod/X8/Sprites/zerox8.tres")
 onready var _sigmablade_sprites: Resource = preload("res://Zero_mod/X8/Sprites/zerox8.tres")
+onready var _beta_saber_sprites: Resource = preload("res://Zero_mod/Sprites/zero.tres")
+var _beta_shader_material: Material
+var _x8_shader_material: Material
 
 onready var rekkyoudan_hitbox = preload("res://Zero_mod/Player/Hitboxes/Rekkyoudan_Hitbox.tscn")
 onready var saber_hitbox = preload("res://Zero_mod/Player/Hitboxes/Saber_Hitbox.tscn")
@@ -142,7 +145,7 @@ func combo_connection_youdantotsu() -> bool:
 func combo_connection_hyouryuushou() -> bool:
 	if get_action_pressed("dash"):
 		return false
-	if saber_node.current_weapon.name == "Saber" or saber_node.current_weapon.name == "D-Glaive":
+	if saber_node.current_weapon.name == "Saber" or saber_node.current_weapon.name == "Z-Saber-B" or saber_node.current_weapon.name == "D-Glaive":
 		var _animation = get_animation()
 		if _animation == "saber_1" and animatedSprite.frame >= 7:
 			return true
@@ -225,6 +228,8 @@ func increase_hitbox() -> void :
 
 func _ready() -> void :
 	current_armor = ["no_head", "no_body", "no_arms", "no_legs"]
+	_x8_shader_material = animatedSprite.material
+	_beta_shader_material = preload("res://Zero_mod/Sprites/Zero_Material_Shader.tres").duplicate()
 	Event.listen("collected", self, "equip_parts")
 	Event.listen("collected", self, "collect")
 	listen("land", self, "on_land")
@@ -235,6 +240,8 @@ func _ready() -> void :
 	change_ride_chaser_sprites()
 	if not "z_saber_zero" in GameManager.collectibles:
 		GameManager.add_collectible_to_savedata("z_saber_zero")
+	if not "z_saber_b_zero" in GameManager.collectibles:
+		GameManager.add_collectible_to_savedata("z_saber_b_zero")
 
 func change_ride_chaser_sprites() -> void :
 	var _texture = load("res://Zero_mod/X8/Sprites/zero_ride_chaser.png")
@@ -251,12 +258,38 @@ func get_armor_sprites() -> Array:
 			sprites.append(child)
 	return sprites
 
+var _debug_last_frames = null
+var _debug_last_material = null
+var _debug_last_anim = ""
+var _debug_printed_visible = false
 func _process(delta: float) -> void :
+	if animatedSprite.frames != _debug_last_frames or animatedSprite.material != _debug_last_material:
+		_debug_last_frames = animatedSprite.frames
+		_debug_last_material = animatedSprite.material
+		print("[SPRITE-CHANGE] frames=", animatedSprite.frames, " material=", animatedSprite.material, " anim=", animatedSprite.animation)
+	var _cur_anim = animatedSprite.animation
+	if _cur_anim != _debug_last_anim:
+		_debug_last_anim = _cur_anim
+		if "saber" in _cur_anim or _cur_anim in ["juuhazan", "rasetsusen", "tenshouha", "youdantotsu", "hyouryuushou", "enkoujin", "raikousen"]:
+			_debug_printed_visible = false
+	if not _debug_printed_visible and ("saber" in _cur_anim or _cur_anim in ["juuhazan", "rasetsusen", "tenshouha", "youdantotsu", "hyouryuushou", "enkoujin", "raikousen"]):
+		_debug_printed_visible = true
+		print("[VISIBLE-DEBUG] anim=", _cur_anim, " frames=", animatedSprite.frames, " mat=", animatedSprite.material)
+		_debug_print_visible_sprites(self, "")
 	if skill_rasetsusen.saber_sound.playing and animatedSprite.animation != "rasetsusen":
 		skill_rasetsusen.saber_sound.stop()
 	if ride_eject_delay >= 0:
 		ride_eject_delay -= delta
 	process_flash(delta)
+
+func _debug_print_visible_sprites(node: Node, indent: String) -> void :
+	if node is AnimatedSprite and node.visible:
+		var anim_sprite = node as AnimatedSprite
+		print("[VISIBLE-SPRITE] ", indent, node.name, " frames=", anim_sprite.frames, " mat=", anim_sprite.material, " anim=", anim_sprite.animation, " z=", anim_sprite.z_index, " gpos=", anim_sprite.global_position)
+	elif node is Sprite and node.visible:
+		print("[VISIBLE-SPRITE] ", indent, node.name, " texture=", (node as Sprite).texture, " z=", node.z_index)
+	for child in node.get_children():
+		_debug_print_visible_sprites(child, indent + "  ")
 
 func process_flash(delta: float) -> void :
 	if flash_timer > 0:
@@ -470,7 +503,10 @@ func is_full_armor() -> String:
 	return "no_armor"
 
 func equip_parts(collectible: String) -> void :
-	CharacterManager.set_zeroX8_colors(animatedSprite)
+	if saber_node and saber_node.current_weapon and "Z-Saber-B" in saber_node.current_weapon.name:
+		CharacterManager.set_zero_colors(animatedSprite)
+	else:
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 	equip_zero_parts()
 	emit_signal("equipped_armor")
 	

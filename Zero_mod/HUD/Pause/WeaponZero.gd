@@ -32,35 +32,32 @@ func _ready() -> void :
 		pass
 
 func on_start() -> void :
-	if CharacterManager.betazero_activated:
-		zero_icon.texture = zero_beta
-		black_zero_icon.texture = black_zero_beta_icon
-		zero_icon.material = zero_beta_material
-		CharacterManager.set_zero_colors(zero_icon)
+	pass
 
 func set_pause_icon(_weapon) -> void :
 	if not _weapon:
 		zero_icon.texture = zero_base
 	else:
-		if weapon.name == "B-Fan":
+		if weapon.name == "Z-Saber-B":
+			zero_icon.texture = zero_beta
+		elif weapon.name == "B-Fan":
 			zero_icon.texture = zero_bfan
-		if weapon.name == "D-Glaive":
+		elif weapon.name == "D-Glaive":
 			zero_icon.texture = zero_dglaive
-		if weapon.name == "K-Knuckle":
+		elif weapon.name == "K-Knuckle":
 			zero_icon.texture = zero_kknuckle
-		if weapon.name == "T-Breaker":
+		elif weapon.name == "T-Breaker":
 			zero_icon.texture = zero_tbreaker
-		if weapon.name == "V-Hanger":
+		elif weapon.name == "V-Hanger":
 			zero_icon.texture = zero_vhanger
-		if weapon.name == "Sigma-Blade":
+		elif weapon.name == "Sigma-Blade":
 			zero_icon.texture = zero_sigmablade
-		if weapon.name == "lol":
+		elif weapon.name == "lol":
 			zero_icon.texture = zero_base2
-		if weapon.name == "lel":
+		elif weapon.name == "lel":
 			zero_icon.texture = zero_base3
-	if CharacterManager.betazero_activated:
-		zero_icon.texture = zero_beta
-		black_zero_icon.texture = black_zero_beta_icon
+		else:
+			zero_icon.texture = zero_base
 
 func set_player_weapon() -> void :
 	if weapon_resource and GameManager.player:
@@ -71,8 +68,6 @@ func set_player_weapon() -> void :
 
 func _on_focus_entered() -> void :
 	._on_focus_entered()
-	if CharacterManager.betazero_activated:
-		return
 	if GameManager.is_player_in_scene():
 		var _shot_node = GameManager.player.get_node("Shot")
 		if _shot_node != null:
@@ -88,4 +83,9 @@ func _on_focus_exited() -> void :
 		._on_focus_exited()
 
 func on_press() -> void :
-	pass
+	if GameManager.is_player_in_scene():
+		var _shot_node = GameManager.player.get_node("Shot")
+		if _shot_node != null:
+			_shot_node.set_current_weapon(weapon)
+	get_parent().set_weapon(self)
+	set_pause_icon(weapon)

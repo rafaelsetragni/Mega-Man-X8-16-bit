@@ -167,6 +167,11 @@ func _ready() -> void :
 
 	set_process(true)
 	pause_mode = PAUSE_MODE_PROCESS
+	Event.listen("changed_weapon", self, "_on_changed_weapon")
+
+func _on_changed_weapon(new_weapon) -> void :
+	if player_character == "Zero" and new_weapon:
+		betazero_activated = "Z-Saber-B" in new_weapon.name
 
 func _process(_delta: float) -> void :
 	if started_fresh_game:
@@ -329,8 +334,6 @@ func get_player_character_object() -> PackedScene:
 		"Axl":
 			return _Axl
 		"Zero":
-			if betazero_activated:
-				return _Zero_Beta
 			return _Zero
 		_:
 			return _PLAYER
@@ -561,8 +564,7 @@ func set_zeroX8_colors(node) -> void :
 		set_custom_zeroX8_colors(node)
 
 func set_zeroX8_normal_colors(node) -> void :
-	reset_material(node.material)
-	if node != null:
+	if node != null and node.material != null:
 		
 		node.material.set_shader_param("R_LightRedColor1", Color("#ff5959"))
 		node.material.set_shader_param("R_MainColor1", Color("#f03000"))
@@ -604,8 +606,7 @@ func set_zeroX8_normal_colors(node) -> void :
 		node.material.set_shader_param("R_SaberColor4", Color("#42c642"))
 
 func set_black_zeroX8_colors(node) -> void :
-	reset_material(node.material)
-	if node != null:
+	if node != null and node.material != null:
 		
 		node.material.set_shader_param("R_LightRedColor1", Color("#595959"))
 		node.material.set_shader_param("R_MainColor1", Color("#484848"))
@@ -647,8 +648,7 @@ func set_black_zeroX8_colors(node) -> void :
 		node.material.set_shader_param("R_SaberColor4", Color("#5F3F72"))
 
 func set_nightshade_zeroX8_colors(node) -> void :
-	reset_material(node.material)
-	if node != null:
+	if node != null and node.material != null:
 		
 		node.material.set_shader_param("R_LightRedColor1", Color("#595959"))
 		node.material.set_shader_param("R_MainColor1", Color("#403838"))
@@ -733,6 +733,8 @@ func set_white_zeroX8_colors(node) -> void :
 		node.material.set_shader_param("R_SaberColor4", Color("#C6426E"))
 
 func set_custom_zeroX8_colors(node) -> void :
+	if node == null or node.material == null:
+		return
 	var _colors = {
 		"R_OutlineColor": "#0e111e", 
 		
