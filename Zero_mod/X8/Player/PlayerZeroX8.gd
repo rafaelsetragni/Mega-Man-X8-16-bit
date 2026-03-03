@@ -246,7 +246,7 @@ func _ready() -> void :
 		GameManager.add_collectible_to_savedata("z_saber_b_zero")
 
 func _on_start_ride(_ride_object) -> void :
-	if saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
+	if _ride_object is Bike and saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
 		animatedSprite.material = _beta_shader_material
 		CharacterManager.set_zero_colors(animatedSprite)
 
@@ -254,7 +254,7 @@ func _on_end_ride(_ride_object) -> void :
 	saber_node.update_character_sprites()
 
 func _on_weapon_changed(_weapon) -> void :
-	if is_riding() and saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
+	if ride is Bike and saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
 		animatedSprite.material = _beta_shader_material
 		CharacterManager.set_zero_colors(animatedSprite)
 
