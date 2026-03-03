@@ -8,6 +8,7 @@ func _ready() -> void :
 	_on_hotswap_opened()
 	get_parent().connect("weapon_selected", self, "on_select")
 	get_parent().connect("unselected_all", self, "unselect")
+	Event.connect("weapon_unlocked", self, "_on_weapon_unlocked")
 
 func _on_hotswap_opened() -> void :
 	modulate.a = 0.5
@@ -15,6 +16,10 @@ func _on_hotswap_opened() -> void :
 		make_selectable()
 	else:
 		deactivate()
+
+func _on_weapon_unlocked(collectible: String) -> void :
+	if weapon.collectible == collectible:
+		make_selectable()
 
 func deactivate() -> void :
 	pass

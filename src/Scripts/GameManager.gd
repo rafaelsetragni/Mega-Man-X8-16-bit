@@ -174,9 +174,7 @@ func start_level(StageName : String) -> void:
 	set_player_lives_to_at_least_2()
 	current_level = StageName
 	var path: String
-	if StageName == "NoahsPark":
-		path = "res://src/Levels/NoahsPark/Intro_NoahsPark.tscn"
-	elif StageName == "NoahsPark2":
+	if StageName == "NoahsPark" or StageName == "NoahsPark2":
 		path = "res://Axl_mod/Levels/NoahsPark/Stage_NoahsPark.tscn"
 	else:
 		path = "res://src/Levels/" + StageName + "/Stage_" + StageName + ".tscn"
