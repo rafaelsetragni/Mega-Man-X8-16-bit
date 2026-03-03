@@ -45,6 +45,8 @@ initial_focus = NodePath("Menu/OptionHolder/GameStart")
 [node name="Menu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
 
 [node name="bg" type="TextureRect" parent="Menu"]
 visible = false
@@ -70,9 +72,9 @@ texture = ExtResource( 6 )
 
 [node name="Turbo" type="TextureRect" parent="Menu"]
 margin_left = 239.0
-margin_top = 73.0
+margin_top = 68.0
 margin_right = 339.0
-margin_bottom = 140.0
+margin_bottom = 135.0
 texture = ExtResource( 12 )
 
 [node name="EVENT" type="TextureRect" parent="Menu"]
@@ -272,9 +274,9 @@ align = 2
 
 [node name="16-bit_shadow" type="Label" parent="Menu"]
 modulate = Color( 0, 0, 0, 1 )
-margin_top = 129.0
+margin_top = 122.0
 margin_right = 398.0
-margin_bottom = 156.0
+margin_bottom = 149.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 14 )
@@ -282,9 +284,9 @@ text = "16-BIT_TITLE"
 align = 1
 
 [node name="16-bit" type="Label" parent="Menu"]
-margin_top = 127.0
+margin_top = 120.0
 margin_right = 398.0
-margin_bottom = 154.0
+margin_bottom = 147.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 14 )

@@ -161,7 +161,7 @@ texture = ExtResource( 6 )
 
 [node name="turbo" type="Sprite" parent="title_card_intro"]
 visible = false
-position = Vector2( 289, 106 )
+position = Vector2( 289, 102 )
 z_index = 1
 texture = ExtResource( 20 )
 
