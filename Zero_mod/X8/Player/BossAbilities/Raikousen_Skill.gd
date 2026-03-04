@@ -299,6 +299,9 @@ func _Setup() -> void :
 	if character.saber_node.current_weapon.name == "Saber":
 		effect_emit("raikousen")
 
+	elif character.saber_node.current_weapon.name == "Z-Saber-B":
+		pass
+
 	elif character.saber_node.current_weapon.name == "B-Fan":
 		effect_emit("raikousen_fan")
 
@@ -321,7 +324,7 @@ func _Setup() -> void :
 		facing_direction = 1
 	else:
 		facing_direction = - 1
-	if character.saber_node.current_weapon.name == "Saber":
+	if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 		if character.get_action_pressed("move_up"):
 			rotation_value = - rotation_deg * facing_direction
 			go_upwards = true
@@ -369,7 +372,7 @@ func _Update(delta: float) -> void :
 		animatedSprite.rotation_degrees = rotation_value
 	if movement_speed_frames():
 		if character.is_on_floor() and not go_upwards:
-			if character.saber_node.current_weapon.name == "Saber":
+			if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 				var floor_normal = character.get_floor_normal()
 				var angle_degrees = rad2deg(atan2(floor_normal.y, floor_normal.x))
 				rotation_value = angle_degrees + 90

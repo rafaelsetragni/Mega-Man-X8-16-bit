@@ -16,11 +16,15 @@ signal unfocused
 func _ready() -> void :
 	for item in menu.get_children():
 		if item.name == name:
-			stage = item.stage_info
+			if "stage_info" in item:
+				stage = item.stage_info
 			var _s = item.connect("focus_entered", self, "focus")
 			_s = item.connect("focus_exited", self, "unfocus")
 			call_deferred("synchronize_visibility", item)
-	set_defeated_status()
+	if stage:
+		set_defeated_status()
+	else:
+		defeated = true
 	play(get_correct_animation("idle"))
 
 func synchronize_visibility(selectable) -> void :
@@ -34,7 +38,8 @@ func focus() -> void :
 	cursor.visible = true
 	pointer.visible = true
 	emit_signal("focused")
-	emit_signal("moved_cursor", stage.pointer_position)
+	if stage:
+		emit_signal("moved_cursor", stage.pointer_position)
 
 func unfocus() -> void :
 	play(get_correct_animation("idle"))

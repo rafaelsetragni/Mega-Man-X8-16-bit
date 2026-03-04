@@ -74,5 +74,3 @@ func achievement_check() -> void :
 			hearts += 1
 	if hearts == 8:
 		Achievements.unlock("COLLECTALLHEARTS")
-	else:
-		Savefile.save(Savefile.save_slot)

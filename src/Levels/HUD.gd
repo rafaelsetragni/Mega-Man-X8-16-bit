@@ -20,6 +20,7 @@ onready var ride_hp: TextureProgress = $"Ride Bar/textureProgress"
 
 
 onready var lives_label: Label = $"X Bar/LivesCounter/LivesLabel"
+onready var lives_icon: TextureRect = $"X Bar/LivesCounter/LivesIcon"
 
 onready var rec_info: RichTextLabel = $"Rec Info"
 
@@ -71,6 +72,7 @@ func _ready() -> void:
 	BossRNG.connect("decided_boss_order",self,"show_boss_attack")
 	Event.listen("has_life_ups",self,"update_lives_counter")
 	call_deferred("update_lives_counter")
+	call_deferred("update_lives_icon")
 	call_deferred("connect_debug")
 	call_deferred("on_showdebug","ShowDebug")
 
@@ -222,6 +224,17 @@ func update_lives_counter(_lives = null) -> void:
 		lives_label.text = str(GlobalVariables.get("player_lives"))
 	else:
 		lives_label.text = "2"
+
+func update_lives_icon() -> void:
+	match CharacterManager.player_character:
+		"Zero":
+			lives_icon.texture = preload("res://Zero_mod/HUD/lives_zero.png")
+			lives_icon.material = preload("res://Zero_mod/X8/Sprites/ZeroX8_Material_Shader.tres").duplicate()
+			CharacterManager.set_zeroX8_colors(lives_icon)
+		"Axl":
+			lives_icon.texture = preload("res://Axl_mod/HUD/lives_axl.png")
+			lives_icon.material = preload("res://Axl_mod/Player/Axl_Material_Shader.tres").duplicate()
+			CharacterManager.set_axl_colors(lives_icon)
 
 func show_boss_health_and_weapon(delta) -> String:
 	var text := ""

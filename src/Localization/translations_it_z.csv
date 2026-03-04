@@ -2,8 +2,10 @@ key,it
 TOTAL_TIME,Quanto Tempo Ci Hai Messo
 DISCLAIMER1,"Questo gioco e' un fangame GRATIS.\n\nNon e' affiliato, associato, autorizzato o in alcun modo ufficialmente collegato con Capcom.\n\nMega Man X e' proprieta' di Capcom.\nSupportate i giochi originali, dai!"
 MADE_BY,"Fatto tutto da solo, mamma mia"
+TURBO_MADE_BY,martellata da
+TURBO_MODE,versione
 INSPIRED_BY,Ispirato da
-SPECIALTHANKSTEXT,Questa mod e' stata fatta da Zashiko\n\nE decompilata da pirate\nGioco turbinato da: Rafael Setragni & Claude (IA)\n\nGrazie a tutti i contributor e tester.\nRetranslations by: ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,Questa mod e' stata fatta da Zashiko\n\nE decompilata da pirate\nRefactoring e Bilanciamento di: Rafael Setragni & Claude (IA)\n\nGrazie a tutti i contributor e tester.\nRetranslations by: ElevenSSF2 (Mint)
 16-BIT_TITLE,"Entra nella cartuccia, fidati"
 OPTIONS_START,TOCCA LE IMPOSTAZIONI
 KEYCFG_START,CONFIGURA I TASTI
@@ -95,6 +97,8 @@ TRILOBYTE_ZERO_DISC,"Passivo, si fa da solo"
 YETI_ZERO_DISC,Su + Tiro 2
 ROOSTER_ZERO_DISC,Giu' + Tiro 2 (Aria)
 ZERO_WPNMENU,Spada Z
+ZSABERA_WPNMENU,Z-Saber A
+ZSABERB_WPNMENU,Z-Saber B
 BFAN_WPNMENU,Ventaglio
 DGLAIVE_WPNMENU,Alabarda
 TBREAKER_WPNMENU,Martello
@@ -1141,3 +1145,10 @@ JOKE_MODE_OPTION,Modo Meme
 "SAVE_DIFF_HARD","Tosto"
 "SAVE_DIFF_INSANITY","Ma Pazzo?"
 "SAVE_DIFF_NINJA","Lascia Stare"
+"CONFIG_TITLE","Roba Da Fare"
+"CONFIG_OPTIONS","Tocca Qui"
+"CONFIG_KEYCONFIG","I Tasti"
+"CONFIG_LOAD","Carica Dai"
+"CONFIG_SAVE","Salva Dai"
+"CONFIG_EXIT_MENU","Scappo"
+"CONFIG_EXIT_CONFIRM","Ma Davvero?"

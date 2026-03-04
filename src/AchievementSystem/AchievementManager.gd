@@ -44,13 +44,11 @@ func queue_save():
 
 func save():
 	queued_save = false
-	Savefile.save()
 
 func reset_all() -> void:
 	print_debug("Achievements: Resetting All... ")
 	for achievement in list:
 		achievement.unlocked = false
-	Savefile.save()
 	
 
 func get_unlocked_list() -> Array:

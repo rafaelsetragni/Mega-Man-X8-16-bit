@@ -69,6 +69,10 @@ func on_press() -> void :
 	GlobalVariables.variables = {}
 	GameManager.seen_dialogues.clear()
 	Savefile.newgame_plus = 0
+	GatewayManager.reset_bosses()
+	CharacterManager.reset_for_new_game()
+	BossRNG.rng.seed = 0
+	IGT.set_time(0.0)
 	IGT.reset()
 	get_node(pick_sound).play()
 	Event.emit_signal("fadeout_startmenu")

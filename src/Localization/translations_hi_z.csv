@@ -2,8 +2,10 @@ key,hi
 TOTAL_TIME,Kitna Time Lagaya
 DISCLAIMER1,"Yeh ek FREE fangame hai, bhai.\n\nCapcom se koi lena dena nahi hai. Na affiliation, na authorization, na kuch.\n\nMega Man X Capcom ki property hai.\nOriginal games khelo aur support karo!"
 MADE_BY,Akele bana diya bhai ne
+TURBO_MADE_BY,gadhne wala
+TURBO_MODE,version
 INSPIRED_BY,Inspiration liya
-SPECIALTHANKSTEXT,Yeh mod Zashiko ne banaya\n\nAur pirate ne decompile kiya\nGame turbo kiya: Rafael Setragni & Claude (AI)\n\nSabhi contributors aur testers ko dhanyavaad.\nRetranslations by: ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,Yeh mod Zashiko ne banaya\n\nAur pirate ne decompile kiya\nRefactoring aur Balancing: Rafael Setragni & Claude (AI)\n\nSabhi contributors aur testers ko dhanyavaad.\nRetranslations by: ElevenSSF2 (Mint)
 16-BIT_TITLE,"Cartridge mein fit ho jayega, trust me bro"
 OPTIONS_START,SETTINGS MEIN GHUSO
 KEYCFG_START,BUTTON DABAO
@@ -95,6 +97,8 @@ TRILOBYTE_ZERO_DISC,Apne aap chalta hai bhai
 YETI_ZERO_DISC,Upar + Shot 2
 ROOSTER_ZERO_DISC,Neeche + Shot 2 (Hawa mein)
 ZERO_WPNMENU,Talwar
+ZSABERA_WPNMENU,Z-Saber A
+ZSABERB_WPNMENU,Z-Saber B
 BFAN_WPNMENU,Pankha
 DGLAIVE_WPNMENU,Bhala
 TBREAKER_WPNMENU,Hathauda
@@ -1141,3 +1145,10 @@ JOKE_MODE_OPTION,मीम मोड
 "SAVE_DIFF_HARD","Thodi Mirchi"
 "SAVE_DIFF_INSANITY","Pagal"
 "SAVE_DIFF_NINJA","Sapne Mein"
+"CONFIG_TITLE","सेटिंग करो"
+"CONFIG_OPTIONS","इधर उधर"
+"CONFIG_KEYCONFIG","बटन दबाओ"
+"CONFIG_LOAD","लोड करो"
+"CONFIG_SAVE","सेव करो"
+"CONFIG_EXIT_MENU","भाग जाओ"
+"CONFIG_EXIT_CONFIRM","सच में?"

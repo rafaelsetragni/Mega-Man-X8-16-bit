@@ -355,6 +355,7 @@ func finished_player_movement():
 func finish_cutscene():
 	if not executing:
 		return
+	GameManager.save_seen_dialogue(dialog_4)
 	vile.visible = false
 	kidnapped.visible = false
 	executing = false

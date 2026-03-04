@@ -143,6 +143,7 @@
 [ext_resource path="res://Zero_mod/SFX/dairettsui.ogg" type="AudioStream" id=141]
 [ext_resource path="res://Zero_mod/X8/Player/FanShield.gd" type="Script" id=142]
 [ext_resource path="res://Zero_mod/X8/Sprites/kknuckle/zerox8knuckle.tres" type="SpriteFrames" id=143]
+[ext_resource path="res://Zero_mod/Player/Weapons/Z-Saber-B.tres" type="Resource" id=144]
 
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 6.995, 7 )
@@ -681,6 +682,11 @@ __meta__ = {
 script = ExtResource( 118 )
 active = true
 weapon = ExtResource( 124 )
+
+[node name="Z-Saber-B" type="Node2D" parent="Shot"]
+script = ExtResource( 118 )
+active = true
+weapon = ExtResource( 144 )
 
 [node name="B-Fan" type="Node2D" parent="Shot"]
 script = ExtResource( 116 )

@@ -19,6 +19,7 @@ onready var zero_base3: Texture = preload("res://Zero_mod/HUD/ZeroX8_base.png")
 onready var zero_beta: Texture = preload("res://Zero_mod/HUD/Zero_base.png")
 onready var black_zero_beta_icon: Texture = preload("res://Zero_mod/HUD/Pause/beta_black_zero_collectible.png")
 onready var zero_beta_material: = preload("res://Zero_mod/Sprites/Zero_Material_Shader.tres")
+onready var zero_x8_material: Material = zero_icon.material
 
 var weapon
 
@@ -32,47 +33,59 @@ func _ready() -> void :
 		pass
 
 func on_start() -> void :
-	if CharacterManager.betazero_activated:
-		zero_icon.texture = zero_beta
-		black_zero_icon.texture = black_zero_beta_icon
-		zero_icon.material = zero_beta_material
-		CharacterManager.set_zero_colors(zero_icon)
+	pass
 
 func set_pause_icon(_weapon) -> void :
 	if not _weapon:
+		zero_icon.material = zero_x8_material
 		zero_icon.texture = zero_base
+		CharacterManager.set_zeroX8_colors(zero_icon)
 	else:
-		if weapon.name == "B-Fan":
+		if weapon.name == "Z-Saber-B":
+			zero_icon.material = zero_beta_material
+			zero_icon.texture = zero_beta
+			CharacterManager.set_zero_colors(zero_icon)
+		elif weapon.name == "B-Fan":
 			zero_icon.texture = zero_bfan
-		if weapon.name == "D-Glaive":
+			set_x8_icon_colors()
+		elif weapon.name == "D-Glaive":
 			zero_icon.texture = zero_dglaive
-		if weapon.name == "K-Knuckle":
+			set_x8_icon_colors()
+		elif weapon.name == "K-Knuckle":
 			zero_icon.texture = zero_kknuckle
-		if weapon.name == "T-Breaker":
+			set_x8_icon_colors()
+		elif weapon.name == "T-Breaker":
 			zero_icon.texture = zero_tbreaker
-		if weapon.name == "V-Hanger":
+			set_x8_icon_colors()
+		elif weapon.name == "V-Hanger":
 			zero_icon.texture = zero_vhanger
-		if weapon.name == "Sigma-Blade":
+			set_x8_icon_colors()
+		elif weapon.name == "Sigma-Blade":
 			zero_icon.texture = zero_sigmablade
-		if weapon.name == "lol":
+			set_x8_icon_colors()
+		elif weapon.name == "lol":
 			zero_icon.texture = zero_base2
-		if weapon.name == "lel":
+			set_x8_icon_colors()
+		elif weapon.name == "lel":
 			zero_icon.texture = zero_base3
-	if CharacterManager.betazero_activated:
-		zero_icon.texture = zero_beta
-		black_zero_icon.texture = black_zero_beta_icon
+			set_x8_icon_colors()
+		else:
+			zero_icon.texture = zero_base
+			set_x8_icon_colors()
+
+func set_x8_icon_colors() -> void :
+	zero_icon.material = zero_x8_material
+	CharacterManager.set_zeroX8_colors(zero_icon)
 
 func set_player_weapon() -> void :
 	if weapon_resource and GameManager.player:
 		for _weapon in GameManager.player.get_node("Shot").get_children():
-			if _weapon is ZeroSpecialWeapon:
+			if _weapon is ZeroWeapon:
 				if _weapon.weapon.collectible == weapon_resource.collectible:
 					weapon = _weapon
 
 func _on_focus_entered() -> void :
 	._on_focus_entered()
-	if CharacterManager.betazero_activated:
-		return
 	if GameManager.is_player_in_scene():
 		var _shot_node = GameManager.player.get_node("Shot")
 		if _shot_node != null:
@@ -88,4 +101,9 @@ func _on_focus_exited() -> void :
 		._on_focus_exited()
 
 func on_press() -> void :
-	pass
+	if GameManager.is_player_in_scene():
+		var _shot_node = GameManager.player.get_node("Shot")
+		if _shot_node != null:
+			_shot_node.set_current_weapon(weapon)
+	get_parent().set_weapon(self)
+	set_pause_icon(weapon)

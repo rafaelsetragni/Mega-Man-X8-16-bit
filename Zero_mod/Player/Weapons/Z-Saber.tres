@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-short_name = "ZERO_WPNMENU"
+short_name = "ZSABERA_WPNMENU"
 collectible = "z_saber_zero"
 icon = ExtResource( 1 )
 faded_icon = ExtResource( 1 )

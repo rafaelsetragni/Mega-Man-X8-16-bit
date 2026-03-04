@@ -70,5 +70,4 @@ script = ExtResource( 3 )
 visible = false
 z_index = 1
 frames = SubResource( 7 )
-frame = 1
 playing = true

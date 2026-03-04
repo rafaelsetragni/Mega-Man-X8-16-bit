@@ -2,8 +2,10 @@ key,ko
 TOTAL_TIME,걸린시간ㅋ
 DISCLAIMER1,이 게임은 무료 팬게임입니다.\n\n캡콤이랑 아무 관련 없습니다 ㅋㅋ 고소하지 마세요 제발\n\n록맨 X는 캡콤 소유입니다.\n공식 게임도 사주세요 제발요!
 MADE_BY,혼자 다 만든 사람:
+TURBO_MADE_BY,벼려낸 자
+TURBO_MODE,버전
 INSPIRED_BY,영감을 준 분:
-SPECIALTHANKSTEXT,이 모드는 Zashiko가 만들었습니다\n\n디컴파일은 pirate가 했습니다\n게임 터보 장착: Rafael Setragni & 클로드 (AI)\n\n모드 기여자분들과 테스터분들 감사합니다.\n재번역: ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,이 모드는 Zashiko가 만들었습니다\n\n디컴파일은 pirate가 했습니다\n리팩토링 및 밸런스 조정: Rafael Setragni & 클로드 (AI)\n\n모드 기여자분들과 테스터분들 감사합니다.\n재번역: ElevenSSF2 (Mint)
 16-BIT_TITLE,16비트 카트리지에 넣을 수 있다고요 ㄹㅇ
 OPTIONS_START,이것저것 만지기
 KEYCFG_START,키 설정 ㅋ
@@ -95,6 +97,8 @@ TRILOBYTE_ZERO_DISC,패시브 ㅋ
 YETI_ZERO_DISC,위 + 공격2
 ROOSTER_ZERO_DISC,아래 + 공격2 (공중)
 ZERO_WPNMENU,후하후!
+ZSABERA_WPNMENU,Z-Saber A
+ZSABERB_WPNMENU,Z-Saber B
 BFAN_WPNMENU,부채질
 DGLAIVE_WPNMENU,큰창
 TBREAKER_WPNMENU,피코피코해머
@@ -1141,3 +1145,10 @@ JOKE_MODE_OPTION,밈 모드
 "SAVE_DIFF_HARD","현실"
 "SAVE_DIFF_INSANITY","진심?"
 "SAVE_DIFF_NINJA","꿈버려"
+"CONFIG_TITLE","설정ㅋ"
+"CONFIG_OPTIONS","이것저것"
+"CONFIG_KEYCONFIG","버튼 만지기"
+"CONFIG_LOAD","불러오기ㅋ"
+"CONFIG_SAVE","저장 ㄱㄱ"
+"CONFIG_EXIT_MENU","도망가기"
+"CONFIG_EXIT_CONFIRM","진짜요?"

@@ -7,6 +7,7 @@ onready var x8_color: Sprite = $x8_color
 onready var x8_shineleft: Sprite = $x8_shineleft
 onready var x8_shineright: Sprite = $x8_shineright
 onready var x8_shinefull: Sprite = $x8_shinefull
+onready var turbo: Sprite = $turbo
 onready var twish: AudioStreamPlayer = $twish
 
 const white_half: = Color(1, 1, 1, 0.5)
@@ -19,21 +20,38 @@ export  var final_megaman_position: Vector2
 onready var blackness: Sprite = $blackness
 onready var demo: Label = $demo_02
 
+var _logo_english: Texture = preload("res://src/Title/english_logo.png")
+var _logo_japanese: Texture = preload("res://src/Title/japanese_logo.png")
+var _logo_chinese: Texture = preload("res://src/Title/chinese_logo.png")
+
 var timer: = 0.0
 var step: = 0
 func next_step() -> void :
 	step += 1
 	timer = 0
-	
+
 
 func _ready() -> void :
+	update_logo()
 	for child in get_children():
 		if child is Sprite:
 			child.visible = false
 		else:
 			break
-	
+
 	set_physics_process(false)
+
+func update_logo() -> void :
+	var locale: String = TranslationServer.get_locale()
+	if locale.begins_with("ja"):
+		megaman.texture = _logo_japanese
+		megaman2.texture = _logo_japanese
+	elif locale.begins_with("zh"):
+		megaman.texture = _logo_chinese
+		megaman2.texture = _logo_chinese
+	else:
+		megaman.texture = _logo_english
+		megaman2.texture = _logo_english
 
 func _physics_process(delta: float) -> void :
 	timer += delta
@@ -96,7 +114,10 @@ func appear_x8() -> void :
 		tween3.tween_property(x8_shinefull, "modulate", white_zero, 2.5)
 		tween3.tween_property(blackness, "modulate", Color.white, 0.75)
 		next_step()
-	elif step == 13 and timer > 1.25:
+	elif step == 13 and timer > 1.0:
+		appear(turbo)
+		next_step()
+	elif step == 14 and timer > 0.25:
 		appear(demo)
 		next_step()
 
@@ -146,7 +167,7 @@ func appear_megaman_logo() -> void :
 	
 
 func send_downwards(object, duration: = 0.3) -> void :
-	object.z_index = - 1
+	object.z_index = 1
 	object.modulate = dark_megaman_color
 	object.position = start_megaman_position
 	object.visible = true
@@ -161,7 +182,7 @@ func send_downwards(object, duration: = 0.3) -> void :
 	tween.tween_property(object, "position:y", final_megaman_position.y, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func fade(object, duration: = 0.3) -> void :
-	object.z_index = 0
+	object.z_index = 2
 	tween = create_tween()
 
 	tween.tween_property(object, "modulate", fade_color, duration)

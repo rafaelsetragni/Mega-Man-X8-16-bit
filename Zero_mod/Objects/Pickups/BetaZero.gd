@@ -26,7 +26,6 @@ var glitched: bool = false
 func _ready() -> void :
 	if reset_armor:
 		call_deferred("lock_black_zero_armor")
-		Savefile.save(Savefile.save_slot)
 	Event.listen("player_set", self, "call_deferred_already_got")
 
 func call_deferred_already_got() -> void :
@@ -101,6 +100,4 @@ func unlock_black_zero_armor(zero) -> void :
 	CharacterManager.betazero_unlocked = true
 
 func achievement_check() -> void :
-	
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()

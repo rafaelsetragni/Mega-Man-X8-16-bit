@@ -14,7 +14,9 @@ onready var _knuckle_sprites: Resource = preload("res://Zero_mod/X8/Sprites/kknu
 onready var _breaker_sprites: Resource = preload("res://Zero_mod/X8/Sprites/tbreaker/tbreaker.tres")
 onready var _hanger_sprites: Resource = preload("res://Zero_mod/X8/Sprites/zerox8.tres")
 onready var _sigmablade_sprites: Resource = preload("res://Zero_mod/X8/Sprites/zerox8.tres")
-
+onready var _beta_saber_sprites: Resource = preload("res://Zero_mod/Sprites/zero.tres")
+var _beta_shader_material: Material
+var _x8_shader_material: Material
 onready var rekkyoudan_hitbox = preload("res://Zero_mod/Player/Hitboxes/Rekkyoudan_Hitbox.tscn")
 onready var saber_hitbox = preload("res://Zero_mod/Player/Hitboxes/Saber_Hitbox.tscn")
 onready var bfan_shield: = get_node("FanShield")
@@ -142,7 +144,7 @@ func combo_connection_youdantotsu() -> bool:
 func combo_connection_hyouryuushou() -> bool:
 	if get_action_pressed("dash"):
 		return false
-	if saber_node.current_weapon.name == "Saber" or saber_node.current_weapon.name == "D-Glaive":
+	if saber_node.current_weapon.name == "Saber" or saber_node.current_weapon.name == "Z-Saber-B" or saber_node.current_weapon.name == "D-Glaive":
 		var _animation = get_animation()
 		if _animation == "saber_1" and animatedSprite.frame >= 7:
 			return true
@@ -225,6 +227,8 @@ func increase_hitbox() -> void :
 
 func _ready() -> void :
 	current_armor = ["no_head", "no_body", "no_arms", "no_legs"]
+	_x8_shader_material = animatedSprite.material
+	_beta_shader_material = preload("res://Zero_mod/Sprites/Zero_Material_Shader.tres").duplicate()
 	Event.listen("collected", self, "equip_parts")
 	Event.listen("collected", self, "collect")
 	listen("land", self, "on_land")
@@ -232,17 +236,31 @@ func _ready() -> void :
 	GameManager.set_player(self)
 	Event.call_deferred("emit_signal", "player_set")
 	animatedSprite.offset.y = - 2
-	change_ride_chaser_sprites()
+	saber_node.update_character_sprites()
+	listen("ride", self, "_on_start_ride")
+	listen("eject", self, "_on_end_ride")
+	Event.listen("changed_weapon", self, "_on_weapon_changed")
 	if not "z_saber_zero" in GameManager.collectibles:
 		GameManager.add_collectible_to_savedata("z_saber_zero")
+	if not "z_saber_b_zero" in GameManager.collectibles:
+		GameManager.add_collectible_to_savedata("z_saber_b_zero")
 
-func change_ride_chaser_sprites() -> void :
-	var _texture = load("res://Zero_mod/X8/Sprites/zero_ride_chaser.png")
-	var _reference_frames = load("res://Zero_mod/X8/Sprites/zerox8.tres")
-	var _replace_animations = [
-		"empty", 
-	]
-	animatedSprite.frames = CharacterManager.update_texture_specific_animations(_texture, _reference_frames, _replace_animations)
+func _on_start_ride(_ride_object) -> void :
+	if _ride_object is Bike and saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
+		animatedSprite.material = _beta_shader_material
+		CharacterManager.set_zero_colors(animatedSprite)
+
+func _on_end_ride(_ride_object) -> void :
+	start_listening_to_inputs()
+	call_deferred("_restore_sprites_after_ride")
+
+func _restore_sprites_after_ride() -> void :
+	saber_node.update_character_sprites()
+
+func _on_weapon_changed(_weapon) -> void :
+	if ride is Bike and saber_node.current_weapon and not "Z-Saber-B" in saber_node.current_weapon.name:
+		animatedSprite.material = _beta_shader_material
+		CharacterManager.set_zero_colors(animatedSprite)
 
 func get_armor_sprites() -> Array:
 	var sprites = []
@@ -470,7 +488,10 @@ func is_full_armor() -> String:
 	return "no_armor"
 
 func equip_parts(collectible: String) -> void :
-	CharacterManager.set_zeroX8_colors(animatedSprite)
+	if saber_node and saber_node.current_weapon and "Z-Saber-B" in saber_node.current_weapon.name:
+		CharacterManager.set_zero_colors(animatedSprite)
+	else:
+		CharacterManager.set_zeroX8_colors(animatedSprite)
 	equip_zero_parts()
 	emit_signal("equipped_armor")
 	

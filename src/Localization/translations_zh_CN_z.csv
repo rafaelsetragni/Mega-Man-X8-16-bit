@@ -2,8 +2,10 @@ key,zh_CN
 TOTAL_TIME,总摸鱼时间
 DISCLAIMER1,这是一款免费同人游戏，白嫖的哦。\n\n跟Capcom没有半毛钱关系，求求别发律师函。\n\n洛克人X是Capcom的。\n请支持正版，别当海盗！
 MADE_BY,一个人肝秃了的项目：
+TURBO_MADE_BY,锤炼者
+TURBO_MODE,版本
 INSPIRED_BY,是谁让我开始卷的
-SPECIALTHANKSTEXT,这个Mod由Zashiko肝出来的\n\n反编译：pirate（真·海盗）\n游戏涡轮增压：Rafael Setragni & Claude (AI，没错就是我)\n\n感谢所有贡献者和测试人员，你们都是yyds。\n重翻译：ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,这个Mod由Zashiko肝出来的\n\n反编译：pirate（真·海盗）\n重构与平衡：Rafael Setragni & Claude (AI，没错就是我)\n\n感谢所有贡献者和测试人员，你们都是yyds。\n重翻译：ElevenSSF2 (Mint)
 16-BIT_TITLE,16位 复古yyds
 OPTIONS_START,搞设置去
 KEYCFG_START,改键位啦
@@ -95,6 +97,8 @@ TRILOBYTE_ZERO_DISC,被动（躺着也有用）
 YETI_ZERO_DISC,上 + 射击2
 ROOSTER_ZERO_DISC,下 + 射击2（空中搓招）
 ZERO_WPNMENU,后哈后！光剑
+ZSABERA_WPNMENU,Z-Saber A
+ZSABERB_WPNMENU,Z-Saber B
 BFAN_WPNMENU,B扇子
 DGLAIVE_WPNMENU,D大枪
 TBREAKER_WPNMENU,T锤子
@@ -1141,3 +1145,10 @@ JOKE_MODE_OPTION,玩梗模式（你在看的就是这个）
 "SAVE_DIFF_HARD","有点卷"
 "SAVE_DIFF_INSANITY","你是M吗"
 "SAVE_DIFF_NINJA","告辞"
+"CONFIG_TITLE","搞设置"
+"CONFIG_OPTIONS","瞎调调"
+"CONFIG_KEYCONFIG","改按键"
+"CONFIG_LOAD","读档"
+"CONFIG_SAVE","存档"
+"CONFIG_EXIT_MENU","跑路"
+"CONFIG_EXIT_CONFIRM","真跑？"
