@@ -16,6 +16,7 @@
 [ext_resource path="res://src/Fonts/x8_bitmapfont.tres" type="BitmapFont" id=14]
 [ext_resource path="res://src/Actors/Player/x_sprites/x.res" type="SpriteFrames" id=15]
 [ext_resource path="res://src/Options/LilMegamanOnScreen.gd" type="Script" id=16]
+[ext_resource path="res://src/Title/english_logo.png" type="Texture" id=17]
 [ext_resource path="res://src/Actors/Player/x_sprites/x_crystal_pallette.png" type="Texture" id=18]
 [ext_resource path="res://addons/PaletteSwap/PaletteSwap.gdshader" type="Shader" id=19]
 [ext_resource path="res://System/Screens/Loading/Loading.tscn" type="PackedScene" id=20]
@@ -24,7 +25,6 @@
 [ext_resource path="res://System/SFX/window_close.ogg" type="AudioStream" id=23]
 [ext_resource path="res://Zero_mod/SFX/sfx_Saber.wav" type="AudioStream" id=24]
 [ext_resource path="res://src/Actors/Weapons/Projectiles/heavy_shot.res" type="SpriteFrames" id=25]
-[ext_resource path="res://src/Title/title_megaman.png" type="Texture" id=26]
 
 [sub_resource type="ShortCut" id=1]
 
@@ -56,28 +56,32 @@ margin_right = 398.0
 margin_bottom = 226.0
 texture = ExtResource( 13 )
 
-[node name="MegaMan" type="TextureRect" parent="Menu"]
-margin_left = 83.0
-margin_top = 12.0
-margin_right = 236.0
-margin_bottom = 107.0
-texture = ExtResource( 26 )
-
 [node name="X8" type="TextureRect" parent="Menu"]
-margin_left = 135.0
-margin_top = -34.0
-margin_right = 385.0
-margin_bottom = 146.0
+margin_left = 148.0
+margin_top = -31.0
+margin_right = 398.0
+margin_bottom = 149.0
 texture = ExtResource( 6 )
 
+[node name="MegaMan" type="TextureRect" parent="Menu"]
+margin_left = 45.0
+margin_top = 32.0
+margin_right = 286.0
+margin_bottom = 103.0
+texture = ExtResource( 17 )
+expand = true
+
 [node name="Turbo" type="TextureRect" parent="Menu"]
-margin_left = 239.0
-margin_top = 68.0
-margin_right = 339.0
-margin_bottom = 135.0
+margin_left = 165.0
+margin_top = 85.0
+margin_right = 230.0
+margin_bottom = 104.0
 texture = ExtResource( 12 )
+expand = true
 
 [node name="EVENT" type="TextureRect" parent="Menu"]
+margin_left = 7.0
+margin_right = 7.0
 
 [node name="Title" type="Control" parent="Menu"]
 visible = false
@@ -274,8 +278,9 @@ align = 2
 
 [node name="16-bit_shadow" type="Label" parent="Menu"]
 modulate = Color( 0, 0, 0, 1 )
+margin_left = -2.0
 margin_top = 122.0
-margin_right = 398.0
+margin_right = 396.0
 margin_bottom = 149.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
@@ -284,8 +289,9 @@ text = "16-BIT_TITLE"
 align = 1
 
 [node name="16-bit" type="Label" parent="Menu"]
+margin_left = -2.0
 margin_top = 120.0
-margin_right = 398.0
+margin_right = 396.0
 margin_bottom = 147.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
@@ -306,7 +312,7 @@ position = Vector2( 13, 2 )
 z_index = -1
 frames = ExtResource( 25 )
 animation = "Tag"
-frame = 4
+frame = 1
 playing = true
 
 [node name="equip" type="AudioStreamPlayer" parent="."]

@@ -2,8 +2,10 @@ key,it
 TOTAL_TIME,Quanto Tempo Ci Hai Messo
 DISCLAIMER1,"Questo gioco e' un fangame GRATIS.\n\nNon e' affiliato, associato, autorizzato o in alcun modo ufficialmente collegato con Capcom.\n\nMega Man X e' proprieta' di Capcom.\nSupportate i giochi originali, dai!"
 MADE_BY,"Fatto tutto da solo, mamma mia"
+TURBO_MADE_BY,martellata da
+TURBO_MODE,versione
 INSPIRED_BY,Ispirato da
-SPECIALTHANKSTEXT,Questa mod e' stata fatta da Zashiko\n\nE decompilata da pirate\nGioco turbinato da: Rafael Setragni & Claude (IA)\n\nGrazie a tutti i contributor e tester.\nRetranslations by: ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,Questa mod e' stata fatta da Zashiko\n\nE decompilata da pirate\nRefactoring e Bilanciamento di: Rafael Setragni & Claude (IA)\n\nGrazie a tutti i contributor e tester.\nRetranslations by: ElevenSSF2 (Mint)
 16-BIT_TITLE,"Entra nella cartuccia, fidati"
 OPTIONS_START,TOCCA LE IMPOSTAZIONI
 KEYCFG_START,CONFIGURA I TASTI

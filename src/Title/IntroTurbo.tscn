@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Fonts/x8bitmapfontfinal.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://src/Title/rafael_signature.png" type="Texture" id=2]
+[ext_resource path="res://src/Title/title_bg.png" type="Texture" id=3]
+[ext_resource path="res://addons/PaletteSwap/PaletteSwap.gdshader" type="Shader" id=4]
+[ext_resource path="res://src/DialogSystem/font_colors/Neutral.png" type="Texture" id=5]
+[ext_resource path="res://src/Title/turbo_signature.gd" type="Script" id=6]
+[ext_resource path="res://src/Title/turbo-megaman.png" type="Texture" id=8]
+[ext_resource path="res://src/Effects/Textures/github.png" type="Texture" id=9]
+[ext_resource path="res://src/Sounds/car-engine-sfx.wav" type="AudioStream" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/skip_first_row = true
+shader_param/use_palette_alpha = false
+shader_param/fps = 1.0
+shader_param/palette = ExtResource( 5 )
+
+[node name="SignatureScreen" type="Node2D"]
+
+[node name="signature" type="Sprite" parent="."]
+position = Vector2( 235, 106 )
+scale = Vector2( 0.193359, 0.193359 )
+texture = ExtResource( 2 )
+script = ExtResource( 6 )
+color1 = Color( 0.784314, 0.360784, 0.0784314, 1 )
+color2 = Color( 0.807843, 0.682353, 0.305882, 1 )
+
+[node name="by" type="Label" parent="."]
+material = SubResource( 1 )
+margin_left = 218.0
+margin_top = 54.0
+margin_right = 348.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "TURBO_MADE_BY"
+
+[node name="modo" type="Label" parent="by"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -143.0
+margin_right = -71.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "TURBO_MODE"
+align = 2
+
+[node name="turbo" type="Sprite" parent="by"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -36, 7 )
+scale = Vector2( 0.26, 0.333 )
+texture = ExtResource( 8 )
+
+[node name="github_url" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.6 )
+material = SubResource( 1 )
+margin_left = 62.0
+margin_top = 167.0
+margin_right = 340.0
+margin_bottom = 209.0
+custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "github.com/rafaelsetragni"
+align = 1
+
+[node name="sprite" type="Sprite" parent="github_url"]
+position = Vector2( 48, 7 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 9 )
+
+[node name="bg" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 199, 112 )
+z_index = -1000
+texture = ExtResource( 3 )
+
+[node name="fade" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0 )
+position = Vector2( 198, 112 )
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="jingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Music"
