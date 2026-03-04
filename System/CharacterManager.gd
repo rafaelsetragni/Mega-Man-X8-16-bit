@@ -69,6 +69,25 @@ func touch_controls_enabled() -> bool:
 
 
 const char_data: String = "user://char_data"
+
+func reset_for_new_game() -> void :
+	ultimate_x_armor = false
+	black_zero_armor = false
+	white_axl_armor = false
+	betazero_activated = false
+	custom_zero_armor = false
+	nightshade_zero_armor = false
+	only_zero = false
+	tenshouha_active = true
+	juuhazan_active = true
+	rasetsusen_active = true
+	raikousen_active = true
+	youdantotsu_active = true
+	rekkyoudan_active = true
+	hyouryuushou_active = true
+	enkoujin_active = true
+	check_for_deactivated_skills_Zero()
+
 func _save() -> void :
 	var save_data = {
 		"player_count": player_count, 

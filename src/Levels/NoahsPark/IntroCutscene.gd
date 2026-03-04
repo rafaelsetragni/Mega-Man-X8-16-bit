@@ -51,7 +51,6 @@ func _ready() -> void :
 	dialog_2 = CharacterManager._set_correct_dialogues("INTRO_2", dialog_2)
 	dialog_3 = CharacterManager._set_correct_dialogues("INTRO_3", dialog_3)
 	dialog_4 = CharacterManager._set_correct_dialogues("INTRO_4", dialog_4)
-	GameManager.save_seen_dialogue(dialog_4)
 	Event.connect("noahspark_cutscene_start", self, "start")
 	Event.connect("dialog_concluded", self, "on_dialog_end")
 	Event.connect("kingcrab_crash", self, "explode_craft")
@@ -356,6 +355,7 @@ func finished_player_movement():
 func finish_cutscene():
 	if not executing:
 		return
+	GameManager.save_seen_dialogue(dialog_4)
 	vile.visible = false
 	kidnapped.visible = false
 	executing = false

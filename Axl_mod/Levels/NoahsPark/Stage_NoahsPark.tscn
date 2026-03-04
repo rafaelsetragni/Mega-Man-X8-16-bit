@@ -39,7 +39,7 @@
 [ext_resource path="res://src/Levels/NoahsPark/tiled_waterfall2.png" type="Texture" id=37]
 [ext_resource path="res://src/Effects/Materials/mat_waterfall.tres" type="Material" id=38]
 [ext_resource path="res://addons/PaletteSwap/PaletteSwap.gdshader" type="Shader" id=39]
-[ext_resource path="res://Axl_mod/Levels/NoahsPark/Stage_Cutscene.tscn" type="PackedScene" id=40]
+[ext_resource path="res://src/Levels/NoahsPark/IntroCutscene.tscn" type="PackedScene" id=40]
 [ext_resource path="res://src/Levels/NoahsPark/tiled_waterfall1.png" type="Texture" id=41]
 [ext_resource path="res://src/Actors/Enemies/Metool/Metool.tscn" type="PackedScene" id=42]
 [ext_resource path="res://src/Actors/Enemies/Big Tractor/BigTractor.tscn" type="PackedScene" id=43]
