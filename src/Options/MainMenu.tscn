@@ -267,9 +267,10 @@ uppercase = true
 
 [node name="demo_02" type="Label" parent="Menu"]
 modulate = Color( 1, 1, 1, 0.360784 )
-margin_top = 222.0
-margin_right = 397.0
-margin_bottom = 249.0
+margin_left = -3.0
+margin_top = 220.0
+margin_right = 394.0
+margin_bottom = 247.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 14 )
@@ -312,7 +313,7 @@ position = Vector2( 13, 2 )
 z_index = -1
 frames = ExtResource( 25 )
 animation = "Tag"
-frame = 1
+frame = 2
 playing = true
 
 [node name="equip" type="AudioStreamPlayer" parent="."]
