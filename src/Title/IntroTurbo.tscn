@@ -20,7 +20,7 @@ shader_param/palette = ExtResource( 5 )
 [node name="SignatureScreen" type="Node2D"]
 
 [node name="signature" type="Sprite" parent="."]
-position = Vector2( 235, 106 )
+position = Vector2( 199, 128 )
 scale = Vector2( 0.193359, 0.193359 )
 texture = ExtResource( 2 )
 script = ExtResource( 6 )
