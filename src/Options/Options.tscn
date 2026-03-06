@@ -1312,7 +1312,8 @@ self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 220.0
 margin_right = 200.0
 margin_bottom = 228.0
-rect_min_size = Vector2( 200, 8 )
+rect_min_size = Vector2( 0, 0 )
+focus_mode = 0
 action_mode = 0
 script = ExtResource( 31 )
 idle_color = Color( 0.0745098, 0.466667, 0.0745098, 1 )
@@ -1336,12 +1337,14 @@ align = 1
 uppercase = true
 
 [node name="clearsave" type="TextureButton" parent="Menu/scrollContainer/OptionHolder"]
+visible = false
 modulate = Color( 0.466667, 0.0745098, 0.0745098, 1 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 209.0
 margin_right = 200.0
 margin_bottom = 217.0
-rect_min_size = Vector2( 0, 8 )
+rect_min_size = Vector2( 0, 0 )
+focus_mode = 0
 action_mode = 0
 script = ExtResource( 16 )
 idle_color = Color( 0.466667, 0.0745098, 0.0745098, 1 )

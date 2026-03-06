@@ -14,7 +14,7 @@
 [ext_resource path="res://System/Screens/Loading/Loading_Screen.png" type="Texture" id=12]
 [ext_resource path="res://System/SFX/choose_x8.ogg" type="AudioStream" id=15]
 [ext_resource path="res://src/Sounds/FX - Cancel.ogg" type="AudioStream" id=16]
-[ext_resource path="res://System/Screens/Loading/Loading.theme" type="Theme" id=17]
+[ext_resource path="res://src/Options/KeyBinder/scrollbar.tres" type="Theme" id=17]
 
 [node name="LOADING" type="CanvasLayer"]
 script = ExtResource( 9 )

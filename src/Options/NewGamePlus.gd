@@ -18,9 +18,7 @@ func _ready() -> void :
 
 func on_loaded() -> void :
 	self.visible = false
-	if GlobalVariables.exists("seraph_lumine_defeated"):
-		var _deafeted = GlobalVariables.get("seraph_lumine_defeated")
-		self.visible = _deafeted
+	self.focus_mode = FOCUS_NONE
 
 func on_update() -> void :
 	text.text = tr(default_label)

@@ -176,17 +176,20 @@ func _on_time_attack_pressed() -> void:
 
 
 func _on_1xSize_pressed() -> void:
-	OS.set_window_size(Vector2(398, 224))
-
+	if not OS.window_fullscreen:
+		OS.set_window_size(Vector2(398, 224))
 
 func _on_2xSize_pressed() -> void:
-	OS.set_window_size(Vector2(796, 448))
+	if not OS.window_fullscreen:
+		OS.set_window_size(Vector2(796, 448))
 
 func _on_3xSize_pressed() -> void:
-	OS.set_window_size(Vector2(1194, 672))
+	if not OS.window_fullscreen:
+		OS.set_window_size(Vector2(1194, 672))
 	
 func _on_fullscreen_pressed() -> void:
 	OS.window_fullscreen = !OS.window_fullscreen
+	Configurations.set("Fullscreen", OS.window_fullscreen)
 
 func _on_next_checkpoint_pressed() -> void:
 	if not stage_has_checkpoints():

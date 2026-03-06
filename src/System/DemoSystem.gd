@@ -27,6 +27,7 @@ var _saved_collectibles: Array = []
 var _saved_equip_exceptions: Array = []
 var _saved_global_variables: Dictionary = {}
 var _saved_rng_seed: int = 0
+var _saved_char_state: Dictionary = {}
 
 var idle_timer: float = 0.0
 var idle_tracking_enabled: bool = false
@@ -185,12 +186,45 @@ func stop_recording() -> void:
 	print("DemoSystem: Recording stopped. " + str(events.size()) + " input events, " + str(game_events.size()) + " game events in " + str(current_frame) + " frames.")
 
 
+func _capture_char_state() -> Dictionary:
+	return {
+		"new_game": CharacterManager.new_game,
+		"game_mode_set": CharacterManager.game_mode_set,
+		"ultimate_x_armor": CharacterManager.ultimate_x_armor,
+		"black_zero_armor": CharacterManager.black_zero_armor,
+		"white_axl_armor": CharacterManager.white_axl_armor,
+		"betazero_unlocked": CharacterManager.betazero_unlocked,
+		"betazero_activated": CharacterManager.betazero_activated,
+		"custom_zero_unlocked": CharacterManager.custom_zero_unlocked,
+		"custom_zero_armor": CharacterManager.custom_zero_armor,
+		"nightshade_zero_armor": CharacterManager.nightshade_zero_armor,
+		"only_zero": CharacterManager.only_zero,
+		"credits_seen": CharacterManager.credits_seen,
+	}
+
+
+func _apply_char_state(char_state: Dictionary) -> void:
+	CharacterManager.new_game = bool(char_state.get("new_game", true))
+	CharacterManager.game_mode_set = bool(char_state.get("game_mode_set", false))
+	CharacterManager.ultimate_x_armor = bool(char_state.get("ultimate_x_armor", false))
+	CharacterManager.black_zero_armor = bool(char_state.get("black_zero_armor", false))
+	CharacterManager.white_axl_armor = bool(char_state.get("white_axl_armor", false))
+	CharacterManager.betazero_unlocked = bool(char_state.get("betazero_unlocked", false))
+	CharacterManager.betazero_activated = bool(char_state.get("betazero_activated", false))
+	CharacterManager.custom_zero_unlocked = bool(char_state.get("custom_zero_unlocked", false))
+	CharacterManager.custom_zero_armor = bool(char_state.get("custom_zero_armor", false))
+	CharacterManager.nightshade_zero_armor = bool(char_state.get("nightshade_zero_armor", false))
+	CharacterManager.only_zero = bool(char_state.get("only_zero", false))
+	CharacterManager.credits_seen = bool(char_state.get("credits_seen", false))
+
+
 func _capture_metadata() -> void:
 	demo_metadata = {
-		"version": 2,
+		"version": 3,
 		"level": GameManager.current_level,
 		"character": CharacterManager.player_character,
 		"game_mode": CharacterManager.game_mode,
+		"char_state": _capture_char_state(),
 		"collectibles": GameManager.collectibles.duplicate(),
 		"equip_exceptions": GameManager.equip_exceptions.duplicate(),
 		"global_variables": GlobalVariables.variables.duplicate(true),
@@ -389,6 +423,7 @@ func _backup_game_state() -> void:
 	_saved_equip_exceptions = GameManager.equip_exceptions.duplicate()
 	_saved_global_variables = GlobalVariables.variables.duplicate(true)
 	_saved_rng_seed = BossRNG.seed_rng
+	_saved_char_state = _capture_char_state()
 
 
 func _restore_game_state(data: Dictionary) -> void:
@@ -400,6 +435,9 @@ func _restore_game_state(data: Dictionary) -> void:
 	GlobalVariables.variables = data.get("global_variables", {}).duplicate(true)
 	BossRNG.set_seed(int(data.get("rng_seed", 0)))
 	seed(int(data.get("global_seed", 0)))
+	var char_state: Dictionary = data.get("char_state", {})
+	if not char_state.empty():
+		_apply_char_state(char_state)
 
 
 func _restore_backed_up_state() -> void:
@@ -410,6 +448,8 @@ func _restore_backed_up_state() -> void:
 	GameManager.equip_exceptions = _saved_equip_exceptions.duplicate()
 	GlobalVariables.variables = _saved_global_variables.duplicate(true)
 	BossRNG.set_seed(_saved_rng_seed)
+	if not _saved_char_state.empty():
+		_apply_char_state(_saved_char_state)
 
 
 # ── File I/O ─────────────────────────────────────────────────────

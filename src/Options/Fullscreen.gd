@@ -60,10 +60,10 @@ func set_fullscreen(value: bool) -> void :
 	OS.window_fullscreen = value
 
 func get_fullscreen() -> bool:
-	if Configurations.get("Fullscreen"):
-		return true
-	else:
-		return false
+	var value = Configurations.get("Fullscreen")
+	if value != null:
+		return value
+	return OS.window_fullscreen
 
 func display():
 	if CharacterManager.is_Android():

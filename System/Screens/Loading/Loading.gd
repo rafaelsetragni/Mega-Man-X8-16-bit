@@ -109,11 +109,14 @@ func start() -> void :
 	unlock_buttons()
 	emit_signal("start")
 	call_deferred("give_focus")
+	call_deferred("_style_scrollbar")
 
 
 func give_focus() -> void :
 	focus.silent = true
 	focus.grab_focus()
+	var sc = $Menu/scrollContainer
+	sc.scroll_vertical = int(focus.rect_position.y - sc.rect_size.y / 2)
 
 
 func end() -> void :

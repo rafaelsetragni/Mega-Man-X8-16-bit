@@ -41,10 +41,12 @@ func equip_parts(parts: Dictionary) -> void :
 func equip_black_zero() -> void :
 	equip_parts(black_parts)
 	CharacterManager.black_zero_armor = true
+	CharacterManager._save()
 
 func unequip_black_zero() -> void :
 	equip_parts(default_parts)
 	CharacterManager.black_zero_armor = false
+	CharacterManager._save()
 
 func _on_focus_entered() -> void :
 	play_sound()

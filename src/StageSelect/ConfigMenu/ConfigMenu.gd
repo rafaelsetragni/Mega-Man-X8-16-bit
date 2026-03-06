@@ -73,7 +73,7 @@ func _open_loading() -> void:
 func _open_save() -> void:
 	play_equip_sound()
 	lock_buttons()
-	save_screen.start()
+	save_screen.start_direct()
 
 
 func on_voltar_confirmed() -> void:

@@ -94,10 +94,19 @@ func _init_debug_save_menu() -> void:
 func _physics_process(delta: float) -> void :
 	true_delta = delta / Engine.time_scale
 	handle_end_of_level(delta)
+	_enforce_fullscreen()
 
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 		Configurations.set("Fullscreen", OS.window_fullscreen)
+		Savefile.save_config_data()
+
+func _enforce_fullscreen() -> void:
+	var should_be_fullscreen = Configurations.get("Fullscreen")
+	if should_be_fullscreen and not OS.window_fullscreen:
+		OS.window_fullscreen = true
+	elif OS.window_fullscreen and not should_be_fullscreen:
+		Configurations.set("Fullscreen", true)
 		Savefile.save_config_data()
 
 	if debug_enabled or OS.has_feature("editor"):

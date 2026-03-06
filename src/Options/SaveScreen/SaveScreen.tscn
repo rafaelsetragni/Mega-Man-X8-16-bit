@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Options/SaveScreen/SaveScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/Options/CoverScreen.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/Options/pause_bg.png" type="Texture" id=9]
 [ext_resource path="res://System/Screens/Loading/Loading_Screen.png" type="Texture" id=10]
 [ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=11]
+[ext_resource path="res://src/Options/KeyBinder/scrollbar.tres" type="Theme" id=12]
 
 [node name="SaveScreen" type="CanvasLayer"]
 layer = 5
@@ -235,6 +236,7 @@ margin_top = 42.0
 margin_right = 360.0
 margin_bottom = 201.0
 rect_min_size = Vector2( 266, 159 )
+theme = ExtResource( 12 )
 follow_focus = true
 scroll_horizontal_enabled = false
 

@@ -10,6 +10,7 @@ signal transition_committed
 onready var content_root: Control = $ContentRoot
 onready var main_view: Control = $ContentRoot/MainView
 onready var slots_view: Control = $ContentRoot/SlotsView
+onready var scroll_container: ScrollContainer = $ContentRoot/SlotsView/ScrollContainer
 onready var slot_container: VBoxContainer = $ContentRoot/SlotsView/ScrollContainer/SlotContainer
 onready var fader: ColorRect = $Fader
 onready var choice: AudioStreamPlayer = $choice
@@ -21,6 +22,8 @@ onready var back_button: Control = $ContentRoot/SlotsView/BackButton
 var active: bool = false
 var locked: bool = true
 var _transition_mode: bool = false
+var _direct_mode: bool = false
+var _pending_focus: Control = null
 
 
 func _ready() -> void:
@@ -49,7 +52,7 @@ func _is_debugging() -> bool:
 func _input(event: InputEvent) -> void:
 	if active and not locked:
 		if event.is_action_pressed("ui_cancel"):
-			if slots_view.visible:
+			if slots_view.visible and not _direct_mode:
 				_show_main_view()
 			else:
 				_close()
@@ -68,12 +71,31 @@ func start() -> void:
 	call_deferred("_give_main_focus")
 
 
+func start_direct() -> void:
+	active = true
+	_direct_mode = true
+	main_view.visible = false
+	slots_view.visible = true
+	emit_signal("lock_buttons")
+	_load_slot_list()
+	fader.visible = true
+	fader.FadeIn()
+	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
+	yield(fader, "finished")
+	unlock_buttons()
+	call_deferred("_give_slots_focus")
+	call_deferred("_style_scrollbar")
+
+
 func _give_main_focus() -> void:
 	salvar_button.silent = true
 	salvar_button.grab_focus()
 
 
 func _show_main_view() -> void:
+	if _direct_mode:
+		_close()
+		return
 	play_cancel_sound()
 	slots_view.visible = false
 	main_view.visible = true
@@ -85,6 +107,7 @@ func _on_salvar_pressed() -> void:
 	main_view.visible = false
 	slots_view.visible = true
 	_load_slot_list()
+	call_deferred("_give_slots_focus")
 
 
 func _on_continuar_pressed() -> void:
@@ -154,17 +177,19 @@ func _load_slot_list() -> void:
 	if total > 0:
 		back_button.focus_neighbour_bottom = children[0].get_path()
 		back_button.focus_neighbour_top = children[total - 1].get_path()
-	if focus_btn:
-		call_deferred("_set_focus", focus_btn)
+	_pending_focus = focus_btn if focus_btn else back_button
 
 
-func _set_focus(node: Control) -> void:
-	node.silent = true
-	node.grab_focus()
+func _give_slots_focus() -> void:
+	if _pending_focus:
+		_pending_focus.silent = true
+		_pending_focus.grab_focus()
+		scroll_container.scroll_vertical = int(_pending_focus.rect_position.y - scroll_container.rect_size.y / 2)
 
 
 func _close() -> void:
 	active = false
+	_direct_mode = false
 	lock_buttons()
 	fader.FadeOut()
 	yield(fader, "finished")
