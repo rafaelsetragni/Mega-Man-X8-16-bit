@@ -112,7 +112,6 @@ func action() -> void :
 	CharacterManager.game_mode_set = false
 	CharacterManager.game_mode = 0
 	Savefile.save(Savefile.save_slot)
-	CharacterManager._save()
 	GameManager.go_to_intro()
 	GameManager._ready()
 

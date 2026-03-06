@@ -6,7 +6,6 @@ func setup() -> void :
 	if CharacterManager.new_game:
 		Configurations.erase("BossBattleTheme")
 		CharacterManager.new_game = false
-		CharacterManager._save()
 	set_bosssong(get_bosssong())
 	display()
 

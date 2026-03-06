@@ -115,7 +115,6 @@ func action() -> void :
 	if CharacterManager.game_mode < 3:
 		CharacterManager.game_mode += 1
 	Savefile.save(Savefile.save_slot)
-	CharacterManager._save()
 	GameManager.go_to_intro()
 	GameManager._ready()
 
