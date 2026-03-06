@@ -194,6 +194,9 @@ func go_to_disclaimer() -> void:
 	print_debug(":::::::: going to disclaimer")
 	var _dv = get_tree().change_scene("res://src/Title/DisclaimerScreen.tscn")
 
+func go_to_thanks_screen() -> void:
+	var _dv = get_tree().change_scene("res://src/Levels/SigmaPalace/ThanksScreen.tscn")
+
 func go_to_igt() -> void:
 	print_debug(":::::::: going to igt screen")
 	var _dv = get_tree().change_scene("res://src/Screens/IGTScreen.tscn")

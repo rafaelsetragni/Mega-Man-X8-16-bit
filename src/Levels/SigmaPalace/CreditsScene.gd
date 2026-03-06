@@ -119,10 +119,11 @@ func fade_out():
 	if IGT.clocked_all_stages():
 		tween.add_callback("go_to_igt",GameManager)
 	else:
-		tween.add_callback("go_to_disclaimer",GameManager)
+		tween.add_callback("go_to_thanks_screen",GameManager)
 
 func _translate_credits() -> void:
 	var replacements = [
+		# Fangame credits (longer strings first to avoid partial matches)
 		["And thanks to \nall of the Megaman X\nSpeedrunning Community!", tr("CREDITS_SPEEDRUN")],
 		["Thanks to all the \nawesome contributors!", tr("CREDITS_CONTRIBUTORS")],
 		["Sprites, Sounds and \nBackground rips", tr("CREDITS_SPRITES")],
@@ -140,6 +141,63 @@ func _translate_credits() -> void:
 		["Playtesters", tr("CREDITS_PLAYTESTERS")],
 		["Modded by", tr("CREDITS_MODDED")],
 		["Based on", tr("CREDITS_BASED_ON")],
+		# Capcom staff (longer/multi-line first, then shorter)
+		["Produced in association with\nThe Ocean Group - Canada", tr("CREDITS_OCEAN_GROUP")],
+		["International Business Departament", tr("CREDITS_INTL_BIZ")],
+		["Visual Director\nand Character Design", tr("CREDITS_VISUAL_DIR")],
+		["Lead Character Design \nand Animators", tr("CREDITS_LEAD_CHAR")],
+		["Character Design\n and Animators", tr("CREDITS_CHAR_DESIGN")],
+		["Background Concept\nArt Designer", tr("CREDITS_BG_CONCEPT")],
+		["Lead Background\nDesigner", tr("CREDITS_LEAD_BG")],
+		["Publishing Team \nSuleputer Label", tr("CREDITS_PUBLISHING")],
+		["Recorded At\nBlue Waters Studios", tr("CREDITS_RECORDED_AT")],
+		["Promotional Video Editors", tr("CREDITS_PROMO_VIDEO")],
+		["Technical Program Support", tr("CREDITS_TECH_PROGRAM")],
+		["Sound Technical Support", tr("CREDITS_SOUND_TECH")],
+		["Technical Visual Director", tr("CREDITS_TECH_VISUAL")],
+		["Lead Background Designer", tr("CREDITS_LEAD_BG_DESIGNER")],
+		["Production Coordinator", tr("CREDITS_PROD_COORD")],
+		["Visual Effects Design", tr("CREDITS_VFX")],
+		["Sound Effects Design", tr("CREDITS_SFX_DESIGN")],
+		["Character Animation", tr("CREDITS_CHAR_ANIM")],
+		["Character Modeling", tr("CREDITS_CHAR_MODEL")],
+		["Production Manager", tr("CREDITS_PROD_MANAGER")],
+		["Executive Producer", tr("CREDITS_EXEC_PRODUCER")],
+		["Animation Director", tr("CREDITS_ANIM_DIRECTOR")],
+		["Technical Director", tr("CREDITS_TECH_DIRECTOR")],
+		["Recording Engineers", tr("CREDITS_REC_ENG")],
+		["Assistant Engineers", tr("CREDITS_ASST_ENG")],
+		["Merchandising Team", tr("CREDITS_MERCH")],
+		["Project Management", tr("CREDITS_PROJECT_MGMT")],
+		["Main Game Designer", tr("CREDITS_MAIN_DESIGNER")],
+		["2D Object Design", tr("CREDITS_2D_OBJECT")],
+		["Title Logo Design", tr("CREDITS_TITLE_LOGO")],
+		["Background Design", tr("CREDITS_BG_DESIGN")],
+		["Public Relations", tr("CREDITS_PR")],
+		["Boss Programmers", tr("CREDITS_BOSS_PROG")],
+		["Scenario Writers", tr("CREDITS_SCENARIO")],
+		["Sound Composers", tr("CREDITS_SOUND_COMP")],
+		["Sound Composer", tr("CREDITS_SOUND_COMPOSER")],
+		["Voice Directors", tr("CREDITS_VOICE_DIR")],
+		["Manual Design", tr("CREDITS_MANUAL")],
+		["Lead Animator", tr("CREDITS_LEAD_ANIMATOR")],
+		["Game Designers", tr("CREDITS_GAME_DESIGNERS")],
+		["Main Programmer", tr("CREDITS_MAIN_PROG")],
+		["Line Producer", tr("CREDITS_LINE_PRODUCER")],
+		["Rockman Club", tr("CREDITS_ROCKMAN_CLUB")],
+		["Voice Actors", tr("CREDITS_VOICE_ACTORS")],
+		["Art Director", tr("CREDITS_ART_DIRECTOR")],
+		["Game Planner", tr("CREDITS_GAME_PLANNER")],
+		["Localization", tr("CREDITS_LOCALIZATION")],
+		["Programmers", tr("CREDITS_PROGRAMMERS")],
+		["Animators", tr("CREDITS_ANIMATORS")],
+		["Marketing", tr("CREDITS_MARKETING")],
+		["Promotion", tr("CREDITS_PROMOTION")],
+		["Publicity", tr("CREDITS_PUBLICITY")],
+		["Director", tr("CREDITS_DIRECTOR")],
+		["Testers", tr("CREDITS_TESTERS")],
+		["Sales", tr("CREDITS_SALES")],
+		["and CAPCOM All Staff!", tr("CREDITS_AND_CAPCOM")],
 	]
 	var txt = credits_part1.bbcode_text
 	for pair in replacements:
