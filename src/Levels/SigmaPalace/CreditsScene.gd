@@ -34,7 +34,8 @@ func zero_credits():
 func _ready() -> void :
 	axl_credits()
 	zero_credits()
-	
+	_translate_credits()
+
 	Tools.timer(1, "fade_in", self)
 	Tools.timer(0.02, "start", self)
 	var final_rta = IGT.time_formatting(IGT.rta_timer)
@@ -119,3 +120,28 @@ func fade_out():
 		tween.add_callback("go_to_igt",GameManager)
 	else:
 		tween.add_callback("go_to_disclaimer",GameManager)
+
+func _translate_credits() -> void:
+	var replacements = [
+		["And thanks to \nall of the Megaman X\nSpeedrunning Community!", tr("CREDITS_SPEEDRUN")],
+		["Thanks to all the \nawesome contributors!", tr("CREDITS_CONTRIBUTORS")],
+		["Sprites, Sounds and \nBackground rips", tr("CREDITS_SPRITES")],
+		["Original Megaman X8 Staff", tr("CREDITS_ORIGINAL_STAFF")],
+		["Thank you for your support", tr("CREDITS_THANK_SUPPORT")],
+		["Special Thanks to", tr("CREDITS_SPECIAL_THANKS_TO")],
+		["Special Thanks", tr("CREDITS_SPECIAL_THANKS")],
+		["Spanish Localization", tr("CREDITS_SPANISH_LOC")],
+		["MM1 Boss Battle Remix", tr("CREDITS_MM1_REMIX")],
+		["Consulting and QA", tr("CREDITS_CONSULTING")],
+		["A fangame by", tr("CREDITS_FANGAME_BY")],
+		["Turbo mod by", tr("CREDITS_TURBO_MOD")],
+		["Decompiled by", tr("CREDITS_DECOMPILED")],
+		["Rewritten by", tr("CREDITS_REWRITTEN")],
+		["Playtesters", tr("CREDITS_PLAYTESTERS")],
+		["Modded by", tr("CREDITS_MODDED")],
+		["Based on", tr("CREDITS_BASED_ON")],
+	]
+	var txt = credits_part1.bbcode_text
+	for pair in replacements:
+		txt = txt.replace(pair[0], pair[1])
+	credits_part1.bbcode_text = txt
