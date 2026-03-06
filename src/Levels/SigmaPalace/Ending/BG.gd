@@ -9,7 +9,8 @@ func _ready() -> void :
 
 func ascent():
 	tween.create(Tween.EASE_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("region_rect:position:y", 224, 120.0)
+	var target_rect = Rect2(region_rect.position.x, 224, region_rect.size.x, region_rect.size.y)
+	tween.add_attribute("region_rect", target_rect, 120.0)
 	tween.attribute("modulate", Color.white, 160.0)
 	
 

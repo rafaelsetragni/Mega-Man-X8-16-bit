@@ -41,6 +41,7 @@ onready var parts = {
 func equip_full_ultimate() -> void :
 	Event.emit_signal("full_set")
 	CharacterManager.ultimate_x_armor = true
+	CharacterManager._save()
 	for part_name in parts.keys():
 		var p = parts[part_name]
 		GameManager.remove_equip_exception(part_name)
@@ -51,6 +52,7 @@ func equip_full_ultimate() -> void :
 func unequip_full_ultimate() -> void :
 	Event.emit_signal("mixed_set")
 	CharacterManager.ultimate_x_armor = false
+	CharacterManager._save()
 	for part_name in parts.keys():
 		var p = parts[part_name]
 		GameManager.add_equip_exception(part_name)

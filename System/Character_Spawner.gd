@@ -41,7 +41,7 @@ signal level_initialized
 func _ready() -> void :
 	teleport_to_boss = CharacterManager.teleport_to_boss
 	
-	if self.name == "NoahsPark":
+	if "NoahsPark" in self.name:
 		var node: Node = Node.new()
 		node.set_name("StartCutscene")
 		node.set_script(_start_cutscene_script)

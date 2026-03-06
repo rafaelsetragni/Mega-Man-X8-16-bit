@@ -120,7 +120,6 @@ func _process(delta: float) -> void :
 			if timer > 0.4:
 				if not gave_armor:
 					Event.emit_signal("collected", armor_part)
-					Savefile.save(Savefile.save_slot)
 					player.play_animation_once("armor_receive")
 					gave_armor = true
 					achievement_check()

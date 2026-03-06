@@ -77,6 +77,7 @@ signal equipped_armor
 signal at_max_hp
 
 var ride: Node2D
+var ride_eject_delay: float = 0.0
 
 func deactivate():
 	stop_listening_to_inputs()
@@ -174,6 +175,8 @@ func get_armor_sprites() -> Array:
 	return sprites
 
 func _process(delta: float) -> void :
+	if ride_eject_delay >= 0:
+		ride_eject_delay -= delta
 	process_flash(delta)
 
 func spike_touch():

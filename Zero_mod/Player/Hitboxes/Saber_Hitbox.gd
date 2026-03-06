@@ -77,8 +77,9 @@ func hit(target):
 	if active and canhit:
 		if saber_rehit != 0:
 			if "saber_rehit" in target:
-				
+
 				if target.saber_rehit <= 0:
+					print("[Hitbox] HIT target=", target.name, " dmg=", damage, " boss=", damage_to_bosses, " weak=", damage_to_weakness)
 					if target is BossDamage:
 						target.saber_rehit = saber_rehit * 2
 						Event.emit_signal("saber_has_hit_boss")
@@ -86,7 +87,7 @@ func hit(target):
 						target.saber_rehit = saber_rehit
 					target.damage(damage, self)
 					Event.emit_signal("saber_has_hit")
-					
+
 					spawn_saber_effect(target)
 			else:
 				target.damage(damage, self)

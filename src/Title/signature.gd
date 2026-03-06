@@ -17,7 +17,26 @@ func _ready() -> void :
 	modulate = Color.black
 	by.modulate = Color.black
 	signature.modulate = Color.black
+	center_elements()
 	activate()
+
+func center_elements() -> void :
+	var font: Font = by.get_font("font")
+	var screen_w: float = 398.0
+	var by_w: float = font.get_string_size(tr("MADE_BY")).x
+	var by_x: float = (screen_w - by_w) / 2.0
+	by.margin_left = by_x
+	by.margin_right = by_x + by_w
+	var icon: Sprite = signature.get_node("icon")
+	var icon_w: float = icon.texture.get_width()
+	var gap: float = 4.0
+	var sig_w: float = font.get_string_size(signature.text).x
+	var total_w: float = icon_w + gap + sig_w
+	var start_x: float = (screen_w - total_w) / 2.0
+	var sig_x: float = start_x + icon_w + gap
+	signature.margin_left = sig_x
+	signature.margin_right = sig_x + sig_w
+	icon.position.x = -(icon_w / 2.0 + gap)
 
 func activate() -> void :
 	modulate = Color.black
@@ -68,4 +87,4 @@ func fadeout() -> void :
 
 func next_screen() -> void :
 	
-	var _dv = get_tree().change_scene("res://System/Screens/Title/CreditStartScreen.tscn")
+	var _dv = get_tree().change_scene("res://src/Title/IntroTurbo.tscn")

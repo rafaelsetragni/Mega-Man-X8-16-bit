@@ -59,10 +59,10 @@ func start_blink() -> void :
 
 func blink() -> void :
 	if blinking:
-		if modulate.a == 0.75:
-			modulate.a = 0.6
+		if self_modulate.a == 0.75:
+			self_modulate.a = 0.6
 		else:
-			modulate.a = 0.75
+			self_modulate.a = 0.75
 		Tools.timer(0.032, "blink", self)
 	else:
-		modulate.a = 1.0
+		self_modulate.a = 1.0

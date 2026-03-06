@@ -9,6 +9,11 @@ onready var flags_node: Node2D = $flags
 onready var navigate_sound: AudioStreamPlayer = $navigate_sound
 onready var confirm_sound: AudioStreamPlayer = $confirm_sound
 
+var original_font: Font
+var japanese_font = preload("res://src/Fonts/japaneseFont.tres")
+var korean_font = preload("res://src/Fonts/koreanFont.tres")
+var hindi_font = preload("res://src/Fonts/hindiFont.tres")
+
 var current_index: int = 0
 var joke_mode: bool = false
 var animating: bool = false
@@ -56,6 +61,7 @@ const INACTIVE_COLOR := Color(0.4, 0.4, 0.45, 1.0)
 
 func _ready() -> void:
 	fade.modulate = Color.black
+	original_font = title_label.get("custom_fonts/font")
 
 	var saved_lang = Configurations.get("Language")
 	if saved_lang:
@@ -166,6 +172,20 @@ func _update_labels() -> void:
 		title_label.text = TITLES[current_index]
 		lang_name_label.add_color_override("font_color", Color.white)
 		joke_name_label.add_color_override("font_color", INACTIVE_COLOR)
+
+	_update_fonts_for_index()
+
+func _update_fonts_for_index() -> void:
+	var locale = LOCALES[current_index]
+	var font = original_font
+	if locale in ["ja_JP", "zh_CN"]:
+		font = japanese_font
+	elif locale == "ko":
+		font = korean_font
+	elif locale == "hi":
+		font = hindi_font
+	for label in [title_label, lang_name_label, joke_name_label]:
+		label.set("custom_fonts/font", font)
 
 
 func _get_selected_locale() -> String:

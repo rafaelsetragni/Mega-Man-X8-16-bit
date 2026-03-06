@@ -70,7 +70,12 @@ func _ready() -> void :
 			song_loop.loop = true
 
 func on_talk(character_name: String):
-	if cutscene_stage <= 0:
+	if second_dialog:
+		if character_name == "MegaMan X":
+			x.play("crouch_talk")
+		else:
+			x.play("crouch")
+	elif cutscene_stage <= 0:
 		if character_name == "MegaMan X":
 			x.play("talk")
 		else:
@@ -88,13 +93,13 @@ func on_talk(character_name: String):
 			x.play("crouch_talk")
 		else:
 			x.play("crouch")
-		
+
 
 func start_dialog():
 	musicplayer.play_song(song_loop, song_intro)
 	dialog_box.startup()
 func fade_in():
-	tween.attribute("modulate:a", 0.0, 5.0, screencover)
+	tween.attribute("modulate", Color(screencover.modulate.r, screencover.modulate.g, screencover.modulate.b, 0.0), 5.0, screencover)
 
 func _on_dialog_concluded() -> void :
 	if not second_dialog:
@@ -118,8 +123,7 @@ func move_to_position(data: Dictionary):
 	var _y = data["y"]
 	var duration = data["duration"]
 	sprite.animation = animation
-	tween.attribute("position:x", _x, duration, sprite)
-	tween.attribute("position:y", _y, duration, sprite)
+	tween.attribute("position", Vector2(_x, _y), duration, sprite)
 	var callback_data = {"sprite": sprite, "animation": "recover"}
 	tween.add_callback("on_movement_completed", self, [callback_data])
 	connect("movement_finished", self, "finished_movement")
@@ -130,14 +134,18 @@ func on_movement_completed(callback_data):
 	emit_signal("movement_finished", sprite, animation)
 
 func finished_movement(sprite, animation):
-	
-	match cutscene_stage:
+	var stage = cutscene_stage
+	match stage:
 		0:
+			cutscene_stage = -1
 			sprite.animation = animation
 			cutscene_phase_1()
 		1:
+			cutscene_stage = -1
+			movements.clear()
 			cutscene_phase_2()
 		2:
+			cutscene_stage = -1
 			start_charge()
 
 
@@ -199,7 +207,7 @@ func change_animation(params: Dictionary):
 		sfx.play()
 
 func cutscene_phase_1():
-	cutscene_stage += 1
+	cutscene_stage = 1
 	var params = {
 		"sprite": axl, 
 		"animation": "damage", 
@@ -257,7 +265,7 @@ func single_explosion() -> void :
 	lumine.animation = "final_cut"
 
 func cutscene_phase_2():
-	cutscene_stage += 1
+	cutscene_stage = 2
 	var params = {
 		"sprite": axl, 
 		"animation": "final", 
@@ -306,7 +314,7 @@ func fire() -> void :
 	charge_vfx.visible = false
 	charge.stop()
 	Tools.timer(0.16, "play", shot2, null, true)
-	tween.attribute("position:x", 600, 1.0, charge_shot)
+	tween.attribute("position", Vector2(600, charge_shot.position.y), 1.0, charge_shot)
 	Tools.timer(1.0, "end_fire", self)
 func end_fire() -> void :
 	x.play("crouch")
@@ -345,9 +353,8 @@ func lumine_explosion_finish():
 	Tools.timer(1.0, "after_explosion", self)
 func emit_shockwave():
 	shockwave.visible = true
-	tween.attribute("scale:y", 10, 0.3, shockwave)
-	tween.attribute("scale:x", 0.4, 0.3, shockwave)
-	tween.attribute("modulate:a", 0, 0.4, shockwave)
+	tween.attribute("scale", Vector2(0.4, 10), 0.3, shockwave)
+	tween.attribute("modulate", Color(shockwave.modulate.r, shockwave.modulate.g, shockwave.modulate.b, 0), 0.4, shockwave)
 	
 	
 func after_explosion():
@@ -372,21 +379,21 @@ func beam_out():
 
 func pull_x_up():
 	x.play("beam")
-	tweenx.attribute("position:y", - 600, 1.0, x)
+	tweenx.attribute("position", Vector2(x.position.x, -600), 1.0, x)
 	Tools.timer(1.0, "fade_out", self)
 func pull_axl_up():
 	if not beamed_out:
 		beam_outvfx.play()
 		beamed_out = true
 	axl.play("beam")
-	tweenaxl.attribute("position:y", - 600, 1.0, axl)
+	tweenaxl.attribute("position", Vector2(axl.position.x, -600), 1.0, axl)
 	Tools.timer(1.0, "fade_out", self)
 func pull_zero_up():
 	if not beamed_out:
 		beam_outvfx.play()
 		beamed_out = true
 	zero.play("beam")
-	tweenzero.attribute("position:y", - 600, 1.0, zero)
+	tweenzero.attribute("position", Vector2(zero.position.x, -600), 1.0, zero)
 	Tools.timer(1.0, "fade_out", self)
 	
 func fade_out():
@@ -394,9 +401,9 @@ func fade_out():
 	screencover.material.blend_mode = 0
 	screencover.modulate = Color.black
 	screencover.modulate.a = 0.0
-	tween.attribute("modulate:a", 1.0, 3.0, screencover)
-	tween.attribute("volume_db", - 50, 10.0, musicplayer)
-	tween.attribute("volume_db", - 80, 6, firenoise)
+	tween.attribute("modulate", Color(0, 0, 0, 1.0), 3.0, screencover)
+	tween.attribute("volume_db", -50, 10.0, musicplayer)
+	tween.attribute("volume_db", -80, 6, firenoise)
 	tween.add_callback("go_to_elevator_cutscene", GameManager)
 	musicplayer.fade_in = false
 	second_dialog = true

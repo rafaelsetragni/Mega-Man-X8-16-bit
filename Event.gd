@@ -56,7 +56,8 @@ signal weapon_select_left
 signal weapon_select_right
 signal weapon_select_buster
 signal select_weapon(weapon_resource)
-	
+signal weapon_unlocked(collectible)
+
 signal screenshake(amount)
 signal fade_out
 

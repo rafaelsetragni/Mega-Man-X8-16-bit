@@ -110,7 +110,7 @@ func hitbox_and_position() -> void :
 	hitbox_break_guards = true
 
 	if animatedSprite.frame >= loop_start_frame and animatedSprite.frame < loop_frame:
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			hitbox_rehit_time = 0.075
 			if animatedSprite.frame >= 4 and animatedSprite.frame < 5 or animatedSprite.frame >= 8 and animatedSprite.frame < 11:
 				hitbox_upleft = Vector2(0, - 58)
@@ -162,7 +162,7 @@ func movement_speed_frames() -> bool:
 	return animatedSprite.frame >= loop_start_frame and animatedSprite.frame < loop_frame
 
 func ice_emitting_position() -> void :
-	if character.saber_node.current_weapon.name == "Saber":
+	if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 		if animatedSprite.frame >= 4 and animatedSprite.frame < 5:
 			particles.position = Vector2(25 * get_facing_direction(), - 24)
 		elif animatedSprite.frame >= 5 and animatedSprite.frame < 6:
@@ -240,11 +240,17 @@ func jump_frame() -> void :
 			character.set_vertical_speed( - jump_velocity)
 			jumped = true
 
+func should_loop_animation() -> bool:
+	if character.saber_node.current_weapon.name == "Z-Saber-B":
+		return false
+	return true
+
 func loop_animation() -> void :
 	if jumped:
 		if character.get_vertical_speed() < 0:
-			if animatedSprite.frame >= loop_frame:
-				animatedSprite.frame = loop_start_frame
+			if should_loop_animation():
+				if animatedSprite.frame >= loop_frame:
+					animatedSprite.frame = loop_start_frame
 		else:
 			particles.emitting = false
 			if not descend:
@@ -256,7 +262,10 @@ func set_saber_animations() -> void :
 		animatedSprite.animation = "hyouryuushou"
 		animatedSprite.frame = 0
 	else:
-		animatedSprite.animation = "hyouryuushou_air"
+		if animatedSprite.frames.has_animation("hyouryuushou_air"):
+			animatedSprite.animation = "hyouryuushou_air"
+		else:
+			animatedSprite.animation = "hyouryuushou"
 		animatedSprite.frame = 0
 	saber_sound.play()
 

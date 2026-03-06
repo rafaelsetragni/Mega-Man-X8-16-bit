@@ -2,8 +2,10 @@ key,ko
 TOTAL_TIME,걸린시간ㅋ
 DISCLAIMER1,이 게임은 무료 팬게임입니다.\n\n캡콤이랑 아무 관련 없습니다 ㅋㅋ 고소하지 마세요 제발\n\n록맨 X는 캡콤 소유입니다.\n공식 게임도 사주세요 제발요!
 MADE_BY,혼자 다 만든 사람:
+TURBO_MADE_BY,벼려낸 자
+TURBO_MODE,버전
 INSPIRED_BY,영감을 준 분:
-SPECIALTHANKSTEXT,이 모드는 Zashiko가 만들었습니다\n\n디컴파일은 pirate가 했습니다\n게임 터보 장착: Rafael Setragni & 클로드 (AI)\n\n모드 기여자분들과 테스터분들 감사합니다.\n재번역: ElevenSSF2 (Mint)
+SPECIALTHANKSTEXT,이 모드는 Zashiko가 만들었습니다\n\n디컴파일은 pirate가 했습니다\n리팩토링 및 밸런스 조정: Rafael Setragni & 클로드 (AI)\n\n모드 기여자분들과 테스터분들 감사합니다.\n재번역: ElevenSSF2 (Mint)
 16-BIT_TITLE,16비트 카트리지에 넣을 수 있다고요 ㄹㅇ
 OPTIONS_START,이것저것 만지기
 KEYCFG_START,키 설정 ㅋ
@@ -95,6 +97,8 @@ TRILOBYTE_ZERO_DISC,패시브 ㅋ
 YETI_ZERO_DISC,위 + 공격2
 ROOSTER_ZERO_DISC,아래 + 공격2 (공중)
 ZERO_WPNMENU,후하후!
+ZSABERA_WPNMENU,Z-Saber A
+ZSABERB_WPNMENU,Z-Saber B
 BFAN_WPNMENU,부채질
 DGLAIVE_WPNMENU,큰창
 TBREAKER_WPNMENU,피코피코해머
@@ -1128,3 +1132,98 @@ AXLARMS_DISC,"뉴트럴 스페셜로, 총을 쏜다"
 AXLLEGS_NAME,다리 파츠
 AXLLEGS_DISC,호버 + 에어대시. X7이랑 같음.
 JOKE_MODE_OPTION,밈 모드
+"SAVE_GAME","저장해줘"
+"SAVE_OPTION","저장 ㄱㄱ"
+"CONTINUE_OPTION","욜로"
+"SAVE_RETURN_MENU","도망가기"
+"SAVE_RETURN_CONFIRM","진짜요?"
+"SAVE_EMPTY","없음ㅋ"
+"SAVE_DIFFICULTY","난이도ㅋ"
+"SAVE_OVERWRITE_CONFIRM","덮어쓰기?"
+"SAVE_DIFF_ROOKIE","아기 ㅋ"
+"SAVE_DIFF_NORMAL","보통"
+"SAVE_DIFF_HARD","현실"
+"SAVE_DIFF_INSANITY","진심?"
+"SAVE_DIFF_NINJA","꿈버려"
+"CONFIG_TITLE","설정ㅋ"
+"CONFIG_OPTIONS","이것저것"
+"CONFIG_KEYCONFIG","버튼 만지기"
+"CONFIG_LOAD","불러오기ㅋ"
+"CONFIG_SAVE","저장 ㄱㄱ"
+"CONFIG_EXIT_MENU","도망가기"
+"CONFIG_EXIT_CONFIRM","진짜요?"
+"CREDITS_FANGAME_BY","팬게임 제작"
+"CREDITS_TURBO_MOD","Turbo 모드 제작"
+"CREDITS_CONSULTING","컨설팅 및 QA"
+"CREDITS_SPANISH_LOC","스페인어 현지화"
+"CREDITS_MM1_REMIX","MM1 보스 배틀 리믹스"
+"CREDITS_SPRITES","스프라이트, 사운드 및\n배경 추출"
+"CREDITS_CONTRIBUTORS","모든 훌륭한\n기여자분들께 감사!"
+"CREDITS_PLAYTESTERS","플레이테스터"
+"CREDITS_SPECIAL_THANKS","특별 감사"
+"CREDITS_SPEEDRUN","그리고 록맨 X\n스피드런 커뮤니티\n모두에게 감사!"
+"CREDITS_MODDED","모딩"
+"CREDITS_DECOMPILED","디컴파일"
+"CREDITS_REWRITTEN","리라이트"
+"CREDITS_SPECIAL_THANKS_TO","특별히 감사드립니다"
+"CREDITS_THANK_SUPPORT","응원해 주셔서 감사합니다"
+"CREDITS_BASED_ON","원작"
+"CREDITS_ORIGINAL_STAFF","오리지널 록맨 X8 스태프"
+"CREDITS_DIRECTOR","디렉터"
+"CREDITS_EXEC_PRODUCER","총괄 프로듀서"
+"CREDITS_LINE_PRODUCER","라인 프로듀서"
+"CREDITS_MAIN_DESIGNER","메인 게임 디자이너"
+"CREDITS_GAME_DESIGNERS","게임 디자이너"
+"CREDITS_SCENARIO","시나리오 작가"
+"CREDITS_VISUAL_DIR","비주얼 디렉터\n캐릭터 디자인"
+"CREDITS_LEAD_CHAR","리드 캐릭터 디자인\n애니메이터"
+"CREDITS_CHAR_DESIGN","캐릭터 디자인\n애니메이터"
+"CREDITS_BG_CONCEPT","배경 컨셉\n아트 디자이너"
+"CREDITS_LEAD_BG","리드 배경\n디자이너"
+"CREDITS_BG_DESIGN","배경 디자인"
+"CREDITS_VFX","시각 효과 디자인"
+"CREDITS_2D_OBJECT","2D 오브젝트 디자인"
+"CREDITS_TECH_PROGRAM","기술 프로그램 지원"
+"CREDITS_SOUND_COMP","사운드 작곡가"
+"CREDITS_SFX_DESIGN","사운드 이펙트 디자인"
+"CREDITS_SOUND_TECH","사운드 기술 지원"
+"CREDITS_PROMO_VIDEO","프로모션 비디오 편집"
+"CREDITS_TITLE_LOGO","타이틀 로고 디자인"
+"CREDITS_MANUAL","매뉴얼 디자인"
+"CREDITS_PUBLICITY","홍보"
+"CREDITS_SALES","판매"
+"CREDITS_MARKETING","마케팅"
+"CREDITS_PROMOTION","프로모션"
+"CREDITS_PUBLISHING","퍼블리싱 팀\nSuleputer Label"
+"CREDITS_MERCH","머천다이징 팀"
+"CREDITS_LOCALIZATION","현지화"
+"CREDITS_INTL_BIZ","국제 사업부"
+"CREDITS_PR","홍보부"
+"CREDITS_PROJECT_MGMT","프로젝트 관리"
+"CREDITS_ROCKMAN_CLUB","록맨 클럽"
+"CREDITS_TESTERS","테스터"
+"CREDITS_MAIN_PROG","메인 프로그래머"
+"CREDITS_PROGRAMMERS","프로그래머"
+"CREDITS_TECH_VISUAL","테크니컬 비주얼 디렉터"
+"CREDITS_GAME_PLANNER","게임 플래너"
+"CREDITS_SOUND_COMPOSER","사운드 작곡가"
+"CREDITS_BOSS_PROG","보스 프로그래머"
+"CREDITS_LEAD_BG_DESIGNER","리드 배경 디자이너"
+"CREDITS_LEAD_ANIMATOR","리드 애니메이터"
+"CREDITS_ANIMATORS","애니메이터"
+"CREDITS_ANIM_DIRECTOR","애니메이션 디렉터"
+"CREDITS_ART_DIRECTOR","아트 디렉터"
+"CREDITS_TECH_DIRECTOR","테크니컬 디렉터"
+"CREDITS_CHAR_ANIM","캐릭터 애니메이션"
+"CREDITS_CHAR_MODEL","캐릭터 모델링"
+"CREDITS_VOICE_ACTORS","성우"
+"CREDITS_OCEAN_GROUP","공동 제작\nThe Ocean Group - Canada"
+"CREDITS_PROD_MANAGER","프로덕션 매니저"
+"CREDITS_PROD_COORD","프로덕션 코디네이터"
+"CREDITS_VOICE_DIR","보이스 디렉터"
+"CREDITS_REC_ENG","녹음 엔지니어"
+"CREDITS_ASST_ENG","어시스턴트 엔지니어"
+"CREDITS_RECORDED_AT","녹음 장소\nBlue Waters Studios"
+"CREDITS_AND_CAPCOM","그리고 CAPCOM 전 스태프!"
+"THANKS_FOR_PLAYING","플레이해 주셔서 감사합니다!"
+"FINAL_TIME","최종 시간"

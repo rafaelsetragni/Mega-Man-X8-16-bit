@@ -33,7 +33,7 @@ func move_player_to_final_position():
 	player.force_movement()
 	player.set_direction(get_direction())
 	player.play_animation("walk")
-	tween.attribute("position:x", player_final_position.x, get_travel_duration(), player)
+	tween.attribute("position", Vector2(player_final_position.x, player.position.y), get_travel_duration(), player)
 	tween.add_callback("finished_player_movement")
 
 func finished_player_movement():

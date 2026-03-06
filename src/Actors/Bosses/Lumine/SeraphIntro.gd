@@ -47,7 +47,18 @@ func prepare_for_intro() -> void:
 	Event.emit_signal("lumine_went_seraph")
 	
 func execute_intro() -> void:
+	character.visible = true
+	character.modulate = Color(1, 1, 1, 1)
+	character.self_modulate = Color(1, 1, 1, 1)
 	set_visibility(true)
+	sprite.modulate = Color(1, 1, 1, 1)
+	sprite.self_modulate = Color(1, 1, 1, 1)
+	if sprite.material:
+		sprite.material.set_shader_param("Alpha", 1.0)
+		sprite.material.set_shader_param("Darken", 1.0)
+		sprite.material.set_shader_param("Flash", 0.0)
+		sprite.material.set_shader_param("Should_Blink", 0.0)
+		sprite.material.set_shader_param("Alpha_Blink", 0.0)
 	ExecuteOnce()
 
 func set_visibility(value : bool):
@@ -65,8 +76,7 @@ func _Update(delta):
 		set_direction(1)
 		#character.global_position.y += 10
 		tween.create(Tween.EASE_IN,Tween.TRANS_LINEAR,true)
-		tween.add_attribute("position:y",-20,.8,sprite)
-		tween.add_attribute("position:x",236,.8,sprite)
+		tween.add_attribute("position",Vector2(236, -20),.8,sprite)
 		tween.set_sequential()
 		tween.add_callback("next_attack_stage")
 		woosh.play_rp()
@@ -76,23 +86,25 @@ func _Update(delta):
 		
 	#attack_stage == 1 is tween
 	
-	elif attack_stage == 2 and timer > 0.75:
-		set_direction(-1)
-		woosh.play_rp()
-		Tools.timer_p(0.3, "screenshake", self, 0.7)
-		play_animation("forward")
-		tween.create(Tween.EASE_OUT, Tween.TRANS_LINEAR, true)
-		tween.add_attribute("position:y", 0, 0.5, sprite)
-		tween.add_attribute("position:x", 35, 0.5, sprite)
-		tween.set_sequential()
-		tween.add_callback("next_attack_stage")
-		next_attack_stage()
+	elif attack_stage == 2:
+		sprite.position = Vector2(236, -20)
+		if timer > 0.75:
+			set_direction(-1)
+			woosh.play_rp()
+			Tools.timer_p(0.3, "screenshake", self, 0.7)
+			play_animation("forward")
+			tween.create(Tween.EASE_OUT, Tween.TRANS_LINEAR, true)
+			tween.add_attribute("position", Vector2(35, 0), 0.5, sprite)
+			tween.set_sequential()
+			tween.add_callback("next_attack_stage")
+			next_attack_stage()
 		
 	#attack_stage == 3 is tween
 	
 	elif attack_stage == 4:
+		sprite.position = Vector2(35, 0)
 		tween.create(Tween.EASE_OUT, Tween.TRANS_CUBIC, true)
-		tween.add_attribute("position:x", 0, 0.6, sprite)
+		tween.add_attribute("position", Vector2(0, 0), 0.6, sprite)
 		play_animation("forward_end")
 		move_feathers.emitting = false
 		Tools.timer_p(0.2, "screenshake", self, 0.8)
@@ -100,6 +112,7 @@ func _Update(delta):
 		next_attack_stage()
 		
 	elif attack_stage == 5 and has_finished_last_animation():
+		sprite.position = Vector2.ZERO
 		play_animation("idle")
 		next_attack_stage()
 		
@@ -112,7 +125,7 @@ func _Update(delta):
 		
 	elif attack_stage == 7 and timer > 1:
 		flash()
-		tween.attribute("self_modulate:a", 0.0, 1.6, flash_2)
+		tween.attribute("self_modulate", Color(1, 1, 1, 0), 1.6, flash_2)
 		play_animation("intro")
 		Tools.timer(0.75, "show_health", self)
 		feather_explosion.restart()

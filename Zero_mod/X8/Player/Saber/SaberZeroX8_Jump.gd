@@ -104,7 +104,7 @@ func spawn_hitbox(_hitbox_upleft: Vector2, _hitbox_downright: Vector2) -> void :
 	current_hitbox.only_deflect_weak = only_deflect_weak
 
 func hitbox_and_position() -> void :
-	if character.saber_node.current_weapon.name == "Saber":
+	if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 		hitbox_damage = damage
 		hitbox_damage_boss = damage_boss
 		hitbox_damage_weakness = damage_weakness

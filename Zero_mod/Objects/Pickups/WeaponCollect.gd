@@ -97,6 +97,7 @@ func unlock_weapon(player) -> void :
 		shot_node.unlock_weapon(collectible_name)
 		if shot_node.has_method("update_list_of_weapons"):
 			shot_node.update_list_of_weapons()
+	Event.emit_signal("weapon_unlocked", collectible_name)
 
 func lock_weapon() -> void :
 	GameManager.remove_collectible_from_savedata(collectible_name)
@@ -110,6 +111,4 @@ func lock_weapon() -> void :
 					shot_node.update_list_of_weapons()
 
 func achievement_check() -> void :
-	
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()

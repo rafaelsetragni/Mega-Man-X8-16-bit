@@ -11,7 +11,7 @@ var buffer_window_threshold: int = 3
 
 func hitbox_and_position():
 	if animatedSprite.animation == "saber_1":
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			hitbox_damage = damage
 			hitbox_damage_boss = damage_boss
 			hitbox_damage_weakness = damage_weakness
@@ -79,7 +79,7 @@ func hitbox_and_position():
 
 
 	if animatedSprite.animation == "saber_2":
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			hitbox_damage = 4
 			hitbox_damage_boss = 6
 			hitbox_damage_weakness = 24
@@ -126,7 +126,7 @@ func hitbox_and_position():
 
 
 	if animatedSprite.animation == "saber_3":
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			hitbox_damage = 12
 			hitbox_damage_boss = 8
 			hitbox_damage_weakness = 24

@@ -20,7 +20,6 @@ func unlock_axl_white():
 		
 func achievement_check() -> void :
 	Achievements.unlock("COLLECTWHITEAXL")
-	Savefile.save(Savefile.save_slot)
 
 func _ready() -> void :
 	dialogue = CharacterManager._set_correct_dialogues("Secret1Defeated", dialogue)

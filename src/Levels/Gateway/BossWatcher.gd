@@ -108,6 +108,8 @@ func remove_ready_crystal(boss_name) -> void :
 			break
 
 func on_crystal_got(boss_name) -> void :
+	if boss_name in beaten_bosses:
+		return
 	if not boss_name in crystals_ready:
 		add_ready_crystal(boss_name)
 	if has_enough_crystals():
@@ -116,10 +118,7 @@ func on_crystal_got(boss_name) -> void :
 		emit_signal("ready_for_battle")
 
 func has_enough_crystals() -> bool:
-	if has_one_boss_left():
-		return crystals_ready.size() >= 1
-	else:
-		return crystals_ready.size() >= 2
+	return crystals_ready.size() >= 1
 
 func has_one_boss_left() -> bool:
 	return beaten_bosses.size() == 7

@@ -1,11 +1,16 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=2]
+[gd_resource type="SpriteFrames" load_steps=9 format=2]
 
 [ext_resource path="res://src/StageSelect/Icon_X.png" type="Texture" id=1]
 [ext_resource path="res://src/StageSelect/Icon_Axl.png" type="Texture" id=2]
 [ext_resource path="res://src/StageSelect/Icon_Zero.png" type="Texture" id=3]
+[ext_resource path="res://src/StageSelect/Icon_config.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=1]
@@ -21,6 +26,11 @@ animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "Axl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Config",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 1 ) ],

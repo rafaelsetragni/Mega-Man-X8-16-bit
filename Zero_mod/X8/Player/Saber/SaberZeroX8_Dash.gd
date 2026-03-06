@@ -12,7 +12,7 @@ func hitbox_and_position() -> void :
 		hitbox_damage = damage
 		hitbox_damage_boss = damage_boss
 		hitbox_damage_weakness = damage_weakness
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			hitbox_break_guards = true
 			hitbox_rehit_time = 0.025
 			if animatedSprite.frame >= 4 and animatedSprite.frame < 7:

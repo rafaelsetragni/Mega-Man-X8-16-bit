@@ -286,6 +286,16 @@ material = SubResource( 92 )
 [node name="WeaponBar" parent="Hud/X Bar" index="3"]
 material = SubResource( 92 )
 
+[node name="LivesIcon" parent="Hud/X Bar/LivesCounter" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+
+[node name="LivesLabel" parent="Hud/X Bar/LivesCounter" index="1"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 28.0
+margin_bottom = 11.0
+
 [node name="DialogBox" parent="Hud" index="15"]
 text = "Test text."
 emit_capsule_signal = false

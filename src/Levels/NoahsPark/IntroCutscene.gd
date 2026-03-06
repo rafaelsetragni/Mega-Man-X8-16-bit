@@ -57,15 +57,18 @@ func _ready() -> void :
 	Event.emit_signal("disable_victory_ending")
 	
 	set_physics_process(false)
-	if GameManager.was_dialogue_seen(dialog_4):
+	if is_boss_defeated():
 		get_rid_of_everything_uneeded()
 	else:
 		blink_light_forever()
 	
 
+func is_boss_defeated() -> bool:
+	return "finished_intro" in GameManager.collectibles or GameManager.was_dialogue_seen(dialog_4)
+
 func start():
 	dialogbox = GameManager.dialog_box
-	if GameManager.was_dialogue_seen(dialog_4):
+	if is_boss_defeated():
 		Event.emit_signal("noahspark_cutscene_end")
 	else:
 		executing = true
@@ -355,6 +358,7 @@ func finished_player_movement():
 func finish_cutscene():
 	if not executing:
 		return
+	GameManager.save_seen_dialogue(dialog_4)
 	vile.visible = false
 	kidnapped.visible = false
 	executing = false

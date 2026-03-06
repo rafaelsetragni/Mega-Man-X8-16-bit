@@ -119,7 +119,7 @@ func hitbox_and_position() -> void :
 	hitbox_damage_weakness = damage_weakness
 	hitbox_break_guards = true
 
-	if character.saber_node.current_weapon.name == "Saber":
+	if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 		if animatedSprite.frame >= 5 and animatedSprite.frame < 10:
 			if animatedSprite.frame >= 5 and animatedSprite.frame < 6:
 				hitbox_upleft = Vector2( - 65, - 59)
@@ -263,6 +263,10 @@ func _Setup() -> void :
 		saber_sound.play()
 		gravity = false
 		effect_emit("juuhazan")
+
+	elif character.saber_node.current_weapon.name == "Z-Saber-B":
+		saber_sound.play()
+		gravity = false
 
 	elif character.saber_node.current_weapon.name == "B-Fan":
 		saber_sound.play()

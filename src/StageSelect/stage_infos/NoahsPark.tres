@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/Actors/Bosses/BossIntro/StageInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+save_flag = "defeated"
+beaten_condition = [  ]
+pointer_position = Vector2( 2, 230 )
+should_play_intro = false
+name_id = "NOAHSPARK"
+collectibles = [  ]
+animation_beats = [  ]
+inverse_sprites = false

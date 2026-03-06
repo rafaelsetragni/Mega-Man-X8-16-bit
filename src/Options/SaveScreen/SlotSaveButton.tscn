@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://System/Screens/Loading/SlotButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Options/SaveScreen/SlotSaveButton.gd" type="Script" id=2]
+[ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=3]
+
+[node name="slot1" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+menu_path = NodePath("")
+
+[node name="boss_icons" parent="."]
+alignment = 0
+
+[node name="last_saved" parent="."]
+visible = false
+
+[node name="igt" parent="."]
+visible = false
+
+[node name="completion" parent="."]
+visible = false
+
+[node name="newgameplus" parent="."]
+visible = false
+
+[node name="status" type="Label" parent="."]
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 4.0
+margin_top = -10.0
+margin_right = -4.0
+margin_bottom = 4.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 3 )
+text = ""
+align = 1
+valign = 1
+uppercase = true
+
+[node name="date_display" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 0.0
+margin_top = -27.0
+margin_right = 129.0
+margin_bottom = -13.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 3 )
+text = ""
+align = 2
+clip_text = true
+
+[node name="igt_display" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 0.0
+margin_top = -15.0
+margin_right = 129.0
+margin_bottom = -1.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 3 )
+text = ""
+align = 2
+clip_text = true
+
+[node name="completion_display" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 0.0
+margin_top = -3.0
+margin_right = 129.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = ExtResource( 3 )
+text = ""
+align = 2
+clip_text = true

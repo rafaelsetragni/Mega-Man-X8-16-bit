@@ -20,6 +20,7 @@ onready var ride_hp: TextureProgress = $"Ride Bar/textureProgress"
 
 
 onready var lives_label: Label = $"X Bar/LivesCounter/LivesLabel"
+onready var lives_icon: TextureRect = $"X Bar/LivesCounter/LivesIcon"
 
 onready var rec_info: RichTextLabel = $"Rec Info"
 
@@ -71,6 +72,7 @@ func _ready() -> void:
 	BossRNG.connect("decided_boss_order",self,"show_boss_attack")
 	Event.listen("has_life_ups",self,"update_lives_counter")
 	call_deferred("update_lives_counter")
+	call_deferred("update_lives_icon")
 	call_deferred("connect_debug")
 	call_deferred("on_showdebug","ShowDebug")
 
@@ -132,22 +134,27 @@ func show_debug_text() -> void:
 
 func start_fade_out() -> void:
 	fade_out = true
-	
+	_fade_finished = false
+
 var fade_out_to_white := false
+var _fade_finished := false
 
 func start_final_fade_out() -> void:
 	fade_out = true
 	fade_out_to_white = true
+	_fade_finished = false
 
 func process_fade(delta):
 	if fade_out and black_screen_alpha < 1:
+		black_screen.visible = true
 		if GameManager.player.is_executing("Death"):
 			white_screen.visible = true
-		black_screen.visible = true
 		black_screen_alpha += delta * 2
 		fade()
 	elif fade_out and black_screen_alpha >= 1:
-		GameManager.finished_fade_out()
+		if not _fade_finished:
+			_fade_finished = true
+			GameManager.finished_fade_out()
 	elif not fade_out and black_screen_alpha > 0:
 		black_screen_alpha -= delta * 2
 		call_deferred("fade")
@@ -217,6 +224,17 @@ func update_lives_counter(_lives = null) -> void:
 		lives_label.text = str(GlobalVariables.get("player_lives"))
 	else:
 		lives_label.text = "2"
+
+func update_lives_icon() -> void:
+	match CharacterManager.player_character:
+		"Zero":
+			lives_icon.texture = preload("res://Zero_mod/HUD/lives_zero.png")
+			lives_icon.material = preload("res://Zero_mod/X8/Sprites/ZeroX8_Material_Shader.tres").duplicate()
+			CharacterManager.set_zeroX8_colors(lives_icon)
+		"Axl":
+			lives_icon.texture = preload("res://Axl_mod/HUD/lives_axl.png")
+			lives_icon.material = preload("res://Axl_mod/Player/Axl_Material_Shader.tres").duplicate()
+			CharacterManager.set_axl_colors(lives_icon)
 
 func show_boss_health_and_weapon(delta) -> String:
 	var text := ""

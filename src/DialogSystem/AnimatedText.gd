@@ -12,6 +12,14 @@ export var debug_force_start := false
 export var dialog_tree : Resource
 export var emit_capsule_signal := true
 export var resume_character_inputs := true
+
+var japanese_font = preload("res://src/Fonts/japaneseFont.tres")
+var korean_font = preload("res://src/Fonts/koreanFont.tres")
+var hindi_font = preload("res://src/Fonts/hindiFont.tres")
+var original_font: Font
+var original_material: Material
+var is_japanese := false
+
 var dialog_step := 0
 var total_steps := 0
 var timer := 0.0001
@@ -34,10 +42,35 @@ func _ready() -> void:
 	hide_portraits()
 	hide_next_arrow()
 	GameManager.dialog_box = self
+	original_font = get("custom_fonts/font")
+	original_material = material
+	_apply_font_for_locale()
 	if debug_force_start:
 		startup()
 
+func _apply_font_for_locale() -> void:
+	var lang = Configurations.get("Language") if Configurations.exists("Language") else "en"
+	is_japanese = lang in ["ja_JP", "ja_JP_z", "ko", "ko_z", "hi", "hi_z"]
+	var dynamic_font = null
+	if lang in ["ja_JP", "ja_JP_z"]:
+		dynamic_font = japanese_font
+	elif lang in ["ko", "ko_z"]:
+		dynamic_font = korean_font
+	elif lang in ["hi", "hi_z"]:
+		dynamic_font = hindi_font
+	if dynamic_font:
+		set("custom_fonts/font", dynamic_font)
+		portrait_side.set("custom_fonts/font", dynamic_font)
+		material = null
+		portrait_side.material = null
+	else:
+		set("custom_fonts/font", original_font)
+		portrait_side.set("custom_fonts/font", original_font)
+		material = original_material
+		portrait_side.material = original_material
+
 func startup(alt_dialog_tree = null) -> void:
+	_apply_font_for_locale()
 	bg.scale = Vector2.ZERO
 	hide_text()
 	hide_portraits()
@@ -93,7 +126,11 @@ func load_step() -> void:
 		load_step()
 	elif step is String:
 		text_to_display = tr(step)
-		handle_extra_lines() 
+		if is_japanese:
+			text = text_to_display
+			portrait_side.text = ""
+		else:
+			handle_extra_lines()
 		hide_text()
 		state = "entering_text"
 		debug_print("Loaded text: " + text)
@@ -105,7 +142,8 @@ func increase_step() -> void:
 
 func setup_character(step) -> void:
 	portrait_1.frames = step.portrait_animations
-	material.set_shader_param("palette", step.text_palette)
+	if material:
+		material.set_shader_param("palette", step.text_palette)
 	letter_sound.pitch_scale = step.audio_pitch
 	if step.name == "MegaMan X":
 		portrait_1.position.x = portrait_position_1
@@ -182,11 +220,13 @@ func play_sound_based_on_displayed_letter(letter : String):
 
 func add_visible_char() -> void:
 	visible_characters = visible_characters + 1
-	play_sound_based_on_displayed_letter(text[visible_characters])
+	if visible_characters < text.length():
+		play_sound_based_on_displayed_letter(text[visible_characters])
 
 func add_visible_side_char() -> void:
 	portrait_side.visible_characters = portrait_side.visible_characters + 1
-	play_sound_based_on_displayed_letter(portrait_side.text[portrait_side.visible_characters])
+	if portrait_side.visible_characters < portrait_side.text.length():
+		play_sound_based_on_displayed_letter(portrait_side.text[portrait_side.visible_characters])
 	
 func has_side_text() -> bool:
 	return total_side_chars() != 0

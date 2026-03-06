@@ -87,7 +87,7 @@ position = Vector2( -1, -96 )
 z_index = 2
 frames = ExtResource( 18 )
 animation = "idle"
-frame = 5
+frame = 13
 playing = true
 flip_h = true
 
@@ -96,7 +96,7 @@ pause_mode = 2
 z_index = -2
 frames = ExtResource( 17 )
 animation = "idle"
-frame = 8
+frame = 16
 playing = true
 flip_h = true
 script = ExtResource( 6 )

@@ -1,0 +1,229 @@
+extends CanvasLayer
+
+export var SlotButtonScene: PackedScene
+
+signal end
+signal lock_buttons
+signal unlock_buttons
+signal transition_committed
+
+onready var content_root: Control = $ContentRoot
+onready var main_view: Control = $ContentRoot/MainView
+onready var slots_view: Control = $ContentRoot/SlotsView
+onready var scroll_container: ScrollContainer = $ContentRoot/SlotsView/ScrollContainer
+onready var slot_container: VBoxContainer = $ContentRoot/SlotsView/ScrollContainer/SlotContainer
+onready var fader: ColorRect = $Fader
+onready var choice: AudioStreamPlayer = $choice
+onready var equip: AudioStreamPlayer = $equip
+onready var cancel: AudioStreamPlayer = $cancel
+onready var salvar_button: Control = $ContentRoot/MainView/SalvarButton
+onready var back_button: Control = $ContentRoot/SlotsView/BackButton
+
+var active: bool = false
+var locked: bool = true
+var _transition_mode: bool = false
+var _direct_mode: bool = false
+var _pending_focus: Control = null
+
+
+func _ready() -> void:
+	visible = true
+	content_root.visible = false
+	call_deferred("_style_scrollbar")
+	if _is_debugging():
+		content_root.visible = true
+		main_view.visible = true
+		slots_view.visible = false
+		unlock_buttons()
+		call_deferred("_give_main_focus")
+
+
+func _style_scrollbar() -> void:
+	var vscroll = $ContentRoot/SlotsView/ScrollContainer.get_v_scrollbar()
+	var blue_style = vscroll.get_stylebox("grabber_highlight")
+	if blue_style:
+		vscroll.add_stylebox_override("grabber", blue_style)
+
+
+func _is_debugging() -> bool:
+	return get_parent() == get_tree().root
+
+
+func _input(event: InputEvent) -> void:
+	if active and not locked:
+		if event.is_action_pressed("ui_cancel"):
+			if slots_view.visible and not _direct_mode:
+				_show_main_view()
+			else:
+				_close()
+
+
+func start() -> void:
+	active = true
+	main_view.visible = true
+	slots_view.visible = false
+	emit_signal("lock_buttons")
+	fader.visible = true
+	fader.FadeIn()
+	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
+	yield(fader, "finished")
+	unlock_buttons()
+	call_deferred("_give_main_focus")
+
+
+func start_direct() -> void:
+	active = true
+	_direct_mode = true
+	main_view.visible = false
+	slots_view.visible = true
+	emit_signal("lock_buttons")
+	_load_slot_list()
+	fader.visible = true
+	fader.FadeIn()
+	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
+	yield(fader, "finished")
+	unlock_buttons()
+	call_deferred("_give_slots_focus")
+	call_deferred("_style_scrollbar")
+
+
+func _give_main_focus() -> void:
+	salvar_button.silent = true
+	salvar_button.grab_focus()
+
+
+func _show_main_view() -> void:
+	if _direct_mode:
+		_close()
+		return
+	play_cancel_sound()
+	slots_view.visible = false
+	main_view.visible = true
+	call_deferred("_give_main_focus")
+
+
+func _on_salvar_pressed() -> void:
+	play_equip_sound()
+	main_view.visible = false
+	slots_view.visible = true
+	_load_slot_list()
+	call_deferred("_give_slots_focus")
+
+
+func _on_continuar_pressed() -> void:
+	_close()
+
+
+func on_slot_save(slot_index: int) -> void:
+	Savefile.save_slot = slot_index
+	Savefile.save(slot_index)
+	play_equip_sound()
+	_close()
+
+
+func start_for_transition() -> void:
+	_transition_mode = true
+	active = true
+	main_view.visible = true
+	slots_view.visible = false
+	content_root.visible = false
+	GameManager.set_stretch_mode(SceneTree.STRETCH_MODE_2D)
+	GameManager.change_state("Normal")
+	if GameManager.player and is_instance_valid(GameManager.player):
+		GameManager.resume_character_inputs()
+	fader.visible = true
+	fader.FadeIn()
+	yield(fader, "finished")
+	unlock_buttons()
+	_give_main_focus()
+
+
+func on_voltar_confirmed() -> void:
+	lock_buttons()
+	if _transition_mode:
+		fader.SoftFadeOut()
+		yield(fader, "finished")
+		content_root.visible = false
+		GameManager.reset_stretch_mode()
+		GameManager.unpause("TransitionSave")
+		GameManager.go_to_intro()
+		return
+	fader.SoftFadeOut()
+	yield(fader, "finished")
+	GameManager.unpause("PauseMenu")
+	GameManager.go_to_stage_select()
+
+
+func _load_slot_list() -> void:
+	for child in slot_container.get_children():
+		child.free()
+	var focus_btn: Control = null
+	for i in range(Savefile.max_slots):
+		var btn = SlotButtonScene.instance()
+		slot_container.add_child(btn)
+		btn.connect_lock_signals(self)
+		btn.setup_save(Savefile.load_slot_metadata(i), i)
+		if i == Savefile.save_slot:
+			focus_btn = btn
+	if not focus_btn and slot_container.get_child_count() > 0:
+		focus_btn = slot_container.get_child(0)
+	# Focus navigation: edges wrap to the back button
+	var children := slot_container.get_children()
+	var total := children.size()
+	for i in range(total):
+		var btn = children[i]
+		btn.focus_neighbour_top = children[i - 1].get_path() if i > 0 else back_button.get_path()
+		btn.focus_neighbour_bottom = children[i + 1].get_path() if i < total - 1 else back_button.get_path()
+	if total > 0:
+		back_button.focus_neighbour_bottom = children[0].get_path()
+		back_button.focus_neighbour_top = children[total - 1].get_path()
+	_pending_focus = focus_btn if focus_btn else back_button
+
+
+func _give_slots_focus() -> void:
+	if _pending_focus:
+		_pending_focus.silent = true
+		_pending_focus.grab_focus()
+		scroll_container.scroll_vertical = int(_pending_focus.rect_position.y - scroll_container.rect_size.y / 2)
+
+
+func _close() -> void:
+	active = false
+	_direct_mode = false
+	lock_buttons()
+	fader.FadeOut()
+	yield(fader, "finished")
+	GameManager.reset_stretch_mode()
+	if _transition_mode:
+		emit_signal("transition_committed")
+	else:
+		emit_signal("end")
+
+
+func play_choice_sound() -> void:
+	if choice:
+		choice.play()
+
+
+func play_equip_sound() -> void:
+	if equip:
+		equip.play()
+
+
+func play_cancel_sound() -> void:
+	if cancel:
+		cancel.play()
+
+
+func button_call(method, _param = null) -> void:
+	call(method)
+
+
+func lock_buttons() -> void:
+	emit_signal("lock_buttons")
+	locked = true
+
+
+func unlock_buttons() -> void:
+	emit_signal("unlock_buttons")
+	locked = false

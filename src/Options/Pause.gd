@@ -201,7 +201,6 @@ func Unpause() -> void :
 	fader.FadeOut()
 	paused = false
 	GameManager.normal_music_volume()
-	Savefile.save(Savefile.save_slot)
 	yield(fader, "finished")
 	Event.emit_signal("pause_menu_closed")
 	GameManager.unpause("PauseMenu")

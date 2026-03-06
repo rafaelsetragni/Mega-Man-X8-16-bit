@@ -163,9 +163,6 @@ func end() -> void :
 	GameManager.reset_stretch_mode()
 	emit_signal("end")
 	active = false
-	IGT.save_time()
-	Savefile.save(Savefile.save_slot)
-	CharacterManager._save()
 
 func play_choice_sound() -> void :
 	if choice:

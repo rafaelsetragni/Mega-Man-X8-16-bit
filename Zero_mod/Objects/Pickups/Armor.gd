@@ -29,7 +29,6 @@ func _ready() -> void :
 		return
 	if reset_armor:
 		call_deferred("lock_black_zero_armor")
-		Savefile.save(Savefile.save_slot)
 	Event.listen("player_set", self, "call_deferred_already_got")
 	if CharacterManager.betazero_activated:
 		armor_head.animation = "Head_Beta"
@@ -103,5 +102,4 @@ func unlock_black_zero_armor(zero) -> void :
 
 func achievement_check() -> void :
 	Achievements.unlock("COLLECTBLACKZERO")
-	Savefile.save(Savefile.save_slot)
 	CharacterManager._save()

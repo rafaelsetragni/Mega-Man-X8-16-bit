@@ -8,4 +8,4 @@ func on_press() -> void :
 	menu.lock_buttons()
 	menu.fader.SoftFadeOut()
 	yield(menu.fader, "finished")
-	GameManager.go_to_stage_select()
+	GameManager._show_transition_save_screen("go_to_stage_select")

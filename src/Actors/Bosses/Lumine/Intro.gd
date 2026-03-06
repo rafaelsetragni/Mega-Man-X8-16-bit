@@ -25,20 +25,55 @@ func connect_start_events() -> void :
 
 func prepare_for_intro() -> void :
 	sprite.position.y = - 250
-	character.global_position.y = raycast_downward(256)["position"].y
+	var ground = raycast_downward(256)
+	if ground:
+		character.global_position.y = ground["position"].y
 	Log("Preparing for Intro")
+
+func execute_intro() -> void :
+	ensure_visibility()
+	.execute_intro()
+
+func ensure_visibility() -> void :
+	character.visible = true
+	character.modulate = Color(1, 1, 1, 1)
+	character.self_modulate = Color(1, 1, 1, 1)
+	sprite.visible = true
+	sprite.modulate = Color(1, 1, 1, 1)
+	sprite.self_modulate = Color(1, 1, 1, 1)
+	if sprite.material:
+		sprite.material.set_shader_param("Alpha", 1.0)
+		sprite.material.set_shader_param("Darken", 1.0)
+		sprite.material.set_shader_param("Flash", 0.0)
+		sprite.material.set_shader_param("Should_Blink", 0.0)
+		sprite.material.set_shader_param("Alpha_Blink", 0.0)
+	print("=== LUMINE DEBUG ===")
+	print("char.visible=", character.visible, " char.modulate=", character.modulate)
+	print("sprite.visible=", sprite.visible, " sprite.modulate=", sprite.modulate)
+	print("sprite.frames=", sprite.frames, " sprite.animation=", sprite.animation)
+	print("sprite.pos=", sprite.position, " char.global_pos=", character.global_position)
+	print("sprite.material=", sprite.material)
+	if sprite.material:
+		print("Alpha=", sprite.material.get_shader_param("Alpha"), " Darken=", sprite.material.get_shader_param("Darken"))
+	print("=== END DEBUG ===")
 
 func _Update(delta):
 	if attack_stage == 0:
 		play_animation("intro_descent")
+		print("[LUMINE] Stage 0: sprite.pos=", sprite.position, " starting tween to y=0")
 		tween.create(Tween.EASE_OUT,Tween.TRANS_QUAD)
 		tween.add_attribute("position:y",0,3.0,sprite)
 		tween.add_callback("next_attack_stage")
 		next_attack_stage()
-	
+
 	# attack_stage == 1 is descent
-	
+	elif attack_stage == 1:
+		if int(timer * 2) != int((timer - delta) * 2):
+			print("[LUMINE] Stage 1 (descent): sprite.pos=", sprite.position)
+
 	elif attack_stage == 2:
+		print("[LUMINE] Stage 2: sprite.pos=", sprite.position)
+		sprite.position.y = 0
 		play_animation("intro_idle")
 		next_attack_stage()
 		

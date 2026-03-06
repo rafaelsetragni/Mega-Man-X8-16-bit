@@ -42,7 +42,6 @@ func handle_weapons(switch):
 			call_deferred("handle_rekkyoudan", switch)
 			call_deferred("handle_hyouryuushou", switch)
 			call_deferred("handle_enkoujin", switch)
-			Savefile.call_deferred("save", Savefile.save_slot)
 
 
 

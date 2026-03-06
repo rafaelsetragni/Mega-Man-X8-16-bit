@@ -5,6 +5,7 @@ var cleared_segments: Array
 
 
 func _ready() -> void :
+	Event.connect("game_over", self, "soft_reset")
 	Event.connect("gateway_reset_segment_cleared", self, "on_segments_reset")
 	Event.connect("gateway_segment_cleared", self, "on_segment_cleared")
 	if GlobalVariables.exists("gateway_segments_cleared"):

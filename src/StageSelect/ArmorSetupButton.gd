@@ -5,6 +5,7 @@ onready var cursor: AnimatedSprite = $cursor
 onready var menu: Control = $"../../StageSelectUI/Menu"
 onready var pointer: AnimatedSprite = $"../../map/pointer"
 
+export var static_icon: bool = false
 var defeated: bool = false
 var stage: StageInfo
 
@@ -14,7 +15,8 @@ signal unfocused
 
 
 func _ready() -> void :
-	set_correct_player_icon()
+	if not static_icon:
+		set_correct_player_icon()
 	for item in menu.get_children():
 		if item.name == name:
 			var _s = item.connect("focus_entered", self, "focus")
@@ -22,7 +24,8 @@ func _ready() -> void :
 			call_deferred("synchronize_visibility", item)
 
 func _process(_delta):
-	set_correct_player_icon()
+	if not static_icon:
+		set_correct_player_icon()
 
 func set_correct_player_icon():
 	match CharacterManager.player_character:

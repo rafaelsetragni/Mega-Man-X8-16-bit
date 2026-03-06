@@ -22,9 +22,8 @@ func set_windowsize(multiplier):
 	current_multiplier = multiplier
 	Configurations.set(w_size, current_multiplier)
 	display_value(current_multiplier)
-	if not Configurations.get("Fullscreen"):
+	if not OS.window_fullscreen:
 		OS.set_window_size(native * current_multiplier)
-	pass
 
 func get_windowsize():
 	var ws = Configurations.get(w_size)

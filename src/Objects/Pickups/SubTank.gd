@@ -25,8 +25,6 @@ func process_increase_health(_delta: float) -> void :
 func achievement_check() -> void :
 	if check_subtanks() == 4:
 		Achievements.unlock("COLLECTALLSUBTANKS")
-	else:
-		Savefile.save(Savefile.save_slot)
 
 func check_subtanks():
 	var subtanks = 0

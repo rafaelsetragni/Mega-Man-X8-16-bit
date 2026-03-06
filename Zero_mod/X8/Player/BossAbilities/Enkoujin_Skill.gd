@@ -84,7 +84,7 @@ func hitbox_and_position() -> void :
 	hitbox_damage_boss = 4
 	hitbox_damage_weakness = 30
 	if animatedSprite.animation == "enkoujin":
-		if character.saber_node.current_weapon.name == "Saber":
+		if character.saber_node.current_weapon.name == "Saber" or character.saber_node.current_weapon.name == "Z-Saber-B":
 			if animatedSprite.frame >= 4 and animatedSprite.frame < 14:
 				hitbox_upleft = Vector2( - 2, - 33)
 				hitbox_downright = Vector2(30, 20)

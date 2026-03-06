@@ -29,7 +29,6 @@ func set_timer_running(_should_run):
 func save_time():
 	IGT.should_run = false
 	GlobalVariables.set("igt", IGT.in_game_timer)
-	Savefile.save(Savefile.save_slot)
 
 func add_time(section,delta):
 	if times.has(section):
