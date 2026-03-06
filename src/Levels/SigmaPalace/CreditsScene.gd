@@ -114,7 +114,6 @@ func fade_out():
 	tween.attribute("modulate", Color(screencover.modulate.r, screencover.modulate.g, screencover.modulate.b, 1.0), fade_out_duration, screencover)
 	tween.add_wait(2)
 	CharacterManager.credits_seen = true
-	CharacterManager._save()
 	if IGT.clocked_all_stages():
 		tween.add_callback("go_to_igt",GameManager)
 	else:

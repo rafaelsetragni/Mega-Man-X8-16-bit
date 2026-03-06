@@ -102,4 +102,3 @@ func unlock_black_zero_armor(zero) -> void :
 
 func achievement_check() -> void :
 	Achievements.unlock("COLLECTBLACKZERO")
-	CharacterManager._save()

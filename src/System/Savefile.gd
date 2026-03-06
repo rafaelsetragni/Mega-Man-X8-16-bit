@@ -150,6 +150,7 @@ func set_all_data() -> void :
 	game_data["collectibles"] = GameManager.collectibles
 	game_data["equip_exceptions"] = GameManager.equip_exceptions
 	game_data["variables"] = GlobalVariables.variables
+	game_data["char_state"] = CharacterManager.get_save_state()
 	game_data["meta"] = {
 		"last_saved": OS.get_unix_time(),
 		"difficulty": CharacterManager.game_mode,
@@ -189,8 +190,6 @@ func load_save(slot: int = 0) -> void :
 	GlobalVariables.variables = {}
 	load_from_file(slot)
 	apply_data(slot)
-
-	CharacterManager._load()
 
 	emit_signal("loaded")
 
@@ -251,6 +250,8 @@ func load_slot_metadata(slot: int) -> Dictionary:
 		result["collectibles"] = dict["collectibles"]
 	if dict.has("variables"):
 		result["variables"] = dict["variables"]
+	if dict.has("char_state"):
+		result["char_state"] = dict["char_state"]
 	return result
 
 func apply_data(_slot: int = 0) -> void :
@@ -267,6 +268,7 @@ func apply_data(_slot: int = 0) -> void :
 		if game_data.has("equip_exceptions"):
 			GameManager.equip_exceptions = game_data["equip_exceptions"]
 		GlobalVariables.load_variables(game_data["variables"])
+		CharacterManager.apply_save_state(game_data.get("char_state", {}))
 
 		if game_data["variables"].has("igt"):
 			IGT.set_time(GlobalVariables.get("igt"))
@@ -278,10 +280,12 @@ func clear_save(slot: int = 0) -> void :
 		"meta": {},
 		"collectibles": [],
 		"equip_exceptions": [],
-		"variables": {}
+		"variables": {},
+		"char_state": {}
 	}
 	CharacterManager.game_mode_set = false
 	CharacterManager.game_mode = 0
+	CharacterManager.reset_for_new_game()
 	newgame_plus = 0
 	IGT.reset()
 	GameManager.collectibles = []

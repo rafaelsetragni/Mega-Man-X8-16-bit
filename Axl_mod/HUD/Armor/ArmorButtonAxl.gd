@@ -41,12 +41,10 @@ func equip_parts(parts: Dictionary) -> void :
 func equip_white_axl() -> void :
 	equip_parts(white_parts)
 	CharacterManager.white_axl_armor = true
-	CharacterManager._save()
 
 func unequip_white_axl() -> void :
 	equip_parts(default_parts)
 	CharacterManager.white_axl_armor = false
-	CharacterManager._save()
 
 func _on_focus_entered() -> void :
 	play_sound()

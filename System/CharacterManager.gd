@@ -68,8 +68,6 @@ func touch_controls_enabled() -> bool:
 	return false
 
 
-const char_data: String = "user://char_data"
-
 func reset_for_new_game() -> void :
 	ultimate_x_armor = false
 	black_zero_armor = false
@@ -88,70 +86,56 @@ func reset_for_new_game() -> void :
 	enkoujin_active = true
 	check_for_deactivated_skills_Zero()
 
-func _save() -> void :
-	var save_data = {
-		"player_count": player_count, 
-		"player_character": player_character, 
-		"credits_seen": credits_seen, 
-		
-		"new_game": new_game, 
-		"beaten_hard": beaten_hard, 
-		"beaten_insanity": beaten_insanity, 
+
+func get_save_state() -> Dictionary:
+	return {
+		"player_count": player_count,
+		"player_character": player_character,
+		"credits_seen": credits_seen,
+		"new_game": new_game,
+		"only_zero": only_zero,
+		"beaten_hard": beaten_hard,
+		"beaten_insanity": beaten_insanity,
 		"beaten_ninjagaiden": beaten_ninjagaiden,
 		"custom_zero_unlocked": custom_zero_unlocked,
 		"custom_zero_armor": custom_zero_armor,
-		"beta_zero_unlocked": betazero_unlocked, 
-		"beta_zero_activated": betazero_activated, 
-		
-		"ultimate_x_armor": ultimate_x_armor, 
-		"black_zero_armor": black_zero_armor, 
-		"white_axl_armor": white_axl_armor, 
+		"betazero_unlocked": betazero_unlocked,
+		"betazero_activated": betazero_activated,
+		"nightshade_zero_armor": nightshade_zero_armor,
+		"ultimate_x_armor": ultimate_x_armor,
+		"black_zero_armor": black_zero_armor,
+		"white_axl_armor": white_axl_armor,
 	}
-	var bson = BSON.to_bson(save_data)
-	
-	var file = File.new()
-	if file.open(char_data, File.WRITE) == OK:
-		file.store_buffer(bson)
-		file.close()
 
-func _load() -> void :
-	var file = File.new()
-	if file.file_exists(char_data):
-		file.open(char_data, File.READ)
-		var bson = file.get_buffer(file.get_len())
-		file.close()
-		
-		var save_data = BSON.from_bson(bson)
-		
-		if typeof(save_data) == TYPE_DICTIONARY:
-			player_count = int(save_data.get("player_count", 1))
-			player_character = save_data.get("player_character", "X")
-			credits_seen = bool(save_data.get("credits_seen", false))
-			
-			new_game = bool(save_data.get("new_game", true))
-			beaten_hard = bool(save_data.get("beaten_hard", false))
-			beaten_insanity = bool(save_data.get("beaten_insanity", false))
-			beaten_ninjagaiden = bool(save_data.get("beaten_ninjagaiden",false))
-			
-			betazero_unlocked = bool(save_data.get("beta_zero_unlocked", false))
-			betazero_activated = bool(save_data.get("beta_zero_activated", false))
-			
-			custom_zero_unlocked = bool(save_data.get("custom_zero_unlocked",false))
-			custom_zero_armor = bool(save_data.get("custom_zero_armor",false))
-			
-			if "ultima_head" in GameManager.collectibles:
-				if evaluate_ultimate_armor_state():
-					ultimate_x_armor = bool(save_data.get("ultimate_x_armor", false))
-			else:
-				ultimate_x_armor = false
-			if "black_zero_armor" in GameManager.collectibles:
-				black_zero_armor = bool(save_data.get("black_zero_armor", false))
-			else:
-				black_zero_armor = false
-			if "white_axl_armor" in GameManager.collectibles:
-				white_axl_armor = bool(save_data.get("white_axl_armor", false))
-			else:
-				white_axl_armor = false
+
+func apply_save_state(data: Dictionary) -> void:
+	player_count = int(data.get("player_count", 1))
+	player_character = data.get("player_character", "X")
+	credits_seen = bool(data.get("credits_seen", false))
+	new_game = bool(data.get("new_game", true))
+	only_zero = bool(data.get("only_zero", false))
+	beaten_hard = bool(data.get("beaten_hard", false))
+	beaten_insanity = bool(data.get("beaten_insanity", false))
+	beaten_ninjagaiden = bool(data.get("beaten_ninjagaiden", false))
+	custom_zero_unlocked = bool(data.get("custom_zero_unlocked", false))
+	custom_zero_armor = bool(data.get("custom_zero_armor", false))
+	betazero_unlocked = bool(data.get("betazero_unlocked", false))
+	betazero_activated = bool(data.get("betazero_activated", false))
+	nightshade_zero_armor = bool(data.get("nightshade_zero_armor", false))
+
+	if "ultima_head" in GameManager.collectibles and evaluate_ultimate_armor_state():
+		ultimate_x_armor = bool(data.get("ultimate_x_armor", false))
+	else:
+		ultimate_x_armor = false
+	if "black_zero_armor" in GameManager.collectibles:
+		black_zero_armor = bool(data.get("black_zero_armor", false))
+	else:
+		black_zero_armor = false
+	if "white_axl_armor" in GameManager.collectibles:
+		white_axl_armor = bool(data.get("white_axl_armor", false))
+	else:
+		white_axl_armor = false
+
 	update_game_mode()
 	check_for_deactivated_skills_Zero()
 	

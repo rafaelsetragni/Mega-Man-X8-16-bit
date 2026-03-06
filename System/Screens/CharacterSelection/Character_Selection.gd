@@ -60,7 +60,6 @@ func start() -> void :
 	fader.FadeIn()
 	unlock_buttons()
 	call_deferred("give_focus")
-	CharacterManager._save()
 
 func give_focus() -> void :
 	focus.silent = true

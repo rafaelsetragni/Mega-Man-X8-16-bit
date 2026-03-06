@@ -236,7 +236,6 @@ func end_game():
 	GameManager.pause("EndGame")
 	debug_go_to_next_stage = true
 	won_against_final_boss = true
-	CharacterManager._save()
 	IGT.save_time()
 
 func on_death():
