@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void :
 func fadein() -> void :
 	if not exiting:
 		inspired.modulate = Color.darkblue
-		tween.attribute("modulate:a", 0.0, 0.5, fade)
+		tween.attribute("modulate", Color(0, 0, 0, 0.0), 0.5, fade)
 		tween.add_attribute("modulate", Color.white, 0.5, inspired)
 
 func fadeout() -> void :
@@ -26,7 +26,7 @@ func fadeout() -> void :
 		exiting = true
 		tween.reset()
 		tween.attribute("modulate", Color.darkblue, 0.5, inspired)
-		tween.add_attribute("modulate:a", 1.0, 0.5, fade)
+		tween.add_attribute("modulate", Color(fade.modulate.r, fade.modulate.g, fade.modulate.b, 1.0), 0.5, fade)
 		tween.add_wait(0.5)
 		tween.add_callback("next_screen")
 

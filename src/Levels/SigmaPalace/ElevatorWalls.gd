@@ -10,6 +10,7 @@ func _ready() -> void :
 
 func descent():
 	tween.reset()
-	tween.attribute("region_rect:position:y", region_rect.position.y + speed, 1.0)
+	var target_rect = Rect2(region_rect.position.x, region_rect.position.y + speed, region_rect.size.x, region_rect.size.y)
+	tween.attribute("region_rect", target_rect, 1.0)
 	Tools.timer(1.0, "descent", self)
 	

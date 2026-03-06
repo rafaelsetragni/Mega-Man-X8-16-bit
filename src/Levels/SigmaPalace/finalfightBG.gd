@@ -16,7 +16,7 @@ func activate():
 	visible = true
 	foreground.visible = false
 	final_clouds.visible = true
-	tween.attribute("modulate:a", 1, 1, final_clouds)
+	tween.attribute("modulate", Color(final_clouds.modulate.r, final_clouds.modulate.g, final_clouds.modulate.b, 1), 1, final_clouds)
 	sigmapalace_map.visible = false
 	hole_fillers.disabled = true
 	final_platform.visible = true

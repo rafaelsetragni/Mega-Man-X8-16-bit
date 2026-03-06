@@ -122,7 +122,7 @@ func play_death_end():
 func set_fullscreen_light():
 	fullscreen_light.visible = true
 	windspark.emit()
-	tween.attribute("modulate:a",1.0,1.5,fullscreen_light)
+	tween.attribute("modulate", Color(fullscreen_light.modulate.r, fullscreen_light.modulate.g, fullscreen_light.modulate.b, 1.0), 1.5, fullscreen_light)
 	tween.add_callback("emit_signal",self,["screen_flash"])
 	tween.add_wait(3.0)
 	tween.add_callback("end")

@@ -46,7 +46,7 @@ func screenshake() -> void :
 		return
 	Event.emit_signal("screenshake", 0.8)
 	tween.reset()
-	tween.attribute("motion_offset:y", bg.motion_offset.y - fall_velocity, 1.6, bg)
+	tween.attribute("motion_offset", Vector2(bg.motion_offset.x, bg.motion_offset.y - fall_velocity), 1.6, bg)
 	tween.attribute("modulate", Color.lightpink, 0.8, map)
 	tween.add_attribute("modulate", Color.lightgray, 0.8, map)
 	fall_velocity = clamp(fall_velocity + 0.5, 5.0, 32.0)
@@ -65,7 +65,7 @@ func explosion2() -> void :
 func stop_all():
 	tween.reset()
 	tween.create(Tween.EASE_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("motion_offset:y", bg.motion_offset.y - fall_velocity, 4, bg)
+	tween.add_attribute("motion_offset", Vector2(bg.motion_offset.x, bg.motion_offset.y - fall_velocity), 4, bg)
 	bg_particles.emitting = false
 	map.modulate = Color.lightgray
 	stopped = true

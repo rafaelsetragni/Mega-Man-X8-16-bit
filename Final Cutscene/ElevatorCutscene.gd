@@ -90,8 +90,7 @@ func move_to_position(data: Dictionary):
 	var duration = data["duration"]
 	if animation != null:
 		sprite.animation = animation
-	tween.attribute("position:x", x, duration, sprite)
-	tween.attribute("position:y", y, duration, sprite)
+	tween.attribute("position", Vector2(x, y), duration, sprite)
 	var callback_data = {"sprite": sprite, "animation": "recover"}
 	tween.add_callback("on_movement_completed", self, [callback_data])
 	connect("movement_finished", self, "finished_movement")
@@ -203,17 +202,17 @@ func turn_everyone_around():
 	move_to_position(params)
 
 func fade_out_covers():
-	tween2.attribute("modulate:a", 0.0, 2.0, top_cover)
-	tween3.attribute("modulate:a", 0.0, 2.0, bottom_cover)
+	tween2.attribute("modulate", Color(top_cover.modulate.r, top_cover.modulate.g, top_cover.modulate.b, 0.0), 2.0, top_cover)
+	tween3.attribute("modulate", Color(bottom_cover.modulate.r, bottom_cover.modulate.g, bottom_cover.modulate.b, 0.0), 2.0, bottom_cover)
 
 func fade_in():
 	screencover.visible = true
 	screencover.modulate = Color.black
-	tween.attribute("modulate:a", 0.0, 3.0, screencover)
+	tween.attribute("modulate", Color(0, 0, 0, 0.0), 3.0, screencover)
 
 func fade_out():
 	screencover.visible = true
-	tween.attribute("modulate:a", 1.0, fade_out_duration, screencover)
+	tween.attribute("modulate", Color(screencover.modulate.r, screencover.modulate.g, screencover.modulate.b, 1.0), fade_out_duration, screencover)
 	tween.add_wait(3)
 	tween.attribute("volume_db", - 80, fade_out_duration, loop)
 	tween.add_callback("go_to_credits", GameManager)

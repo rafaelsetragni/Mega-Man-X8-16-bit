@@ -54,30 +54,30 @@ func start_music():
 
 func move_to_the_side():
 	tween.create(Tween.EASE_IN_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("position:x", - 100, 6.0, visuals)
+	tween.add_attribute("position", Vector2(-100, visuals.position.y), 6.0, visuals)
 
 func move_credits_in():
 	tween.create(Tween.EASE_IN_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("position:x", 180, 6.0, credits_bg)
+	tween.add_attribute("position", Vector2(180, credits_bg.position.y), 6.0, credits_bg)
 	
 
 func turn_on_covers():
 	var final_y = bottom_cover.position.y
 	bottom_cover.position.y += 16
 	tween.create(Tween.EASE_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("position:y", final_y, 2.0, bottom_cover)
-	
+	tween.add_attribute("position", Vector2(bottom_cover.position.x, final_y), 2.0, bottom_cover)
+
 	final_y = top_cover.position.y
 	top_cover.position.y -= 16
 	tween.create(Tween.EASE_OUT, Tween.TRANS_SINE)
-	tween.add_attribute("position:y", final_y, 2.0, top_cover)
+	tween.add_attribute("position", Vector2(top_cover.position.x, final_y), 2.0, top_cover)
 	bottom_cover.visible = true
 	top_cover.visible = true
 
 func fade_in():
 	
 	screencover.modulate = Color.black
-	tween.attribute("modulate:a", 0.0, 3.0, screencover)
+	tween.attribute("modulate", Color(0, 0, 0, 0.0), 3.0, screencover)
 
 
 
@@ -105,12 +105,12 @@ func roll_up_credits():
 	var duration = base_duration / scroll_speed
 
 	credits.position.x = 296
-	tween.attribute("position:y", - total_height, duration, credits)
+	tween.attribute("position", Vector2(credits.position.x, -total_height), duration, credits)
 	tween.add_callback("fade_out")
 
 func fade_out():
 	screencover.visible = true
-	tween.attribute("modulate:a", 1.0, fade_out_duration, screencover)
+	tween.attribute("modulate", Color(screencover.modulate.r, screencover.modulate.g, screencover.modulate.b, 1.0), fade_out_duration, screencover)
 	tween.add_wait(3)
 	tween.attribute("volume_db", - 80, fade_out_duration, loop)
 	CharacterManager.credits_seen = true
