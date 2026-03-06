@@ -112,14 +112,14 @@ func roll_up_credits():
 func fade_out():
 	screencover.visible = true
 	tween.attribute("modulate", Color(screencover.modulate.r, screencover.modulate.g, screencover.modulate.b, 1.0), fade_out_duration, screencover)
-	tween.add_wait(3)
-	tween.attribute("volume_db", - 80, fade_out_duration, loop)
+	tween.add_wait(2)
 	CharacterManager.credits_seen = true
 	CharacterManager._save()
 	if IGT.clocked_all_stages():
 		tween.add_callback("go_to_igt",GameManager)
 	else:
 		tween.add_callback("go_to_thanks_screen",GameManager)
+	tween.attribute("volume_db", - 80, fade_out_duration, loop)
 
 func _translate_credits() -> void:
 	var replacements = [
@@ -202,4 +202,5 @@ func _translate_credits() -> void:
 	var txt = credits_part1.bbcode_text
 	for pair in replacements:
 		txt = txt.replace(pair[0], pair[1])
+	txt = txt.replace("Thanks for Playing!", "")
 	credits_part1.bbcode_text = txt

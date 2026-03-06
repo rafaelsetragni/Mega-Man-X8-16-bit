@@ -14,6 +14,8 @@ export var emit_capsule_signal := true
 export var resume_character_inputs := true
 
 var japanese_font = preload("res://src/Fonts/japaneseFont.tres")
+var korean_font = preload("res://src/Fonts/koreanFont.tres")
+var hindi_font = preload("res://src/Fonts/hindiFont.tres")
 var original_font: Font
 var original_material: Material
 var is_japanese := false
@@ -48,10 +50,17 @@ func _ready() -> void:
 
 func _apply_font_for_locale() -> void:
 	var lang = Configurations.get("Language") if Configurations.exists("Language") else "en"
-	is_japanese = lang in ["ja_JP", "ja_JP_z"]
-	if is_japanese:
-		set("custom_fonts/font", japanese_font)
-		portrait_side.set("custom_fonts/font", japanese_font)
+	is_japanese = lang in ["ja_JP", "ja_JP_z", "ko", "ko_z", "hi", "hi_z"]
+	var dynamic_font = null
+	if lang in ["ja_JP", "ja_JP_z"]:
+		dynamic_font = japanese_font
+	elif lang in ["ko", "ko_z"]:
+		dynamic_font = korean_font
+	elif lang in ["hi", "hi_z"]:
+		dynamic_font = hindi_font
+	if dynamic_font:
+		set("custom_fonts/font", dynamic_font)
+		portrait_side.set("custom_fonts/font", dynamic_font)
 		material = null
 		portrait_side.material = null
 	else:
