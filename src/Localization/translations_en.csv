@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","Normal"
 "DIFFICULTY_HARD","Hard"
 "DIFFICULTY_IMPOSSIBLE","Nearly Impossible"
-"DIFFICULTY_KIDS_DESC","Ideal for small children. No deaths, no damage. Falling into pits returns the player to the last standing position before the jump."
+"DIFFICULTY_KIDS_DESC","Ideal for small children. No deaths and no damage. Falling into pits returns the player safely."
 "DIFFICULTY_EASY_DESC","Ideal for beginners. Damage is reduced and bosses are easier."
 "DIFFICULTY_NORMAL_DESC","Ideal for casual players. Standard damage and difficulty."
 "DIFFICULTY_HARD_DESC","Ideal for those seeking a challenge. More aggressive bosses and increased enemy damage."

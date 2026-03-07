@@ -22,14 +22,14 @@ const LOCKED_DESCS = ["", "", "", "DIFFICULTY_HARD_UNLOCK", "DIFFICULTY_IMPOSSIB
 const SELECTED_GAP := 85.0
 const DIM_GAP := 70.0
 const CENTER_X := 199.0
-const IMAGES_Y := 68.0
+const IMAGES_Y := 78.0
 const TWEEN_TIME := 0.15
 
 const DIM_COLOR := Color(0.3, 0.3, 0.3, 1.0)
 const LOCKED_BRIGHT_COLOR := Color(1.0, 1.0, 1.0, 0.3)
 const LOCKED_DIM_COLOR := Color(0.3, 0.3, 0.3, 0.3)
-const DIM_SCALE := Vector2(0.04, 0.04)
-const BRIGHT_SCALE := Vector2(0.06, 0.06)
+const DIM_SCALE := Vector2(0.13, 0.13)
+const BRIGHT_SCALE := Vector2(0.21, 0.21)
 
 var name_colors: Dictionary = {
 	-1: Color("#8cff8c"),
@@ -107,14 +107,17 @@ func _position_images_instant() -> void:
 	for i in range(children.size()):
 		var container = children[i]
 		var sprite = container.get_node("img")
+		var cursor = container.get_node("cursor")
 		container.position = Vector2(CENTER_X + _get_offset(i), IMAGES_Y)
 		sprite.self_modulate = _get_color(i)
 		if i == current_index:
 			container.scale = BRIGHT_SCALE
 			container.z_index = 1
+			cursor.visible = true
 		else:
 			container.scale = DIM_SCALE
 			container.z_index = 0
+			cursor.visible = false
 
 
 func _animate_images() -> void:
@@ -125,15 +128,18 @@ func _animate_images() -> void:
 	for i in range(children.size()):
 		var container = children[i]
 		var sprite = container.get_node("img")
+		var cursor = container.get_node("cursor")
 		var target_pos = Vector2(CENTER_X + _get_offset(i), IMAGES_Y)
 		t.tween_property(container, "position", target_pos, TWEEN_TIME)
 		t.tween_property(sprite, "self_modulate", _get_color(i), TWEEN_TIME)
 
 		if i == current_index:
 			container.z_index = 1
+			cursor.visible = true
 			t.tween_property(container, "scale", BRIGHT_SCALE, TWEEN_TIME)
 		else:
 			container.z_index = 0
+			cursor.visible = false
 			t.tween_property(container, "scale", DIM_SCALE, TWEEN_TIME)
 
 	t.chain().tween_callback(self, "_on_animation_done")

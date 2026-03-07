@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","Normal"
 "DIFFICULTY_HARD","Difícil"
 "DIFFICULTY_IMPOSSIBLE","Casi Imposible"
-"DIFFICULTY_KIDS_DESC","Ideal para niños pequeños. Sin muertes ni daño. Al caer en hoyos, el jugador regresa a la última posición de pie antes del salto."
+"DIFFICULTY_KIDS_DESC","Ideal para niños pequeños. Sin muertes ni daño. Al caer en hoyos, el jugador regresa a salvo."
 "DIFFICULTY_EASY_DESC","Ideal para principiantes. El daño es reducido y los jefes son más fáciles."
 "DIFFICULTY_NORMAL_DESC","Ideal para jugadores casuales. Daño y dificultad estándar."
 "DIFFICULTY_HARD_DESC","Ideal para quienes buscan un desafío. Jefes más agresivos y mayor daño enemigo."

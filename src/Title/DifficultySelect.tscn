@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Options/pause_bg.png" type="Texture" id=1]
 [ext_resource path="res://src/Title/DifficultySelect.gd" type="Script" id=2]
@@ -12,6 +12,35 @@
 [ext_resource path="res://System/SFX/open_option.ogg" type="AudioStream" id=10]
 [ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=11]
 [ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=12]
+[ext_resource path="res://src/StageSelect/ss_cursor2.png" type="Texture" id=13]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 13 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 13 )
+region = Rect2( 80, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 13 )
+region = Rect2( 120, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 13 )
+region = Rect2( 160, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 18.0
+} ]
 
 [node name="DifficultySelect" type="Node2D"]
 script = ExtResource( 2 )
@@ -51,80 +80,115 @@ uppercase = true
 [node name="images" type="Node2D" parent="."]
 
 [node name="item_0" type="Node2D" parent="images"]
-position = Vector2( 199, 68 )
-scale = Vector2( 0.06, 0.06 )
+position = Vector2( 199, 78 )
+scale = Vector2( 0.21, 0.21 )
 
 [node name="bg" type="ColorRect" parent="images/item_0"]
-margin_left = -768.0
-margin_top = -512.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = -280.0
+margin_top = -197.0
+margin_right = 280.0
+margin_bottom = 197.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="img" type="Sprite" parent="images/item_0"]
 texture = ExtResource( 4 )
 
+[node name="cursor" type="AnimatedSprite" parent="images/item_0"]
+visible = false
+z_index = 2
+scale = Vector2( 14.0, 9.85 )
+frames = SubResource( 6 )
+playing = true
+
 [node name="item_1" type="Node2D" parent="images"]
-position = Vector2( 284, 68 )
-scale = Vector2( 0.04, 0.04 )
+position = Vector2( 284, 78 )
+scale = Vector2( 0.13, 0.13 )
 
 [node name="bg" type="ColorRect" parent="images/item_1"]
-margin_left = -768.0
-margin_top = -512.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = -280.0
+margin_top = -197.0
+margin_right = 280.0
+margin_bottom = 197.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="img" type="Sprite" parent="images/item_1"]
 texture = ExtResource( 5 )
 
+[node name="cursor" type="AnimatedSprite" parent="images/item_1"]
+visible = false
+z_index = 2
+scale = Vector2( 14.0, 9.85 )
+frames = SubResource( 6 )
+playing = true
+
 [node name="item_2" type="Node2D" parent="images"]
-position = Vector2( 354, 68 )
-scale = Vector2( 0.04, 0.04 )
+position = Vector2( 354, 78 )
+scale = Vector2( 0.13, 0.13 )
 
 [node name="bg" type="ColorRect" parent="images/item_2"]
-margin_left = -768.0
-margin_top = -512.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = -280.0
+margin_top = -197.0
+margin_right = 280.0
+margin_bottom = 197.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="img" type="Sprite" parent="images/item_2"]
 texture = ExtResource( 6 )
 
+[node name="cursor" type="AnimatedSprite" parent="images/item_2"]
+visible = false
+z_index = 2
+scale = Vector2( 14.0, 9.85 )
+frames = SubResource( 6 )
+playing = true
+
 [node name="item_3" type="Node2D" parent="images"]
-position = Vector2( 424, 68 )
-scale = Vector2( 0.04, 0.04 )
+position = Vector2( 424, 78 )
+scale = Vector2( 0.13, 0.13 )
 
 [node name="bg" type="ColorRect" parent="images/item_3"]
-margin_left = -768.0
-margin_top = -512.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = -280.0
+margin_top = -197.0
+margin_right = 280.0
+margin_bottom = 197.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="img" type="Sprite" parent="images/item_3"]
 texture = ExtResource( 7 )
 
+[node name="cursor" type="AnimatedSprite" parent="images/item_3"]
+visible = false
+z_index = 2
+scale = Vector2( 14.0, 9.85 )
+frames = SubResource( 6 )
+playing = true
+
 [node name="item_4" type="Node2D" parent="images"]
-position = Vector2( 494, 68 )
-scale = Vector2( 0.04, 0.04 )
+position = Vector2( 494, 78 )
+scale = Vector2( 0.13, 0.13 )
 
 [node name="bg" type="ColorRect" parent="images/item_4"]
-margin_left = -768.0
-margin_top = -512.0
-margin_right = 768.0
-margin_bottom = 512.0
+margin_left = -280.0
+margin_top = -197.0
+margin_right = 280.0
+margin_bottom = 197.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="img" type="Sprite" parent="images/item_4"]
 texture = ExtResource( 8 )
 
+[node name="cursor" type="AnimatedSprite" parent="images/item_4"]
+visible = false
+z_index = 2
+scale = Vector2( 14.0, 9.85 )
+frames = SubResource( 6 )
+playing = true
+
 [node name="diff_name" type="Label" parent="."]
 margin_left = 49.0
-margin_top = 120.0
+margin_top = 132.0
 margin_right = 349.0
-margin_bottom = 136.0
+margin_bottom = 148.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -133,7 +197,7 @@ align = 1
 
 [node name="diff_desc" type="Label" parent="."]
 margin_left = 70.0
-margin_top = 138.0
+margin_top = 150.0
 margin_right = 328.0
 margin_bottom = 220.0
 custom_colors/font_color = Color( 0.984314, 1, 0.686275, 1 )

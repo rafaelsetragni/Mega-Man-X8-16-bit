@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","노멀"
 "DIFFICULTY_HARD","하드"
 "DIFFICULTY_IMPOSSIBLE","거의 불가능"
-"DIFFICULTY_KIDS_DESC","어린 아이를 위한 모드. 죽음도 데미지도 없습니다. 구덩이에 빠져도 점프 전 위치로 돌아갑니다."
+"DIFFICULTY_KIDS_DESC","어린 아이를 위한 모드. 죽음도 데미지도 없습니다. 구덩이에 빠져도 안전하게 돌아갑니다."
 "DIFFICULTY_EASY_DESC","초보자를 위한 모드. 데미지가 감소하고 보스가 더 쉽습니다."
 "DIFFICULTY_NORMAL_DESC","캐주얼 플레이어를 위한 모드. 표준 데미지와 난이도입니다."
 "DIFFICULTY_HARD_DESC","도전을 원하는 분을 위한 모드. 보스가 더 공격적이고 적의 데미지가 증가합니다."

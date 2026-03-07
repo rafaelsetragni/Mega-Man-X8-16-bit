@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","Normal"
 "DIFFICULTY_HARD","Difícil"
 "DIFFICULTY_IMPOSSIBLE","Quase Impossível"
-"DIFFICULTY_KIDS_DESC","Ideal para crianças pequenas. Nesta dificuldade não há mortes e não há danos. Ao cair em buracos, o jogador retorna para a última posição em pé antes do salto."
+"DIFFICULTY_KIDS_DESC","Ideal para crianças pequenas. Sem mortes e sem danos. Ao cair em buracos, o jogador retorna em segurança."
 "DIFFICULTY_EASY_DESC","Ideal para quem está começando. O dano é reduzido e os chefes são mais fáceis."
 "DIFFICULTY_NORMAL_DESC","Ideal para quem joga casual. Todos os danos e dificuldades padrão."
 "DIFFICULTY_HARD_DESC","Ideal para quem quer desafios. Chefes mais agressivos e danos maiores dos inimigos."

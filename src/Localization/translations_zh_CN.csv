@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","普通"
 "DIFFICULTY_HARD","困难"
 "DIFFICULTY_IMPOSSIBLE","几乎不可能"
-"DIFFICULTY_KIDS_DESC","适合幼儿。无死亡，无伤害。掉入坑中会返回跳跃前的站立位置。"
+"DIFFICULTY_KIDS_DESC","适合幼儿。无死亡，无伤害。掉入坑中会安全返回。"
 "DIFFICULTY_EASY_DESC","适合新手。伤害降低，Boss更容易击败。"
 "DIFFICULTY_NORMAL_DESC","适合休闲玩家。标准伤害和难度。"
 "DIFFICULTY_HARD_DESC","适合寻求挑战的玩家。Boss更具攻击性，敌人伤害增加。"

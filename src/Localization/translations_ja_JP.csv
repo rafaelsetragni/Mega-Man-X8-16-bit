@@ -1233,7 +1233,7 @@
 "DIFFICULTY_NORMAL","ノーマル"
 "DIFFICULTY_HARD","ハード"
 "DIFFICULTY_IMPOSSIBLE","ほぼ不可能"
-"DIFFICULTY_KIDS_DESC","小さなお子様向け。死亡もダメージもありません。穴に落ちてもジャンプ前の立ち位置に戻ります。"
+"DIFFICULTY_KIDS_DESC","小さなお子様向け。死亡もダメージもなし。穴に落ちても安全に戻ります。"
 "DIFFICULTY_EASY_DESC","初心者向け。ダメージが軽減され、ボスが倒しやすくなります。"
 "DIFFICULTY_NORMAL_DESC","カジュアルプレイヤー向け。標準的なダメージと難易度です。"
 "DIFFICULTY_HARD_DESC","挑戦を求める方向け。ボスがより攻撃的で、敵のダメージが増加します。"
