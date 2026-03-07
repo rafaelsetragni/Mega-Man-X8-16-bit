@@ -14,6 +14,7 @@ var labels: Dictionary = {
 }
 
 func _ready() -> void :
+	CharacterManager.game_mode_set = false
 	build_mode_list()
 	update_game_mode(CharacterManager.game_mode)
 	Event.connect("translation_updated",self,"update_display")
