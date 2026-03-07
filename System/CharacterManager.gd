@@ -204,19 +204,19 @@ var game_mode_stats: Dictionary = {
 func update_game_mode() -> void :
 	
 	if game_mode == - 1:
-		GAME_MODE = "GAME_START_ROOKIE"
+		GAME_MODE = "DIFFICULTY_KIDS"
 		set_drop_rate(75, 10, 35, 5, 15, 1)
 	elif game_mode == 0:
-		GAME_MODE = "GAME_START_NORMAL"
+		GAME_MODE = "DIFFICULTY_EASY"
 		set_drop_rate(25, 30, 15, 15, 10, 0.1)
 	elif game_mode == 1:
-		GAME_MODE = "GAME_START_HARD"
+		GAME_MODE = "DIFFICULTY_NORMAL"
 		set_drop_rate(15, 20, 10, 10, 10, 0.1)
 	elif game_mode == 2:
-		GAME_MODE = "GAME_START_INSANITY"
+		GAME_MODE = "DIFFICULTY_HARD"
 		set_drop_rate(5, 10, 5, 10, 5, 0)
 	elif game_mode >= 3:
-		GAME_MODE = "GAME_START_NINJA"
+		GAME_MODE = "DIFFICULTY_IMPOSSIBLE"
 		set_drop_rate(0, 0, 0, 0, 0, 0)
 	var stats = game_mode_stats.get(game_mode, {"deal": 1.0, "get": 1.0, "bossai": 1.0, "bossreduction": 1.0})
 	damage_deal_multiplier = stats["deal"]

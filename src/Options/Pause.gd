@@ -45,19 +45,14 @@ func _ready() -> void :
 
 func set_game_mode_label() -> void :
 	if CharacterManager.game_mode == - 1:
-		game_mode_label.modulate = Color("#329632")
 		game_mode_label.modulate = Color("#8cff8c")
 	elif CharacterManager.game_mode == 0:
-		game_mode_label.modulate = Color("#68caff")
 		game_mode_label.modulate = Color("#fbffaf")
 	elif CharacterManager.game_mode == 1:
-		game_mode_label.modulate = Color("#960000")
-		game_mode_label.modulate = Color("#ff4b4b")
+		game_mode_label.modulate = Color("#68b0ff")
 	elif CharacterManager.game_mode == 2:
-		game_mode_label.modulate = Color("#771313")
 		game_mode_label.modulate = Color("#ff7200")
 	elif CharacterManager.game_mode == 3:
-		game_mode_label.modulate = Color("#832b7f")
 		game_mode_label.modulate = Color("#e090f2")
 	game_mode_label.text = tr(CharacterManager.GAME_MODE)
 

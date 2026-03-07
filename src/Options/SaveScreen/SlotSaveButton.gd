@@ -69,33 +69,36 @@ func setup_save(data: Dictionary, idx: int) -> void:
 		# Difficulty + completion
 		var total_collectibles := COLLECTIBLES.size()
 		if meta.has("difficulty"):
+			var diff_val := int(meta["difficulty"])
 			var diff_name := ""
-			match int(meta["difficulty"]):
-				-1:
-					diff_name = tr("SAVE_DIFF_ROOKIE")
-					difficulty_label.idle_color = Color("#329632")
-					difficulty_label.focus_color = Color("#8cff8c")
-					total_collectibles -= 6
-				0:
-					diff_name = tr("SAVE_DIFF_NORMAL")
-					difficulty_label.idle_color = Color("#68caff")
-					difficulty_label.focus_color = Color("#fbffaf")
-				1:
-					diff_name = tr("SAVE_DIFF_HARD")
-					difficulty_label.idle_color = Color("#960000")
-					difficulty_label.focus_color = Color("#ff4b4b")
-					total_collectibles -= 2
-				2:
-					diff_name = tr("SAVE_DIFF_INSANITY")
-					difficulty_label.idle_color = Color("#771313")
-					difficulty_label.focus_color = Color("#ff7200")
-					total_collectibles -= 4
-				3:
-					diff_name = tr("SAVE_DIFF_NINJA")
-					difficulty_label.idle_color = Color("#832b7f")
-					difficulty_label.focus_color = Color("#e090f2")
-					total_collectibles -= 12
-			difficulty_label.text = tr("SAVE_DIFFICULTY") + ": " + diff_name
+			if diff_val == -1:
+				diff_name = tr("DIFFICULTY_KIDS")
+				difficulty_label.idle_color = Color("#329632")
+				difficulty_label.focus_color = Color("#8cff8c")
+				total_collectibles -= 6
+			elif diff_val == 0:
+				diff_name = tr("DIFFICULTY_EASY")
+				difficulty_label.idle_color = Color("#68caff")
+				difficulty_label.focus_color = Color("#fbffaf")
+			elif diff_val == 1:
+				diff_name = tr("DIFFICULTY_NORMAL")
+				difficulty_label.idle_color = Color("#3868a0")
+				difficulty_label.focus_color = Color("#68b0ff")
+			elif diff_val == 2:
+				diff_name = tr("DIFFICULTY_HARD")
+				difficulty_label.idle_color = Color("#771313")
+				difficulty_label.focus_color = Color("#ff7200")
+				total_collectibles -= 2
+			elif diff_val >= 3:
+				diff_name = tr("DIFFICULTY_IMPOSSIBLE")
+				difficulty_label.idle_color = Color("#832b7f")
+				difficulty_label.focus_color = Color("#e090f2")
+				total_collectibles -= 12
+			else:
+				diff_name = tr("DIFFICULTY_NORMAL")
+				difficulty_label.idle_color = Color("#3868a0")
+				difficulty_label.focus_color = Color("#68b0ff")
+			difficulty_label.text = tr("SAVE_DIFFICULTY") + " " + diff_name
 			completion_label.text = "Completion: %3.0f%%" % _calc_completion(slot_collectibles, variables, total_collectibles)
 		else:
 			difficulty_label.text = ""
@@ -169,6 +172,7 @@ func _reset_item_icons() -> void:
 
 
 func _populate_boss_icons(slot_collectibles: Array, variables: Dictionary) -> void:
+	boss_icons.get_node("kingcrab").visible = "finished_intro" in slot_collectibles
 	for boss in ["panda", "yeti", "manowar", "rooster", "trilobyte", "mantis", "antonion", "sunflower"]:
 		var defeated: bool = (boss + "_weapon") in slot_collectibles
 		boss_icons.get_node(boss).visible = defeated

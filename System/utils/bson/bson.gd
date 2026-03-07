@@ -133,6 +133,8 @@ class Deserializer:
 		for i in range(4):
 			result |= buffer[read_position + i] << (8 * i)
 		read_position += 4
+		if result & 0x80000000:
+			result = result - 0x100000000
 		return result
 
 	func get_int64() -> int:

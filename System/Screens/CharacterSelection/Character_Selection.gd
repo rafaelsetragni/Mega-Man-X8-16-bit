@@ -40,6 +40,16 @@ func end() -> void :
 	active = false
 
 func play_music() -> void :
+	var persistent = get_tree().root.get_node_or_null("PersistentMusic")
+	if persistent:
+		persistent.get_parent().remove_child(persistent)
+		musicplayer.name = "Music_Player_Old"
+		musicplayer.stop()
+		musicplayer.queue_free()
+		persistent.name = "Music_Player"
+		add_child(persistent)
+		musicplayer = persistent
+		return
 	song_loop.loop = true
 	musicplayer.play_song(song_loop, song_intro)
 

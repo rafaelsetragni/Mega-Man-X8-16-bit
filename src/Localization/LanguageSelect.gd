@@ -208,4 +208,4 @@ func _confirm() -> void:
 
 
 func _go_to_disclaimer() -> void:
-	get_tree().change_scene("res://src/Title/DifficultySelect.tscn")
+	get_tree().change_scene("res://src/Title/DisclaimerScreen.tscn")

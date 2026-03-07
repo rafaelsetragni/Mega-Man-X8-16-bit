@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Fonts/menuFont.tres" type="BitmapFont" id=1]
 [ext_resource path="res://System/Screens/Loading/Loading_Slot.png" type="Texture" id=3]
@@ -13,6 +13,7 @@
 [ext_resource path="res://System/Screens/Loading/icons/icarus_head.png" type="Texture" id=12]
 [ext_resource path="res://System/Screens/Loading/difficulty_text.gd" type="Script" id=13]
 [ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=14]
+[ext_resource path="res://src/StageSelect/selectables/selectable_kingcrab.tres" type="SpriteFrames" id=15]
 
 [node name="slot1" type="TextureButton"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
@@ -290,6 +291,18 @@ margin_bottom = 21.0
 rect_min_size = Vector2( 16, 12 )
 custom_constants/separation = 2
 alignment = 2
+
+[node name="kingcrab" type="Control" parent="boss_icons"]
+visible = false
+margin_right = 12.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 12, 12 )
+
+[node name="animatedSprite" type="AnimatedSprite" parent="boss_icons/kingcrab"]
+position = Vector2( 6, 6 )
+scale = Vector2( 0.3, 0.3 )
+frames = ExtResource( 15 )
+animation = "defeated_selected"
 
 [node name="sunflower" type="Control" parent="boss_icons"]
 margin_right = 12.0

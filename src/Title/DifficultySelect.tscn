@@ -9,10 +9,11 @@
 [ext_resource path="res://src/Title/hard_dificulty.png" type="Texture" id=7]
 [ext_resource path="res://src/Title/impossible_dificulty.png" type="Texture" id=8]
 [ext_resource path="res://System/SFX/move_cursor.ogg" type="AudioStream" id=9]
-[ext_resource path="res://System/SFX/open_option.ogg" type="AudioStream" id=10]
+[ext_resource path="res://src/Sounds/16 - MMX - X Upgrade Complete.wav" type="AudioStream" id=10]
 [ext_resource path="res://src/Fonts/xclassicfontfinal.fnt" type="BitmapFont" id=11]
 [ext_resource path="res://src/Fonts/X8Bossfont.fnt" type="BitmapFont" id=12]
 [ext_resource path="res://src/StageSelect/ss_cursor2.png" type="Texture" id=13]
+[ext_resource path="res://System/SFX/window_close.ogg" type="AudioStream" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 13 )
@@ -214,6 +215,22 @@ bus = "SFX"
 
 [node name="confirm_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -4.0
+bus = "SFX"
+
+[node name="back_label" type="Label" parent="."]
+margin_left = 49.0
+margin_top = 208.0
+margin_right = 349.0
+margin_bottom = 224.0
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
+custom_colors/font_color_shadow = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 11 )
+text = "BACK"
+align = 1
+
+[node name="cancel_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 volume_db = -4.0
 bus = "SFX"
 

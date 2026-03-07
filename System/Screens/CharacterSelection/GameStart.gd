@@ -26,7 +26,11 @@ func on_press() -> void :
 	go_to_next_scene()
 
 func go_to_next_scene() -> void :
-	GameManager.start_level("NoahsPark")
+	var music = menu.musicplayer
+	music.get_parent().remove_child(music)
+	get_tree().root.add_child(music)
+	music.name = "PersistentMusic"
+	get_tree().change_scene("res://src/Title/DifficultySelect.tscn")
 
 func already_finished_noahs_park() -> bool:
 	return "finished_intro" in GameManager.collectibles
