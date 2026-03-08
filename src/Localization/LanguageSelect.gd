@@ -52,8 +52,8 @@ const FLAGS_Y := 108.0
 const TWEEN_TIME := 0.15
 
 const DIM_COLOR := Color(0.4, 0.4, 0.4, 1.0)
-const DIM_SCALE := Vector2(0.7, 0.7)
-const BRIGHT_SCALE := Vector2(1.0, 1.0)
+const DIM_SCALE := Vector2(0.35, 0.35)
+const BRIGHT_SCALE := Vector2(0.5, 0.5)
 
 const JOKE_COLOR := Color(1.0, 1.0, 0.0, 1.0)
 const INACTIVE_COLOR := Color(0.4, 0.4, 0.45, 1.0)

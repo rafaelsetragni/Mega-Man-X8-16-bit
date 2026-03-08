@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Fonts/x8bitmapfontfinal.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://src/Title/rafael_signature.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/Title/turbo_signature.gd" type="Script" id=6]
 [ext_resource path="res://src/Title/turbo-megaman.png" type="Texture" id=8]
 [ext_resource path="res://src/Effects/Textures/github.png" type="Texture" id=9]
+[ext_resource path="res://src/Localization/flags/flag_br.png" type="Texture" id=11]
 [ext_resource path="res://src/Sounds/car-engine-sfx.wav" type="AudioStream" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -56,17 +57,21 @@ texture = ExtResource( 8 )
 [node name="github_url" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.6 )
 material = SubResource( 1 )
-margin_left = 62.0
+margin_left = 141.0
 margin_top = 167.0
-margin_right = 340.0
+margin_right = 341.0
 margin_bottom = 209.0
 custom_colors/font_color = Color( 0.639216, 0.713726, 0.898039, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "github.com/rafaelsetragni"
-align = 1
+
+[node name="flag" type="Sprite" parent="github_url"]
+position = Vector2( -38, 7 )
+scale = Vector2( 0.21, 0.21 )
+texture = ExtResource( 11 )
 
 [node name="sprite" type="Sprite" parent="github_url"]
-position = Vector2( 48, 7 )
+position = Vector2( -14, 7 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 9 )
 
