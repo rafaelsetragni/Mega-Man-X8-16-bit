@@ -26,6 +26,9 @@ func _Setup() -> void :
 	character.disable_floor_snap()
 	character.position = Vector2(0, 0)
 	character.stop_all_movement()
+	character.remove_invulnerability_shader()
+	character.end_flash()
+	character.invulnerability = 0
 	ride_animator = ride.get_node("animatedSprite")
 	character.animatedSprite.animation = "idle"
 

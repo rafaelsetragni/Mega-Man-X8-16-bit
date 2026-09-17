@@ -80,8 +80,10 @@ func at_correct_height() -> bool:
 		return true
 
 func get_ground_height() -> float:
-	var intersection = (raycast(Vector2(global_position.x, global_position.y + 1000)).position.y)
-	return intersection
+	var result = raycast(Vector2(global_position.x, global_position.y + 1000))
+	if result.empty():
+		return global_position.y + 1000
+	return result.position.y
 
 func raycast(target_position: Vector2) -> Dictionary:
 	var space_state = get_world_2d().direct_space_state

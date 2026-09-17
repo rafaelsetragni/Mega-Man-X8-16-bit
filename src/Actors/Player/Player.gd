@@ -58,6 +58,8 @@ func is_riding() -> bool:
 func on_land() -> void :
 	dashjumps_since_jump = 0
 	dashfall = false
+	kids_cliff_dash_available = false
+	kids_wall_hold_direction = 0
 
 func dashjump_signal() -> void :
 	emit_signal("dashjump")
@@ -117,15 +119,30 @@ func _process(delta: float) -> void :
 
 func spike_touch():
 	if should_instantly_die() and not is_invulnerable():
+		if CharacterManager.game_mode <= -1:
+			emit_signal("damage", 1, self)
+			return
 		Log("Death by Spikes")
 		emit_signal("zero_health")
 
 func lava_touch():
 	if should_instantly_die():
+		if CharacterManager.game_mode <= -1:
+			if not is_invulnerable():
+				emit_signal("damage", 1, self)
+			return
 		Log("Death by Lava")
 		emit_signal("zero_health")
 
 func void_touch():
+	if CharacterManager.game_mode <= -1:
+		if not is_invulnerable():
+			_kids_mode_void_rescue()
+			animatedSprite.visible = true
+			GameManager.emit_intro_signal()
+			if not is_executing("Intro"):
+				activate()
+		return
 	Log("Death by falling")
 	emit_signal("zero_health")
 

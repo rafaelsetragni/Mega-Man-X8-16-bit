@@ -160,6 +160,8 @@ func check_if_should_set_alpha_to_1():
 		full_alpha = true
 
 func damage(value, inflicter = null) -> float:
+	if CharacterManager.game_mode <= -1:
+		return current_health
 	if inflicter != self:
 		value = value * 2
 	emit_signal("damage",value,inflicter)

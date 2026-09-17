@@ -105,9 +105,8 @@ func _enforce_fullscreen() -> void:
 	var should_be_fullscreen = Configurations.get("Fullscreen")
 	if should_be_fullscreen and not OS.window_fullscreen:
 		OS.window_fullscreen = true
-	elif OS.window_fullscreen and not should_be_fullscreen:
-		Configurations.set("Fullscreen", true)
-		Savefile.save_config_data()
+	elif not should_be_fullscreen and OS.window_fullscreen:
+		OS.window_fullscreen = false
 
 	if debug_enabled or OS.has_feature("editor"):
 		if Input.is_action_just_pressed("debug_save_menu"):

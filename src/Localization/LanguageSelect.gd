@@ -204,8 +204,8 @@ func _confirm() -> void:
 
 	var t = create_tween()
 	t.tween_property(fade, "modulate:a", 1.0, 0.5)
-	t.tween_callback(self, "_go_to_disclaimer")
+	t.tween_callback(self, "_go_to_loading")
 
 
-func _go_to_disclaimer() -> void:
-	get_tree().change_scene("res://src/Title/DisclaimerScreen.tscn")
+func _go_to_loading() -> void:
+	get_tree().change_scene("res://System/Screens/Loading/Loading.tscn")

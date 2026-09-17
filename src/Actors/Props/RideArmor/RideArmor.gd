@@ -110,6 +110,8 @@ func get_all_abilities() -> Array:
 	return abilities
 
 func damage(value, inflicter = null) -> float:
+	if CharacterManager.game_mode <= -1:
+		return current_health
 	if not is_invulnerable() and has_health():
 		emit_signal("damage", value, inflicter)
 		reduce_health(value)

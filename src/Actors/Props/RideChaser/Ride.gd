@@ -80,7 +80,8 @@ func force_eject():
 	Log("Explosion force ejected rider.")
 	remove_rider()
 	if is_instance_valid(rider):
-		rider.damage(destroy_damage, rider)
+		if CharacterManager.game_mode > -1:
+			rider.damage(destroy_damage, rider)
 	rider = null
 
 func remove_rider():

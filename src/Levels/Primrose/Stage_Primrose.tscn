@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://src/HUD/intro_text.gd" type="Script" id=1]
 [ext_resource path="res://src/Levels/music_player.gd" type="Script" id=2]
@@ -87,6 +87,7 @@
 [ext_resource path="res://src/Levels/IGTimer.tscn" type="PackedScene" id=85]
 [ext_resource path="res://Zero_mod/Levels/Zero_T-Breaker.gd" type="Script" id=86]
 [ext_resource path="res://Zero_mod/Player/Weapons/T-Breaker.tres" type="Resource" id=87]
+[ext_resource path="res://src/Objects/Void.tscn" type="PackedScene" id=88]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 512, 112 )
@@ -2849,6 +2850,22 @@ position = Vector2( -95, -21 )
 shape = SubResource( 39 )
 
 [node name="Objects" type="Node2D" parent="."]
+
+[node name="VoidDeathPlane" parent="Objects" instance=ExtResource( 88 )]
+position = Vector2( 3500, 800 )
+scale = Vector2( 250, 1 )
+
+[node name="VoidDeathPlane2" parent="Objects" instance=ExtResource( 88 )]
+position = Vector2( 2000, 1800 )
+scale = Vector2( 250, 1 )
+
+[node name="VoidDeathPlane3" parent="Objects" instance=ExtResource( 88 )]
+position = Vector2( 1500, 2700 )
+scale = Vector2( 200, 1 )
+
+[node name="VoidDeathPlane4" parent="Objects" instance=ExtResource( 88 )]
+position = Vector2( 4500, 4200 )
+scale = Vector2( 200, 1 )
 
 [node name="Limits" type="Node2D" parent="."]
 visible = false

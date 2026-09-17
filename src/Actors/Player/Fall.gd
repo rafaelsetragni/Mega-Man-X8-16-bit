@@ -39,6 +39,9 @@ func _Update(_delta: float) -> void :
 
 func _Setup():
 	character.global_position.y += 1
+	if CharacterManager.game_mode <= -1:
+		if character.time_since_on_floor < 0.1:
+			character.kids_cliff_dash_available = true
 
 func _Interrupt() -> void :
 	character.dashfall = false

@@ -30,6 +30,13 @@ func emit():
 		particle.emitting = true
 		second_round_delay = 0.45
 
+func stop():
+	second_round_delay = 0.0
+	for particle in first_round:
+		particle.emitting = false
+	for particle in second_round:
+		particle.emitting = false
+
 func _process(delta: float) -> void:
 	if second_round_delay > 0:
 		second_round_delay -= delta

@@ -37,5 +37,12 @@ func check(crush_casts) -> void :
 		if cast.is_colliding():
 			death_hits += 1
 	if death_hits == 2:
+		if CharacterManager.game_mode <= -1:
+			character._kids_mode_void_rescue()
+			character.animatedSprite.visible = true
+			GameManager.emit_intro_signal()
+			if not character.is_executing("Intro"):
+				character.activate()
+			return
 		character.emit_signal(parent_signal)
 		set_physics_process(false)

@@ -65,6 +65,8 @@ func _Setup() -> void :
 	character.emit_signal("received_damage")
 
 func reduce_health() -> void :
+	if CharacterManager.game_mode <= -1:
+		return
 	var actual_damage = round(((damage_taken * (1 - damage_reduction / 100)) * CharacterManager.damage_get_multiplier) * extra_damage_reduction)
 	if actual_damage <= 0:
 		actual_damage = 1
@@ -109,10 +111,13 @@ func _Interrupt() -> void :
 func on_damage(value: float, inflicter: Object) -> void :
 	if should_be_damaged():
 		if not character.is_invulnerable():
+			if CharacterManager.game_mode <= -1:
+				character.kids_wall_hold_direction = 0
+				return
 			damage_taken = value
 			damage_direction = define_knockback_direction(inflicter)
 			ExecuteOnce()
-			if inflicter == character and character.current_health > 1 and (CharacterManager.game_mode <= - 1 or not character.should_die_to_spikes):
+			if inflicter == character and character.current_health > 1 and not character.should_die_to_spikes:
 				character.current_health = 1
 
 func should_be_damaged() -> bool:

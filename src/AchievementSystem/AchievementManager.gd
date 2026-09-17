@@ -25,7 +25,7 @@ func unlock(achievement_id : String):
 		if achievement.get_id() == achievement_id:
 			found = true
 			if not achievement.unlocked:
-				if not GameManager.is_cheating():
+				if not GameManager.is_cheating() and CharacterManager.game_mode > -1:
 					achievement.unlock()
 				popup.show_achievement(achievement)
 			else:
